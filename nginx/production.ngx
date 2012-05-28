@@ -1,0 +1,42 @@
+upstream tutelage {
+  server unix:/tmp/tutelage.sock;
+}
+
+server {
+  listen 80;
+
+  server_name tutelage.com;
+  root /var/www/tutelage;
+
+  access_log /var/log/nginx/tutelage.log combined;
+  error_log /var/log/nginx/tutelage.err warn;
+
+  location / {
+    proxy_pass http://tutelage;
+    proxy_redirect off;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+
+  location /robots.txt { }
+
+  location /204 {
+    return 204;
+  }
+
+  location /media/admin/ {
+    alias /usr/local/lib/python2.7/dist-packages/django/contrib/admin/media/;
+    access_log off;
+  }
+
+  location /media/ {
+    access_log off;
+    alias /var/www/tutelage/media/;
+  }
+
+  location = /favicon.ico {
+    access_log off;
+    empty_gif;
+  }
+}
+
