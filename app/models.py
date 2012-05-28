@@ -1,4 +1,5 @@
 from django.db import models
+from sorl.thumbnail import ImageField
 from ecl_django.models import BcryptMixin, CreatedMixin
 
 
@@ -28,6 +29,7 @@ class Tool(CreatedMixin):
 
 
 class User(CreatedMixin, BcryptMixin()):
+    username = models.CharField(max_length=20, unique=True)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=10, unique=True)
     skill = models.PositiveSmallIntegerField(choices=(
@@ -35,7 +37,8 @@ class User(CreatedMixin, BcryptMixin()):
         (1, "Intermediate"),
         (2, "Advanced"),
         (3, "Professional")))
-    about = models.TextField(default="")
+    about = models.CharField(max_length=300, default='')
+    avatar = ImageField(upload_to=file_url('users'), null=True, blank=True)
 
     cc_name = models.CharField(max_length=128)
     cc_type = models.CharField(max_length=32, null=True, blank=True)
@@ -52,6 +55,11 @@ class User(CreatedMixin, BcryptMixin()):
 
     ingredients = models.ManyToManyField(Ingredient, related_name='users')
     tools = models.ManyToManyField(Tool, related_name='users')
+
+
+    @property
+    def image(self):
+        return "{}/{}".format(settings.UPLOAD_URL, self.avatar.name)
 
     def __unicode__(self):
         return self.name

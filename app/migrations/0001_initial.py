@@ -32,10 +32,12 @@ class Migration(SchemaMigration):
             ('created_on', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('updated_on', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
             ('password', self.gf('django.db.models.fields.CharField')(max_length=60)),
+            ('username', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20)),
             ('email', self.gf('django.db.models.fields.EmailField')(unique=True, max_length=75)),
             ('phone', self.gf('django.db.models.fields.CharField')(unique=True, max_length=10)),
             ('skill', self.gf('django.db.models.fields.PositiveSmallIntegerField')()),
-            ('about', self.gf('django.db.models.fields.TextField')(default='')),
+            ('about', self.gf('django.db.models.fields.CharField')(default='', max_length=300)),
+            ('avatar', self.gf('sorl.thumbnail.fields.ImageField')(max_length=100, null=True, blank=True)),
             ('cc_name', self.gf('django.db.models.fields.CharField')(max_length=128)),
             ('cc_type', self.gf('django.db.models.fields.CharField')(max_length=32, null=True, blank=True)),
             ('cc_exp_month', self.gf('django.db.models.fields.CharField')(max_length=2, null=True, blank=True)),
@@ -280,7 +282,8 @@ class Migration(SchemaMigration):
         },
         'app.user': {
             'Meta': {'object_name': 'User'},
-            'about': ('django.db.models.fields.TextField', [], {'default': "''"}),
+            'about': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '300'}),
+            'avatar': ('sorl.thumbnail.fields.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'cc_address_1': ('django.db.models.fields.CharField', [], {'max_length': '128', 'null': 'True', 'blank': 'True'}),
             'cc_address_2': ('django.db.models.fields.CharField', [], {'max_length': '128', 'null': 'True', 'blank': 'True'}),
             'cc_country': ('django.db.models.fields.CharField', [], {'max_length': '32', 'null': 'True', 'blank': 'True'}),
@@ -300,7 +303,8 @@ class Migration(SchemaMigration):
             'skill': ('django.db.models.fields.PositiveSmallIntegerField', [], {}),
             'stripe_customer_id': ('django.db.models.fields.CharField', [], {'max_length': '32', 'null': 'True', 'blank': 'True'}),
             'tools': ('django.db.models.fields.related.ManyToManyField', [], {'related_name': "'users'", 'symmetrical': 'False', 'to': "orm['app.Tool']"}),
-            'updated_on': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
+            'updated_on': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
+            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '20'})
         }
     }
 
