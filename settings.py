@@ -200,8 +200,8 @@ import os
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Name of the directory for the project.
-PROJECT_DIRNAME = PROJECT_ROOT.split(os.sep)[-1]
-
+#PROJECT_DIRNAME = PROJECT_ROOT.split(os.sep)[-1]
+PROJECT_DIRNAME = "tutelage"
 # Every cache key will get prefixed with this value - here we set it to
 # the name of the directory the project is in to try and use something
 # project specific.
@@ -232,7 +232,7 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
 ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
 
 # Package/module name to import the root urlpatterns from for the project.
-ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
+ROOT_URLCONF = "urls" % PROJECT_DIRNAME
 
 # Put strings here, like "/home/html/django_templates"
 # or "C:/www/django/templates".
