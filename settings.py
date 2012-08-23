@@ -167,24 +167,28 @@ STATICFILES_FINDERS = (
 #############
 # DATABASES #
 #############
+import json
+with open('/home/dotcloud/environment.json') as f:
+  env = json.load(f)
+
+
+if env["DOTCLOUD_PROJECT"] != "zombies":
+    EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+    DEBUG = True
+else:
+    EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+
 
 DATABASES = {
-    "default": {
-        # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        # DB name or path to database file if using sqlite3.
-        "NAME": "tutelage",
-        # Not used with sqlite3.
-        "USER": "tutelage",
-        # Not used with sqlite3.
-        "PASSWORD": "",
-        # Set to empty string for localhost. Not used with sqlite3.
-        "HOST": "",
-        # Set to empty string for default. Not used with sqlite3.
-        "PORT": "",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tutelage',
+        'USER': env['DOTCLOUD_DATA_SQL_LOGIN'],
+        'PASSWORD': env['DOTCLOUD_DATA_SQL_PASSWORD'],
+        'HOST': env['DOTCLOUD_DATA_SQL_HOST'],
+        'PORT': int(env['DOTCLOUD_DATA_SQL_PORT']),
     }
 }
-
 
 #########
 # PATHS #
