@@ -1,1 +1,1 @@
-/home/dotcloud/current/manage.prod.py collectstatic --noinput
+/home/dotcloud/current/manage.py collectstatic --noinput
