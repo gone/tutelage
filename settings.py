@@ -128,7 +128,7 @@ LANGUAGE_CODE = "en"
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = False
+DEBUG = True
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -144,7 +144,7 @@ SECRET_KEY = "6d71118c-1541-4b98-9a5f-79d61908a65a05db48dd-69a6-4dfb-8ccb-0b9996
 
 # Tuple of IP addresses, as strings, that:
 #   * See debug comments, when DEBUG is true
-n#   * Receive x-headers
+#   * Receive x-headers
 INTERNAL_IPS = ("127.0.0.1",)
 
 # List of callables that know how to import templates from various sources.
@@ -173,9 +173,9 @@ DATABASES = {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         # DB name or path to database file if using sqlite3.
-        "NAME": "",
+        "NAME": "tutelage",
         # Not used with sqlite3.
-        "USER": "",
+        "USER": "tutelage",
         # Not used with sqlite3.
         "PASSWORD": "",
         # Set to empty string for localhost. Not used with sqlite3.
