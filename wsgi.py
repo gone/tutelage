@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "apps")))
 
 # "djangoproj" should be the subdirectory within your root where the Django project's root is.
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings.production'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 # another import--should really be at the top, but whatever
 import django.core.handlers.wsgi
