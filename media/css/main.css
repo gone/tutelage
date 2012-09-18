@@ -1,0 +1,67 @@
+/*
+Syntax error: Invalid CSS after "width": expected ";", was ": "
+        on line 221 of /Users/GregoryHausheer/programming/projects/tutelage/media/css/main.scss
+
+Backtrace:
+/Users/GregoryHausheer/programming/projects/tutelage/media/css/main.scss:221
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:928:in `expected'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:874:in `expected'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:869:in `tok!'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:430:in `declaration_or_ruleset'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:912:in `call'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:912:in `rethrow'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:436:in `declaration_or_ruleset'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:398:in `block_child'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:387:in `block_contents'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:379:in `block'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:373:in `ruleset'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:397:in `block_child'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:390:in `block_contents'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:58:in `stylesheet'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:27:in `parse'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/engine.rb:326:in `_to_tree'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/engine.rb:299:in `_render'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/engine.rb:246:in `render'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `compile'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `compile'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `run'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `run'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in `to_proc'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/path.rb:73:in `call'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/path.rb:73:in `run_callback'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/path.rb:55:in `callback_action'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/path.rb:35:in `update'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:39:in `modified'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:37:in `each'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:37:in `modified'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:18:in `refresh'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:17:in `run'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:17:in `each'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:17:in `run'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:15:in `loop'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:15:in `run'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/monitor.rb:26:in `run'
+/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm.rb:70:in `monitor'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:30
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:44:in `call'
+/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:44
+/usr/bin/compass:23:in `load'
+/usr/bin/compass:23
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"width\": expected \";\", was \": \"\A         on line 221 of /Users/GregoryHausheer/programming/projects/tutelage/media/css/main.scss"; }

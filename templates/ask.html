@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class='wrapper'>
+  <div class='learn'>
+    <div class='search'>
+      <h4>Find a cooking lesson that suits your needs...</h4>
+      <input type='text'/>
+      <select>
+        <option>Category</option>
+      </select>
+      <select>
+        <option>Style</option>
+      </select>
+      <img src='{{ MEDIA_URL }}img/search_button.png'/>
+    </div>
+  </div>
+  <div class='request'></div>
+  <div class='ask'>
+  
+  </div>
+</div>
+
+  {% endblock %}
+

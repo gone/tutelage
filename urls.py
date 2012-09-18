@@ -15,6 +15,8 @@ urlpatterns = patterns('app.views',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^204$', status_204),
     home_url('home'),
+    template_url('learn'),
+    template_url('ask'),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
