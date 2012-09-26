@@ -1,0 +1,7 @@
+htp_path = "/"
+css_dir = "media/css"
+sass_dir = "media/css"
+images_dir = "media/img"
+javascripts_dir = "media/js"
+line_comments = false
+relative_assets = true
