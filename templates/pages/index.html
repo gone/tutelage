@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include "searchbar.html" %}
+<div class='wrapper'>
+  <span class="call-to-action">
+      {{page.home.call_to_action}}
+  </span>
+  <span class="hero">
+      <img src={{page.home.hero}} />
+  </span>
+  <span class="homeblocks">
+      {% for block in page.home.blocks %}
+      <span class="block">
+          <span class="block-header">
+              {{block.header}}
+          </span>
+          <span class="block-body">
+              {{block.body}}
+          </span>
+          <span class="block-link">
+              <a href="{{block.link_target}}">
+                  {{block.link_copy}}
+              </a>
+          </span>
+      </span>
+      {% endfor %}
+  </span>
+</div>
+{% endblock %}

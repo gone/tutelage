@@ -1,6 +1,13 @@
+import re
+from datetime import datetime
+import time
+
+
 from django.db import models
-from sorl.thumbnail import ImageField
-from ecl_django.models import BcryptMixin, CreatedMixin
+from django.contrib.auth.models import User
+from mezzanine.pages.models import Page
+from mezzanine.core.models import Displayable
+from ecl_django.models import CreatedMixin
 
 
 def file_url(name):
@@ -14,12 +21,38 @@ def file_url(name):
     return inner
 
 
+class Home(Page):
+    call_to_action = models.TextField()
+    hero = models.ImageField(upload_to=file_url("hero_pic"))
+
+    @property
+    def blocks(self):
+        return HomeBlock.objects.filter(published=True)
+
+
+class HomeBlock(CreatedMixin, Displayable):
+    header = models.CharField(max_length=126)
+    body = models.TextField()
+    link_copy = models.CharField(max_length=126)
+    link_target = models.CharField(max_length=126)
+
+
+##############################
+# class Tag(CreatedMixin):   #
+#     tag = asdf             #
+#     icon = asdf            #
+#     details = asdf         #
+#     section = asdf         #
+#                            #
+#     def __unicode__(self): #
+#         return self.name   #
+##############################
+
 class Ingredient(CreatedMixin):
     name = models.CharField(max_length=32, unique=True)
 
     def __unicode__(self):
         return self.name
-
 
 class Tool(CreatedMixin):
     name = models.CharField(max_length=32, unique=True)
@@ -27,50 +60,11 @@ class Tool(CreatedMixin):
     def __unicode__(self):
         return self.name
 
-
-class User(CreatedMixin, BcryptMixin()):
-    username = models.CharField(max_length=20, unique=True)
-    email = models.EmailField(unique=True)
-    phone = models.CharField(max_length=10, unique=True)
-    skill = models.PositiveSmallIntegerField(choices=(
-        (0, "Novice"),
-        (1, "Intermediate"),
-        (2, "Advanced"),
-        (3, "Professional")))
-    about = models.CharField(max_length=300, default='')
-    avatar = ImageField(upload_to=file_url('users'), null=True, blank=True)
-
-    cc_name = models.CharField(max_length=128)
-    cc_type = models.CharField(max_length=32, null=True, blank=True)
-    cc_exp_month = models.CharField(max_length=2, null=True, blank=True)
-    cc_exp_year = models.CharField(max_length=4, null=True, blank=True)
-    cc_last_4 = models.CharField(max_length=4, null=True, blank=True)
-    cc_zip = models.CharField(max_length=5, null=True, blank=True)
-    cc_address_1 = models.CharField(max_length=128, null=True, blank=True)
-    cc_address_2 = models.CharField(max_length=128, null=True, blank=True)
-    cc_state = models.CharField(max_length=2, null=True, blank=True)
-    cc_country = models.CharField(max_length=32, null=True, blank=True)
-
-    stripe_customer_id = models.CharField(max_length=32, null=True, blank=True)
-
-    ingredients = models.ManyToManyField(Ingredient, related_name='users')
-    tools = models.ManyToManyField(Tool, related_name='users')
-
-
-    @property
-    def image(self):
-        return "{}/{}".format(settings.UPLOAD_URL, self.avatar.name)
-
-    def __unicode__(self):
-        return self.name
-
-
 class Category(CreatedMixin):
     name = models.CharField(max_length=128, unique=True)
 
     def __unicode__(self):
         return self.name
-
 
 class SubCategory(CreatedMixin):
     name = models.CharField(max_length=128)
@@ -81,6 +75,32 @@ class SubCategory(CreatedMixin):
 
     class Meta():
         unique_together = ('name', 'parent')
+
+class Profile(CreatedMixin):
+    user = models.ForeignKey(User)
+    phone = models.CharField(max_length=10, unique=True)
+    about = models.CharField(max_length=300, default='')
+
+    ingredients = models.ManyToManyField(Ingredient, related_name='profiles')
+    tools = models.ManyToManyField(Tool, related_name='profiles')
+
+    def __unicode__(self):
+        return unicode(self.user)
+
+class CreditCard(CreatedMixin):
+    user = models.ForeignKey(User)
+    name = models.CharField(max_length=128)
+    type = models.CharField(max_length=32, null=True, blank=True)
+    exp_month = models.CharField(max_length=2, null=True, blank=True)
+    exp_year = models.CharField(max_length=4, null=True, blank=True)
+    last_4 = models.CharField(max_length=4, null=True, blank=True)
+    zip = models.CharField(max_length=5, null=True, blank=True)
+    address_1 = models.CharField(max_length=128, null=True, blank=True)
+    address_2 = models.CharField(max_length=128, null=True, blank=True)
+    state = models.CharField(max_length=2, null=True, blank=True)
+    country = models.CharField(max_length=32, null=True, blank=True)
+
+    stripe_customer_id = models.CharField(max_length=32, null=True, blank=True)
 
 
 class Lesson(CreatedMixin):
@@ -101,13 +121,14 @@ class Lesson(CreatedMixin):
 
     @property
     def rating(self):
+        #TODO: user proper rating algo. Find that sucker online.
         result = self.ratings.aggregate(avg=Avg('rating'))['avg']
         if not result:
             return 0
         return result
 
     def __unicode__(self):
-        return self.name
+        return self.title
 
 
 class Step(CreatedMixin):
@@ -136,4 +157,3 @@ class LessonRating(CreatedMixin):
 
     class Meta():
         unique_together = ('user', 'lesson')
-

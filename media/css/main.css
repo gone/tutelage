@@ -1,67 +1,205 @@
-/*
-Syntax error: Invalid CSS after "width": expected ";", was ": "
-        on line 221 of /Users/GregoryHausheer/programming/projects/tutelage/media/css/main.scss
+div.base-background {
+  height: 100%;
+  width: 100%;
+  background-color: #eee;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+div.base-background div.header {
+  height: 60px;
+  width: 489px;
+  background-color: #fefefe;
+  float: left;
+}
+div.base-background div.box {
+  height: 60px;
+  width: 79px;
+  background-color: #fefefe;
+  float: left;
+  margin-left: 3px;
+  position: relative;
+}
+div.base-background div.box img {
+  margin-top: 7px;
+  margin-left: 10px;
+  display: show;
+}
+div.base-background div.box img.my {
+  margin-top: 15px;
+}
+div.base-background div.box h2 {
+  font-size: 16px;
+  font-weight: normal;
+  color: #333333;
+  font-family: Helvetica Neue;
+  margin-left: 10px;
+  line-height: 0px;
+  position: absolute;
+  bottom: 12px;
+}
+div.base-background div.box:hover {
+  background-color: #02A64F;
+}
+div.base-background div.box:hover h2 {
+  color: #fefefe;
+}
+div.base-background div.my {
+  width: 160px;
+}
 
-Backtrace:
-/Users/GregoryHausheer/programming/projects/tutelage/media/css/main.scss:221
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:928:in `expected'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:874:in `expected'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:869:in `tok!'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:430:in `declaration_or_ruleset'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:912:in `call'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:912:in `rethrow'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:436:in `declaration_or_ruleset'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:398:in `block_child'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:387:in `block_contents'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:379:in `block'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:373:in `ruleset'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:397:in `block_child'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:390:in `block_contents'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:58:in `stylesheet'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/scss/parser.rb:27:in `parse'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/engine.rb:326:in `_to_tree'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/engine.rb:299:in `_render'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.15/lib/sass/../sass/engine.rb:246:in `render'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `compile'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `compile'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `run'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `run'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
-/Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in `to_proc'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/path.rb:73:in `call'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/path.rb:73:in `run_callback'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/path.rb:55:in `callback_action'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/path.rb:35:in `update'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:39:in `modified'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:37:in `each'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:37:in `modified'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:18:in `refresh'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:17:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:17:in `each'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:17:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:15:in `loop'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:15:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm/monitor.rb:26:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.8.1/lib/fssm.rb:70:in `monitor'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:30
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:44:in `call'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:44
-/usr/bin/compass:23:in `load'
-/usr/bin/compass:23
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"width\": expected \";\", was \": \"\A         on line 221 of /Users/GregoryHausheer/programming/projects/tutelage/media/css/main.scss"; }
+div.learn {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #fefefe;
+  height: 100%;
+  margin-top: 20px;
+}
+div.learn div.search {
+  background-color: #fefefe;
+  width: 100%;
+  height: 60px;
+  padding-top: 10px;
+}
+div.learn div.search h4 {
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333333;
+  font-family: "Helvetica Neue";
+  float: left;
+  padding-top: 15px;
+}
+div.learn div.search input[type='text'] {
+  float: left;
+  height: 22px;
+  width: 260px;
+  margin-top: 5px;
+  margin-left: 10px;
+  background: url('../img/search_glass.png?1348669435');
+  background-position: 96.5% center;
+  background-position-x: 2%;
+  background-position-y: 50%;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+}
+div.learn div.search select {
+  float: left;
+  width: 100px;
+  margin-top: 5px;
+  margin-left: 20px;
+  height: 32px;
+}
+div.learn div.search img {
+  margin-top: 5px;
+  margin-left: 15px;
+}
+
+div.food-item {
+  height: 400px;
+  width: 490px;
+  background-color: #fefefe;
+  position: relative;
+  float: left;
+  margin: 0 auto;
+  margin-top: 2px;
+}
+div.food-item h1 {
+  font-family: "Helvetica Neue";
+  font-weight: normal;
+  font-size: 24px;
+  color: #01A54F;
+  position: relative;
+  margin-left: 10px;
+  padding-top: 10px;
+  float: left;
+}
+div.food-item h1.price {
+  color: #000;
+  float: right;
+  font-size: 24px;
+  font-family: #333333;
+  margin-right: 15px;
+  font-weight: bold;
+}
+div.food-item h2 {
+  float: left;
+  font-size: 14px;
+  color: #333333;
+  font-weight: normal;
+  font-family: "Helvetica Neue";
+  margin-left: 10px;
+  margin-top: 10px;
+}
+div.food-item h2.time {
+  float: left;
+}
+div.food-item h2.chef {
+  float: right;
+  margin-right: 15px;
+}
+div.food-item h2.chef span {
+  color: #4BA4FF;
+}
+div.food-item hr {
+  color: #E3E3E3;
+  width: 460px;
+  margin-left: 10px;
+  position: relative;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+div.food-item h3 {
+  font-weight: normal;
+  background-color: #7F7F7F;
+  font-size: 14px;
+  color: #fff;
+  font-family: "Helvetica Neue";
+  margin-bottom: 10px;
+  height: 25px;
+  width: 70px;
+  padding-left: 15px;
+  margin-left: 10px;
+  margin-top: 5px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+}
+div.food-item input[type='image'] {
+  float: right;
+  margin-left: 5px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+div.food-item img {
+  margin-left: 10px;
+  float: left;
+  margin-top: 15px;
+}
+div.food-item h4 {
+  height: 160px;
+  width: 230px;
+  font-weight: normal;
+  font-size: 14px;
+  color: #434343;
+  font-family: "Helvetica Neue";
+  margin-left: 15px;
+  float: left;
+  margin-top: 15px;
+}
+
+/* div.request { */
+/* height: */
+/* width:  */
+/* background-color: #FEFEFE; */
+/* } */
+div.wrapper {
+  width: 980px;
+  position: relative;
+  margin: 0 auto;
+}
+
+div.clear {
+  clear: both;
+}

@@ -2,9 +2,9 @@
 <html xmlns:fb="http://ogp.me/ns/fb#">
   <head>
     <title></title>
-    <link rel='stylesheet' href='{{ MEDIA_URL }}css/reset.css' />
-    <link rel='stylesheet' href='{{ MEDIA_URL }}css/main.css' />
-    <link rel='stylesheet' href='{{ MEDIA_URL }}css/bootstrap.min.css' />
+    <link rel='stylesheet' href='{{ STATIC_URL }}css/reset.css' />
+    <link rel='stylesheet' href='{{ STATIC_URL }}css/main.css' />
+    <link rel='stylesheet' href='{{ STATIC_URL }}css/bootstrap.min.css' />
     <link rel='shortcut icon' href='/favicon.ico' />
     <link rel='apple-touch-icon' href="">
 
@@ -38,7 +38,7 @@
  </script>
 
  <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
- <script type='text/javascript' src="{{ MEDIA_URL }}js/main.js"></script>
+ <script type='text/javascript' src="{{ STATIC_URL }}js/main.js"></script>
 
  {% block media %}{% endblock %}
       </head>
@@ -47,31 +47,27 @@
           <div class='wrapper'>
             <div class='header'></div>
             <div class='box'>
-              <img src='{{ MEDIA_URL }}img/tutor.png'/>
+              <img src='{{ STATIC_URL }}img/tutor.png'/>
               <h2>tutor</h2>
             </div>
             <div class='box'>
-              <img src='{{ MEDIA_URL }}img/learn.png'/>
+              <img src='{{ STATIC_URL }}img/learn.png'/>
               <h2>learn</h2>
             </div>
             <div class='box'>
-              <img src='{{ MEDIA_URL }}img/ask_active.png'/>
-              <h2>ask</h2>
-            </div>
-
-            <div class='box'>
-              <img src='{{ MEDIA_URL }}img/about.png'/>
+              <img src='{{ STATIC_URL }}img/about.png'/>
               <h2>about</h2>
             </div>
-            <div class='box my'>
-              <img class='my' src='{{ MEDIA_URL }}img/my.png'/>
-              
-              <h2>tutelage</h2>
+            <div class='box'>
+              <img src='{{ STATIC_URL }}img/signup.png'/>
+              <h2>signup</h2>
+            </div>
+            <div class='box'>
+              <img src='{{ STATIC_URL }}img/login.png'/>
+              <h2>login</h2>
             </div>
             <div class='clear'></div>
           </div>
-       
         {% block content %}{% endblock %}
       </body>
     </html>
-

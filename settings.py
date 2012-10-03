@@ -195,6 +195,8 @@ STATIC_URL = "/static/"
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
 
+STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "media")]
+
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
@@ -356,170 +358,170 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
-=======
-import os
 
-BASE = os.path.abspath(os.path.dirname(__name__))
+# import os
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+# BASE = os.path.abspath(os.path.dirname(__name__))
 
-ADMINS = ()
-# SERVER_EMAIL = "hi@example.com"
+# DEBUG = True
+# TEMPLATE_DEBUG = DEBUG
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.media",
-    "django.contrib.messages.context_processors.messages",
-)
+# ADMINS = ()
+# # SERVER_EMAIL = "hi@example.com"
 
-MANAGERS = ADMINS
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     "django.contrib.auth.context_processors.auth",
+#     "django.core.context_processors.debug",
+#     "django.core.context_processors.media",
+#     "django.contrib.messages.context_processors.messages",
+# )
 
-TIME_ZONE = 'America/Los_Angeles'
+# MANAGERS = ADMINS
 
-LANGUAGE_CODE = 'en-us'
+# TIME_ZONE = 'America/Los_Angeles'
 
-SITE_ID = 1
+# LANGUAGE_CODE = 'en-us'
 
-USE_I18N = False
+# SITE_ID = 1
 
-USE_L10N = False
+# USE_I18N = False
 
-MEDIA_ROOT = os.path.join(BASE, "media")
+# USE_L10N = False
 
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE, "media")
 
-ADMIN_MEDIA_PREFIX = '/media/admin/'
+# MEDIA_URL = '/media/'
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE, "templates"),
-)
+# ADMIN_MEDIA_PREFIX = '/media/admin/'
 
-SECRET_KEY = 'z6c%x24oz36o)1^0pr+f7$54+jfs@sgl-o@v$02y45fpo%v$j)'
+# TEMPLATE_DIRS = (
+#     os.path.join(BASE, "templates"),
+# )
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
+# SECRET_KEY = 'z6c%x24oz36o)1^0pr+f7$54+jfs@sgl-o@v$02y45fpo%v$j)'
 
-MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.transaction.TransactionMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-)
+# TEMPLATE_LOADERS = (
+#     'django.template.loaders.filesystem.Loader',
+#     'django.template.loaders.app_directories.Loader',
+# )
 
-ROOT_URLCONF = 'tutelage.urls'
+# MIDDLEWARE_CLASSES = (
+#     'django.middleware.common.CommonMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.transaction.TransactionMiddleware',
+#     'debug_toolbar.middleware.DebugToolbarMiddleware',
+# )
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-)
+# ROOT_URLCONF = 'tutelage.urls'
 
-INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.admin',
-    'django.contrib.webdesign',
-    'app',
-    'south',
+# AUTHENTICATION_BACKENDS = (
+#     'django.contrib.auth.backends.ModelBackend',
+# )
 
-    'debug_toolbar',
-    'devserver',
-)
+# INSTALLED_APPS = (
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.sites',
+#     'django.contrib.messages',
+#     'django.contrib.admin',
+#     'django.contrib.webdesign',
+#     'app',
+#     'south',
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'simple': {
-            'format': '[%(levelname)s] %(module)s@%(lineno)s: %(message)s'
-        },
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple'
-        },
-    },
-    'loggers': {
-        'app': {
-            'handlers': ['console'],
-            'level': "DEBUG",
-            "propagate": False
-        },
-        'django.request': {
-            'handlers': ['console', 'mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
+#     'debug_toolbar',
+#     'devserver',
+# )
 
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/login'
-LOGOUT_URL = '/logout'
-
-DEBUG_TOOLBAR_PANELS = (
-    'debug_toolbar.panels.version.VersionDebugPanel',
-    'debug_toolbar.panels.timer.TimerDebugPanel',
-    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
-    'debug_toolbar.panels.headers.HeaderDebugPanel',
-    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-    'debug_toolbar.panels.template.TemplateDebugPanel',
-    'debug_toolbar.panels.sql.SQLDebugPanel',
-    'debug_toolbar.panels.logger.LoggingPanel',
-)
-
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False
-}
-
-INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
-
-DEVSERVER_IGNORED_PREFIXES = ['/media', '/__debug__']
-DEVSERVER_MODULES = (
-    'devserver.modules.sql.SQLRealTimeModule',
-    'devserver.modules.sql.SQLSummaryModule',
-    'devserver.modules.profile.ProfileSummaryModule',
-)
-
-# from S3 import CallingFormat
-# AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
-
-# AWS_STATIC_STORAGE_BUCKET_NAME = 'static.tutelage.com'
-# AWS_STATIC_ACCESS_KEY_ID = ''
-# AWS_STATIC_SECRET_ACCESS_KEY = ''
-# AWS_HEADERS = {
-#         'Cache-Control': "max-age:5, public"
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'formatters': {
+#         'simple': {
+#             'format': '[%(levelname)s] %(module)s@%(lineno)s: %(message)s'
+#         },
+#     },
+#     'handlers': {
+#         'mail_admins': {
+#             'level': 'ERROR',
+#             'class': 'django.utils.log.AdminEmailHandler'
+#         },
+#         'console': {
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'simple'
+#         },
+#     },
+#     'loggers': {
+#         'app': {
+#             'handlers': ['console'],
+#             'level': "DEBUG",
+#             "propagate": False
+#         },
+#         'django.request': {
+#             'handlers': ['console', 'mail_admins'],
+#             'level': 'ERROR',
+#             'propagate': True,
+#         },
 #     }
+# }
 
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# AWS_ACCESS_KEY_ID = ''
-# AWS_SECRET_ACCESS_KEY = ''
+# LOGIN_REDIRECT_URL = '/'
+# LOGIN_URL = '/login'
+# LOGOUT_URL = '/logout'
 
-# EMAIL_BACKEND = "django_ses.SESBackend"
-# AWS_SES_ACCESS_KEY_ID = ''
-# AWS_SES_SECRET_ACCESS_KEY = ''
+# DEBUG_TOOLBAR_PANELS = (
+#     'debug_toolbar.panels.version.VersionDebugPanel',
+#     'debug_toolbar.panels.timer.TimerDebugPanel',
+#     'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+#     'debug_toolbar.panels.headers.HeaderDebugPanel',
+#     'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+#     'debug_toolbar.panels.template.TemplateDebugPanel',
+#     'debug_toolbar.panels.sql.SQLDebugPanel',
+#     'debug_toolbar.panels.logger.LoggingPanel',
+# )
 
-# BROKER_TRANSPORT = "redis"
-# BROKER_URL = "redis://localhost:6379/1"
+# DEBUG_TOOLBAR_CONFIG = {
+#     'INTERCEPT_REDIRECTS': False
+# }
 
-SESSION_REDIS_PREFIX = "session"
-SESSION_ENGINE = 'redis_sessions.session'
+# INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
-try:
-    from local_settings import *
-except:
-    pass
+# DEVSERVER_IGNORED_PREFIXES = ['/media', '/__debug__']
+# DEVSERVER_MODULES = (
+#     'devserver.modules.sql.SQLRealTimeModule',
+#     'devserver.modules.sql.SQLSummaryModule',
+#     'devserver.modules.profile.ProfileSummaryModule',
+# )
+
+# # from S3 import CallingFormat
+# # AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+
+# # AWS_STATIC_STORAGE_BUCKET_NAME = 'static.tutelage.com'
+# # AWS_STATIC_ACCESS_KEY_ID = ''
+# # AWS_STATIC_SECRET_ACCESS_KEY = ''
+# # AWS_HEADERS = {
+# #         'Cache-Control': "max-age:5, public"
+# #     }
+
+# # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# # AWS_ACCESS_KEY_ID = ''
+# # AWS_SECRET_ACCESS_KEY = ''
+
+# # EMAIL_BACKEND = "django_ses.SESBackend"
+# # AWS_SES_ACCESS_KEY_ID = ''
+# # AWS_SES_SECRET_ACCESS_KEY = ''
+
+# # BROKER_TRANSPORT = "redis"
+# # BROKER_URL = "redis://localhost:6379/1"
+
+# SESSION_REDIS_PREFIX = "session"
+# SESSION_ENGINE = 'redis_sessions.session'
+
+# try:
+#     from local_settings import *
+# except:
+#     pass
