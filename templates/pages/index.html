@@ -2,37 +2,44 @@
 
 {% block content %}
 {% autoescape off %}
-<div class="row main">
-  <div class="bordered">
+<div class="row main bordered">
     <div class="span6">
       <div class="call-to-action">
-        <h4>{{page.home.call_to_action}}</h4>
+        <h3>{{page.home.call_to_action}}</h3>
       </div>
       <a class="btn btn-green pull-right">Signup</a>
     </div>
     <div class="span6">
-      <div class="main-movie hero-unit">
-        <img src={{page.home.hero}} />
+      <div class="main-movie">
+        <img src={{MEDIA_URL}}{{page.home.hero}} />
       </div>
     </div>
-  </div>
 </div>
-<div class="row homeblocks">
-  {% for b in page.home.blocks.all %}
-  <div class="span4 homeblock">
-    <div class="block-header">
-      {{b.header}}
+<div class="row bordered border-notop">
+    <div class="homeblocks">
+      {% with page.home.blocks.all as blocks %}
+      {% for b in blocks %}
+      <div class="span4 homeblock">
+        <div class="block-header">
+          <h3>{{b.header}}</h3>
+        </div>
+        <div class="block-body">
+          {{b.body}}
+        </div>
+      </div>
+      {% endfor %}
     </div>
-    <div class="block-body">
-      {{b.body}}
+    <div style="clear:both;">
+    <div class="homelinks">
+      {% for b in blocks %}
+      <div class="span4 block-link">
+        <a class="btn btn-green" href="{{block.link_target}}">
+          {{b.link_copy}}
+        </a>
+      </div>
+      {% endfor %}
     </div>
-    <div class="block-link">
-      <a href="{{block.link_target}}">
-        {{b.link_copy}}
-      </a>
-    </div>
-  </div>
-  {% endfor %}
 </div>
-{% endautoescape %}
-{% endblock %}
+  {% endwith %}
+  {% endautoescape %}
+  {% endblock %}

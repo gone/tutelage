@@ -189,7 +189,6 @@ $btnBackgroundHighlight:            $green;
 $border-color: lightGray;
 
 
-
 .btn-green {
   background-color: $green !important;
   background-repeat: repeat-x;
@@ -223,3 +222,8 @@ body {
 @import "bootstrap";
 @import "local_navbar";
 @import "home";
+
+
+.content {
+    @include box-sizing(border-box);
+}

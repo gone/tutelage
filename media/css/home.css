@@ -1,9 +1,9 @@
 /*
 Syntax error: Undefined variable: "$border-color".
-        on line 7 of /home/bbeecher/workspace/tutelage/media/scss/home.scss
+        on line 20 of /home/bbeecher/workspace/tutelage/media/scss/home.scss
 
 Backtrace:
-/home/bbeecher/workspace/tutelage/media/scss/home.scss:7
+/home/bbeecher/workspace/tutelage/media/scss/home.scss:20
 /usr/lib/ruby/gems/1.9.1/gems/sass-3.2.1/lib/sass/script/variable.rb:49:in `_perform'
 /usr/lib/ruby/gems/1.9.1/gems/sass-3.2.1/lib/sass/script/node.rb:40:in `perform'
 /usr/lib/ruby/gems/1.9.1/gems/sass-3.2.1/lib/sass/script/list.rb:70:in `block in _perform'
@@ -78,4 +78,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$border-color\".\A         on line 7 of /home/bbeecher/workspace/tutelage/media/scss/home.scss"; }
+  content: "Syntax error: Undefined variable: \"$border-color\".\A         on line 20 of /home/bbeecher/workspace/tutelage/media/scss/home.scss"; }
