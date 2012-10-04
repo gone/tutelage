@@ -182,8 +182,37 @@ div.food-item h4 {
 }
 */
 
-$green:                 #02a64f;
-$background:                 #eeeeee !default;
+$green                  :                 #01a64f;
+$background             :                 #eeeeee !default;
+$btnBackground          :                     $green;
+$btnBackgroundHighlight:            $green;
+$border-color: lightGray;
+
+
+
+.btn-green {
+  background-color: $green !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$green", endColorstr="$green");
+  background-image: -khtml-gradient(linear, left top, left bottom, from($green), to($green));
+  background-image: -moz-linear-gradient(top, $green, $green);
+  background-image: -ms-linear-gradient(top, $green, $green);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $green), color-stop(100%, $green));
+  background-image: -webkit-linear-gradient(top, $green, $green);
+  background-image: -o-linear-gradient(top, $green, $green);
+  background-image: linear-gradient($green, $green);
+  border: 0px !important;
+  color: #fff !important;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0.00) !important;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px !important;
+  font-weight: bold;
+ }
+
+.btn-green:hover{
+    border: 1px solid black !important;
+    padding: 3px 13px !important;
+}
 
 
 body {
@@ -193,3 +222,4 @@ body {
 
 @import "bootstrap";
 @import "local_navbar";
+@import "home";

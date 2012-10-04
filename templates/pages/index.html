@@ -1,31 +1,38 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<div class='wrapper'>
-  <div class="hero-unit">
-  <span class="lead">
-      {{page.home.call_to_action}}
-  </span>
-  <span class="hero">
-      <img src={{page.home.hero}} />
-  </span>
+{% autoescape off %}
+<div class="row main">
+  <div class="bordered">
+    <div class="span6">
+      <div class="call-to-action">
+        <h4>{{page.home.call_to_action}}</h4>
+      </div>
+      <a class="btn btn-green pull-right">Signup</a>
+    </div>
+    <div class="span6">
+      <div class="main-movie hero-unit">
+        <img src={{page.home.hero}} />
+      </div>
+    </div>
   </div>
-  {% include "searchbar.html" %}
-  <span class="homeblocks">
-      {% for block in page.home.blocks.all %}
-      <span class="block">
-          <span class="block-header">
-              {{block.header}}
-          </span>
-          <span class="block-body">
-              {{block.body}}
-          </span>
-          <span class="block-link">
-              <a href="{{block.link_target}}">
-                  {{block.link_copy}}
-              </a>
-          </span>
-      </span>
-      {% endfor %}
-  </span>
 </div>
+<div class="row homeblocks">
+  {% for b in page.home.blocks.all %}
+  <div class="span4 homeblock">
+    <div class="block-header">
+      {{b.header}}
+    </div>
+    <div class="block-body">
+      {{b.body}}
+    </div>
+    <div class="block-link">
+      <a href="{{block.link_target}}">
+        {{b.link_copy}}
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endautoescape %}
 {% endblock %}

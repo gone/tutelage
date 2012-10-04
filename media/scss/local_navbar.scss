@@ -3,7 +3,6 @@
 
 $nav-height: 55px;
 $nav-padding: 5px;
-$border-color: gray;
 
 .box  {
     height: $nav-height;
@@ -51,5 +50,7 @@ $border-color: gray;
     border-radius: 0px !important;
     border: 0px !important;
     background-color: white;
-    padding-right: 0px; /* for hover of login */
+    /* for hover of login */
+    padding-right: 0px;
+
 }

@@ -42,8 +42,8 @@ urlpatterns = patterns("",
     # template name using the page's slug doesn't apply here, since
     # we can't have a template called "/.html" - so for this case, the
     # template "pages/index.html" can be used.
-
     url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
+
 
     # HOMEPAGE FOR A BLOG-ONLY SITE
     # -----------------------------
