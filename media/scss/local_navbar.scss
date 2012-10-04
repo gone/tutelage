@@ -2,49 +2,54 @@
 /* Navbar */
 
 $nav-height: 55px;
-
+$nav-padding: 5px;
+$border-color: gray;
 
 .box  {
     height: $nav-height;
     width: $nav-height;
-    padding: 5px 5px 5px 5px;
+    padding: $nav-padding;
+    padding-left: $nav-padding *2;
+    border-left: 1px $border-color solid;
+    margin-left: 0px !important;
+
 }
 
+.box:hover {
+    background-color: $green;
+}
 .box p  {
     font-weight: bold;
 }
 
 .nav-icon  {
-
     height: 27px;
-}
-
-div.header {
-  height: 60px;
-  width: 489px;
 }
 
 
 /*  overwriting some of the base bootstrap */
 .navbar .divider-vertical {
     height: 100% !important;
-    background-color: #eee !important;
     border: 0px !important;
     width: 2px;
 }
 
 .nav  {
-    height: $nav-height !important;
+    height: $nav-height + $nav-padding * 2 !important;
 }
 
 .navbar {
+    border: 1px $border-color solid;
     margin-top: 15px !important;
     color: black !important;
+    height: 100%;
 }
 
 .navbar-inner {
+    height: 100%;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.065) !important;
     border-radius: 0px !important;
     border: 0px !important;
     background-color: white;
+    padding-right: 0px; /* for hover of login */
 }

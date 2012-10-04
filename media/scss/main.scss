@@ -182,9 +182,12 @@ div.food-item h4 {
 }
 */
 
+$green:                 #02a64f;
+$background:                 #eeeeee !default;
+
 
 body {
-  background-color: #eeeeee !important;
+  background-color: $background !important;
 }
 
 
