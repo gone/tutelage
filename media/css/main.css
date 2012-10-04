@@ -1,16 +1,12 @@
+/*
 div.base-background {
   height: 100%;
   width: 100%;
-  background-color: #eee;
+
   padding-top: 20px;
   padding-bottom: 40px;
 }
-div.base-background div.header {
-  height: 60px;
-  width: 489px;
-  background-color: #fefefe;
-  float: left;
-}
+
 div.base-background div.box {
   height: 60px;
   width: 79px;
@@ -19,11 +15,7 @@ div.base-background div.box {
   margin-left: 3px;
   position: relative;
 }
-div.base-background div.box img {
-  margin-top: 7px;
-  margin-left: 10px;
-  display: show;
-}
+div.base-background
 div.base-background div.box img.my {
   margin-top: 15px;
 }
@@ -188,18 +180,51 @@ div.food-item h4 {
   float: left;
   margin-top: 15px;
 }
-
-/* div.request { */
-/* height: */
-/* width:  */
-/* background-color: #FEFEFE; */
-/* } */
-div.wrapper {
-  width: 980px;
-  position: relative;
-  margin: 0 auto;
+*/
+/* Navbar */
+.box {
+  height: 55px;
+  width: 55px;
+  padding: 5px 5px 5px 5px;
 }
 
-div.clear {
-  clear: both;
+.box p {
+  font-weight: bold;
+}
+
+.nav-icon {
+  height: 27px;
+}
+
+div.header {
+  height: 60px;
+  width: 489px;
+}
+
+/*  overwriting some of the base bootstrap */
+.navbar .divider-vertical {
+  height: 100% !important;
+  background-color: #eee !important;
+  border: 0px !important;
+  width: 2px;
+}
+
+.nav {
+  height: 55px !important;
+}
+
+.navbar {
+  margin-top: 15px !important;
+  color: black !important;
+}
+
+.navbar-inner {
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.065) !important;
+  border-radius: 0px !important;
+  border: 0px !important;
+  background-color: white;
+}
+
+body {
+  background-color: #eeeeee !important;
 }

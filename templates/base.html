@@ -2,9 +2,8 @@
 <html xmlns:fb="http://ogp.me/ns/fb#">
   <head>
     <title></title>
-    <link rel='stylesheet' href='{{ STATIC_URL }}css/reset.css' />
     <link rel='stylesheet' href='{{ STATIC_URL }}css/main.css' />
-    <link rel='stylesheet' href='{{ STATIC_URL }}css/bootstrap.min.css' />
+    <link rel='stylesheet' href='{{ STATIC_URL }}css/bootstrap.css' />
     <link rel='shortcut icon' href='/favicon.ico' />
     <link rel='apple-touch-icon' href="">
 
@@ -24,50 +23,33 @@
     <meta property="og:image" content="" />
     <meta property="fb:page_id" content="" />
 
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '']);
-  _gaq.push(['_trackPageview']);
-  _gaq.push(['_trackPageLoadTime']);
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['_trackPageLoadTime']);
 
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-   })();
- </script>
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
 
- <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
- <script type='text/javascript' src="{{ STATIC_URL }}js/main.js"></script>
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/main.js"></script>
 
- {% block media %}{% endblock %}
-      </head>
-      <body>
-        <div class='base-background'>
-          <div class='wrapper'>
-            <div class='header'></div>
-            <div class='box'>
-              <img src='{{ STATIC_URL }}img/tutor.png'/>
-              <h2>tutor</h2>
-            </div>
-            <div class='box'>
-              <img src='{{ STATIC_URL }}img/learn.png'/>
-              <h2>learn</h2>
-            </div>
-            <div class='box'>
-              <img src='{{ STATIC_URL }}img/about.png'/>
-              <h2>about</h2>
-            </div>
-            <div class='box'>
-              <img src='{{ STATIC_URL }}img/signup.png'/>
-              <h2>signup</h2>
-            </div>
-            <div class='box'>
-              <img src='{{ STATIC_URL }}img/login.png'/>
-              <h2>login</h2>
-            </div>
-            <div class='clear'></div>
-          </div>
-        {% block content %}{% endblock %}
-      </body>
-    </html>
+    {% block media %}{% endblock %}
+  </head>
+  <body>
+    <div class='container'>
+      <header>
+        {% include "nav.html" %}
+        {% block header %} {% endblock %}
+      </header>
+      <div class="content" >
+        {% block content %}  {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

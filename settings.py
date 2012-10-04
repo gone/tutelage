@@ -245,6 +245,7 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     #"mezzanine.accounts",
     #"mezzanine.mobile",
+    'app',
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -339,7 +340,7 @@ try:
     from local_settings import *
 except ImportError:
     from prod_settings import *
-    
+
 
 
 ####################

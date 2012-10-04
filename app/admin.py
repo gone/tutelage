@@ -3,4 +3,10 @@ from mezzanine.pages.admin import PageAdmin
 from .models import Home, HomeBlock
 
 
-admin.site.register(Author, PageAdmin)
+class HomeBlockAdmin(admin.TabularInline):
+    model = HomeBlock
+
+class HomeAdmin(PageAdmin):
+    inlines = (HomeBlockAdmin,)
+
+admin.site.register(Home, HomeAdmin)

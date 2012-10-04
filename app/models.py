@@ -25,12 +25,9 @@ class Home(Page):
     call_to_action = models.TextField()
     hero = models.ImageField(upload_to=file_url("hero_pic"))
 
-    @property
-    def blocks(self):
-        return HomeBlock.objects.filter(published=True)
 
-
-class HomeBlock(CreatedMixin, Displayable):
+class HomeBlock(CreatedMixin):
+    home = models.ForeignKey(Home, related_name="blocks")
     header = models.CharField(max_length=126)
     body = models.TextField()
     link_copy = models.CharField(max_length=126)

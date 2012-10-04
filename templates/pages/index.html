@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-{% include "searchbar.html" %}
 <div class='wrapper'>
-  <span class="call-to-action">
+  <div class="hero-unit">
+  <span class="lead">
       {{page.home.call_to_action}}
   </span>
   <span class="hero">
       <img src={{page.home.hero}} />
   </span>
+  </div>
+  {% include "searchbar.html" %}
   <span class="homeblocks">
-      {% for block in page.home.blocks %}
+      {% for block in page.home.blocks.all %}
       <span class="block">
           <span class="block-header">
               {{block.header}}
