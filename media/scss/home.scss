@@ -1,0 +1,15 @@
+.main{
+    background-color: #fff;
+    margin-top: 20px !important;
+}
+
+.bordered{
+    border: 1px solid $border-color;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+}
+
+.main .hero-unit{
+    background-color: #fff !important;
+}
