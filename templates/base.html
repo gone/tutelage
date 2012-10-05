@@ -35,8 +35,7 @@
       })();
     </script>
 
-    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type='text/javascript' src="{{ STATIC_URL }}js/main.js"></script>
+    <script data-main="{{STATIC_URL}}js/main" src="{{STATIC_URL}}js/require/require-jquery.js"></script>
 
     {% block media %}{% endblock %}
   </head>
@@ -50,5 +49,6 @@
         {% block content %}  {% endblock %}
       </div>
     </div>
+    {% include "login.html" %}
   </body>
 </html>

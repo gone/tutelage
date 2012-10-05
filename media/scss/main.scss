@@ -222,8 +222,4 @@ body {
 @import "bootstrap";
 @import "local_navbar";
 @import "home";
-
-
-.content {
-    @include box-sizing(border-box);
-}
+@import "colorbox";
