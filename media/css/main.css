@@ -1,9 +1,9 @@
 /*
-Syntax error: Invalid CSS after "@import "login";": expected "}", was "<<<<<<< HEAD"
-        on line 99 of /home/geoffrey/workspace/tutelage/media/scss/main.scss
+Syntax error: Invalid CSS after "}": expected "}", was ""
+        on line 108 of /home/geoffrey/workspace/tutelage/media/scss/main.scss
 
 Backtrace:
-/home/geoffrey/workspace/tutelage/media/scss/main.scss:99
+/home/geoffrey/workspace/tutelage/media/scss/main.scss:108
 /var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:1130:in `expected'
 /var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:1066:in `expected'
 /var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:1061:in `tok!'
@@ -58,4 +58,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"@import \"login\";\": expected \"}\", was \"<<<<<<< HEAD\"\A         on line 99 of /home/geoffrey/workspace/tutelage/media/scss/main.scss"; }
+  content: "Syntax error: Invalid CSS after \"}\": expected \"}\", was \"\"\A         on line 108 of /home/geoffrey/workspace/tutelage/media/scss/main.scss"; }
