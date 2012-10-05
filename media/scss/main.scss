@@ -8,6 +8,7 @@ $border-color: lightGray;
 
 .no-display {
 	display: none;
+}
 
 .green {
     color: $green;
@@ -83,11 +84,35 @@ $border-color: lightGray;
 	color:  #fff !important;
 }
 
+.btn-white {
+  background-color: white !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="white", endColorstr="white");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
+  background-image: -moz-linear-gradient(top, white, white);
+  background-image: -ms-linear-gradient(top, white, white);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
+  background-image: -webkit-linear-gradient(top, white, white);
+  background-image: -o-linear-gradient(top, white, white);
+  background-image: linear-gradient(white, white);
+  border: 0px !important;
+  color: #fff !important;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0.00) !important;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px !important;
+  font-weight: bold;
+ }
 
 body {
   background-color: $background !important;
 }
 
+
+.bordered {
+    background-color: #fff;
+    border: 1px solid $border-color;
+    padding-bottom: 20px;
+}
 
 @import "bootstrap";
 @import "local_navbar";
@@ -100,8 +125,3 @@ body {
 
 
 
-.bordered{
-    background-color: #fff;
-    border: 1px solid $border-color;
-    padding-bottom: 20px;
-}
