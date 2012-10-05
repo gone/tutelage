@@ -1,3 +1,7 @@
+.no-display {
+  display: none;
+}
+
 .btn-green {
   background-color: #01a64f !important;
   background-repeat: repeat-x;
@@ -5837,43 +5841,8 @@ border-notop {
   _behavior: expression(this.src = this.src ? this.src : this.currentStyle.backgroundImage.split('"')[1], this.style.background = "none", this.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=" + this.src + ", sizingMethod='scale')");
 }
 
-.row {
-  margin-left: -22px;
-  margin-right: -22px;
-  margin-bottom: -1px;
-}
-
-.main {
-  margin-top: 20px !important;
-}
-.main h3 {
-  line-height: 25px;
-}
-.main .span6 {
-  padding-top: 10px;
-}
-
-.bordered {
-  background-color: #fff;
-  border: 1px solid lightgrey;
-  padding-bottom: 20px;
-}
-
-.main .hero-unit {
-  background-color: #fff !important;
-}
-
-.block-link a {
-  margin-top: 10px;
-  width: 85%;
-}
-
-border-notop {
-  border-top: 0px !important;
-}
-
 .about_info h3, .about_info h4 {
-  color: #01a64f;
+  color: black;
 }
 
 .row {
