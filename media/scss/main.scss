@@ -5,8 +5,12 @@ $btnBackground          :                     $green;
 $btnBackgroundHighlight	:            $green;
 $border-color: lightGray;
 
+
 .no-display {
 	display: none;
+
+.green {
+    color: $green;
 }
 
 .btn-green {
@@ -92,4 +96,15 @@ body {
 @import "about";
 @import "lessons";
 @import "login";
+<<<<<<< HEAD
 @import "signup";
+=======
+
+
+
+.bordered{
+    background-color: #fff;
+    border: 1px solid $border-color;
+    padding-bottom: 20px;
+}
+>>>>>>> 1bcde465fe3fd9450eb16c2d8560a7bb4d80bea3
