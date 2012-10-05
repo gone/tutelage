@@ -1,80 +1,55 @@
+@import "bootstrap";
+
 $green                  :                 #01a64f;
 $blue					:				  #4ba5ff;
-$background             :                 #eeeeee !default;
-$btnBackground          :                     $green;
-$btnBackgroundHighlight	:            $green;
-$border-color: lightGray;
+$background             :                 #eeeeee;
+/********************************************************/
+/* $btnBackground          :                 $green;    */
+/* $btnBackgroundHighlight	:                 $green;   */
+/********************************************************/
+$border-color           :                 lightGray;
 
-.green {
-    color: $green;
+@mixin colored-button($color){
+    background-color: $color !important;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
+    background-image: -khtml-gradient(linear, left top, left bottom, from($color), to($color));
+    background-image: -moz-linear-gradient(top, $color, $color);
+    background-image: -ms-linear-gradient(top, $color, $color);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $color), color-stop(100%, $color));
+    background-image: -webkit-linear-gradient(top, $color, $color);
+    background-image: -o-linear-gradient(top, $color, $color);
+    background-image: linear-gradient($color, $color);
+    border: 0px !important;
+    color: #fff !important;
+    text-shadow: 0 0px 0 rgba(0, 0, 0, 0.00) !important;
+    -webkit-font-smoothing: antialiased;
+    border-radius: 0px !important;
+    font-weight: bold;
 }
+
+
 
 .btn-green {
-  background-color: $green !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$green", endColorstr="$green");
-  background-image: -khtml-gradient(linear, left top, left bottom, from($green), to($green));
-  background-image: -moz-linear-gradient(top, $green, $green);
-  background-image: -ms-linear-gradient(top, $green, $green);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $green), color-stop(100%, $green));
-  background-image: -webkit-linear-gradient(top, $green, $green);
-  background-image: -o-linear-gradient(top, $green, $green);
-  background-image: linear-gradient($green, $green);
-  border: 0px !important;
-  color: #fff !important;
-  text-shadow: 0 0px 0 rgba(0, 0, 0, 0.00) !important;
-  -webkit-font-smoothing: antialiased;
-  border-radius: 0px !important;
-  font-weight: bold;
- }
-
+    @include colored-button($green)
+}
 .btn-green:hover{
 	background-color:	#4ba5ff;
-}
 	/*
     border: 1px solid black !important;
     padding: 3px 13px !important;
     */
+}
 
 .btn-blue {
-  background-color: $blue !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$green", endColorstr="$green");
-  background-image: -khtml-gradient(linear, left top, left bottom, from($green), to($green));
-  background-image: -moz-linear-gradient(top, $green, $green);
-  background-image: -ms-linear-gradient(top, $green, $green);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $green), color-stop(100%, $green));
-  background-image: -webkit-linear-gradient(top, $green, $green);
-  background-image: -o-linear-gradient(top, $green, $green);
-  background-image: linear-gradient($green, $green);
-  border: 0px !important;
-  color: #fff !important;
-  text-shadow: 0 0px 0 rgba(0, 0, 0, 0.00) !important;
-  -webkit-font-smoothing: antialiased;
-  border-radius: 0px !important;
-  font-weight: bold;
+    @include colored-button($blue)
  }
 
-.btn-tag {
-  background-color: #fff !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fff", endColorstr="#fff");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#fff), to(#fff));
-  background-image: -moz-linear-gradient(top, #fff, #fff);
-  background-image: -ms-linear-gradient(top, #fff, #fff);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #fff));
-  background-image: -webkit-linear-gradient(top, #fff, #fff);
-  background-image: -o-linear-gradient(top, #fff, #fff);
-  background-image: linear-gradient(#fff, #fff);
-  border: 0px !important;
-  color: $blue !important;
-  text-shadow: 0 0px 0 rgba(0, 0, 0, 0.00) !important;
-  -webkit-font-smoothing: antialiased;
-  border-radius: 0px !important;
-  font-weight: bold;
+.btn-clearblue {
+    @include colored-button($white)
  }
 
-.btn-tag:hover{
+.btn-clearblue:hover{
 	background-color:	#4ba5ff;
 	color:  #fff !important;
 }
@@ -84,19 +59,20 @@ body {
   background-color: $background !important;
 }
 
+.bordered{
+    background-color: #fff;
+    border: 1px solid $border-color;
+}
 
-@import "bootstrap";
+.green {
+    color: $green;
+}
+
+
+
 @import "local_navbar";
 @import "home";
 @import "colorbox";
 @import "about";
 @import "lessons";
 @import "login";
-
-
-
-.bordered{
-    background-color: #fff;
-    border: 1px solid $border-color;
-    padding-bottom: 20px;
-}
