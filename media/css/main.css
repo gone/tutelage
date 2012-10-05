@@ -5927,3 +5927,32 @@ border-notop {
 .lesson_purchase {
   margin-right: 10px;
 }
+
+#login {
+  width: 300px;
+}
+
+.login_info h3, .login_info h4 {
+  color: #01a64f;
+  margin-left: 20px;
+}
+
+.login-input {
+  width: 285px;
+}
+
+.btn-login {
+  width: 75px;
+}
+
+.btn-login-span {
+  margin-left: 40px;
+}
+
+.login-text {
+  vertical-align: middle;
+}
+
+.login-actions {
+  margin-top: 10px;
+}
