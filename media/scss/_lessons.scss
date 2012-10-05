@@ -1,0 +1,54 @@
+.row {
+    margin-left: -22px;
+    margin-right: -22px;
+    margin-bottom: -1px;
+}
+
+.main{
+    margin-top: 20px !important;
+    h3 {
+        line-height: 25px;
+    }
+    .span6 {
+        padding-top: 10px;
+
+    }
+}
+
+.bordered{
+    background-color: #fff;
+    border: 1px solid $border-color;
+    padding-bottom: 20px;
+}
+
+.main .hero-unit{
+    background-color: #fff !important;
+}
+
+.block-link a {
+    margin-top: 10px;
+    width: 85%;
+}
+
+border-notop {
+    border-top: 0px !important;
+}
+
+.about_info {
+	h3, h4 {
+	color:	$green;
+	}
+}
+
+.lesson-tile-left {
+	padding-left:	20px;
+}
+
+.lesson-tile-right {
+	margin-left:	0px;
+    padding-right: 5px;
+}
+
+.lesson_purchase {
+	margin-right:	10px;
+}

@@ -1,191 +1,8 @@
-/*
-div.base-background {
-  height: 100%;
-  width: 100%;
-
-  padding-top: 20px;
-  padding-bottom: 40px;
-}
-
-div.base-background div.box {
-  height: 60px;
-  width: 79px;
-  background-color: #fefefe;
-  float: left;
-  margin-left: 3px;
-  position: relative;
-}
-div.base-background
-div.base-background div.box img.my {
-  margin-top: 15px;
-}
-div.base-background div.box h2 {
-  font-size: 16px;
-  font-weight: normal;
-  color: #333333;
-  font-family: Helvetica Neue;
-  margin-left: 10px;
-  line-height: 0px;
-  position: absolute;
-  bottom: 12px;
-}
-div.base-background div.box:hover {
-  background-color: #02A64F;
-}
-div.base-background div.box:hover h2 {
-  color: #fefefe;
-}
-div.base-background div.my {
-  width: 160px;
-}
-
-div.learn {
-  margin-top: 20px;
-  width: 100%;
-  background-color: #fefefe;
-  height: 100%;
-  margin-top: 20px;
-}
-div.learn div.search {
-  background-color: #fefefe;
-  width: 100%;
-  height: 60px;
-  padding-top: 10px;
-}
-div.learn div.search h4 {
-  margin-left: 20px;
-  font-weight: bold;
-  font-size: 14px;
-  color: #333333;
-  font-family: "Helvetica Neue";
-  float: left;
-  padding-top: 15px;
-}
-div.learn div.search input[type='text'] {
-  float: left;
-  height: 22px;
-  width: 260px;
-  margin-top: 5px;
-  margin-left: 10px;
-  background: url('../img/search_glass.png?1348669435');
-  background-position: 96.5% center;
-  background-position-x: 2%;
-  background-position-y: 50%;
-  background-repeat: no-repeat;
-  -webkit-appearance: none;
-}
-div.learn div.search select {
-  float: left;
-  width: 100px;
-  margin-top: 5px;
-  margin-left: 20px;
-  height: 32px;
-}
-div.learn div.search img {
-  margin-top: 5px;
-  margin-left: 15px;
-}
-
-div.food-item {
-  height: 400px;
-  width: 490px;
-  background-color: #fefefe;
-  position: relative;
-  float: left;
-  margin: 0 auto;
-  margin-top: 2px;
-}
-div.food-item h1 {
-  font-family: "Helvetica Neue";
-  font-weight: normal;
-  font-size: 24px;
-  color: #01A54F;
-  position: relative;
-  margin-left: 10px;
-  padding-top: 10px;
-  float: left;
-}
-div.food-item h1.price {
-  color: #000;
-  float: right;
-  font-size: 24px;
-  font-family: #333333;
-  margin-right: 15px;
-  font-weight: bold;
-}
-div.food-item h2 {
-  float: left;
-  font-size: 14px;
-  color: #333333;
-  font-weight: normal;
-  font-family: "Helvetica Neue";
-  margin-left: 10px;
-  margin-top: 10px;
-}
-div.food-item h2.time {
-  float: left;
-}
-div.food-item h2.chef {
-  float: right;
-  margin-right: 15px;
-}
-div.food-item h2.chef span {
-  color: #4BA4FF;
-}
-div.food-item hr {
-  color: #E3E3E3;
-  width: 460px;
-  margin-left: 10px;
-  position: relative;
-  margin-top: 0px;
-  margin-bottom: 5px;
-}
-div.food-item h3 {
-  font-weight: normal;
-  background-color: #7F7F7F;
-  font-size: 14px;
-  color: #fff;
-  font-family: "Helvetica Neue";
-  margin-bottom: 10px;
-  height: 25px;
-  width: 70px;
-  padding-left: 15px;
-  margin-left: 10px;
-  margin-top: 5px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-}
-div.food-item input[type='image'] {
-  float: right;
-  margin-left: 5px;
-  margin-right: 15px;
-  margin-bottom: 10px;
-}
-div.food-item img {
-  margin-left: 10px;
-  float: left;
-  margin-top: 15px;
-}
-div.food-item h4 {
-  height: 160px;
-  width: 230px;
-  font-weight: normal;
-  font-size: 14px;
-  color: #434343;
-  font-family: "Helvetica Neue";
-  margin-left: 15px;
-  float: left;
-  margin-top: 15px;
-}
-*/
-
 $green                  :                 #01a64f;
+$blue					:				  #4ba5ff;
 $background             :                 #eeeeee !default;
 $btnBackground          :                     $green;
-$btnBackgroundHighlight:            $green;
+$btnBackgroundHighlight	:            $green;
 $border-color: lightGray;
 
 
@@ -209,8 +26,54 @@ $border-color: lightGray;
  }
 
 .btn-green:hover{
+	background-color:	#4ba5ff;
+}
+	/*
     border: 1px solid black !important;
     padding: 3px 13px !important;
+    */
+
+.btn-blue {
+  background-color: $blue !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$green", endColorstr="$green");
+  background-image: -khtml-gradient(linear, left top, left bottom, from($green), to($green));
+  background-image: -moz-linear-gradient(top, $green, $green);
+  background-image: -ms-linear-gradient(top, $green, $green);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $green), color-stop(100%, $green));
+  background-image: -webkit-linear-gradient(top, $green, $green);
+  background-image: -o-linear-gradient(top, $green, $green);
+  background-image: linear-gradient($green, $green);
+  border: 0px !important;
+  color: #fff !important;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0.00) !important;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px !important;
+  font-weight: bold;
+ }
+
+.btn-tag {
+  background-color: #fff !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fff", endColorstr="#fff");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fff), to(#fff));
+  background-image: -moz-linear-gradient(top, #fff, #fff);
+  background-image: -ms-linear-gradient(top, #fff, #fff);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #fff));
+  background-image: -webkit-linear-gradient(top, #fff, #fff);
+  background-image: -o-linear-gradient(top, #fff, #fff);
+  background-image: linear-gradient(#fff, #fff);
+  border: 0px !important;
+  color: $blue !important;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0.00) !important;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px !important;
+  font-weight: bold;
+ }
+
+.btn-tag:hover{
+	background-color:	#4ba5ff;
+	color:  #fff !important;
 }
 
 
@@ -223,3 +86,5 @@ body {
 @import "local_navbar";
 @import "home";
 @import "colorbox";
+@import "about";
+@import "lessons";
