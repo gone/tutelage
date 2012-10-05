@@ -1,3 +1,7 @@
+.green {
+  color: #01a64f;
+}
+
 .btn-green {
   background-color: #01a64f !important;
   background-repeat: repeat-x;
@@ -5546,12 +5550,6 @@ a.label:hover, a.badge:hover {
   padding-top: 10px;
 }
 
-.bordered {
-  background-color: #fff;
-  border: 1px solid lightgrey;
-  padding-bottom: 20px;
-}
-
 .main .hero-unit {
   background-color: #fff !important;
 }
@@ -5837,95 +5835,24 @@ border-notop {
   _behavior: expression(this.src = this.src ? this.src : this.currentStyle.backgroundImage.split('"')[1], this.style.background = "none", this.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=" + this.src + ", sizingMethod='scale')");
 }
 
-.row {
-  margin-left: -22px;
-  margin-right: -22px;
-  margin-bottom: -1px;
-}
-
-.main {
-  margin-top: 20px !important;
-}
-.main h3 {
-  line-height: 25px;
-}
-.main .span6 {
-  padding-top: 10px;
-}
-
-.bordered {
-  background-color: #fff;
-  border: 1px solid lightgrey;
-  padding-bottom: 20px;
-}
-
-.main .hero-unit {
-  background-color: #fff !important;
-}
-
-.block-link a {
-  margin-top: 10px;
-  width: 85%;
-}
-
-border-notop {
-  border-top: 0px !important;
-}
-
 .about_info h3, .about_info h4 {
   color: #01a64f;
 }
 
-.row {
-  margin-left: -22px;
-  margin-right: -22px;
-  margin-bottom: -1px;
+.lesson:first-child {
+  border-right: 1px solid lightgrey;
 }
 
-.main {
-  margin-top: 20px !important;
-}
-.main h3 {
-  line-height: 25px;
-}
-.main .span6 {
-  padding-top: 10px;
+.lesson-author {
+  text-align: right;
 }
 
-.bordered {
-  background-color: #fff;
-  border: 1px solid lightgrey;
-  padding-bottom: 20px;
+.recipe-info {
+  margin: 0px;
 }
-
-.main .hero-unit {
-  background-color: #fff !important;
-}
-
-.block-link a {
-  margin-top: 10px;
-  width: 85%;
-}
-
-border-notop {
-  border-top: 0px !important;
-}
-
-.about_info h3, .about_info h4 {
-  color: #01a64f;
-}
-
-.lesson-tile-left {
-  padding-left: 20px;
-}
-
-.lesson-tile-right {
-  margin-left: 0px;
-  padding-right: 5px;
-}
-
-.lesson_purchase {
-  margin-right: 10px;
+.recipe-info li {
+  list-style-type: none;
+  font-weight: bold;
 }
 
 #login {
@@ -5955,4 +5882,10 @@ border-notop {
 
 .login-actions {
   margin-top: 10px;
+}
+
+.bordered {
+  background-color: #fff;
+  border: 1px solid lightgrey;
+  padding-bottom: 20px;
 }

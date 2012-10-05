@@ -100,21 +100,39 @@ class CreditCard(CreatedMixin):
     stripe_customer_id = models.CharField(max_length=32, null=True, blank=True)
 
 
-class Lesson(CreatedMixin):
-    user = models.ForeignKey(User, related_name='lessons_teaching')
-    title = models.CharField(max_length=128)
-    description = models.TextField(default="")
-    tags = models.CharField(max_length=128, default="")
-    video = models.FileField(upload_to=file_url("lessonvideos"))
-    ingredients = models.ManyToManyField(Ingredient, related_name='lessons')
-    tools = models.ManyToManyField(Tool, related_name='lessons')
 
+class Recipie(CreatedMixin, Displayable):
+    tags = models.CharField(max_length=128, default="")
+    ## ingredients = models.ManyToManyField(Ingredient, related_name='recipies')
+    ## tools = models.ManyToManyField(Tool, related_name='recipies')
+    #techniques = asdf
+
+    # @property
+    # def rating(self):
+    #     #TODO: user proper rating algo. Find that sucker online.
+    #     result = self.ratings.aggregate(avg=Avg('rating'))['avg']
+    #     if not result:
+    #         return 0
+    #     return result
+
+    # def __unicode__(self):
+    #     return self.title
+
+
+
+
+class Lesson(CreatedMixin, Displayable):
+    teacher = models.ForeignKey(User, related_name='lessons_teaching')
+    recipie = models.ForeignKey(Recipie, related_name='lessons')
+    video = models.FileField(upload_to=file_url("lessonvideos"))
+
+    flavor_text = models.TextField(default="")
     price = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True)
     users_who_rated = models.ManyToManyField(User, through='LessonRating', related_name='rated_lessons')
-    followers = models.ManyToManyField(User, related_name='lessons_taking')
+    followers = models.ManyToManyField(User, related_name='lessons_taking',  blank=True, null=True)
 
     class Meta():
-        unique_together = ('user', 'title')
+        unique_together = ('teacher', 'title')
 
     @property
     def rating(self):
@@ -126,6 +144,7 @@ class Lesson(CreatedMixin):
 
     def __unicode__(self):
         return self.title
+
 
 
 class Step(CreatedMixin):
