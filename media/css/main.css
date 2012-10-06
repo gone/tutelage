@@ -5407,7 +5407,7 @@ a.label:hover, a.badge:hover {
 }
 
 .no-display {
-  display: none;
+  /* display: none; */
 }
 
 .green {
