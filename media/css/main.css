@@ -169,16 +169,16 @@ a:hover {
   border-radius: 500px;
 }
 
-.row {
+.row, .bordered-row {
   margin-left: -20px;
   *zoom: 1;
 }
-.row:before, .row:after {
+.row:before, .bordered-row:before, .row:after, .bordered-row:after {
   display: table;
   content: "";
   line-height: 0;
 }
-.row:after {
+.row:after, .bordered-row:after {
   clear: both;
 }
 
@@ -5520,6 +5520,12 @@ body {
   color: #01a64f;
 }
 
+.bordered-row {
+  margin-left: -22px;
+  margin-right: -22px;
+  margin-bottom: -1px;
+}
+
 /* Navbar */
 .box {
   height: 55px;
@@ -5570,12 +5576,6 @@ body {
   padding-right: 0px !important;
 }
 
-.row {
-  margin-left: -22px;
-  margin-right: -22px;
-  margin-bottom: -1px;
-}
-
 .main {
   padding: 20px 0px;
 }
@@ -5593,7 +5593,7 @@ body {
   width: 85%;
 }
 
-border-notop {
+.border-notop {
   border-top: 0px !important;
 }
 

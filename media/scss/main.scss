@@ -94,6 +94,16 @@ body {
     color: $green;
 }
 
+.bordered-row {
+    @extend .row;
+    margin-left: -22px;
+    margin-right: -22px;
+    margin-bottom: -1px;
+}
+
+
+
+
 
 @import "local_navbar";
 @import "home";
