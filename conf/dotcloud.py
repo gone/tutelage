@@ -30,7 +30,7 @@ try:
 except ImportError:
   pass
 
-INSTALLED_APPS += ('redis_status',)
+#INSTALLED_APPS += ('redis_status',)
 
 CACHES = {
     'default': {
