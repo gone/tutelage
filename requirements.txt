@@ -14,9 +14,10 @@ django-devserver==0.3.1
 fabric==1.4.1
 
 # AWS
-# boto==2.3.0
-# django-storages==1.1.4
+boto==2.3.0
+django-storages==1.1.4
 django-ses==0.4.1
+django_smtp_ssl
 
 # ECL
 https://packages.elmcitylabs.com/ecl_django-0.4.16.tar.gz#ecl_django
@@ -39,3 +40,11 @@ PIL
 django-redis-sessions==0.2.3
 
 sorl-thumbnail==11.12
+
+
+
+#caching
+hiredis
+redis
+django-redis-cache
+django-redis-status
