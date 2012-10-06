@@ -3,3 +3,4 @@ $(document).ready () ->
         $.colorbox
             inline: true
             href: "#login"
+            initalwidth: 800
