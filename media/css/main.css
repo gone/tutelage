@@ -5520,12 +5520,6 @@ body {
   color: #01a64f;
 }
 
-.bordered {
-  background-color: #fff;
-  border: 1px solid lightgrey;
-  padding-bottom: 20px;
-}
-
 /* Navbar */
 .box {
   height: 55px;
@@ -5583,13 +5577,10 @@ body {
 }
 
 .main {
-  margin-top: 20px !important;
+  padding: 20px 0px;
 }
 .main h3 {
   line-height: 25px;
-}
-.main .span6 {
-  padding-top: 10px;
 }
 
 .main .hero-unit {

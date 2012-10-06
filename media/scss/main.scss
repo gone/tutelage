@@ -80,13 +80,6 @@ body {
     color: $green;
 }
 
-.bordered {
-    background-color: #fff;
-    border: 1px solid $border-color;
-    padding-bottom: 20px;
-}
-
-
 
 @import "local_navbar";
 @import "home";
