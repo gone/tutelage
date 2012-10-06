@@ -2,7 +2,7 @@
 
 {% block content %}
 {% autoescape off %}
-<div class="row main bordered">
+<div class="bordered-row main bordered">
     <div class="span6">
       <div class="call-to-action">
         <h3>{{page.home.call_to_action}}</h3>
@@ -15,7 +15,7 @@
       </div>
     </div>
 </div>
-<div class="row bordered border-notop">
+<div class="bordered-row bordered">
     <div class="homeblocks">
       {% with page.home.blocks.all as blocks %}
       {% for b in blocks %}

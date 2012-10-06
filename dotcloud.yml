@@ -1,5 +1,6 @@
 www:
-        type: python
+  type: python
 data:
-        type: postgresql
-
+  type: postgresql
+cache:
+  type: redis

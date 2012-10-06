@@ -1,1 +1,3 @@
+/home/dotcloud/current/manage.py syncdb --noinput
+/home/dotcloud/current/manage.py migrate --noinput
 /home/dotcloud/current/manage.py collectstatic --noinput
