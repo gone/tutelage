@@ -11,7 +11,7 @@ static/
 local_settings.py
 build/
 src/
-lib/
+
 bin/
 include/
 local.db
