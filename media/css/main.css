@@ -1,64 +1,4 @@
 /*
-<<<<<<< HEAD
-Syntax error: Invalid CSS after "@import "signup";": expected "}", was ""
-        on line 112 of /home/geoffrey/workspace/tutelage/media/scss/main.scss
-
-Backtrace:
-/home/geoffrey/workspace/tutelage/media/scss/main.scss:112
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:1130:in `expected'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:1066:in `expected'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:1061:in `tok!'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:519:in `block'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:175:in `mixin_directive'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:163:in `send'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:163:in `special_directive'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:135:in `directive'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:536:in `block_child'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:529:in `block_contents'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:70:in `stylesheet'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/scss/parser.rb:27:in `parse'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/engine.rb:342:in `_to_tree'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/engine.rb:315:in `_render'
-/var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/engine.rb:262:in `render'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `compile'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `compile'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `run'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `run'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
-/usr/lib/ruby/vendor_ruby/1.8/rubygems/custom_require.rb:36:in `to_proc'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/path.rb:73:in `call'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/path.rb:73:in `run_callback'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/path.rb:55:in `callback_action'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/path.rb:35:in `update'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/state/directory.rb:39:in `modified'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/state/directory.rb:37:in `each'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/state/directory.rb:37:in `modified'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/state/directory.rb:18:in `refresh'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `run'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `each'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `run'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:15:in `loop'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:15:in `run'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm/monitor.rb:26:in `run'
-/var/lib/gems/1.8/gems/fssm-0.2.9/lib/fssm.rb:70:in `monitor'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/var/lib/gems/1.8/gems/compass-0.12.2/bin/compass:30
-/var/lib/gems/1.8/gems/compass-0.12.2/bin/compass:44:in `call'
-/var/lib/gems/1.8/gems/compass-0.12.2/bin/compass:44
-/usr/local/bin/compass:19:in `load'
-/usr/local/bin/compass:19
-=======
 * Bootstrap v2.1.1
 *
 * Copyright 2012 Twitter, Inc
@@ -66,7 +6,6 @@ Backtrace:
 * http://www.apache.org/licenses/LICENSE-2.0
 *
 * Designed and built with all the love in the world @twitter by @mdo and @fat.
->>>>>>> 9c9756f37e8bc64f9a93e1ea49340dda736b356e
 */
 article,
 aside,
@@ -832,10 +771,6 @@ pre {
   word-break: break-all;
   word-wrap: break-word;
   white-space: pre;
-<<<<<<< HEAD
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"@import \"signup\";\": expected \"}\", was \"\"\A         on line 112 of /home/geoffrey/workspace/tutelage/media/scss/main.scss"; }
-=======
   white-space: pre-wrap;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
@@ -5494,8 +5429,8 @@ a.label:hover, a.badge:hover {
   background-image: -webkit-linear-gradient(top, #01a64f, #01a64f);
   background-image: -o-linear-gradient(top, #01a64f, #01a64f);
   background-image: linear-gradient(#01a64f, #01a64f);
-  border: 0px !important;
-  color: #fff !important;
+  border: 1px solid #01a64f !important;
+  color: white !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
   border-radius: 0px !important;
@@ -5521,8 +5456,8 @@ a.label:hover, a.badge:hover {
   background-image: -webkit-linear-gradient(top, #4ba5ff, #4ba5ff);
   background-image: -o-linear-gradient(top, #4ba5ff, #4ba5ff);
   background-image: linear-gradient(#4ba5ff, #4ba5ff);
-  border: 0px !important;
-  color: #fff !important;
+  border: 1px solid #4ba5ff !important;
+  color: white !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
   border-radius: 0px !important;
@@ -5540,8 +5475,8 @@ a.label:hover, a.badge:hover {
   background-image: -webkit-linear-gradient(top, white, white);
   background-image: -o-linear-gradient(top, white, white);
   background-image: linear-gradient(#ffffff, #ffffff);
-  border: 0px !important;
-  color: #fff !important;
+  border: 1px solid #4ba5ff !important;
+  color: #4ba5ff !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
   border-radius: 0px !important;
@@ -5556,7 +5491,7 @@ a.label:hover, a.badge:hover {
 .btn-white {
   background-color: white !important;
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="white", endColorstr="white");
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
   background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
   background-image: -moz-linear-gradient(top, white, white);
   background-image: -ms-linear-gradient(top, white, white);
@@ -5564,8 +5499,8 @@ a.label:hover, a.badge:hover {
   background-image: -webkit-linear-gradient(top, white, white);
   background-image: -o-linear-gradient(top, white, white);
   background-image: linear-gradient(#ffffff, #ffffff);
-  border: 0px !important;
-  color: #fff !important;
+  border: 1px solid black !important;
+  color: black !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
   border-radius: 0px !important;
@@ -6003,4 +5938,3 @@ border-notop {
 .login-actions {
   margin-top: 10px;
 }
->>>>>>> 9c9756f37e8bc64f9a93e1ea49340dda736b356e
