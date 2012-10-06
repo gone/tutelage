@@ -5826,3 +5826,14 @@ border-notop {
 .login-actions {
   margin-top: 10px;
 }
+
+.btn-profile-link {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.profile-desc {
+  font-size: 18px;
+  font-weight: 150;
+  line-height: 24px;
+}
