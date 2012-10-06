@@ -1,34 +1,38 @@
 {% extends 'base.html' %}
-
+{% load mezzanine_tags %}
 {% block content %}
 {% autoescape off %}
-<div class="row main bordered">
+<div class="bordered-row main bordered">
     <div class="span6">
-      <div class="about_info">
-        <h3>What is Wellganic?</h3>
-        <p>Lnrem ipsum dolor sit arnet, Consectetur adipiscing eIitAenean ornare mattia magna, quis portlitor dolor ultriciessit arnet. Nullam hendrerit nunc id enim tincidunt ornare. Sed nulla est, facilisis at ullamcorper sit amet1 Iacinia vitae mauris. Aenean quis nisl libero,  malesuada orci. Suspendisse nec diam sem. Aliquam erat volutpat. Proin aliquet fringilla euismod. Sed placerat rutrum aliquam toro mat. Etiam in velit eu enim Iacinia Semper. Phasellus sed nunc sem. Vestibulum non ipsum tellus. Sed Iaous quam, iaculis ac porta sit amai.
-        </p>
+      <div class="colored_header">
+        {% editable page.about.blockone %}
+        {{page.about.blockone}}
+        {% endeditable %}
+
       </div>
     </div>
     <div class="span6">
       <div class="main-movie">
-        <img src={{MEDIA_URL}}{{page.home.hero}} />
+        {% editable page.about.hero %}
+        <img src={{MEDIA_URL}}{{page.about.hero}} />
+        {% endeditable %}
+
       </div>
     </div>
 </div>
-<div class="row main bordered">
+<div class="bordered-row main bordered">
     <div class="span6">
-      <div class="about_info">
-        <h4>Our Team</h4>
-        <p>Lnrem ipsum dolor sit arnet, Consectetur adipiscing eIitAenean ornare mattia magna, quis portlitor dolor ultriciessit arnet. Nullam hendrerit nunc id enim tincidunt ornare. Sed nulla est, facilisis at ullamcorper sit amet1 Iacinia vitae mauris. Aenean quis nisl libero,  malesuada orci. Suspendisse nec diam sem. Aliquam erat volutpat. Proin aliquet fringilla euismod. Sed placerat rutrum aliquam toro mat. Etiam in velit eu enim Iacinia Semper.
-        </p>
+      <div class="colored_header">
+        {% editable page.about.blocktwo %}
+        {{page.about.blocktwo}}
+        {% endeditable %}
       </div>
     </div>
     <div class="span6">
-      <div class="about_info">
-        <h4>Contact Us</h4>
-        <p>Lnrem ipsum dolor sit arnet, Consectetur adipiscing eIitAenean ornare mattia magna, quis portlitor dolor ultriciessit arnet. Nullam hendrerit nunc id enim tincidunt ornare. Sed nulla est, facilisis at ullamcorper sit amet1 Iacinia vitae mauris. Aenean quis nisl libero,  malesuada orci. Suspendisse nec diam sem. Aliquam erat volutpat. Proin aliquet fringilla euismod. Sed placerat rutrum aliquam toro mat. Etiam in velit eu enim Iacinia Semper.
-        </p>
+      <div class="colored_header">
+        {% editable page.about.blockthree %}
+        {{page.about.blockthree}}
+        {% endeditable %}
       </div>
     </div>
 </div>

@@ -7,6 +7,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from mezzanine.pages.models import Page
 from mezzanine.core.models import Displayable
+from mezzanine.core.fields import RichTextField
+
 from ecl_django.models import CreatedMixin
 
 
@@ -22,17 +24,32 @@ def file_url(name):
 
 
 class Home(Page):
-    call_to_action = models.TextField()
-    hero = models.ImageField(upload_to=file_url("hero_pic"))
+    call_to_action = RichTextField()
+    hero = models.ImageField(upload_to=file_url("home_hero"))
+
 
 
 class HomeBlock(CreatedMixin):
     home = models.ForeignKey(Home, related_name="blocks")
     header = models.CharField(max_length=126)
-    body = models.TextField()
+    body = RichTextField()
     link_copy = models.CharField(max_length=126)
     link_target = models.CharField(max_length=126)
 
+
+
+class About(Page):
+    blockone = RichTextField()
+    blocktwo = RichTextField()
+    blockthree = RichTextField()
+    hero = models.ImageField(upload_to=file_url("about_hero"))
+
+
+class FeaturedChef(Page):
+    intro_video = models.ImageField(upload_to=file_url("featured_chef_intro"))
+    intro_text = RichTextField()
+    chef = models.OneToOneField(User, related_name="featured_chef")
+    featured_lessons = models.ManyToManyField("Lesson")
 
 ##############################
 # class Tag(CreatedMixin):   #

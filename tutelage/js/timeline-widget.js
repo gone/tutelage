@@ -139,15 +139,15 @@ function Timeline(pDivID, pPopcornInstance, pPlayTime)
 
   //add techPlayPause function to slider
   container.find(".slider").click(function() { play(); var a_video=document.getElementById("video"); techPlayPause(a_video)});
-  
+
   //set width of step buttons in timeline
   //create array
-  //loop through all child divs of "timeline_steps" and determine width based on percentage of total 
+  //loop through all child divs of "timeline_steps" and determine width based on percentage of total
   //ultimate goal is to dynamically build/append each step div
   var sTimelineArray = [];
-  
-  
-  
+
+
+
   // return object
   return result;
 }
@@ -156,13 +156,13 @@ function Timeline(pDivID, pPopcornInstance, pPlayTime)
 function techPlayPause(a_video) {
 	var l_video = document.getElementById("video");
 	var t_video = [];
-	
+
 	// Need code to determine how many technique videos are in the lesson, for now assumed
 	var i = 0;
 	while (i<2) {
 		var t_string = 'vid_technique'+(i+1);
 		t_video[i] = document.getElementById(t_string);
-		
+
 		if (t_video[i] == a_video) {
 			i++;
 		}
@@ -171,7 +171,7 @@ function techPlayPause(a_video) {
 			i++;
 		}
 	}
-	
+
 	if (a_video == l_video) {
 		a_video.play();
 	}
@@ -189,8 +189,8 @@ function techPlayPause(a_video) {
 function toggle_visibility(name) {
  var id = document.getElementById(name);
  var nClass = $("."+name);
- console.log(nClass); 
-  
+ console.log(nClass);
+
  if (nClass = '') {
 	 if(id.style.display == 'block') {
 		id.style.display = 'none';
@@ -198,7 +198,7 @@ function toggle_visibility(name) {
 	 else {
 		id.style.display = 'block';
 		}
- } 
+ }
  else if (id != '' ) {
 	if(nClass.attr('display') == 'block') {
 		nClass.attr('display') = 'none';
@@ -210,7 +210,7 @@ function toggle_visibility(name) {
  else {
 	return;
  }
- 
+
 }
 
 $(".img_swap").live('click', function() {
@@ -246,7 +246,6 @@ $("#vol_toggle").live('click', function() {
 	}
 });
 
-
 // step buttons take video to beginning of selected step
 $('.step').live('click',function(){
 	if ($(this).attr('id').length > 5) {
@@ -255,11 +254,11 @@ $('.step').live('click',function(){
 	else {
 		stepTime = step[parseInt($(this).attr('id').substr($(this).attr('id').length - 1))];
 	}
-	
+
 	$("video").get(0).currentTime = stepTime;
-	
+
 	techPlayPause($("video").get(0));
-	
+
 });
 
 //technique buttons to play related technique video
@@ -270,9 +269,8 @@ $('.tech_img').live('click',function(){
 	console.log(techVideoId);
 	techVid = "#vid_technique2";
 	console.log(techVid);
-	
-	$("video").get(0).currentTime = techVidTime;
-	
-	techPlayPause($(techVideoId).get(0));		
-});
 
+	$("video").get(0).currentTime = techVidTime;
+
+	techPlayPause($(techVideoId).get(0));
+});

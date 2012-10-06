@@ -1,3 +1,4 @@
+{% load mezzanine_tags %}
 <!doctype html>
 <html xmlns:fb="http://ogp.me/ns/fb#">
   <head>
@@ -55,6 +56,8 @@
 	{% include "rpassword.html" %}
 	{% include "cpassword.html" %}
 	{% include "wprofile.html" %}
-	
+	{% editable_loader %}
+
+
   </body>
 </html>

@@ -5,14 +5,10 @@ $blue					:				  #4ba5ff;
 $lightgray				:				  #cacaca;
 $darkgray				:				  #666666;
 $background             :                 #eeeeee;
-/********************************************************/
-/* $btnBackground          :                 $green;    */
-/* $btnBackgroundHighlight	:                 $green;   */
-/********************************************************/
 $border-color           :                 lightGray;
 
 
-@mixin colored-button($color){
+@mixin colored-button($color,$border-color:$color,$text-color:white){
     background-color: $color !important;
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
@@ -23,8 +19,8 @@ $border-color           :                 lightGray;
     background-image: -webkit-linear-gradient(top, $color, $color);
     background-image: -o-linear-gradient(top, $color, $color);
     background-image: linear-gradient($color, $color);
-    border: 0px !important;
-    color: #fff !important;
+    border: 1px solid $border-color !important;
+    color: $text-color !important;
     text-shadow: 0 0px 0 rgba(0, 0, 0, 0.00) !important;
     -webkit-font-smoothing: antialiased;
     border-radius: 0px !important;
@@ -38,8 +34,6 @@ $border-color           :                 lightGray;
 .green {
     color: $green;
 }
-
-
 
 .btn-green {
     @include colored-button($green)
@@ -57,34 +51,29 @@ $border-color           :                 lightGray;
  }
 
 .btn-clearblue {
-    @include colored-button($white)
+    @include colored-button($white,$blue,$blue)
  }
 
 .btn-clearblue:hover{
-	background-color:	#4ba5ff;
-	color:  #fff !important;
+	@include colored-button($blue,$blue,$white)
 }
 
+.btn-lightgray {
+	@include colored-button($lightgray,$lightgray,$white)
+}
 
+.btn-lightgray:hover {
+	@include colored-button($darkgray,$darkgray,$white)
+}
+
+.btn-darkgray {
+	@include colored-button($darkgray,$darkgray,$white)
+}
 
 .btn-white {
-  background-color: white !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="white", endColorstr="white");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
-  background-image: -moz-linear-gradient(top, white, white);
-  background-image: -ms-linear-gradient(top, white, white);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
-  background-image: -webkit-linear-gradient(top, white, white);
-  background-image: -o-linear-gradient(top, white, white);
-  background-image: linear-gradient(white, white);
-  border: 0px !important;
-  color: #fff !important;
-  text-shadow: 0 0px 0 rgba(0, 0, 0, 0.00) !important;
-  -webkit-font-smoothing: antialiased;
-  border-radius: 0px !important;
-  font-weight: bold;
+    @include colored-button($white,$black,$black)
  }
+
 
 body {
   background-color: $background !important;
@@ -105,8 +94,15 @@ body {
     margin-bottom: -1px;
 }
 
+.colored_header {
+	h3, h4 {
+	color:	black;
+	}
+}
 
-
+.vertical-align {
+	vertical-align: middle;
+}
 
 
 @import "local_navbar";

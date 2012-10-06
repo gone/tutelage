@@ -3,4 +3,13 @@ $(document).ready () ->
         $.colorbox
             inline: true
             href: "#login"
-            initalwidth: 800
+    $(".signup-btn").click () ->
+        $.colorbox
+            inline: true
+            href: "#signup"
+    $(".forgot-pass-btn").click () ->
+        $.colorbox
+            inline: true
+            href: "#forgot-password"
+    $(".cancel-btn").click () ->
+        $.colorbox.close()
