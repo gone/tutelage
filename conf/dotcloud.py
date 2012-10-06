@@ -48,7 +48,7 @@ CACHES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'source',
+        'NAME': 'wellganic',
         'USER': env['DOTCLOUD_DATA_SQL_LOGIN'],
         'PASSWORD': env['DOTCLOUD_DATA_SQL_PASSWORD'],
         'HOST': env['DOTCLOUD_DATA_SQL_HOST'],
