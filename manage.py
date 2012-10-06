@@ -20,9 +20,15 @@ for i, arg in enumerate(sys.argv):
         sys.argv.pop(i)
 
 
+try:
+    with open('/home/dotcloud/environment.json') as f: pass
+    settings_module = "conf.dotcloud"
+except IOError as e:
+    settings_module = "conf.local"
+
+
 # Run Django.
 if __name__ == "__main__":
-    settings_module = "settings"
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings_module)
     from django.core.management import execute_from_command_line
     execute_from_command_line(sys.argv)
