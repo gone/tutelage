@@ -1,11 +1,11 @@
 #login {
-    width: 300px;
+    float: left;
 }
 
 .login_info {
 	h3, h4 {
-	color:	$green;
-	margin-left: 20px;
+	    color:	$green;
+	    margin-left: 20px;
 	}
 }
 
@@ -22,7 +22,7 @@
 }
 
 .vertical-align-text {
-	vertical-align: middle;	
+	vertical-align: middle;
 }
 
 .login-actions {
