@@ -38,12 +38,9 @@ $border-color           :                 lightGray;
 .btn-green {
     @include colored-button($green)
 }
+
 .btn-green:hover{
-	background-color:	#4ba5ff;
-	/*
-    border: 1px solid black !important;
-    padding: 3px 13px !important;
-    */
+	@include colored-button($blue)
 }
 
 .btn-blue {
@@ -106,6 +103,7 @@ body {
 
 
 @import "local_navbar";
+@import "icons";
 @import "home";
 @import "colorbox";
 @import "about";

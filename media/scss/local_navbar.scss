@@ -8,22 +8,33 @@ $nav-padding: 5px;
     height: $nav-height;
     width: $nav-height;
     padding: $nav-padding;
-    padding-left: $nav-padding *2;
     border-left: 1px $border-color solid;
     margin-left: 0px !important;
+    cursor: pointer;
+}
 
+.box-login {
+	padding-top: 12px;
+	height: 48px;
 }
 
 .box:hover {
     background-color: $green;
+    color:	white;
 }
-.box p  {
+
+.box h5  {
+	display: inline-block;
+	width:100%;
     font-weight: bold;
+    text-align: center;
 }
 
 .nav-icon  {
-    height: 27px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 
 /*  overwriting some of the base bootstrap */
@@ -31,6 +42,7 @@ $nav-padding: 5px;
     height: 100% !important;
     border: 0px !important;
     width: 2px;
+    margin-right: 5px;
 }
 
 .nav  {
@@ -53,3 +65,7 @@ $nav-padding: 5px;
     /* for hover of login */
     padding-right: 0px !important;
 }
+
+
+
+

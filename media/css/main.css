@@ -5434,11 +5434,22 @@ a.label:hover, a.badge:hover {
 }
 
 .btn-green:hover {
-  background-color: #4ba5ff;
-  	/*
-      border: 1px solid black !important;
-      padding: 3px 13px !important;
-      */
+  background-color: #4ba5ff !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#4ba5ff), to(#4ba5ff));
+  background-image: -moz-linear-gradient(top, #4ba5ff, #4ba5ff);
+  background-image: -ms-linear-gradient(top, #4ba5ff, #4ba5ff);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4ba5ff), color-stop(100%, #4ba5ff));
+  background-image: -webkit-linear-gradient(top, #4ba5ff, #4ba5ff);
+  background-image: -o-linear-gradient(top, #4ba5ff, #4ba5ff);
+  background-image: linear-gradient(#4ba5ff, #4ba5ff);
+  border: 1px solid #4ba5ff !important;
+  color: white !important;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px !important;
+  font-weight: bold;
 }
 
 .btn-blue {
@@ -5605,21 +5616,31 @@ body {
   height: 55px;
   width: 55px;
   padding: 5px;
-  padding-left: 10px;
   border-left: 1px lightgrey solid;
   margin-left: 0px !important;
+  cursor: pointer;
+}
+
+.box-login {
+  padding-top: 12px;
+  height: 48px;
 }
 
 .box:hover {
   background-color: #01a64f;
+  color: white;
 }
 
-.box p {
+.box h5 {
+  display: inline-block;
+  width: 100%;
   font-weight: bold;
+  text-align: center;
 }
 
 .nav-icon {
-  height: 27px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*  overwriting some of the base bootstrap */
@@ -5627,6 +5648,7 @@ body {
   height: 100% !important;
   border: 0px !important;
   width: 2px;
+  margin-right: 5px;
 }
 
 .nav {
@@ -5648,6 +5670,169 @@ body {
   background-color: white;
   /* for hover of login */
   padding-right: 0px !important;
+}
+
+.sprite-icons-login,
+.sprite-icons-my,
+.sprite-icons-tutor,
+.sprite-icons-learn,
+.sprite-icons-signup,
+.sprite-icons-ask,
+.sprite-icons-about {
+  background-image: url("../img/icons.png");
+  background-repeat: no-repeat;
+}
+
+.sprite-icons-login:hover {
+  background-position: 0px 0px;
+  width: 38px;
+  height: 19px;
+}
+
+.sprite-icons-login:active {
+  background-position: 0px -19px;
+  width: 38px;
+  height: 19px;
+}
+
+.sprite-icons-login {
+  background-position: -38px 0px;
+  width: 38px;
+  height: 19px;
+}
+
+.sprite-icons-my:hover {
+  background-position: -38px -19px;
+  width: 34px;
+  height: 18px;
+}
+
+.sprite-icons-my:active {
+  background-position: 0px -38px;
+  width: 34px;
+  height: 18px;
+}
+
+.sprite-icons-my {
+  background-position: -34px -38px;
+  width: 34px;
+  height: 18px;
+}
+
+.sprite-icons-tutor:hover {
+  background-position: -76px 0px;
+  width: 29px;
+  height: 27px;
+}
+
+.sprite-icons-tutor:active {
+  background-position: -76px -27px;
+  width: 29px;
+  height: 27px;
+}
+
+.sprite-icons-tutor {
+  background-position: 0px -56px;
+  width: 29px;
+  height: 27px;
+}
+
+.sprite-icons-learn:hover {
+  background-position: -29px -56px;
+  width: 15px;
+  height: 27px;
+}
+
+.sprite-icons-learn:active {
+  background-position: -44px -56px;
+  width: 15px;
+  height: 27px;
+}
+
+.sprite-icons-learn {
+  background-position: -59px -56px;
+  width: 16px;
+  height: 27px;
+}
+
+.sprite-icons-signup:hover {
+  background-position: -75px -56px;
+  width: 26px;
+  height: 26px;
+}
+
+.sprite-icons-signup:active {
+  background-position: -105px 0px;
+  width: 26px;
+  height: 26px;
+}
+
+.sprite-icons-signup {
+  background-position: -105px -26px;
+  width: 26px;
+  height: 26px;
+}
+
+.sprite-icons-ask:hover {
+  background-position: -105px -52px;
+  width: 26px;
+  height: 23px;
+}
+
+.sprite-icons-ask:active {
+  background-position: 0px -83px;
+  width: 26px;
+  height: 23px;
+}
+
+.sprite-icons-ask {
+  background-position: -26px -83px;
+  width: 26px;
+  height: 23px;
+}
+
+.sprite-icons-about:hover {
+  background-position: -131px 0px;
+  width: 26px;
+  height: 26px;
+}
+
+.sprite-icons-about:active {
+  background-position: -131px -26px;
+  width: 26px;
+  height: 26px;
+}
+
+.sprite-icons-about {
+  background-position: -131px -52px;
+  width: 26px;
+  height: 26px;
+}
+
+.box:hover .sprite-icons-tutor {
+  background-position: -76px -27px;
+  width: 29px;
+  height: 27px;
+}
+.box:hover .sprite-icons-learn {
+  background-position: -44px -56px;
+  width: 15px;
+  height: 27px;
+}
+.box:hover .sprite-icons-about {
+  background-position: -131px -26px;
+  width: 26px;
+  height: 26px;
+}
+.box:hover .sprite-icons-signup {
+  background-position: -105px 0px;
+  width: 26px;
+  height: 26px;
+}
+.box:hover .sprite-icons-login {
+  background-position: 0px -19px;
+  width: 38px;
+  height: 19px;
 }
 
 .main {
