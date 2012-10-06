@@ -3,4 +3,4 @@ www:
 data:
   type: postgresql
 cache:
-  type:redis
+  type: redis
