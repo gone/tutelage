@@ -2028,7 +2028,7 @@ table [class*=span],
   background-position: -288px 0;
 }
 
-.icon-remove {
+.icon-remove, #cboxClose {
   background-position: -312px 0;
 }
 
@@ -2336,11 +2336,11 @@ table [class*=span],
   background-position: -216px -96px;
 }
 
-.icon-arrow-left {
+.icon-arrow-left, #cboxPrevious {
   background-position: -240px -96px;
 }
 
-.icon-arrow-right {
+.icon-arrow-right, #cboxNext {
   background-position: -264px -96px;
 }
 
@@ -4527,16 +4527,16 @@ input[type="submit"].btn.btn-mini {
   cursor: default;
 }
 
-.modal-open .modal .dropdown-menu {
+.modal-open .modal .dropdown-menu, .modal-open #colorbox .dropdown-menu {
   z-index: 2050;
 }
-.modal-open .modal .dropdown.open {
+.modal-open .modal .dropdown.open, .modal-open #colorbox .dropdown.open {
   *z-index: 2050;
 }
-.modal-open .modal .popover {
+.modal-open .modal .popover, .modal-open #colorbox .popover {
   z-index: 2060;
 }
-.modal-open .modal .tooltip {
+.modal-open .modal .tooltip, .modal-open #colorbox .tooltip {
   z-index: 2080;
 }
 
@@ -4559,7 +4559,7 @@ input[type="submit"].btn.btn-mini {
   filter: alpha(opacity=80);
 }
 
-.modal {
+.modal, #colorbox {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -4582,30 +4582,30 @@ input[type="submit"].btn.btn-mini {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-.modal.fade {
+.modal.fade, .fade#colorbox {
   -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
   -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
   -o-transition: opacity 0.3s linear, top 0.3s ease-out;
   transition: opacity 0.3s linear, top 0.3s ease-out;
   top: -25%;
 }
-.modal.fade.in {
+.modal.fade.in, .fade.in#colorbox {
   top: 50%;
 }
 
-.modal-header {
+.modal-header, #cboxTitle {
   padding: 9px 15px;
   border-bottom: 1px solid #eee;
 }
-.modal-header .close {
+.modal-header .close, #cboxTitle .close {
   margin-top: 2px;
 }
-.modal-header h3 {
+.modal-header h3, #cboxTitle h3 {
   margin: 0;
   line-height: 30px;
 }
 
-.modal-body {
+.modal-body, #cboxLoadedContent {
   overflow-y: auto;
   max-height: 400px;
   padding: 15px;
@@ -5581,7 +5581,7 @@ body {
   border: 0px !important;
   background-color: white;
   /* for hover of login */
-  padding-right: 0px;
+  padding-right: 0px !important;
 }
 
 .row {
@@ -5611,7 +5611,7 @@ border-notop {
   border-top: 0px !important;
 }
 
- /*
+/*
     ColorBox Core Style:
     The following CSS is consistent between example themes and should not be altered.
 */
@@ -5619,7 +5619,7 @@ border-notop {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 10001;
   overflow: hidden;
 }
 
@@ -5650,7 +5650,6 @@ border-notop {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
 }
 
 #cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
@@ -5662,7 +5661,6 @@ border-notop {
   margin: auto;
   border: 0;
   display: block;
-  max-width: none;
 }
 
 .cboxIframe {
@@ -5672,159 +5670,91 @@ border-notop {
   border: 0;
 }
 
-#colorbox, #cboxContent, #cboxLoadedContent {
-  box-sizing: content-box;
-}
-
 /*
     User Style:
     Change the following styles to modify the appearance of ColorBox.  They are
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
 #cboxOverlay {
-  background: url(images/overlay.png) repeat 0 0;
+  background: #222;
 }
 
-#cboxTopLeft {
-  width: 21px;
-  height: 21px;
-  background: url(images/controls.png) no-repeat -101px 0;
-}
-
-#cboxTopRight {
-  width: 21px;
-  height: 21px;
-  background: url(images/controls.png) no-repeat -130px 0;
-}
-
-#cboxBottomLeft {
-  width: 21px;
-  height: 21px;
-  background: url(images/controls.png) no-repeat -101px -29px;
-}
-
-#cboxBottomRight {
-  width: 21px;
-  height: 21px;
-  background: url(images/controls.png) no-repeat -130px -29px;
-}
-
-#cboxMiddleLeft {
-  width: 21px;
-  background: url(images/controls.png) left top repeat-y;
-}
-
-#cboxMiddleRight {
-  width: 21px;
-  background: url(images/controls.png) right top repeat-y;
-}
-
-#cboxTopCenter {
-  height: 21px;
-  background: url(images/border.png) 0 0 repeat-x;
-}
-
-#cboxBottomCenter {
-  height: 21px;
-  background: url(images/border.png) 0 -29px repeat-x;
-}
-
-#cboxContent {
-  background: #fff;
-  overflow: hidden;
-}
-
-.cboxIframe {
-  background: #fff;
-}
-
-#cboxError {
-  padding: 50px;
-  border: 1px solid #ccc;
+#colorbox {
+  margin: 0 !important;
+  z-index: 10002;
 }
 
 #cboxLoadedContent {
-  margin-bottom: 28px;
+  margin-top: 48px;
+  margin-bottom: 59px;
+  max-height: none;
 }
 
 #cboxTitle {
   position: absolute;
-  bottom: 4px;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.modal-footer {
+  position: absolute;
   left: 0;
-  text-align: center;
-  width: 100%;
-  color: #949494;
+  right: 0;
+  bottom: 0;
+}
+
+.cb-icon, #cboxPrevious, #cboxNext, #cboxClose {
+  border: 0;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: transparent;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  background-image: url("../img/glyphicons-halflings.png");
+  background-repeat: no-repeat;
+  *margin-right: .3em;
 }
 
 #cboxCurrent {
   position: absolute;
   bottom: 4px;
   left: 58px;
-  color: #949494;
+  color: #333333;
 }
 
 #cboxSlideshow {
   position: absolute;
   bottom: 4px;
   right: 30px;
-  color: #0092ef;
+  color: #333333;
 }
 
 #cboxPrevious {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: url(images/controls.png) no-repeat -75px 0;
-  width: 25px;
-  height: 25px;
-  text-indent: -9999px;
-}
-
-#cboxPrevious:hover {
-  background-position: -75px -25px;
+  bottom: 8px;
+  left: 5px;
 }
 
 #cboxNext {
-  position: absolute;
-  bottom: 0;
-  left: 27px;
-  background: url(images/controls.png) no-repeat -50px 0;
-  width: 25px;
-  height: 25px;
-  text-indent: -9999px;
-}
-
-#cboxNext:hover {
-  background-position: -50px -25px;
-}
-
-#cboxLoadingOverlay {
-  background: url(images/loading_background.png) no-repeat center center;
-}
-
-#cboxLoadingGraphic {
-  background: url(images/loading.gif) no-repeat center center;
+  bottom: 8px;
+  left: 19px;
 }
 
 #cboxClose {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: url(images/controls.png) no-repeat -25px 0;
-  width: 25px;
-  height: 25px;
-  text-indent: -9999px;
+  top: 5px;
+  right: 5px;
 }
 
-#cboxClose:hover {
-  background-position: -25px -25px;
+#cboxLoadingGraphic {
+  background: url(img/loading.gif) no-repeat center center;
 }
 
-/*
-  The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
-  when an alpha filter (opacity change) is set on the element or ancestor element.  This style is not applied to or needed in IE9.
-  See: http://jacklmoore.com/notes/ie-transparency-problems/
-*/
 .cboxIE #cboxTopLeft,
 .cboxIE #cboxTopCenter,
 .cboxIE #cboxTopRight,
@@ -5833,54 +5763,7 @@ border-notop {
 .cboxIE #cboxBottomRight,
 .cboxIE #cboxMiddleLeft,
 .cboxIE #cboxMiddleRight {
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
-}
-
-/*
-  The following provides PNG transparency support for IE6
-  Feel free to remove this and the /ie6/ directory if you have dropped IE6 support.
-*/
-.cboxIE6 #cboxTopLeft {
-  background: url(images/ie6/borderTopLeft.png);
-}
-
-.cboxIE6 #cboxTopCenter {
-  background: url(images/ie6/borderTopCenter.png);
-}
-
-.cboxIE6 #cboxTopRight {
-  background: url(images/ie6/borderTopRight.png);
-}
-
-.cboxIE6 #cboxBottomLeft {
-  background: url(images/ie6/borderBottomLeft.png);
-}
-
-.cboxIE6 #cboxBottomCenter {
-  background: url(images/ie6/borderBottomCenter.png);
-}
-
-.cboxIE6 #cboxBottomRight {
-  background: url(images/ie6/borderBottomRight.png);
-}
-
-.cboxIE6 #cboxMiddleLeft {
-  background: url(images/ie6/borderMiddleLeft.png);
-}
-
-.cboxIE6 #cboxMiddleRight {
-  background: url(images/ie6/borderMiddleRight.png);
-}
-
-.cboxIE6 #cboxTopLeft,
-.cboxIE6 #cboxTopCenter,
-.cboxIE6 #cboxTopRight,
-.cboxIE6 #cboxBottomLeft,
-.cboxIE6 #cboxBottomCenter,
-.cboxIE6 #cboxBottomRight,
-.cboxIE6 #cboxMiddleLeft,
-.cboxIE6 #cboxMiddleRight {
-  _behavior: expression(this.src = this.src ? this.src : this.currentStyle.backgroundImage.split('"')[1], this.style.background = "none", this.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=" + this.src + ", sizingMethod='scale')");
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)";
 }
 
 .about_info h3, .about_info h4 {
@@ -5916,7 +5799,7 @@ border-notop {
 }
 
 #login {
-  width: 300px;
+  float: left;
 }
 
 .login_info h3, .login_info h4 {
