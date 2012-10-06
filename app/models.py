@@ -45,6 +45,12 @@ class About(Page):
     hero = models.ImageField(upload_to=file_url("about_hero"))
 
 
+class FeaturedChef(Page):
+    intro_video = models.ImageField(upload_to=file_url("featured_chef_intro"))
+    intro_text = RichTextField()
+    chef = models.OneToOneField(User, related_name="featured_chef")
+    featured_lessons = models.ManyToManyField("Lesson")
+
 ##############################
 # class Tag(CreatedMixin):   #
 #     tag = asdf             #
