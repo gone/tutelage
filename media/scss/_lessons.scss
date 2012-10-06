@@ -1,3 +1,15 @@
+.lesson {
+    padding-right:10px;
+    padding-bottom: 20px;
+    hr {
+        margin: 5px 0px;
+    }
+}
+
+.lesson-title {
+    white-space: nowrap;
+}
+
 .lesson:first-child {
     border-right: 1px solid $border-color;
 }
