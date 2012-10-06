@@ -2,6 +2,8 @@
 
 $green                  :                 #01a64f;
 $blue					:				  #4ba5ff;
+$lightgray				:				  #cacaca;
+$darkgray				:				  #666666;
 $background             :                 #eeeeee;
 /********************************************************/
 /* $btnBackground          :                 $green;    */
@@ -63,6 +65,8 @@ $border-color           :                 lightGray;
 	color:  #fff !important;
 }
 
+
+
 .btn-white {
   background-color: white !important;
   background-repeat: repeat-x;
@@ -113,3 +117,4 @@ body {
 @import "login";
 @import "signup";
 @import "wprofile";
+@import "myprofile";
