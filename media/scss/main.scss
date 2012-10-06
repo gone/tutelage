@@ -58,13 +58,11 @@ $border-color           :                 lightGray;
  }
 
 .btn-clearblue:hover{
-	background-color:	#4ba5ff;
-	color:  #fff !important;
+	@include colored-button($blue,$blue,$white)
 }
 
 .btn-white {
-    @include colored-button($white,$black,$black)
-    
+    @include colored-button($white,$black,$black)   
  }
 
 body {
