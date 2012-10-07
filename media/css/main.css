@@ -5660,6 +5660,16 @@ body {
   margin-top: 15px !important;
   color: black !important;
   height: 100%;
+  background-color: white;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
+  -webkit-font-smoothing: antialiased;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
+  background-image: -moz-linear-gradient(top, white, white);
+  background-image: -ms-linear-gradient(top, white, white);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
+  background-image: -webkit-linear-gradient(top, white, white);
+  background-image: -o-linear-gradient(top, white, white);
+  background-image: linear-gradient(#ffffff, #ffffff);
 }
 
 .navbar-inner {
@@ -5670,6 +5680,13 @@ body {
   background-color: white;
   /* for hover of login */
   padding-right: 0px !important;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
+  background-image: -moz-linear-gradient(top, white, white);
+  background-image: -ms-linear-gradient(top, white, white);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
+  background-image: -webkit-linear-gradient(top, white, white);
+  background-image: -o-linear-gradient(top, white, white);
+  background-image: linear-gradient(#ffffff, #ffffff);
 }
 
 .sprite-icons-login,
