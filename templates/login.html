@@ -13,13 +13,13 @@
 		  <div id="email">
 			<h5>Email</h5>
             {{login_form.username.errors}}
-			<input name="username" class="login-input" type="text" placeholder="" value="{{login_form.username.value}}">
+			<input name="username" class="login-input" type="text" placeholder="Email" value="{{login_form.username.value|default_if_none:""}}">
 		  </div>
 		  <div id="password">
 			<h5>Password</h5>
             {{ login_form.non_field_errors }}
             {{login_form.password.errors}}
-			<input name="password" class="login-input" type="password" placeholder="">
+			<input name="password" class="login-input" type="password" placeholder="password">
 		  </div>
 
 		  <div class="row login-text login-actions">
@@ -43,7 +43,7 @@
 			  </a>
 			</div>
 		  </div>
-
+          <input type="hidden" name="next" value="{{login_form.next.value|default_if_none:request.get_full_path}}">
 		</form>
 	  </div>
 
