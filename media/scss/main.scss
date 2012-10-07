@@ -55,6 +55,14 @@ $border-color           :                 lightGray;
 	@include colored-button($blue,$blue,$white)
 }
 
+.btn-gray {
+	@include colored-button($white,lightGray,$black)
+}
+
+.btn-gray:hover {
+	@include colored-button(lightGray,lightGray,$black)
+}
+
 .btn-lightgray {
 	@include colored-button($lightgray,$lightgray,$white)
 }
@@ -114,3 +122,4 @@ input[type="submit"]{
 @import "signup";
 @import "wprofile";
 @import "myprofile";
+@import "createlesson";

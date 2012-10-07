@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% autoescape off %}
+<div class="bordered-row main bordered">
+
+    <div class="span6">
+	  <div class="create-lesson-title">
+	    <h2>Create New Lesson</h2>
+	  </div>
+	</div>
+
+	<div class="span2 vertical-align">			
+	  <div class="create-step-btn">
+	    <a class="btn btn-darkgray btn-create-step pull-left">
+		  <span class="create-step-text">step &#160; &#160;</span><strong>1</strong>
+		</a>
+	  </div>
+	</div>
+	
+	<div class="span2 btn-create-step-2">			
+	  <div class="create-step-btn">
+		<a class="btn btn-lightgray btn-create-step">
+		  <span class="create-step-text">step &#160; &#160;</span><strong>2</strong>
+		</a>
+	  </div>
+	</div>
+	
+	<div class="span2">			
+	  <div class="create-step-btn">
+		<a class="btn btn-lightgray btn-create-step pull-right">
+		  <span class="create-step-text">step &#160; &#160;</span><strong>3</strong>
+		</a>
+	  </div>
+	</div>
+	
+  <div class="span12">
+	<div class="row">
+	  <hr class="profile-hr" />
+	</div>
+	
+	<div class="row">
+	  <div class="span8 create-lesson-title-step1">
+		<h3 class="colored-header">1. Lesson Details</h3>
+	  </div>
+	  
+	  <div class="span4 pull-right">
+		<a href="#" class="create-lesson-help-btn pull-right">Need help?</a>
+	  </div> 
+	</div>
+	
+	<div class="row">
+	  <hr class="create-lesson-hr"/>
+	</div>
+
+	<div class="row">
+	  <form class="profile-form" target="" action="post"> 
+		  <div class="span6">		  
+			<div id="create-lesson-form-1-left">
+				<div id="createlessontitle">
+				  <h5>Lesson Title</h5>
+				  <input class="create-lesson-input-mid" type="text" placeholder="">
+				</div>
+				
+				<div class="row">
+				  <div class="span3">
+					
+					<div id="lastname" class="create-lesson-field-small">
+					  <h5>Lesson Price (in $)</h5>
+					    <input class="create-lesson-input-small" name="lessonprice" type="number" min="0" max="100" placeholder="">
+					</div>
+				  </div>
+				  
+				  <div class="span3">
+					<div id="email" class="create-lesson-field-small">
+					  <h5>Serving Size</h5>
+					  <input class="create-lesson-input-small" name="servingsize" type="number" min="1" max="12" placeholder="">
+					</div>  
+				  </div>
+				
+				</div>
+				
+				<div id="lessoncategory" class="">
+				  <h5>Category</h5>
+				  <select class="create-lesson-input-dropdown" name="lessoncategory" multiple="multiple">
+				    <option>Seafood</option>
+				    <option>Chicken</option>
+				    <option>Tofu</option>
+				  </select>	  
+				</div>
+				
+				<div id="lessonmealtype" class="">
+				  <h5>Meal Type</h5>
+				  <select class="create-lesson-input-dropdown" name="mealtype">
+				    <option>Breakfast</option>
+				    <option>Lunch</option>
+				    <option>Dinner</option>
+				    <option>Snack</option>
+				  </select>	  
+				</div>
+				
+				<div id="firstname" class="">
+				  <h5>Select Your Video</h5>
+				  <input class="create-lesson-input-file" type="text" placeholder="insert file path/URL here...">
+				  <a class="btn btn-gray btn-lesson-file-upload"><strong>...</strong></a>
+				</div>
+				<div id="firstname" class="">
+				  <h5>Select Your Lesson Image</h5>
+				  <input class="create-lesson-input-file" type="text" placeholder="insert file path/URL here...">
+				  <a class="btn btn-gray btn-lesson-file-upload"><strong>...</strong></a>
+				</div>
+			</div>
+		  </div>	
+
+		  <div class="span6">		  
+			<div id="create-lesson-form-1-right">
+				<div id="lessontype">
+				  <h5>Lesson Type</h5>  
+				  <div class="row create-lesson-radiobox">
+				    <div class="span1">					
+					  <label class="radio">
+					  <input class="create-lesson-radiobox" type="radio" name="lessontype" value="recipe" checked>Recipe
+					  </label>				    
+				    </div>
+				    
+				    <div class="span1">						
+					  <label class="radio">
+					  <input class="create-lesson-radiobox" type="radio" name="lessontype" value="technique">Technique
+					  </label>				  
+				    </div>				    
+				  </div>
+				</div>
+				
+				<div class="row">
+				  <div class="span3">
+					
+					<div id="preptime" class="create-lesson-field-small">
+					  <h5>Preparation Time (min.)</h5>
+					  <input class="create-lesson-input-small" name="lessonprice" type="number" min="0" max="1200" step="5" placeholder="">
+					</div>
+				  </div>
+				  
+				  <div class="span3">
+					<div id="email" class="create-lesson-field-small">
+					  <h5>Cooking Time (min.)</h5>
+					  <input class="create-lesson-input-small" name="servingsize" type="number" min="0" max="1200" step="5" placeholder="">
+					</div>  
+				  </div>
+				</div>
+				
+				<div id="cuisinetype" class="">
+				  <h5>Cuisine Type</h5>
+				  <select class="create-lesson-input-dropdown" name="lessoncategory">
+				    <option>Japanese</option>
+				    <option>Sri Lankan</option>
+				    <option>Seared</option>
+				  </select>	  
+				</div>
+				
+				<div id="lessonmealtype" class="">
+				  <h5>Dietary Restrictions</h5>
+				  <select class="create-lesson-input-dropdown" name="mealtype">
+				    <option>Gluten-free</option>
+				    <option>Lactose-free</option>
+				    <option>Low-sodium</option>
+				    <option>Sugar-free</option>
+				  </select>	  
+				</div>
+				
+				<div id="createlessondesc">
+				  <h5>Short Lesson Description (200 characters max)</h5>
+				  <textarea class="create-lesson-input-large create-lesson-desc"></textarea>
+				</div>
+				 
+			</div>
+		  </div>
+
+	  </form>
+	</div>
+	
+	<div class="row">
+	  <hr class="create-lesson-hr"/>
+	</div>
+	
+	<div class="row">
+	  <div class="span4 pull-right">
+		<a class="btn btn-green btn-save pull-right">
+		  next
+		</a>
+	  </div>
+	</div>  
+	  
+
+  </div>
+</div>
+
+
+  {% endautoescape %}
+  {% endblock %}

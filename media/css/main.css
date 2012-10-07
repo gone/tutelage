@@ -5509,6 +5509,44 @@ a.label:hover, a.badge:hover {
   font-weight: bold;
 }
 
+.btn-gray {
+  background-color: white !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
+  background-image: -moz-linear-gradient(top, white, white);
+  background-image: -ms-linear-gradient(top, white, white);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
+  background-image: -webkit-linear-gradient(top, white, white);
+  background-image: -o-linear-gradient(top, white, white);
+  background-image: linear-gradient(#ffffff, #ffffff);
+  border: 1px solid lightgrey !important;
+  color: black !important;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px !important;
+  font-weight: bold;
+}
+
+.btn-gray:hover {
+  background-color: lightgrey !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(lightgrey), to(lightgrey));
+  background-image: -moz-linear-gradient(top, lightgrey, lightgrey);
+  background-image: -ms-linear-gradient(top, lightgrey, lightgrey);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, lightgrey), color-stop(100%, lightgrey));
+  background-image: -webkit-linear-gradient(top, lightgrey, lightgrey);
+  background-image: -o-linear-gradient(top, lightgrey, lightgrey);
+  background-image: linear-gradient(#d3d3d3, #d3d3d3);
+  border: 1px solid lightgrey !important;
+  color: black !important;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px !important;
+  font-weight: bold;
+}
+
 .btn-lightgray {
   background-color: #cacaca !important;
   background-repeat: repeat-x;
@@ -6123,6 +6161,10 @@ input[type="submit"] {
   margin-top: 7px;
 }
 
+.profile-hr {
+  margin: 20px 0px 0px 0px;
+}
+
 .profile-input {
   width: 415px;
 }
@@ -6134,4 +6176,125 @@ input[type="submit"] {
 .btn-user-skill {
   width: 100px;
   margin: 0px 5px 10px 0px;
+}
+
+.create-lesson-title h2 {
+  margin: 0px;
+  height: 25px;
+}
+
+.btn-create-step {
+  width: 130px;
+  height: 32px;
+  margin-right: 20px;
+  text-align: left;
+  line-height: 29px;
+  font-size: 30px;
+  padding: 0px 0px 0px 5px;
+}
+
+.btn-create-step strong {
+  line-height: 32px;
+  font-size: 54px;
+  padding: 0px;
+}
+
+.create-step-text {
+  vertical-align: top;
+}
+
+.btn-create-step-2 {
+  margin: 0px 10px 0px 10px;
+}
+
+.create-lesson-title-step1 h3 {
+  margin: 10px 0px;
+  height: 32px;
+}
+
+.create-lesson-help-btn {
+  margin: 15px 20px 0px 0px;
+}
+
+.create-lesson-hr {
+  margin: 0px;
+}
+
+.create-lesson-input-small {
+  width: 100px;
+}
+
+.create-lesson-input-file {
+  width: 280px;
+}
+
+.create-lesson-input-mid {
+  width: 340px;
+}
+
+.create-lesson-input-dropdown {
+  width: 355px;
+}
+
+.create-lesson-input-menu-small {
+  width: 185px;
+}
+
+.create-lesson-input-menu-mid {
+  width: 200px;
+}
+
+.create-lesson-input-menu {
+  width: 200px;
+  height: 110px !important;
+}
+
+.create-lesson-input-large {
+  width: 415px;
+}
+
+.create-lesson-desc {
+  height: 100px !important;
+}
+
+.btn-lesson-file-upload {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 0px 0px 10px 0px;
+}
+
+.create-lesson-radiobox {
+  margin: 0px 0px 13px 0px;
+}
+
+.create-lesson-radiobox div:first-child {
+  margin: 0px 0px 0px 0px;
+}
+
+.create-lesson-2-input-small {
+  width: 40px;
+}
+
+.create-lesson-2-input-mid {
+  width: 120px;
+}
+
+.create-lesson-2-input-dropdown-small {
+  width: 55px;
+}
+
+.create-lesson-2-input-dropdown-mid {
+  width: 135px;
+}
+
+.btn-add {
+  height: 20px;
+  width: 20px;
+  padding: 3px;
+  font-size: 36px;
+}
+
+.create-lesson-add-ingredient {
+  margin: 10px 0px 0px 0px;
 }
