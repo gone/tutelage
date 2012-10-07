@@ -1,5 +1,5 @@
-
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -64,3 +64,13 @@ class RegistrationForm(forms.Form):
         if User.objects.filter(email__iexact=self.cleaned_data['email']):
             raise forms.ValidationError(_("This email address is already in use. Please supply a different email address."))
         return self.cleaned_data['email']
+
+
+
+class LoginForm(AuthenticationForm):
+    def clean_username(self):
+        try:
+            User.objects.get(email=self.cleaned_data['username'])
+        except User.DoesNotExist:
+            raise forms.ValidationError("There is no user registered with that email address? are you sure you don't need to signup?")
+        return self.cleaned_data['username']
