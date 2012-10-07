@@ -24,3 +24,20 @@ def lessons(request):
         lessons = paginator.page(paginator.num_pages)
 
     return direct_to_template(request, "lessons.html", {"lessons": lessons})
+
+
+
+def mylessons(request):
+    all_lessons = Lesson.objects.all()
+    lesson_paginator = Paginator(all_lessons, 16)
+    lesson_page = request.GET.get('lessons')
+    try:
+        lessons = lesson_paginator.page(lesson_page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        lessons = lesson_paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        lessons = lesson_paginator.page(lesson_paginator.num_pages)
+
+    return direct_to_template(request, "mylessons.html", {"lessons": lessons})
