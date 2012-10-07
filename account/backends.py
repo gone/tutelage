@@ -4,6 +4,9 @@ from django.conf import settings
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth.models import User
+from django.core.validators import email_re
+
+
 
 from registration import signals
 from .forms import RegistrationForm
@@ -69,3 +72,29 @@ class RegistrationBackend(object):
 
     def post_activation_redirect(self, request, user):
         raise NotImplementedError
+
+
+
+class BasicBackend(object):
+    def get_user(self, user_id):
+        try:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
+            return None
+
+class EmailBackend(BasicBackend):
+    def authenticate(self, username=None, password=None):
+        #If username is an email address, then try to pull it up
+        if email_re.search(username):
+            try:
+                user = User.objects.get(email=username)
+            except User.DoesNotExist:
+                return None
+        else:
+            #We have a non-email address username we should try username
+            try:
+                user = User.objects.get(username=username)
+            except User.DoesNotExist:
+                return None
+        if user.check_password(password):
+            return user

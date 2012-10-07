@@ -152,7 +152,7 @@ TEMPLATE_LOADERS = (
     "django.template.loaders.app_directories.Loader",
 )
 
-AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
+AUTHENTICATION_BACKENDS = ("account.backends.EmailBackend","mezzanine.core.auth_backends.MezzanineBackend",)
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -260,6 +260,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.core.context_processors.tz",
     "mezzanine.conf.context_processors.settings",
+    "account.context_processors.login_form",
+    "account.context_processors.signup_form",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
