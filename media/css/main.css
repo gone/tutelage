@@ -5539,6 +5539,10 @@ body {
   color: black;
 }
 
+input[type="submit"] {
+  box-sizing: content-box;
+}
+
 /* Navbar */
 .box {
   height: 55px;
@@ -5807,7 +5811,7 @@ body {
 }
 
 .btn-login {
-  width: 75px;
+  width: 75px !important;
 }
 
 .btn-login-span {

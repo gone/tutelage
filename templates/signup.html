@@ -1,35 +1,40 @@
 <div class="no-display">
       <div id="signup">
 		<div class="row">
-		  <div class="span4">
+		  <div class="span6 offset1">
 		    <h4>Sign up to start cooking</h4>
 
-		    <hr />
+		    <hr/>
 
-			<form class="login-form" target="/login" action="post">
+			<form class="signup-form" method="post" action="{% url account:register %}">
+              {% csrf_token %}
 			  <div id="firstname">
 				<h5>First Name</h5>
-				<input class="login-input" type="text" placeholder="">
+				<input name="first_name" class="login-input" type="text" placeholder="First Name">
 			  </div>
 			  <div id="lastname">
 				<h5>Last Name</h5>
-				<input class="login-input" type="text" placeholder="">
+				<input name="last_name" class="login-input" type="text" placeholder="Last Name">
 			  </div>
 			  <div id="email">
 				<h5>Email</h5>
-				<input class="login-input" type="text" placeholder="">
+				<input name="email" class="login-input" type="text" placeholder="Email">
 			  </div>
 			  <div id="password">
 				<h5>Password</h5>
-				<input class="login-input" type="password" placeholder="">
+				<input name="password1" class="login-input" type="password" placeholder="Password">
 			  </div>
 			  <div id="confirm-password">
 				<h5>Confirm Password</h5>
-				<input class="login-input" type="password" placeholder="">
+				<input name="password2" class="login-input" type="password" placeholder="Password again">
 			  </div>
 			  <div id="contact-checkbox" class="vertical-text-align">
-			    <input type="checkbox" name="contact-checkbox" value="">
+			    <input type="checkbox" name="contact" value="">
 			    <span class="">Send me updates, news, and offers.</span>
+			  </div>
+			  <div id="tos-checkbox" class="vertical-text-align">
+			    <input type="checkbox" name="tos" value="true">
+			    <span class="">I have read and agree to the Terms of Service</span>
 			  </div>
 
 			  <hr />
@@ -46,9 +51,7 @@
 
 				<div class="span2">
 				  <div class="signup-btn">
-				    <a class="btn btn-green btn-login pull-right">
-					  signup
-					</a>
+				    <input type="submit" class="btn btn-green btn-login pull-right" value="signup">
 				  </div>
 			    </div>
 			  </div>
@@ -56,7 +59,7 @@
               <div class="row">
                 <div class="span2 offset2 login-text">
                   <a href="#" class="login-btn">
-                    Login
+                    or Login
                   </a>
                 </div>
               </div>
@@ -64,7 +67,6 @@
 
 			</form>
 		  </div>
-
 		</div>
 	  </div>
 </div>

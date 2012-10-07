@@ -84,8 +84,9 @@ body {
 	color:	black;
 	}
 }
-
-
+input[type="submit"]{
+    box-sizing: content-box;
+}
 @import "local_navbar";
 @import "home";
 @import "colorbox";
