@@ -6044,6 +6044,10 @@ input[type="submit"] {
   white-space: nowrap;
 }
 
+.lesson-title:hover {
+  cursor: pointer;
+}
+
 .lesson:first-child {
   border-right: 1px solid lightgrey;
 }
