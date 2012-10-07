@@ -28,7 +28,7 @@ $border-color           :                 lightGray;
 }
 
 .no-display {
-	/* display: none; */
+	 display: none;
 }
 
 .green {
@@ -114,3 +114,6 @@ input[type="submit"]{
 @import "signup";
 @import "wprofile";
 @import "myprofile";
+
+
+@import "validationEngine.jquery";

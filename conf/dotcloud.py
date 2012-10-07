@@ -59,6 +59,9 @@ DATABASES = {
 HTTPS_SUPPORT=True
 
 
+MIDDLEWARE_CLASSES +=  ("mezzanine.core.middleware.FetchFromCacheMiddleware",)
+
+
 ####################
 # DYNAMIC SETTINGS #
 ####################
