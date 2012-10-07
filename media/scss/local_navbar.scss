@@ -8,22 +8,33 @@ $nav-padding: 5px;
     height: $nav-height;
     width: $nav-height;
     padding: $nav-padding;
-    padding-left: $nav-padding *2;
     border-left: 1px $border-color solid;
     margin-left: 0px !important;
+    cursor: pointer;
+}
 
+.box-login {
+	padding-top: 12px;
+	height: 48px;
 }
 
 .box:hover {
     background-color: $green;
+    color:	white;
 }
-.box p  {
+
+.box h5  {
+	display: inline-block;
+	width:100%;
     font-weight: bold;
+    text-align: center;
 }
 
 .nav-icon  {
-    height: 27px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 
 /*  overwriting some of the base bootstrap */
@@ -31,6 +42,7 @@ $nav-padding: 5px;
     height: 100% !important;
     border: 0px !important;
     width: 2px;
+    margin-right: 5px;
 }
 
 .nav  {
@@ -42,6 +54,16 @@ $nav-padding: 5px;
     margin-top: 15px !important;
     color: black !important;
     height: 100%;
+	background-color: white;
+	text-shadow: 0 0px 0 rgba(0, 0, 0, 0.00) !important;
+    -webkit-font-smoothing: antialiased;
+    background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
+    background-image: -moz-linear-gradient(top, white, white);
+    background-image: -ms-linear-gradient(top, white, white);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
+    background-image: -webkit-linear-gradient(top, white, white);
+    background-image: -o-linear-gradient(top, white, white);
+    background-image: linear-gradient(white, white);
 }
 
 .navbar-inner {
@@ -52,4 +74,15 @@ $nav-padding: 5px;
     background-color: white;
     /* for hover of login */
     padding-right: 0px !important;
+    background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
+    background-image: -moz-linear-gradient(top, white, white);
+    background-image: -ms-linear-gradient(top, white, white);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
+    background-image: -webkit-linear-gradient(top, white, white);
+    background-image: -o-linear-gradient(top, white, white);
+    background-image: linear-gradient(white, white);
 }
+
+
+
+

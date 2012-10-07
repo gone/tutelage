@@ -2,6 +2,8 @@
 
 $green                  :                 #01a64f;
 $blue					:				  #4ba5ff;
+$lightgray				:				  #cacaca;
+$darkgray				:				  #666666;
 $background             :                 #eeeeee;
 $border-color           :                 lightGray;
 
@@ -24,6 +26,7 @@ $border-color           :                 lightGray;
     border-radius: 0px !important;
     font-weight: bold;
 }
+
 .no-display {
 	/* display: none; */
 }
@@ -35,12 +38,9 @@ $border-color           :                 lightGray;
 .btn-green {
     @include colored-button($green)
 }
+
 .btn-green:hover{
-	background-color:	#4ba5ff;
-	/*
-    border: 1px solid black !important;
-    padding: 3px 13px !important;
-    */
+	@include colored-button($blue)
 }
 
 .btn-blue {
@@ -53,6 +53,18 @@ $border-color           :                 lightGray;
 
 .btn-clearblue:hover{
 	@include colored-button($blue,$blue,$white)
+}
+
+.btn-lightgray {
+	@include colored-button($lightgray,$lightgray,$white)
+}
+
+.btn-lightgray:hover {
+	@include colored-button($darkgray,$darkgray,$white)
+}
+
+.btn-darkgray {
+	@include colored-button($darkgray,$darkgray,$white)
 }
 
 .btn-white {
@@ -87,7 +99,13 @@ body {
 input[type="submit"]{
     box-sizing: content-box;
 }
+
+.vertical-align {
+	vertical-align: middle;
+}
+
 @import "local_navbar";
+@import "icons";
 @import "home";
 @import "colorbox";
 @import "about";
@@ -95,3 +113,4 @@ input[type="submit"]{
 @import "login";
 @import "signup";
 @import "wprofile";
+@import "myprofile";
