@@ -9,27 +9,53 @@
               {% csrf_token %}              
 			  <div id="firstname">
 				<h5>First Name</h5>
-				<input name="first_name" class="login-input" type="text" placeholder="First Name">
+				<input name="first_name" 
+					   class="login-input" 
+					   type="text" 
+					   placeholder="" 
+					   data-validation-engine="validate[required]"
+					   data-errormessage-value-missing="First name is required!">
 				{{signup_form.first_name.errors}}
 			  </div>
 			  <div id="lastname">
 				<h5>Last Name</h5>
-				<input name="last_name" class="login-input" type="text" placeholder="Last Name">
+				<input name="last_name" 
+					   class="login-input" 
+					   type="text" 
+					   placeholder="" 
+					   required
+					   data-validation-engine="validate[required]"
+					   data-errormessage-value-missing="Last name is required!">
 				{{signup_form.last_name.errors}}
 			  </div>
 			  <div id="email">
 				<h5>Email</h5>
-				<input name="email" class="login-input" type="text" placeholder="Email">
+				<input name="email" 
+					   class="login-input" 
+					   type="text" 
+					   placeholder="" 
+					   data-validation-engine="validate[required,custom[email]]"
+					   data-errormessage-value-missing="Email is required!">
 			    {{signup_form.email.errors}}
 			  </div>
 			  <div id="password">
 				<h5>Password</h5>
-				<input name="password1" class="login-input" type="password" placeholder="Password">
+				<input name="password1" 
+					   class="login-input" 
+					   type="password" 
+					   placeholder="" 
+					   data-validation-engine="validate[required]"
+					   data-errormessage-value-missing="Password is required!">
 				{{signup_form.passsword1.errors}}
 			  </div>
 			  <div id="confirm-password">                
 				<h5>Confirm Password</h5>
-				<input name="password2" class="login-input" type="password" placeholder="Password again">
+				<input name="password2" 
+					   class="login-input" 
+					   type="password" 
+					   placeholder="" 
+					   data-validation-engine="validate[required]"
+					   data-errormessage-value-missing="Please enter your password twice!">
 				{{signup_form.passsword2.errors}}
 				{{ signup_form.non_field_errors }}
 			  </div>
@@ -38,10 +64,10 @@
 			    <input type="checkbox" name="contact" value="">
 			    <span class="">Send me updates, news, and offers.</span>
 			  </div>
-			  <div id="tos-checkbox" class="vertical-text-align">
-                {{signup_form.tos.errors}}
+			  <div id="tos-checkbox" class="vertical-text-align">               
 			    <input type="checkbox" name="tos" value="true">
-			    <span class="">I have read and agree to the Terms of Service</span>
+			    <span class="">I have read and agree to the <a href="#">Terms of Service</a></span>
+			    {{signup_form.tos.errors}}
 			  </div>
 
 			  <hr />
