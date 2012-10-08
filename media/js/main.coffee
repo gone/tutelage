@@ -9,7 +9,8 @@ require ["jquery", "cs!validation"], ($) ->
                 href: selector
                 onComplete:() ->
                     $(selector).find('input[type="text"]').filter(":first").focus()
-
+                onCleanup: () ->
+                    form.validationEngine('hide')
 
         $(".login-btn").click () ->
             setupColorbox("#login")
