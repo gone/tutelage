@@ -1,15 +1,23 @@
 $(document).ready () ->
+    setupColorbox = (selector) ->
+        form = $(selector).find("form")
+        form.validationEngine('hide')
+
+        $.colorbox
+            inline: true
+            href: selector
+            onComplete:() ->
+                $(selector).find('input[type="text"]').filter(":first").focus()
+
+
     $(".login-btn").click () ->
-        $.colorbox
-            inline: true
-            href: "#login"
+        setupColorbox("#login")
+
     $(".signup-btn").click () ->
-        $.colorbox
-            inline: true
-            href: "#signup"
+        setupColorbox("#signup")
+
     $(".forgot-pass-btn").click () ->
-        $.colorbox
-            inline: true
-            href: "#forgot-password"
+        setupColorbox("#forgot-password")
+
     $(".cancel-btn").click () ->
         $.colorbox.close()
