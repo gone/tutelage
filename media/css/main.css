@@ -5700,7 +5700,13 @@ input[type="submit"] {
 .box-my {
   padding-top: 12px;
   height: 48px;
-  width: 75px;
+  width: 90px;
+}
+
+.box-ask {
+  padding-top: 8px;
+  height: 52px;
+  width: 65px;
 }
 
 .box:hover {
@@ -6223,11 +6229,6 @@ input[type="submit"] {
   text-align: left;
   line-height: 32px;
   font-size: 30px;
-}
-
-.btn-save {
-  margin-right: 20px;
-  margin-top: 7px;
 }
 
 .profile-hr {
