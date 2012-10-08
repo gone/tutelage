@@ -75,13 +75,19 @@ class FeaturedChef(Page):
 ##############################
 
 class Ingredient(CreatedMixin):
-    name = models.CharField(max_length=32, unique=True)
+    name = models.CharField(max_length=32, null=False)
+    number = models.IntegerField(null=False, blank=False, default="0")
+    measurement = models.CharField(max_length=32, null=False)
+    prep = models.CharField(max_length=32)
 
     def __unicode__(self):
         return self.name
 
 class Tool(CreatedMixin):
-    name = models.CharField(max_length=32, unique=True)
+    name = models.CharField(max_length=32, null=False)
+    size = models.CharField(max_length=32, null=False)
+    type = models.CharField(max_length=32)
+
 
     def __unicode__(self):
         return self.name
@@ -134,23 +140,30 @@ class Video(CreatedMixin):
     lesson = models.ForeignKey('Lesson', related_name='videos')
 
 class Lesson(CreatedMixin, Displayable):
-    teacher = models.ForeignKey(User, related_name='lessons_teaching')
+    teacher = models.ForeignKey(User, related_name='teaching')
     image = video = models.FileField(upload_to=file_url("lessonimage"))
     flavor_text = models.TextField(default="")
     price = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True)
     users_who_rated = models.ManyToManyField(User, through='LessonRating', related_name='rated_lessons')
-    followers = models.ManyToManyField(User, related_name='lessons_taking',  blank=True, null=True)
+    followers = models.ManyToManyField(User, related_name='lessons',  blank=True, null=True)
     serving_size = models.IntegerField()
 
     tags = models.CharField(max_length=128, default="")
 
-    meal_type = models.ManyToManyField('MealTypes')
-
     prep_time = DurationField()
     cooking_time = DurationField()
-    ingredients = models.ManyToManyField(Ingredient, related_name='recipies')
-    tools = models.ManyToManyField(Tool, related_name='recipies')
-    #techniques = asdf
+
+    primary_ingredients = models.ManyToManyField(Ingredient, related_name='primary_lessons')
+    course = models.ManyToManyField('Course')
+    cuisine = models.ManyToManyField('Cuisine')
+    restrictions = models.ManyToManyField("DietaryRestrictions")
+
+    kind = models.SmallIntegerField(choices=((0, "Recipe"),
+                                             (1, "Technique")), default=0)
+
+    ingredients = models.ManyToManyField(Ingredient, related_name="lessons")
+    tools = models.ManyToManyField(Tool, related_name="lessons")
+
 
     class Meta():
         unique_together = ('teacher', 'title')
@@ -169,11 +182,15 @@ class Lesson(CreatedMixin, Displayable):
 
 class Step(CreatedMixin):
     lesson = models.ForeignKey(Lesson, related_name='steps')
+    title = models.CharField(max_length=128, blank=False, null=False)
+
     text = models.TextField()
 
     order = models.PositiveSmallIntegerField(default=0)
     start_time = models.IntegerField(null=True, blank=True)
-    end_time = models.IntegerField(null=True, blank=True)
+    technique = models.ManyToManyField(Lesson, related_name="technique_steps")
+    ingredents = models.ManyToManyField(Ingredient, related_name="steps")
+    tools = models.ManyToManyField(Tool, related_name="steps")
 
     class Meta():
         ordering = ('order',)
@@ -197,5 +214,11 @@ class LessonRating(CreatedMixin):
         unique_together = ('user', 'lesson')
 
 
-class MealTypes(CreatedMixin):
-    pass
+class Course(CreatedMixin):
+    course = models.CharField(max_length=256)
+
+class Cuisine(CreatedMixin):
+    cuisine = models.CharField(max_length=256)
+
+class DietaryRestrictions(CreatedMixin):
+    restrcition = models.CharField(max_length=256)

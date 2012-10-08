@@ -9,7 +9,7 @@ require({
         "bootstrap": "lib/bootstrap",
         "colorbox": "lib/jquery.colorbox-min",
         "liveValidation": "lib/jquery.validationEngine",
-        "liveValidationEn": "lib/jquery.validationEngine-en"
+        "liveValidationEn": "lib/jquery.validationEngine-en",
         "popcorn": "lib/popcorn-complete",
     },
     shim:{
@@ -30,14 +30,14 @@ require({
             deps: ['jquery', "liveValidationEn"]
         },
         popcorn: {
-            exports: "Popcorn"
+            exports: "Popcorn",
             deps: ['jquery']
         }
 
     },
         urlArgs: "bust=" +  (new Date()).getTime(),
 },
-        ["jquery", "ember", "_", "bootstrap", "colorbox", "cs!main", "cs!validation", "cs!lesson"], function($, Em, _){
+        ["jquery", "ember", "_", "bootstrap", "colorbox", "cs!main", "cs!validation", "cs!lessons"], function($, Em, _){
             $(function(){
             });
         });

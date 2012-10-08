@@ -1,2 +1,3 @@
 require ["jquery", "popcorn"], ($, Popcorn) ->
-    $(document).ready () ->
+    makeLesson = (selector) ->
+        pop = Popcorn(selector)
