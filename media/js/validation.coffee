@@ -12,3 +12,5 @@ require ["jquery", "liveValidation"], ($) ->
             form.data('jqv')['showPrompt'] = true
             if isValid
                 form.find('input[type="submit"]').removeClass('disabled')
+            else
+                form.find('input[type="submit"]').addClass('disabled')
