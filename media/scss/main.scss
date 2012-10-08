@@ -84,6 +84,10 @@ $border-color           :                 lightGray;
     @include colored-button($pink,$pink,$white)
  }
 
+.btn-save {
+	margin-right:	20px;
+	margin-top:		7px;
+}
 
 body {
   background-color: $background !important;
