@@ -121,6 +121,17 @@ input[type="submit"]{
 	vertical-align: middle;
 }
 
+.errorlist {
+	@extend .alert;
+	@extend .alert-error;
+	list-style-type: none;
+	width: 250px;
+	margin-left: 0px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+
 @import "local_navbar";
 @import "icons";
 @import "home";
