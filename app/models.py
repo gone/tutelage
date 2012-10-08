@@ -150,7 +150,7 @@ class Lesson(CreatedMixin, Displayable):
     prep_time = model.DurationField()
     cooking_time = model.DurationField()
     ingredients = models.ManyToManyField(Ingredient, related_name='recipies')
-     tools = models.ManyToManyField(Tool, related_name='recipies')
+    tools = models.ManyToManyField(Tool, related_name='recipies')
     #techniques = asdf
 
     class Meta():
@@ -196,3 +196,7 @@ class LessonRating(CreatedMixin):
 
     class Meta():
         unique_together = ('user', 'lesson')
+
+
+class MealTypes(CreatedMixin):
+    pass
