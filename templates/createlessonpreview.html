@@ -1,0 +1,76 @@
+<div class="">
+      <div id="forgot-password">
+		<div class="row bordered lessons">
+		  <div class="span6">
+		    <h4>Preview Your Lesson</h4>
+
+		    <hr />
+
+			    <div class="lesson">
+				  <div class="row">
+					  <div class="span5 green lesson-title">
+						<h3>{{lesson.title}}</h3>
+					  </div>
+					  <div class="span1">
+						<h3 class="pull-right">${{lesson.price|default_if_none:"0"}}</h3>
+					  </div>
+				  </div>
+
+				  <div class="row">
+					<div class="span2 offset4 lesson-author">by <a href="#">{{lesson.teacher}}</a></div>
+				  </div>
+				  <hr/>
+				  <div class="row">
+					<div class="span3 lesson-tile-left">
+					  <img src={{MEDIA_URL}}{{page.home.hero}} />
+					</div>
+					<div class="span3">
+					  <a class="btn btn-blue">Preview</a>
+					  <a class="btn btn-green pull-right">Purchase</a>
+					</div>
+				  </div>
+				  <hr/>
+				  <div class="row">
+					<div class="span3">
+					  <video width="100%" src={{MEDIA_URL}}{{lesson.video}} />
+					</div>
+					<div class="span3 lesson-tile-right">
+						<p><small>{{lesson.flavor_text}}</small></p>
+						<ul class="recipe-info">
+						  <li>Serves: 4</li>
+						  <li>Prep Time: 15 minutes</li>
+						  <li>Cooking Time: 35 minutes</li>
+						</ul>
+					</div>
+				  </div>
+
+				  <div class="row">
+					  <div class="span6 lesson-tile-left">
+						<a class="btn btn-clearblue">Seafood</a>
+						<a class="btn btn-clearblue">Gluten-free</a>
+					  </div>
+				  </div>
+				</div>												
+			
+			<hr />
+
+			<div class="row">
+			    <div class="span4">
+				  <div class="login-btn">
+					<a class="btn btn-white btn-login pull-right">
+					  edit
+				    </a>
+				  </div>
+				</div>
+
+				<div class="span2">
+				    <a class="btn btn-green btn-login pull-right">
+					  publish
+					</a>
+			    </div>
+			</div>
+
+		  </div>
+		</div>
+	  </div>
+</div>
