@@ -134,7 +134,6 @@ class Video(CreatedMixin):
     lesson = models.ForeignKey('Lesson', related_name='videos')
 
 class Lesson(CreatedMixin, Displayable):
-    title = models.TextField(char_length=256)
     teacher = models.ForeignKey(User, related_name='lessons_teaching')
     image = video = models.FileField(upload_to=file_url("lessonimage"))
     flavor_text = models.TextField(default="")
@@ -147,8 +146,8 @@ class Lesson(CreatedMixin, Displayable):
 
     meal_type = models.ManyToManyField('MealTypes')
 
-    prep_time = model.DurationField()
-    cooking_time = model.DurationField()
+    prep_time = DurationField()
+    cooking_time = DurationField()
     ingredients = models.ManyToManyField(Ingredient, related_name='recipies')
     tools = models.ManyToManyField(Tool, related_name='recipies')
     #techniques = asdf
