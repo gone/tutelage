@@ -4,6 +4,7 @@ $green                  :                 #01a64f;
 $blue					:				  #4ba5ff;
 $lightgray				:				  #cacaca;
 $darkgray				:				  #666666;
+$pink					:				  #ff9999;
 $background             :                 #eeeeee;
 $border-color           :                 lightGray;
 
@@ -77,6 +78,10 @@ $border-color           :                 lightGray;
 
 .btn-white {
     @include colored-button($white,$black,$black)
+ }
+
+.btn-white:hover {
+    @include colored-button($pink,$pink,$white)
  }
 
 
