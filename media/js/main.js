@@ -8,6 +8,9 @@ require({
         "jquery": "require/require-jquery",
         "bootstrap": "lib/bootstrap",
         "colorbox": "lib/jquery.colorbox-min",
+        "liveValidation": "lib/jquery.validationEngine",
+        "liveValidationEn": "lib/jquery.validationEngine-en"
+        "popcorn": "lib/popcorn-complete",
     },
     shim:{
         ember: {
@@ -22,11 +25,19 @@ require({
         },
         colorbox: {
             deps: ['jquery']
+        },
+        liveValidation: {
+            deps: ['jquery', "liveValidationEn"]
+        },
+        popcorn: {
+            exports: "Popcorn"
+            deps: ['jquery']
         }
+
     },
         urlArgs: "bust=" +  (new Date()).getTime(),
 },
-        ["jquery", "ember", "_", "bootstrap", "colorbox", "cs!main"], function($, Em, _){
+        ["jquery", "ember", "_", "bootstrap", "colorbox", "cs!main", "cs!validation", "cs!lesson"], function($, Em, _){
             $(function(){
             });
         });

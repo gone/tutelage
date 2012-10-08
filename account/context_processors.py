@@ -1,18 +1,16 @@
 from django.core.urlresolvers import reverse
 
-from .forms import RegistrationForm, LoginForm
-
-def login_form(request):
-    if request.user.is_authenticated() or \
-            request.get_full_path() == reverse("account:auth_login"):
-        return {}
-    login_form = LoginForm()
-    return {'login_form ': login_form}
+from .forms import RegistrationForm, LoginForm, PasswordResetForm
 
 
-def signup_form(request):
-    if request.user.is_authenticated() or \
-            request.get_full_path() == reverse("account:register"):
-        return {}
-    signup_form = RegistrationForm()
-    return {'signup_form': signup_form}
+def forms(request):
+    forms = {}
+    if request.user.is_authenticated():
+        return forms
+    if not request.get_full_path() == reverse("account:auth_login"):
+        forms['login_form'] = LoginForm()
+    if not request.get_full_path() == reverse("account:register"):
+        forms['signup_form'] = RegistrationForm()
+    if not request.get_full_path() == reverse("password_reset"):
+        forms['fpassword_form'] = PasswordResetForm()
+    return forms

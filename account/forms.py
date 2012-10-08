@@ -1,8 +1,9 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import PasswordResetForm as DjangoPasswordResetForm
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-
 
 # I put this on all required fields, because it's easier to pick up
 # on them with CSS or JavaScript if they have a class of "required"
@@ -41,6 +42,7 @@ class RegistrationForm(forms.Form):
                              label=_(u'I have read and agree to the Terms of Service'),
                              error_messages={'required': _("You must agree to the terms to register")})
 
+    next = forms.CharField()
 
     def clean(self):
         """
@@ -68,9 +70,14 @@ class RegistrationForm(forms.Form):
 
 
 class LoginForm(AuthenticationForm):
+    next = forms.CharField(widget=forms.HiddenInput)
     def clean_username(self):
         try:
             User.objects.get(email=self.cleaned_data['username'])
         except User.DoesNotExist:
             raise forms.ValidationError("There is no user registered with that email address? are you sure you don't need to signup?")
         return self.cleaned_data['username']
+
+
+class PasswordResetForm(DjangoPasswordResetForm):
+    next = forms.CharField()

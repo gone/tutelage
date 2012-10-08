@@ -47,4 +47,6 @@ django-registration
 hiredis
 redis
 django-redis-cache
+#doesn't seem to like grappelli
 django-redis-status
+django-durationfield

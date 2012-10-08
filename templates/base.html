@@ -50,16 +50,13 @@
         {% block content %}  {% endblock %}
       </div>
     </div>
+    <div class="row no-display">
     {% include "signup.html" %}
     {% include "login.html" %}
 	{% include "fpassword.html" %}
-	{% include "rpassword.html" %}
 	{% include "cpassword.html" %}
 	{% include "wprofile.html" %}
-	{% include "createlessonq.html" %}
-	{% include "createlessonpreview.html" %}
+    </div>
 	{% editable_loader %}
-
-
   </body>
 </html>

@@ -29,7 +29,7 @@ $border-color           :                 lightGray;
 }
 
 .no-display {
-	/* display: none; */
+	 display: none;
 }
 
 .green {
@@ -143,3 +143,5 @@ input[type="submit"]{
 @import "wprofile";
 @import "myprofile";
 @import "createlesson";
+
+@import "validationEngine.jquery";

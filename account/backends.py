@@ -40,6 +40,7 @@ class RegistrationBackend(object):
         signals.user_registered.send(sender=self.__class__,
                                      user=new_user,
                                      request=request)
+        ##TODO: flash a message here that you've registered successfully
         return new_user
 
     def activate(self, **kwargs):
@@ -68,7 +69,8 @@ class RegistrationBackend(object):
         After registration, redirect to the user's account page.
 
         """
-        return (user.get_absolute_url(), (), {})
+        r = request.get("next") or user.get_absolute_url()
+        return (r, (), {})
 
     def post_activation_redirect(self, request, user):
         raise NotImplementedError
