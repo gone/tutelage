@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% autoescape off %}
+<div class="bordered-row main bordered">
+
+    <div class="span6">
+	  <div class="create-lesson-title">
+	    <h2>Create New Lesson</h2>
+	  </div>
+	</div>
+
+	<div class="span2 vertical-align">			
+	  <div class="create-step-btn">
+	    <a class="btn btn-lightgray btn-create-step pull-left">
+		  <span class="create-step-text">step &#160; &#160;</span><strong>1</strong>
+		</a>
+	  </div>
+	</div>
+	
+	<div class="span2 btn-create-step-2">			
+	  <div class="create-step-btn">
+		<a class="btn btn-darkgray btn-create-step">
+		  <span class="create-step-text">step &#160; &#160;</span><strong>2</strong>
+		</a>
+	  </div>
+	</div>
+	
+	<div class="span2">			
+	  <div class="create-step-btn">
+		<a class="btn btn-lightgray btn-create-step pull-right">
+		  <span class="create-step-text">step &#160; &#160;</span><strong>3</strong>
+		</a>
+	  </div>
+	</div>
+	
+  <div class="span12">
+	<div class="row">
+	  <hr class="profile-hr" />
+	</div>
+	
+	<div class="row">
+	  <div class="span8 create-lesson-title-step1">
+		<h3 class="colored-header">2. Ingredients &amp; Tools</h3>
+	  </div>
+	  
+	  <div class="span4 pull-right">
+		<a href="#" class="create-lesson-help-btn pull-right">Need help?</a>
+	  </div> 
+	</div>
+	
+	<div class="row">
+	  <hr class="create-lesson-hr"/>
+	</div>
+
+	<div class="row">
+	  <form class="profile-form" target="" action="post"> 
+		  <div class="span6">		  
+			<div id="create-lesson-form-2-left">
+				<div id="createlessontitle">
+				  <h5>Ingredients</h5>
+				</div>
+				
+				<div class="row">
+				  <hr class="create-lesson-hr"/>
+				</div>
+				
+				<div class="row">
+				  <div class="span2">Name</div>
+				  <div class="span1">Number</div>
+				  <div class="span2">Measurement</div>
+				  <div class="span1">Type</div>
+				</div>
+	
+				<div class="row">
+				  <div class="span2">
+					<input class="create-lesson-2-input-mid" type="text" placeholder="">
+				  </div>
+				  <div class="span1">
+				    <input class="create-lesson-2-input-small" name="ingredientamount" type="number" min="0" max="100" placeholder="">
+				  </div>
+				  <div class="span2">
+				    <select class="create-lesson-2-input-dropdown-mid" name="ingredientmeasurement">
+				      <option>filet</option>
+				      <option>full</option>
+				      <option>processed</option>
+				    </select>	
+				  </div>
+				  <div class="span1">
+				    <select class="create-lesson-2-input-dropdown-small" name="ingredienttype">
+				      <option>fresh</option>
+				      <option>frozen</option>
+				    </select>	
+				  </div>	
+				</div>
+				
+				<div class="row">
+				  <hr class="create-lesson-hr"/>
+				</div>
+				
+				<div class="row">
+				  <div class="span1 pull-left">
+					<a class="btn btn-green btn-save btn-add pull-left">
+					<strong>&#43;</strong>
+					</a>
+				  </div>
+				  
+				  <div class="span2 create-lesson-add-ingredient">
+				    <span class="vertical-align"><strong>add ingredient</strong></span>
+				  </div>
+				  
+			    </div>
+			</div>
+		  </div>	
+
+		  <div class="span6">		  
+			<div id="create-lesson-form-2-right">
+				<div id="createlessontitle">
+				  <h5>Tools</h5>
+				</div>
+				
+				<div class="row">
+				  <hr class="create-lesson-hr"/>
+				</div>
+				
+				<div class="row">
+				  <div class="span2">Name</div>
+				  <div class="span2">Size</div>
+				  <div class="span2">Type</div>
+				</div>
+	
+				<div class="row">
+				  <div class="span2">
+					<input class="create-lesson-2-input-mid" type="text" placeholder="">
+				  </div>
+				  <div class="span2">
+				    <select class="create-lesson-2-input-dropdown-mid" name="ingredientmeasurement">
+				      <option>small</option>
+				      <option>medium</option>
+				      <option>large</option>
+				    </select>	
+				  </div>
+				  <div class="span2">
+				    <select class="create-lesson-2-input-dropdown-mid" name="ingredienttype">
+				      <option>sharpened</option>
+				      <option>dull</option>
+				    </select>	
+				  </div>	
+				</div>
+				
+				<div class="row">
+				  <hr class="create-lesson-hr"/>
+				</div>
+				
+				<div class="row">
+				  <div class="span1 pull-left">
+					<a class="btn btn-green btn-save btn-add pull-left">
+					<strong>&#43;</strong>
+					</a>
+				  </div>
+				  
+				  <div class="span2 create-lesson-add-ingredient">
+				    <span class="vertical-align"><strong>add tool</strong></span>
+				  </div>
+				  
+			    </div>
+				 
+			</div>
+		  </div>
+
+	  </form>
+	</div>
+	
+	<div class="row">
+	  <hr />
+	</div>
+	
+	<div class="row">
+	  <div class="span11">
+		<a class="btn btn-green btn-save pull-right">
+		  back
+		</a>
+	  </div>
+	  <div class="span1 pull-right">
+		<a class="btn btn-green btn-save pull-right">
+		  next
+		</a>
+	  </div>
+	</div>  
+	  
+
+  </div>
+</div>
+
+
+  {% endautoescape %}
+  {% endblock %}

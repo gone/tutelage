@@ -5509,6 +5509,44 @@ a.label:hover, a.badge:hover {
   font-weight: bold;
 }
 
+.btn-gray {
+  background-color: white !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
+  background-image: -moz-linear-gradient(top, white, white);
+  background-image: -ms-linear-gradient(top, white, white);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
+  background-image: -webkit-linear-gradient(top, white, white);
+  background-image: -o-linear-gradient(top, white, white);
+  background-image: linear-gradient(#ffffff, #ffffff);
+  border: 1px solid lightgrey !important;
+  color: black !important;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px !important;
+  font-weight: bold;
+}
+
+.btn-gray:hover {
+  background-color: lightgrey !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(lightgrey), to(lightgrey));
+  background-image: -moz-linear-gradient(top, lightgrey, lightgrey);
+  background-image: -ms-linear-gradient(top, lightgrey, lightgrey);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, lightgrey), color-stop(100%, lightgrey));
+  background-image: -webkit-linear-gradient(top, lightgrey, lightgrey);
+  background-image: -o-linear-gradient(top, lightgrey, lightgrey);
+  background-image: linear-gradient(#d3d3d3, #d3d3d3);
+  border: 1px solid lightgrey !important;
+  color: black !important;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px !important;
+  font-weight: bold;
+}
+
 .btn-lightgray {
   background-color: #cacaca !important;
   background-repeat: repeat-x;
@@ -5585,6 +5623,30 @@ a.label:hover, a.badge:hover {
   font-weight: bold;
 }
 
+.btn-white:hover {
+  background-color: #ff9999 !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ff9999), to(#ff9999));
+  background-image: -moz-linear-gradient(top, #ff9999, #ff9999);
+  background-image: -ms-linear-gradient(top, #ff9999, #ff9999);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff9999), color-stop(100%, #ff9999));
+  background-image: -webkit-linear-gradient(top, #ff9999, #ff9999);
+  background-image: -o-linear-gradient(top, #ff9999, #ff9999);
+  background-image: linear-gradient(#ff9999, #ff9999);
+  border: 1px solid #ff9999 !important;
+  color: white !important;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px !important;
+  font-weight: bold;
+}
+
+.btn-save {
+  margin-right: 20px;
+  margin-top: 7px;
+}
+
 body {
   background-color: #eeeeee !important;
 }
@@ -5628,6 +5690,23 @@ input[type="submit"] {
 .box-login {
   padding-top: 12px;
   height: 48px;
+}
+
+.box-logout {
+  padding-top: 6px;
+  height: 54px;
+}
+
+.box-my {
+  padding-top: 12px;
+  height: 48px;
+  width: 90px;
+}
+
+.box-ask {
+  padding-top: 8px;
+  height: 52px;
+  width: 65px;
 }
 
 .box:hover {
@@ -5699,7 +5778,8 @@ input[type="submit"] {
 .sprite-icons-learn,
 .sprite-icons-signup,
 .sprite-icons-ask,
-.sprite-icons-about {
+.sprite-icons-about,
+.sprite-icons-logout {
   background-image: url("../img/icons.png");
   background-repeat: no-repeat;
 }
@@ -5830,30 +5910,63 @@ input[type="submit"] {
   height: 26px;
 }
 
+.sprite-icons-logout:hover {
+  background-position: -131px -78px;
+  width: 22px;
+  height: 24px;
+}
+
+.sprite-icons-logout:active {
+  background-position: 0px -106px;
+  width: 22px;
+  height: 24px;
+}
+
+.sprite-icons-logout {
+  background-position: -22px -106px;
+  width: 22px;
+  height: 24px;
+}
+
 .box:hover .sprite-icons-tutor {
-  background-position: -76px -27px;
+  background-position: -76px 0px;
   width: 29px;
   height: 27px;
 }
 .box:hover .sprite-icons-learn {
-  background-position: -44px -56px;
+  background-position: -29px -56px;
   width: 15px;
   height: 27px;
 }
+.box:hover .sprite-icons-ask {
+  background-position: -105px -52px;
+  width: 26px;
+  height: 23px;
+}
 .box:hover .sprite-icons-about {
-  background-position: -131px -26px;
+  background-position: -131px 0px;
   width: 26px;
   height: 26px;
 }
 .box:hover .sprite-icons-signup {
-  background-position: -105px 0px;
+  background-position: -75px -56px;
   width: 26px;
   height: 26px;
 }
 .box:hover .sprite-icons-login {
-  background-position: 0px -19px;
+  background-position: 0px 0px;
   width: 38px;
   height: 19px;
+}
+.box:hover .sprite-icons-logout {
+  background-position: -131px -78px;
+  width: 22px;
+  height: 24px;
+}
+.box:hover .sprite-icons-my {
+  background-position: -38px -19px;
+  width: 34px;
+  height: 18px;
 }
 
 .main {
@@ -6070,7 +6183,7 @@ input[type="submit"] {
 
 .login_info h3, .login_info h4 {
   color: #01a64f;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 
 .login-input {
@@ -6118,9 +6231,8 @@ input[type="submit"] {
   font-size: 30px;
 }
 
-.btn-save {
-  margin-right: 20px;
-  margin-top: 7px;
+.profile-hr {
+  margin: 20px 0px 0px 0px;
 }
 
 .profile-input {
@@ -6134,6 +6246,127 @@ input[type="submit"] {
 .btn-user-skill {
   width: 100px;
   margin: 0px 5px 10px 0px;
+}
+
+.create-lesson-title h2 {
+  margin: 0px;
+  height: 25px;
+}
+
+.btn-create-step {
+  width: 130px;
+  height: 32px;
+  margin-right: 20px;
+  text-align: left;
+  line-height: 29px;
+  font-size: 30px;
+  padding: 0px 0px 0px 5px;
+}
+
+.btn-create-step strong {
+  line-height: 32px;
+  font-size: 54px;
+  padding: 0px;
+}
+
+.create-step-text {
+  vertical-align: top;
+}
+
+.btn-create-step-2 {
+  margin: 0px 10px 0px 10px;
+}
+
+.create-lesson-title-step1 h3 {
+  margin: 10px 0px;
+  height: 32px;
+}
+
+.create-lesson-help-btn {
+  margin: 15px 20px 0px 0px;
+}
+
+.create-lesson-hr {
+  margin: 0px;
+}
+
+.create-lesson-input-small {
+  width: 100px;
+}
+
+.create-lesson-input-file {
+  width: 280px;
+}
+
+.create-lesson-input-mid {
+  width: 340px;
+}
+
+.create-lesson-input-dropdown {
+  width: 355px;
+}
+
+.create-lesson-input-menu-small {
+  width: 185px;
+}
+
+.create-lesson-input-menu-mid {
+  width: 200px;
+}
+
+.create-lesson-input-menu {
+  width: 200px;
+  height: 110px !important;
+}
+
+.create-lesson-input-large {
+  width: 415px;
+}
+
+.create-lesson-desc {
+  height: 100px !important;
+}
+
+.btn-lesson-file-upload {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 0px 0px 10px 0px;
+}
+
+.create-lesson-radiobox {
+  margin: 0px 0px 13px 0px;
+}
+
+.create-lesson-radiobox div:first-child {
+  margin: 0px 0px 0px 0px;
+}
+
+.create-lesson-2-input-small {
+  width: 40px;
+}
+
+.create-lesson-2-input-mid {
+  width: 120px;
+}
+
+.create-lesson-2-input-dropdown-small {
+  width: 55px;
+}
+
+.create-lesson-2-input-dropdown-mid {
+  width: 135px;
+}
+
+.btn-add {
+  height: 20px;
+  width: 20px;
+  padding: 3px;
+  font-size: 36px;
+}
+
+.create-lesson-add-ingredient {
+  margin: 10px 0px 0px 0px;
 }
 
 /* Z-INDEX */

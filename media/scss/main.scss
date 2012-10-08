@@ -4,6 +4,7 @@ $green                  :                 #01a64f;
 $blue					:				  #4ba5ff;
 $lightgray				:				  #cacaca;
 $darkgray				:				  #666666;
+$pink					:				  #ff9999;
 $background             :                 #eeeeee;
 $border-color           :                 lightGray;
 
@@ -55,6 +56,14 @@ $border-color           :                 lightGray;
 	@include colored-button($blue,$blue,$white)
 }
 
+.btn-gray {
+	@include colored-button($white,lightGray,$black)
+}
+
+.btn-gray:hover {
+	@include colored-button(lightGray,lightGray,$black)
+}
+
 .btn-lightgray {
 	@include colored-button($lightgray,$lightgray,$white)
 }
@@ -71,6 +80,14 @@ $border-color           :                 lightGray;
     @include colored-button($white,$black,$black)
  }
 
+.btn-white:hover {
+    @include colored-button($pink,$pink,$white)
+ }
+
+.btn-save {
+	margin-right:	20px;
+	margin-top:		7px;
+}
 
 body {
   background-color: $background !important;
@@ -114,6 +131,6 @@ input[type="submit"]{
 @import "signup";
 @import "wprofile";
 @import "myprofile";
-
+@import "createlesson";
 
 @import "validationEngine.jquery";

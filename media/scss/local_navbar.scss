@@ -18,6 +18,23 @@ $nav-padding: 5px;
 	height: 48px;
 }
 
+.box-logout {
+	padding-top: 6px;
+	height: 54px;
+}
+
+.box-my {
+	padding-top: 12px;
+	height: 48px;
+	width: 90px;
+}
+
+.box-ask {
+	padding-top: 8px;
+	height: 52px;
+	width: 65px;
+}
+
 .box:hover {
     background-color: $green;
     color:	white;

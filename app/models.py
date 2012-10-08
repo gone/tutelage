@@ -9,7 +9,7 @@ from mezzanine.pages.models import Page
 from mezzanine.core.models import Displayable
 from mezzanine.core.fields import RichTextField
 
-from ecl_django.models import CreatedMixin
+from durationfield.db.models.fields.duration import DurationField
 
 
 def file_url(name):
@@ -21,6 +21,34 @@ def file_url(name):
         return 'uploads/{0}/{1.year:04}/{1.month:02}/{1.day:02}/{2}/{3}'.format( \
                 name, now, timestamp, filename)
     return inner
+
+
+BREAKFAST = 0
+LUNCH = 1
+DINNER = 2
+SNACK = 3
+
+MEAL_TYPES = (
+  (BREAKFAST, _('Breakfast')),
+  (LUNCH, _('Lunch')),
+  (DINNER, _('Dinner')),
+  (Snack, _('Snack')),
+)
+
+
+
+
+class CreatedMixin(models.Model):
+    """
+    Abstract model mixin that adds `created_on` and `updated_on` fields to
+    models.
+    """
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    class Meta():
+        abstract = True
+
 
 
 class Home(Page):
@@ -117,36 +145,28 @@ class CreditCard(CreatedMixin):
     stripe_customer_id = models.CharField(max_length=32, null=True, blank=True)
 
 
-
-class Recipie(CreatedMixin, Displayable):
-    tags = models.CharField(max_length=128, default="")
-    ## ingredients = models.ManyToManyField(Ingredient, related_name='recipies')
-    ## tools = models.ManyToManyField(Tool, related_name='recipies')
-    #techniques = asdf
-
-    # @property
-    # def rating(self):
-    #     #TODO: user proper rating algo. Find that sucker online.
-    #     result = self.ratings.aggregate(avg=Avg('rating'))['avg']
-    #     if not result:
-    #         return 0
-    #     return result
-
-    # def __unicode__(self):
-    #     return self.title
-
-
-
+class Video(CreatedMixin):
+    video = models.FileField(upload_to=file_url("lessonvideos"))
+    lesson = models.ForeignKey('Lesson', related_name='videos')
 
 class Lesson(CreatedMixin, Displayable):
+    title = models.TextField(char_length=256)
     teacher = models.ForeignKey(User, related_name='lessons_teaching')
-    recipie = models.ForeignKey(Recipie, related_name='lessons')
-    video = models.FileField(upload_to=file_url("lessonvideos"))
-
+    image = video = models.FileField(upload_to=file_url("lessonimage"))
     flavor_text = models.TextField(default="")
     price = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True)
     users_who_rated = models.ManyToManyField(User, through='LessonRating', related_name='rated_lessons')
     followers = models.ManyToManyField(User, related_name='lessons_taking',  blank=True, null=True)
+    serving_size = models.IntegerField()
+
+    tags = models.CharField(max_length=128, default="")
+
+    meal_type = models.PositiveSmallIntegerField(choices=MEAL_TYPES)
+
+    prep_time = model.DurationField()
+    ## ingredients = models.ManyToManyField(Ingredient, related_name='recipies')
+    ## tools = models.ManyToManyField(Tool, related_name='recipies')
+    #techniques = asdf
 
     class Meta():
         unique_together = ('teacher', 'title')
@@ -163,9 +183,10 @@ class Lesson(CreatedMixin, Displayable):
         return self.title
 
 
-
 class Step(CreatedMixin):
     lesson = models.ForeignKey(Lesson, related_name='steps')
+    text = models.TextField()
+
     order = models.PositiveSmallIntegerField(default=0)
     start_time = models.IntegerField(null=True, blank=True)
     end_time = models.IntegerField(null=True, blank=True)

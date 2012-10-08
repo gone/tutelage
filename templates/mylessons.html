@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% autoescape off %}
+<div class="bordered-row main bordered">
+
+    <div class="span12">		
+	  <div class="profile-btn">
+	    <a class="btn btn-lightgray btn-profile">
+		  account
+		</a>
+		<a class="btn btn-darkgray btn-profile pull-right">
+		  tutoring
+		</a>
+	  </div>
+	</div>
+	
+
+	
+	<div class="span12">
+	  <div class="row">
+	    <hr class="profile-hr"/>
+	  </div>
+	  
+	  <div class="row">
+	    <div class="span8">
+		  <div class="mylessons-title">
+			<h3>Lessons I'm Tutoring</h3>
+		  </div>
+	    </div>
+	  
+	    <div class="span4 pull-right">
+		  <a class="btn btn-green btn-save pull-right">
+		  create new lesson
+		  </a>
+	    </div>
+	  </div>	  
+	</div>
+	
+</div>
+
+
+{% for lesson in lessons %}
+{% cycle "True" "" as newrow silent %}
+{% if newrow %}
+<div class="row bordered lessons">
+{% endif %}
+    <div class="span6 lesson">
+ 	  <div class="row">
+		  <div class="span5 green lesson-title">
+			<h3>{{lesson.title}}</h3>
+		  </div>
+		  <div class="span1">
+			<h3 class="pull-right">${{lesson.price|default_if_none:"0"}}</h3>
+		  </div>
+      </div>
+
+      <div class="row">
+		<div class="span2 offset4 lesson-author">by <a href="#">{{lesson.teacher}}</a></div>
+      </div>
+      <hr/>
+      <div class="row">
+		<div class="span3 lesson-tile-left">
+		  <img src={{MEDIA_URL}}{{page.home.hero}} />
+		</div>
+        <div class="span3">
+		  <a class="btn btn-blue">Preview</a>
+		  <a class="btn btn-green pull-right">Purchase</a>
+		</div>
+      </div>
+      <hr/>
+	  <div class="row">
+        <div class="span3">
+		  <video width="100%" src={{MEDIA_URL}}{{lesson.video}} />
+        </div>
+		<div class="span3 lesson-tile-right">
+			<p><small>{{lesson.flavor_text}}</small></p>
+			<ul class="recipe-info">
+              <li>Serves: 4</li>
+			  <li>Prep Time: 15 minutes</li>
+			  <li>Cooking Time: 35 minutes</li>
+            </ul>
+		</div>
+      </div>
+
+	  <div class="row">
+		  <div class="span6 lesson-tile-left">
+			<a class="btn btn-clearblue">Seafood</a>
+			<a class="btn btn-clearblue">Gluten-free</a>
+		  </div>
+      </div>
+    </div>
+{% if not newrow %}
+</div>
+{% endif %}
+{% endfor %}
+
+<ul class="pager">
+  {% if lessons.has_previous %}
+  <li class="previous">
+    <a href="?page={{ lessons.previous_page_number }}" class="previous">Previous</a>
+  </li>
+  {% else %}
+  <li class="previous disabled">
+    <a href="#"  class="previous disabled">Previous</a>
+  <li>
+  {% endif %}
+  {% if lessons.has_next %}
+  <li class="next">
+    <a href="?page={{ lessons.next_page_number }}" class="next">Next</a>
+  </li>
+  {% else %}
+  <li class="next disabled">
+    <a href="#"  class="next disabled">Next</a>
+  <li>
+  {% endif %}
+</ul>
+
+{% endautoescape %}
+{% endblock %}  
