@@ -22,22 +22,6 @@ def file_url(name):
                 name, now, timestamp, filename)
     return inner
 
-
-BREAKFAST = 0
-LUNCH = 1
-DINNER = 2
-SNACK = 3
-
-MEAL_TYPES = (
-  (BREAKFAST, _('Breakfast')),
-  (LUNCH, _('Lunch')),
-  (DINNER, _('Dinner')),
-  (Snack, _('Snack')),
-)
-
-
-
-
 class CreatedMixin(models.Model):
     """
     Abstract model mixin that adds `created_on` and `updated_on` fields to
@@ -161,11 +145,12 @@ class Lesson(CreatedMixin, Displayable):
 
     tags = models.CharField(max_length=128, default="")
 
-    meal_type = models.PositiveSmallIntegerField(choices=MEAL_TYPES)
+    meal_type = models.ManyToManyField('MealTypes')
 
     prep_time = model.DurationField()
-    ## ingredients = models.ManyToManyField(Ingredient, related_name='recipies')
-    ## tools = models.ManyToManyField(Tool, related_name='recipies')
+    cooking_time = model.DurationField()
+    ingredients = models.ManyToManyField(Ingredient, related_name='recipies')
+     tools = models.ManyToManyField(Tool, related_name='recipies')
     #techniques = asdf
 
     class Meta():
