@@ -7,32 +7,32 @@
 		    <hr/>
 
 			<form class="signup-form" method="post" action="{% url account:register %}">
-              {% csrf_token %}
-              {{ signup_form.non_field_errors }}
+              {% csrf_token %}              
 			  <div id="firstname">
-                {{signup_form.first_name.errors}}
 				<h5>First Name</h5>
 				<input name="first_name" class="login-input" type="text" placeholder="First Name">
+				{{signup_form.first_name.errors}}
 			  </div>
 			  <div id="lastname">
-                {{signup_form.last_name.errors}}
 				<h5>Last Name</h5>
 				<input name="last_name" class="login-input" type="text" placeholder="Last Name">
+				{{signup_form.last_name.errors}}
 			  </div>
 			  <div id="email">
-                {{signup_form.email.errors}}
 				<h5>Email</h5>
 				<input name="email" class="login-input" type="text" placeholder="Email">
+			    {{signup_form.email.errors}}
 			  </div>
 			  <div id="password">
-                {{signup_form.passsword1.errors}}
 				<h5>Password</h5>
 				<input name="password1" class="login-input" type="password" placeholder="Password">
+				{{signup_form.passsword1.errors}}
 			  </div>
-			  <div id="confirm-password">
-                {{signup_form.passsword2.errors}}
+			  <div id="confirm-password">                
 				<h5>Confirm Password</h5>
 				<input name="password2" class="login-input" type="password" placeholder="Password again">
+				{{signup_form.passsword2.errors}}
+				{{ signup_form.non_field_errors }}
 			  </div>
 			  <div id="contact-checkbox" class="vertical-text-align">
                 {{signup_form.contact.errors}}
