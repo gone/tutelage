@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% autoescape off %}
 <div class="bordered-row main bordered">
 
   <div class="span6">
@@ -54,69 +53,60 @@
 	</div>
 
 	<div class="row">
-	  <form class="profile-form" target="" action="post">
+	  <form class="profile-form" action="" method="post">
+        {%csrf_token%}
+        {{form.non_field_errors}}
 		  <div class="span6">
 			<div id="create-lesson-form-1-left">
 				<div id="createlessontitle">
 				  <h5>Lesson Title</h5>
-				  <input class="create-lesson-input-mid" type="text" placeholder="">
+				  <input name={{form.title.html_name}}
+                         class="create-lesson-input-mid"
+                         value="{{form.title.value}}"
+                         type="text" placeholder="Lesson Title">
+                  {{form.lesson.errors}}
 				</div>
 
 				<div class="row">
 				  <div class="span3">
-					<div id="lastname" class="create-lesson-field-small input-prepend">
+					<div class="create-lesson-field-small input-prepend">
 					  <h5>Lesson Price (in $)</h5>
 					    <span class="add-on">$</span>
-					    <input class="create-lesson-input-small" name="lessonprice" type="number" min="0" max="100" placeholder="">
+					    <input class="create-lesson-input-small"
+                               name="{{form.price.html_name}}"
+                               type="number"
+                               min="0"
+                               value="{{form.price.value}}"
+                               max="100" placeholder="Price">
+                        {{form.price.errors}}
 					</div>
 				  </div>
 
 				  <div class="span3">
-					<div id="email" class="create-lesson-field-small">
+					<div class="create-lesson-field-small">
 					  <h5>Serving Size</h5>
-					  <input class="create-lesson-input-small" name="servingsize" type="number" min="1" max="12" placeholder="">
+					  <input class="create-lesson-input-small"
+                             name="{{form.serving_size.html_name}}"
+                             type="number" min="1" max="12"
+                             value="{{form.serving_size.value}}"
+                             placeholder="Serving size">
+                      {{form.serving_size.errors}}
 					</div>
 				  </div>
 				</div>
 
-				<div id="lessoncategory" class="">
+				<div class="">
 				  <h5>Primary Ingredient(s)</h5>
-				  <select class="create-lesson-input-dropdown chzn" name="lessoncategory" multiple="multiple">
-				    <option>Salmon</option>
-				    <option>Chicken</option>
-				    <option>Tofu</option>
-				  </select>
+                  {{form.primary_ingredients}}
+                  {{form.primary_ingredients.errors}}
 				</div>
 
 				<div id="lessonmealtype" class="">
 				  <h5>Course Type(s)</h5>
-				  <select class="create-lesson-input-dropdown chzn" name="mealtype" multiple="multiple">
-				    <option>Appetizers</option>
-				    <option>Basics</option>
-				    <option>Salads</option>
-				    <option>Soup</option>
-				  </select>
+                  {{form.course}}
+                  {{form.course.errors}}
 				</div>
 
-			  </div>
-
-			  <div id="lessoncategory" class="">
-				<h5>Primary Ingredient(s)</h5>
-				<select class="create-lesson-input-dropdown chzn" name="lessoncategory" multiple="multiple">
-				  <option>Salmon</option>
-				  <option>Chicken</option>
-				  <option>Tofu</option>
-				</select>
-			  </div>
-
-			  <div id="lessonmealtype" class="">
-				<h5>Course Type(s)</h5>
-				<select class="create-lesson-input-dropdown chzn" name="mealtype" multiple="multiple">
-				  <option>Appetizers</option>
-				  <option>Basics</option>
-				  <option>Salads</option>
-				  <option>Soup</option>
-				</select>
 			  </div>
 
 			  <div id="firstname" class="">
@@ -126,8 +116,8 @@
 			  </div>
 			  <div id="firstname" class="">
 				<h5>Select Your Lesson Image</h5>
-				<input class="create-lesson-input-file" type="text" placeholder="insert file path/URL here...">
-				<a class="btn btn-gray btn-lesson-file-upload"><strong>...</strong></a>
+				{{form.image}}
+                {{form.image.errors}}
 			  </div>
 			</div>
 		  </div>
@@ -136,19 +126,8 @@
 			<div id="create-lesson-form-1-right">
 			  <div id="lessontype">
 				<h5>Lesson Type</h5>
-				<div class="row create-lesson-radiobox">
-				  <div class="span1">
-					<label class="radio">
-					  <input class="create-lesson-radiobox" type="radio" name="lessontype" value="recipe" checked>Recipe
-					</label>
-				  </div>
-
-				  <div class="span1">
-					<label class="radio">
-					  <input class="create-lesson-radiobox" type="radio" name="lessontype" value="technique">Technique
-					</label>
-				  </div>
-				</div>
+                {{ form.kind }}
+                {{ form.kind.errors}}
 			  </div>
 
 			  <div class="row">
@@ -156,46 +135,46 @@
 
 				  <div id="preptime" class="create-lesson-field-small">
 					<h5>Preparation Time (min.)</h5>
-					<input class="create-lesson-input-small" name="lessonprice" type="number" min="0" max="1200" step="5" placeholder="">
+                    {{form.prep_time}}
+                    {{ form.prep_time.errors}}
 				  </div>
 				</div>
 
 				<div class="span3">
 				  <div id="email" class="create-lesson-field-small">
 					<h5>Cooking Time (min.)</h5>
-					<input class="create-lesson-input-small" name="servingsize" type="number" min="0" max="1200" step="5" placeholder="">
+					{{form.cooking_time}}
+                    {{ form.cooking_time.errors}}
 				  </div>
 				</div>
 			  </div>
 
-			  <div id="cuisinetype" class="">
-				<h5>Cuisine Type</h5>
-				<select class="create-lesson-input-dropdown chzn" name="lessoncategory" multiple="multiple">
-				  <option>Japanese</option>
-				  <option>Indian</option>
-				  <option>Cajun</option>
-				</select>
+
+			  <div id="lessonmealtype" class="">
+				<h5>Cuisine</h5>
+                {{form.cuisine}}
+                {{ form.cuisine.errors}}
 			  </div>
 
 			  <div id="lessonmealtype" class="">
-				<h5>Dietary Needs</h5>
-				<select class="create-lesson-input-dropdown chzn" name="mealtype" multiple="multiple">
-				  <option>Gluten-free</option>
-				  <option>Lactose-free</option>
-				  <option>Low-sodium</option>
-				  <option>Sugar-free</option>
-				</select>
+			  <div class="">
+				<h5>Dietary Restrictions</h5>
+                {{form.restrictions}}
+                {{form.restrictions.errors}}
+
 			  </div>
+              </div>
 
 			  <div id="createlessondesc">
 				<h5>Short Lesson Description (200 characters max)</h5>
-				<textarea class="create-lesson-input-large create-lesson-desc"></textarea>
+                {{form.description}}
+                {{form.description.errors}}
 			  </div>
 
 			</div>
 		  </div>
 
-	  </form>
+
 	  </div>
 
 	  <div class="row">
@@ -204,15 +183,12 @@
 
 	  <div class="row">
 	    <div class="span4 pull-right">
-		  <a class="btn btn-green btn-save pull-right">
-		    next
-		  </a>
+		  <input type="submit" value="next" class="btn btn-green btn-save pull-right">
 	    </div>
 	  </div>
-
+	  </form>
 
     </div>
   </div>
 
-  {% endautoescape %}
   {% endblock %}

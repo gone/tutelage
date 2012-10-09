@@ -36,25 +36,24 @@ class ProfileForm(forms.Form):
 
 
 
-class LessonDetails(forms.ModelForm):
-    title
-    lesson_price
-    primary_ingredients
-    serving_size
-    course_types
-    video
-    image
-    prep_time
-    cooking_time
-    cuisine_type
-    restrictions
+class LessonDetailsForm(forms.ModelForm):
+    # video
 
     class Meta:
         model =Lesson
+        fields = ('description', 'title', 'image', 'price', 'serving_size',
+                  'prep_time', 'cooking_time', 'cuisine', 'restrictions',
+                  'course', 'primary_ingredients', 'kind' )
+        widgets = {
+             'primary_ingredients': forms.SelectMultiple(attrs={'class':'chzn'}),
+             'course': forms.SelectMultiple(attrs={'class':'chzn'}),
+             'restrictions': forms.SelectMultiple(attrs={'class':'chzn'}),
+             'cuisine': forms.SelectMultiple(attrs={'class':'chzn'}),
+             'kind': forms.RadioSelect
+        }
 
-
-class IngredentsDetails(forms.Form):
+class IngredentsDetailsForm(forms.Form):
     pass
 
-class StepDetails(forms.Form):
+class StepDetailsForm(forms.Form):
     pass
