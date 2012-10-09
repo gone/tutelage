@@ -4,15 +4,27 @@
 {% block content %}
 
 <div class="bordered-row bordered">
-  <div class="span2">
-    <a class="btn btn-green" href="{% url self_profile %}" >Back to
-    profile</a>
+  <div class="span6 offset3">
+    <div class="row">
+	  <div class="span3">
+		<h3 class="colored-header">Manage Avatars</h3>
+	  </div>
+	  <div class="span3">	
+		<a class="btn btn-green btn-save pull-right" href="{% url self_profile %}" >
+		Back to profile
+		</a>
+	  </div>	
+    </div>
   </div>
-  <div class="span6 offset5" >
+ 	
+  <div class="span6 offset3" >
+	
+	<hr />
+	
     <p>Your current avatar: </p>
     {% avatar user %}
     {% if not avatars %}
-        <p>You do not yet have an avatar.  Please upload one now.</p>
+        <p>You do not yet have a local avatar.  Please upload one now.</p>
     {% else %}
         <form method="POST" action="">
           {% csrf_token%}
@@ -27,5 +39,9 @@
         <input type="file" name="avatar" value="Avatar Image" />
         <input type="submit" value="Upload New Image" />
     </form>
+    
+    <hr />
+    
+    <br />
 </div>
 {% endblock %}

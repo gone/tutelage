@@ -13,6 +13,14 @@ $nav-padding: 5px;
     cursor: pointer;
 }
 
+.box a {
+	color: $black !important;
+}
+
+.box:hover {
+	a {color: $white !important;}
+}
+
 .box-login {
 	padding-top: 12px;
 	height: 48px;
