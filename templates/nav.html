@@ -4,17 +4,22 @@
   <ul class="nav pull-right">
       <li class="divider-vertical"></li>
       <li>
+
         <div class="box">
+        <a href="{% url chieflist %}">
           <div class="nav-icon sprite-icons-tutor">
           </div>
           <h5>chefs</h5>
+        </a>
         </div>
 
 	  <li>
 		<div class="box">
+          <a href="{% url lessons %}">
           <div class="nav-icon sprite-icons-learn">
           </div>
           <h5>lessons</h5>
+          </a>
         </div>
       </li>
 
@@ -32,9 +37,11 @@
 
       <li>
         <div class="box">
+          <a href="/about/">
           <div class="nav-icon sprite-icons-about">
           </div>
           <h5>about</h5>
+          </a>
         </div>
       </li>
 
@@ -61,17 +68,21 @@
 
       <li class="logout-btn">
         <div class="box box-logout">
+          <a href="{% url account:logout %}?next={{request.get_full_path }}">
           <div class="nav-icon sprite-icons-logout">
           </div>
           <h5>log out</h5>
+          </a>
         </div>
       </li>
 
       <li class="my-btn">
         <div class="box box-my">
+          <a href="{% url self_profile %}">
           <div class="nav-icon sprite-icons-my">
           </div>
           <h5>cookcademy</h5>
+          </a>
         </div>
       </li>
       {% endif %}

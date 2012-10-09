@@ -94,3 +94,7 @@ class LessonWizard(SessionWizardView):
     def done(self, form_list, **kwargs):
         self.save(form_list)
         return HttpResponseRedirect("aasdf")
+
+
+def cheiflist(request):
+    pass
