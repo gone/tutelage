@@ -25,6 +25,7 @@ urlpatterns = patterns('',
                            {'template': 'registration/registration_closed.html'},
                            name='registration_disallowed'),
                        url(r'^password_reset/$', password_reset, name="password_reset"),
+                       url(r'^password_change/$', password_change, name="password_change"),
                        (r'^login/?$','django.contrib.auth.views.login',{ 'authentication_form':LoginForm}),
 
                        (r'', include('registration.auth_urls')),

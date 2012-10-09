@@ -51,11 +51,12 @@
       </div>
     </div>
     <div class="row no-display">
+
+      {% if not request.user.is_authenticated %}
     {% include "signup.html" %}
     {% include "login.html" %}
 	{% include "fpassword.html" %}
-	{% include "cpassword.html" %}
-	{% include "wprofile.html" %}
+      {% endif %}
     </div>
 	{% editable_loader %}
   </body>

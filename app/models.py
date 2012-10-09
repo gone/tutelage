@@ -11,6 +11,7 @@ from mezzanine.core.fields import RichTextField
 
 from durationfield.db.models.fields.duration import DurationField
 
+from .constants import SKILL_LEVELS
 
 def file_url(name):
     def inner(instance, filename):
@@ -114,12 +115,10 @@ class Profile(CreatedMixin):
 
     ingredients = models.ManyToManyField(Ingredient, related_name='profiles')
     tools = models.ManyToManyField(Tool, related_name='profiles')
+    skill_level = models.IntegerField(choices=SKILL_LEVELS, default=0)
 
     def __unicode__(self):
         return unicode(self.user)
-
-User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
-
 
 class CreditCard(CreatedMixin):
     user = models.ForeignKey(User)
@@ -150,7 +149,7 @@ class Lesson(CreatedMixin, Displayable):
     followers = models.ManyToManyField(User, related_name='lessons',  blank=True, null=True)
     serving_size = models.IntegerField()
 
-    tags = models.CharField(max_length=128, default="")
+   #tags = models.CharField(max_length=128, default="")
 
     prep_time = DurationField()
     cooking_time = DurationField()
@@ -218,9 +217,17 @@ class LessonRating(CreatedMixin):
 
 class Course(CreatedMixin):
     course = models.CharField(max_length=256)
+    def __unicode__(self):
+        return self.course
+
+
 
 class Cuisine(CreatedMixin):
     cuisine = models.CharField(max_length=256)
+    def __unicode__(self):
+        return self.cuisine
 
 class DietaryRestrictions(CreatedMixin):
-    restrcition = models.CharField(max_length=256)
+    restriction = models.CharField(max_length=256)
+    def __unicode__(self):
+        return self.restriction

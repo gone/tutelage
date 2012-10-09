@@ -1,7 +1,5 @@
-
-
 from django import forms
-
+from .constants import SKILL_LEVELS
 #from ajax_select.fields import AutoCompleteSelectMultipleField
 
 
@@ -10,15 +8,18 @@ class ProfileForm(forms.Form):
     first_name = forms.CharField()
     last_name = forms.CharField()
     email = forms.EmailField()
-    skill_level = forms.ChoiceField(choices=(
-            ("Novice", "Novice"),
-            ("Intermediate", "Intermediate"),
-            ("Advanced", "Advanced"),
-            ("Professional", "Professional"),
-            ))
+    skill_level = forms.ChoiceField(choices=SKILL_LEVELS)
 
     def __init__(self, *args, **kwargs):
-        self.profile = kwargs.pop('profile')
+        profile = self.profile = kwargs.pop('profile')
+        user = profile.user
+        initial = {'about': profile.about,
+                  'first_name': user.first_name,
+                  'last_name': user.last_name,
+                  'email': user.email,
+                  'skill_level':profile.skill_level,
+                  }
+        kwargs['initial'] = initial
         return super(ProfileForm, self).__init__(*args, **kwargs)
 
 
@@ -31,3 +32,14 @@ class ProfileForm(forms.Form):
         self.profile.user.save()
         self.profile.save()
         return self.profile
+
+
+
+class LessonDetails(forms.Form):
+    pass
+
+class IngredentsDetails(forms.Form):
+    pass
+
+class StepDetails(forms.Form):
+    pass

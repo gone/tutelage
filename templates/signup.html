@@ -9,17 +9,17 @@
               {% csrf_token %}
 			  <div id="firstname">
 				<h5>First Name</h5>
-				<input name="first_name" class="login-input" type="text" placeholder="First Name">
+				<input name="first_name" class="login-input" type="text" placeholder="First Name" value="{{signup_form.first_name.value}}">
 				{{signup_form.first_name.errors}}
 			  </div>
 			  <div id="lastname">
 				<h5>Last Name</h5>
-				<input name="last_name" class="login-input" type="text" placeholder="Last Name">
+				<input name="last_name" class="login-input" type="text" placeholder="Last Name" value="{{signup_form.first_name.value}}">
 				{{signup_form.last_name.errors}}
 			  </div>
 			  <div id="email">
 				<h5>Email</h5>
-				<input name="email" class="login-input" type="text" placeholder="Email">
+				<input name="email" class="login-input" type="text" placeholder="Email" value="{{signup_form.email.value}}">
 			    {{signup_form.email.errors}}
 			  </div>
 			  <div id="password">
@@ -40,7 +40,7 @@
 			  </div>
 			  <div id="tos-checkbox" class="vertical-text-align">
                 {{signup_form.tos.errors}}
-			    <input type="checkbox" name="tos" value="true">
+			    <input type="checkbox" name="tos" value="true" {% if signup_form.tos.value %}checked {% endif %}>
 			    <span class="">I have read and agree to the Terms of Service</span>
 			  </div>
 

@@ -8,6 +8,7 @@ require({
         "jquery": "require/require-jquery",
         "bootstrap": "lib/bootstrap",
         "colorbox": "lib/jquery.colorbox-min",
+        "chosen": "lib/chosen.jquery.min",
         "liveValidation": "lib/jquery.validationEngine",
         "liveValidationEn": "lib/jquery.validationEngine-en",
         "popcorn": "lib/popcorn-complete",
@@ -26,6 +27,9 @@ require({
         colorbox: {
             deps: ['jquery']
         },
+        chosen: {
+            deps: ['jquery']
+        },
         liveValidation: {
             deps: ['jquery', "liveValidationEn"]
         },
@@ -37,7 +41,8 @@ require({
     },
         urlArgs: "bust=" +  (new Date()).getTime(),
 },
-        ["jquery", "ember", "_", "bootstrap", "colorbox", "cs!main", "cs!validation", "cs!lessons"], function($, Em, _){
+        ["jquery", "ember", "_", "bootstrap", "colorbox", "chosen", "cs!main", "cs!validation", "cs!lessons"], function($, Em, _){
             $(function(){
+                if (typeof pagelogic !== "undefined") pagelogic()
             });
         });

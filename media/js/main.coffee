@@ -1,12 +1,17 @@
-require ["jquery", "cs!validation"], ($) ->
+require ["jquery", "chosen", "cs!validation"], ($) ->
     $(document).ready () ->
-        setupColorbox = (selector) ->
+        setupColorbox = (selector, href) ->
             form = $(selector).find("form")
             form.validationEngine('hide')
-
+            if href?
+                link = href
+                inline = false
+            else
+                link = selector
+                inline = true
             $.colorbox
-                inline: true
-                href: selector
+                inline: inline
+                href: link
                 onComplete:() ->
                     $(selector).find('input[type="text"]').filter(":first").focus()
                 onCleanup: () ->
@@ -21,5 +26,15 @@ require ["jquery", "cs!validation"], ($) ->
         $(".forgot-pass-btn").click () ->
             setupColorbox("#forgot-password")
 
+        $(".changepass-btn").click () ->
+            setupColorbox("#change-password")
+
         $(".cancel-btn").click () ->
             $.colorbox.close()
+
+        $(".miniprofile-btn").click (e) ->
+            href = $(this).attr("href")
+            setupColorbox(this, href)
+            return false
+
+        $(".chzn").chosen()

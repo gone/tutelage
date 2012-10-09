@@ -16,6 +16,7 @@ urlpatterns = patterns("",
     # admin interface, which would be marginally more secure.
     ("^admin/", include(admin.site.urls)),
     ("^account/", include("account.urls", "account", "account")),
+    ("^avatar/", include("avatar.urls", "avatar", "avatar")),
     ("", include("app.urls")),
 
 

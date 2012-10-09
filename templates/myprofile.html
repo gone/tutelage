@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load avatar_tags %}
+{% block media %}
+<script type="text/javascript">
+  pagelogic = function(){
+
+      var group   = $('#skills')
+      var form    = group.parents('form').eq(0);
+      var name    = group.attr('data-toggle-name');
+      var hidden  = $('input[name="' + name + '"]', form);
+      $('button', group).each(function(){
+          var button = $(this);
+          button.live('click', function(){
+              hidden.val($(this).val());
+              $('button', group).each(function(){
+                  var button = $(this);
+                  if(button.val() == hidden.val()) {
+                      button.removeClass("btn-clearblue")
+                      button.addClass('btn-blue');
+                  } else {
+                      button.addClass("btn-clearblue")
+                      button.removeClass('btn-blue');
+
+                  }
+              })
+         });
+      });
+  };
+
+</script>
+{% endblock %}
+{% block content %}
+
+<div class="bordered-row main bordered">
+  <form class="profile-form" action="" method="post">
+    {% csrf_token %}
+    <div class="span12">
+	  <div class="profile-btn">
+	    <a class="btn btn-darkgray btn-profile">
+		  account
+		</a>
+		<a class="btn btn-lightgray btn-profile pull-right">
+		  tutoring
+		</a>
+	  </div>
+	</div>
+
+  <div class="span12">
+	<!-- <div class="row"> -->
+	<!--   <hr class="profile-hr" /> -->
+	<!-- </div> -->
+
+	<!-- <div class="row"> -->
+	<!--   <div class="span8"> -->
+	<!-- 	<h3 class="colored-header">{{request.user.get_full_name}} Wallet</h3> -->
+	<!--   </div> -->
+
+	<!-- <div class="row"> -->
+	<!--   <div class="span6"> -->
+
+	<!-- 	<div class="user-balance"> -->
+	<!-- 	  <h5>My Wellganic Balance</h5> -->
+	<!-- 	  <h3>$10.00</h3> -->
+	<!-- 	</div> -->
+
+	<!-- 	<div class="balance-actions"> -->
+	<!-- 	  <a class="btn btn-green"> -->
+	<!-- 		Add -->
+	<!-- 	  </a> -->
+	<!-- 	  <a class="btn btn-green"> -->
+	<!-- 		Withdraw -->
+	<!-- 	  </a> -->
+	<!-- 	</div> -->
+	<!--   </div> -->
+	<!-- </div> -->
+
+	<div class="row">
+	  <div class="span12">
+	    <hr />
+	  </div>
+	</div>
+
+    {% if not form.is_valid %}
+	<div class="row">
+	  <div class="span12">
+        {{form.non_form_errors}}
+	  </div>
+	</div>
+    {% endif %}
+
+	<div class="row">
+	  <div class="span12">
+		<h3 class="colored-header">{{user.get_full_name}}{%if user.get_full_name%}'s{% endif %} Profile</h3>
+	  </div>
+	</div>
+
+	<div class="row">
+	  <div class="span6">
+
+		<div class="user-photo">
+		  {% avatar request.user %}
+          {% if form %}
+          <a href="{% url avatar:avatar_change %}">Change your avatar</a>
+          {% endif %}
+		</div>
+
+      </div>
+
+      <div class="span6">
+		<div id="profile-user-type">
+		  <h5>Account Type</h5>
+		  <a class="btn btn-blue ">
+		  Chef
+		  </a>
+		</div>
+      </div>
+    </div>
+	<div class="row">
+      <div class="span6">
+		<div id="aboutme">
+		  <h5>About Me (300 characters or less)</h5>
+		  <textarea name="about" class="profile-input profile-input-desc">{{form.about.value|default:""}}</textarea>
+          {{form.about.errors}}
+		</div>
+      </div>
+      <div class="span6" id="skills" data-toggle-name="skill_level">
+	    <div class="profile-user-skill">
+		  <h5>Skill Level</h5>
+		  <button type="button" value="0" class="btn btn-clearblue btn-user-skill">
+		  Novice
+		  </button>
+		  <button type="button" value="1" class="btn btn-clearblue btn-user-skill">
+		  Intermediate
+		  </button>
+		</div>
+
+		<div class="profile-user-skill">
+		  <button type="button" value="2" class="btn btn-clearblue btn-user-skill">
+		  Advanced
+		  </button>
+		  <button type="button" value="3" class="btn btn-clearblue btn-user-skill">
+		  Professional
+		  </button>
+          <script type="text/javascript">
+            var button = $('button[value="{{form.skill_level.value}}"]');
+            button.removeClass("btn-clearblue");
+            button.addClass('btn-blue');
+          </script>
+		</div>
+        {{form.skill_level.errors}}
+        <input type="hidden" name="skill_level" id="skill_level" value={{form.skill_level.value}}>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span6">
+		<div id="firstname">
+		  <h5>First Name</h5>
+		  <input name="first_name" class="profile-input" type="text" placeholder="First name" value="{{form.first_name.value|default:""}}">
+          {{form.first_name.errors}}
+		</div>
+      </div>
+      <div class="span2 offset2">
+		<div id="profile-password-change">
+		  <a class="btn btn-blue ">
+		  Change Password
+		  </a>
+		</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span6">
+		<div id="lastname">
+		  <h5>Last Name</h5>
+		  <input name="last_name" class="profile-input" type="text" placeholder="Last name" value="{{form.last_name.value|default:""}}">
+          {{form.last_name.errors}}
+		</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span6">
+		<div id="email">
+		  <h5>Email</h5>
+		  <input name="email" class="profile-input" type="text" placeholder="Email" value="{{form.email.value|default:""}}">
+          {{form.email.errors}}
+		</div>
+	  </div>
+	  <div class="span2 offset4">
+		<input type="submit" class="btn btn-green btn-save" value="save">
+	  </div>
+	</div>
+  </div>
+  </form>
+</div>
+
+{% endblock %}

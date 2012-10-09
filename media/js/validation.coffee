@@ -1,18 +1,25 @@
 require ["jquery", "liveValidation"], ($) ->
+    is_valid = (form) ->
+        form.data('jqv')['showPrompt'] = false
+        isValid = form.validationEngine('validate')
+        if isValid == null
+            return #this thing isn't thread safe, so typing fast makes it confused
+        form.data('jqv')['showPrompt'] = true
+        if isValid
+            form.find('input[type="submit"]').removeClass('disabled')
+        else
+            form.find('input[type="submit"]').addClass('disabled')
+
     $(document).ready () ->
-        $("form").validationEngine(
+        forms = $("form")
+        forms.validationEngine(
             focusFirstField : false
             showPrompt:true
         )
-        $('input[type="submit"]').addClass('disabled')
+
+        forms.each (idx, form) ->
+            is_valid($(form))
+
         $("input").bind "keyup", (event) ->
             form = $(this).parents("form")
-            form.data('jqv')['showPrompt'] = false
-            isValid = form.validationEngine('validate')
-            if isValid == null
-                return #this thing isn't thread safe, so typing fast makes it confused
-            form.data('jqv')['showPrompt'] = true
-            if isValid
-                form.find('input[type="submit"]').removeClass('disabled')
-            else
-                form.find('input[type="submit"]').addClass('disabled')
+            is_valid(form)
