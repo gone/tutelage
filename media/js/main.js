@@ -2,7 +2,6 @@ require({
     paths: {
         "text": "require/text",
         "cs": "require/cs",
-        "ember": "lib/ember-1.0.pre",
         "handlebars" : "lib/handlebars-1.0.0.beta.6",
         "_": "lib/underscore-min",
         "jquery": "require/require-jquery",
@@ -14,10 +13,6 @@ require({
         "popcorn": "lib/popcorn-complete",
     },
     shim:{
-        ember: {
-            exports: "Ember",
-            deps: ['jquery', 'handlebars']
-        },
         _: {
             exports: "_",
         },
@@ -41,7 +36,7 @@ require({
     },
         urlArgs: "bust=" +  (new Date()).getTime(),
 },
-        ["jquery", "ember", "_", "bootstrap", "colorbox", "chosen", "cs!main", "cs!validation", "cs!lessons"], function($, Em, _){
+        ["jquery", "_", "bootstrap", "colorbox", "chosen", "cs!main", "cs!validation", "cs!lessons"], function($, Em, _){
             $(function(){
                 if (typeof pagelogic !== "undefined") pagelogic()
             });
