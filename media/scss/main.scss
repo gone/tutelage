@@ -131,6 +131,18 @@ input[type="submit"]{
 	padding-bottom: 4px;
 }
 
+.btn-tags {
+	margin-bottom: 5px;
+}
+
+.testimonial, .block-quote {
+	height: 70px;
+}
+
+.block-quote-right {
+	margin: 0px;
+	font-style: italic;
+}
 
 @import "local_navbar";
 @import "icons";
@@ -143,5 +155,6 @@ input[type="submit"]{
 @import "wprofile";
 @import "myprofile";
 @import "createlesson";
+@import "chefprofile";
 
 @import "validationEngine.jquery";

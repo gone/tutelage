@@ -5686,6 +5686,19 @@ input[type="submit"] {
   padding-bottom: 4px;
 }
 
+.btn-tags {
+  margin-bottom: 5px;
+}
+
+.testimonial, .block-quote {
+  height: 70px;
+}
+
+.block-quote-right {
+  margin: 0px;
+  font-style: italic;
+}
+
 /* Navbar */
 .box {
   height: 55px;
@@ -6378,7 +6391,10 @@ input[type="submit"] {
   margin: 10px 0px 0px 0px;
 }
 
-<<<<<<< HEAD
+.create-lesson-question {
+  width: 100%;
+}
+
 /* Z-INDEX */
 .formError {
   z-index: 990;
@@ -6546,8 +6562,4 @@ body.rtl .formError .formErrorArrow {
   width: 1px;
   border: none;
   background: #ddd;
-=======
-.create-lesson-question {
-  width: 100%;
->>>>>>> dc99a067af4be556adf3f1ecb2945586364ff532
 }
