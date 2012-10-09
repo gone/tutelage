@@ -10,6 +10,7 @@ from django.core.validators import email_re
 
 from registration import signals
 from .forms import RegistrationForm
+from app.models import Profile
 
 class RegistrationBackend(object):
     """
@@ -31,7 +32,8 @@ class RegistrationBackend(object):
         otherusers = User.objects.filter(username__startswith=username).count()
         username = username + str(otherusers)
 
-        User.objects.create_user(username, email, password)
+        user = User.objects.create_user(username, email, password)
+        Profile.objects.create(user=user)
 
         # authenticate() always has to be called before login(), and
         # will return the user we just created.

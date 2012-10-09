@@ -109,8 +109,7 @@ class SubCategory(CreatedMixin):
         unique_together = ('name', 'parent')
 
 class Profile(CreatedMixin):
-    user = models.ForeignKey(User)
-    phone = models.CharField(max_length=10, unique=True)
+    user = models.OneToOneField(User)
     about = models.CharField(max_length=300, default='')
 
     ingredients = models.ManyToManyField(Ingredient, related_name='profiles')
@@ -118,6 +117,9 @@ class Profile(CreatedMixin):
 
     def __unicode__(self):
         return unicode(self.user)
+
+User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
+
 
 class CreditCard(CreatedMixin):
     user = models.ForeignKey(User)
@@ -141,7 +143,7 @@ class Video(CreatedMixin):
 
 class Lesson(CreatedMixin, Displayable):
     teacher = models.ForeignKey(User, related_name='teaching')
-    image = video = models.FileField(upload_to=file_url("lessonimage"))
+    image = models.FileField(upload_to=file_url("lessonimage"))
     flavor_text = models.TextField(default="")
     price = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True)
     users_who_rated = models.ManyToManyField(User, through='LessonRating', related_name='rated_lessons')

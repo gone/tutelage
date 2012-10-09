@@ -9,6 +9,8 @@ require ["jquery", "liveValidation"], ($) ->
             form = $(this).parents("form")
             form.data('jqv')['showPrompt'] = false
             isValid = form.validationEngine('validate')
+            if isValid == null
+                return #this thing isn't thread safe, so typing fast makes it confused
             form.data('jqv')['showPrompt'] = true
             if isValid
                 form.find('input[type="submit"]').removeClass('disabled')

@@ -162,6 +162,9 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+AUTH_PROFILE_MODULE = 'app.profile'
+
+
 
 #############
 # DATABASES #
@@ -245,6 +248,9 @@ INSTALLED_APPS = (
     #"mezzanine.accounts",
     #"mezzanine.mobile",
     'app',
+    'avatar',
+    'django_shortcuts',
+    'django_extensions',
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -303,6 +309,8 @@ OPTIONAL_APPS = (
 )
 
 DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
+
+
 
 ###################
 # DEPLOY SETTINGS #

@@ -3,8 +3,6 @@ from django.contrib.auth.views import password_reset as django_password_reset
 from .forms import PasswordResetForm as reset_form
 
 def password_reset(request):
-    import pdb
-    pdb.set_trace()
     redirect_to = request.POST.get("next", None)
     rv = django_password_reset(request,
                                post_reset_redirect=redirect_to,

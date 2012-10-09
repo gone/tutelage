@@ -6,7 +6,7 @@
 		    <hr/>
 
 			<form class="signup-form" method="post" action="{% url account:register %}">
-              {% csrf_token %}              
+              {% csrf_token %}
 			  <div id="firstname">
 				<h5>First Name</h5>
 				<input name="first_name" class="login-input" type="text" placeholder="First Name">
@@ -27,7 +27,7 @@
 				<input name="password1" class="login-input" type="password" placeholder="Password">
 				{{signup_form.passsword1.errors}}
 			  </div>
-			  <div id="confirm-password">                
+			  <div id="confirm-password">
 				<h5>Confirm Password</h5>
 				<input name="password2" class="login-input" type="password" placeholder="Password again">
 				{{signup_form.passsword2.errors}}
@@ -68,7 +68,7 @@
                   </a>
                 </div>
               </div>
-              <input type="hidden" name="next" value="{{signup_form.next.value|default_if_none:request.get_full_path}}">
+              <input type="hidden" name="next" value="{{signup_form.next.value|default:request.get_full_path}}">
 
 			</form>
 		  </div>

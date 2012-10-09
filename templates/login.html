@@ -16,7 +16,7 @@
                    class="login-input"
                    type="text"
                    placeholder="Email"
-                   value="{{login_form.username.value|default_if_none:""}}"
+                   value="{{login_form.username.value|default:""}}"
                    data-validation-engine="validate[required,custom[email]]"
                    data-errormessage-value-missing="Email is required!"
                    data-errormessage-custom-error="Email must be in the format 'user@domain.com'"
@@ -56,7 +56,7 @@
 			  </a>
 			</div>
 		  </div>
-          <input type="hidden" name="next" value="{{login_form.next.value|default_if_none:request.get_full_path}}" >
+          <input type="hidden" name="next" value="{{login_form.next.value|default:request.get_full_path}}" >
 		</form>
 	  </div>
 
