@@ -5686,6 +5686,19 @@ input[type="submit"] {
   padding-bottom: 4px;
 }
 
+.btn-tags {
+  margin-bottom: 5px;
+}
+
+.testimonial, .block-quote {
+  height: 70px;
+}
+
+.block-quote-right {
+  margin: 0px;
+  font-style: italic;
+}
+
 /* Navbar */
 .box {
   height: 55px;
@@ -6549,6 +6562,7 @@ body.rtl .formError .formErrorArrow {
   width: 1px;
   border: none;
   background: #ddd;
+<<<<<<< HEAD
 }
 
 /* @group Base */
@@ -6890,6 +6904,8 @@ body.rtl .formError .formErrorArrow {
 
 .chzn-container .chzn-results-scroll-down {
   bottom: 0;
+=======
+>>>>>>> ee5c1cad647e81bd7238424e0ee8e43e4cf52d18
 }
 
 .chzn-container .chzn-results-scroll-down span {
