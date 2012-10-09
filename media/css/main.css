@@ -6266,8 +6266,12 @@ input[type="submit"] {
 }
 
 .btn-user-skill {
-  width: 100px;
-  margin: 0px 5px 10px 0px;
+  width: 125px;
+  margin: 0px 10px 10px 0px;
+}
+
+.btn-profile-action {
+  width: 200px;
 }
 
 .create-lesson-title h2 {
@@ -6562,7 +6566,6 @@ body.rtl .formError .formErrorArrow {
   width: 1px;
   border: none;
   background: #ddd;
-<<<<<<< HEAD
 }
 
 /* @group Base */
@@ -6904,8 +6907,6 @@ body.rtl .formError .formErrorArrow {
 
 .chzn-container .chzn-results-scroll-down {
   bottom: 0;
-=======
->>>>>>> ee5c1cad647e81bd7238424e0ee8e43e4cf52d18
 }
 
 .chzn-container .chzn-results-scroll-down span {

@@ -55,28 +55,47 @@
 
 	<div class="row">
 	  <form class="profile-form" target="" action="post">
-		<div class="span6">
-		  <div id="create-lesson-form-1-left">
-			<div id="createlessontitle">
-			  <h5>Lesson Title</h5>
-			  <input class="create-lesson-input-mid" type="text" placeholder="">
-			</div>
+		  <div class="span6">
+			<div id="create-lesson-form-1-left">
+				<div id="createlessontitle">
+				  <h5>Lesson Title</h5>
+				  <input class="create-lesson-input-mid" type="text" placeholder="">
+				</div>
 
-			<div class="row">
-			  <div class="span3">
-				<div id="lastname" class="create-lesson-field-small">
-				  <div id="lastname" class="create-lesson-field-small input-prepend">
-					<h5>Lesson Price (in $)</h5>
-					<span class="add-on">$</span>
-					<input class="create-lesson-input-small" name="lessonprice" type="number" min="0" max="100" placeholder="">
+				<div class="row">
+				  <div class="span3">
+					<div id="lastname" class="create-lesson-field-small input-prepend">
+					  <h5>Lesson Price (in $)</h5>
+					    <span class="add-on">$</span>
+					    <input class="create-lesson-input-small" name="lessonprice" type="number" min="0" max="100" placeholder="">
+					</div>
+				  </div>
+
+				  <div class="span3">
+					<div id="email" class="create-lesson-field-small">
+					  <h5>Serving Size</h5>
+					  <input class="create-lesson-input-small" name="servingsize" type="number" min="1" max="12" placeholder="">
+					</div>
 				  </div>
 				</div>
 
-				<div class="span3">
-				  <div id="email" class="create-lesson-field-small">
-					<h5>Serving Size</h5>
-					<input class="create-lesson-input-small" name="servingsize" type="number" min="1" max="12" placeholder="">
-				  </div>
+				<div id="lessoncategory" class="">
+				  <h5>Primary Ingredient(s)</h5>
+				  <select class="create-lesson-input-dropdown chzn" name="lessoncategory" multiple="multiple">
+				    <option>Salmon</option>
+				    <option>Chicken</option>
+				    <option>Tofu</option>
+				  </select>
+				</div>
+
+				<div id="lessonmealtype" class="">
+				  <h5>Course Type(s)</h5>
+				  <select class="create-lesson-input-dropdown chzn" name="mealtype" multiple="multiple">
+				    <option>Appetizers</option>
+				    <option>Basics</option>
+				    <option>Salads</option>
+				    <option>Soup</option>
+				  </select>
 				</div>
 
 			  </div>
