@@ -6449,7 +6449,7 @@ input[type="submit"] {
 .formError {
   position: absolute;
   top: 300px;
-  left: 300px;
+  left: 140px !important;
   display: block;
   cursor: pointer;
 }
@@ -6462,11 +6462,10 @@ input[type="submit"] {
 }
 
 .formError .formErrorContent {
-  width: 100%;
+  width: 150px;
   background: #ee0101;
   position: relative;
   color: #fff;
-  width: 150px;
   font-size: 11px;
   border: 2px solid #ddd;
   box-shadow: 0 0 6px #000;
