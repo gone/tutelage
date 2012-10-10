@@ -1,5 +1,4 @@
 from django.conf.urls.defaults import *
-from .views import LessonWizard, FORMS
 
 
 urlpatterns = patterns('app.views',
@@ -9,6 +8,9 @@ urlpatterns = patterns('app.views',
     url(r'^profile/$', 'profile', name="self_profile"),
     url(r'^miniprofile/(?P<user_id>\d+)/$', 'miniprofile', name="miniprofile"),
     url(r'^chief-list/$', "cheiflist", name="chieflist"),
-    url(r'^add-lesson/$', LessonWizard.as_view(FORMS), name="add-lesson" ),
+    url(r'^add-lesson/$', "add_lesson", name="add-lesson" ),
+    url(r'^add-lesson/(?P<lesson_id>\d+/)/$', "add_lesson", name="edit-lesson" ),
+    url(r'^add-lesson/(?P<lesson_id>\d+/)/ingreidents/$', "lesson_ingredients", name="lesson_ingredients" ),
+    url(r'^add-lesson/(?P<lesson_id>\d+/)/steps$', "lesson_steps", name="lesson_steps" ),
 
 )

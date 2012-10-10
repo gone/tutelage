@@ -71,7 +71,7 @@ class RegistrationBackend(object):
         After registration, redirect to the user's account page.
 
         """
-        r = request.get("next") or user.get_absolute_url()
+        r = request.POST.get("next") or user.get_absolute_url()
         return (r, (), {})
 
     def post_activation_redirect(self, request, user):

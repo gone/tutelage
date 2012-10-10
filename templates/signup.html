@@ -14,7 +14,7 @@
 				<input name="first_name"
 					   class="login-input"
 					   type="text"
-                       value="{{signup_form.first_name.value}}"
+                       value="{{signup_form.first_name.value|default:""}}"
 					   placeholder="First Name"
 					   data-validation-engine="validate[required]"
 					   data-errormessage-value-missing="First name is required!">
@@ -26,7 +26,7 @@
 				<input name="last_name"
 					   class="login-input"
 					   type="text"
-                       value="{{signup_form.first_name.value}}"
+                       value="{{signup_form.first_name.value|default:""}}"
 					   placeholder="Last Name"
 					   data-validation-engine="validate[required]"
 					   data-errormessage-value-missing="Last name is required!">
@@ -38,7 +38,7 @@
 					   class="login-input"
 					   type="text"
 					   placeholder="Email"
-                       value="{{signup_form.email.value}}"
+                       value="{{signup_form.email.value|default:""}}"
 					   data-validation-engine="validate[required,custom[email]]"
 					   data-errormessage-value-missing="Email is required!">
 			    {{signup_form.email.errors}}
@@ -48,7 +48,7 @@
 				<input name="password1"
 					   class="login-input"
 					   type="password"
-					   placeholder=""
+					   placeholder="Password"
 					   data-validation-engine="validate[required]"
 					   data-errormessage-value-missing="Password is required!">
 				{{signup_form.passsword1.errors}}
@@ -58,7 +58,7 @@
 				<input name="password2"
 					   class="login-input"
 					   type="password"
-					   placeholder=""
+					   placeholder="And again"
 					   data-validation-engine="validate[required]"
 					   data-errormessage-value-missing="Enter your password twice!">
 				{{signup_form.passsword2.errors}}

@@ -5,13 +5,16 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.simple import direct_to_template
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+
+from django.core.exceptions import PermissionDenied
 
 from django.contrib.formtools.wizard.views import SessionWizardView
 
 
 logger = logging.getLogger(__name__)
 from .models import Lesson
-from .forms import ProfileForm, LessonDetails, IngredentsDetails, StepDetails
+from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm, StepDetailsForm
 
 from account.forms import PasswordChangeForm
 
@@ -77,23 +80,37 @@ def mylessons(request, user_id):
     return direct_to_template(request, "mylessons.html", {"lessons": lessons, "u":user})
 
 
-FORMS = [('lesson_details', LessonDetails),
-         ('ingredents_details', IngredentsDetails),
-         ('step_details', StepDetails),
-         ]
 
 TEMPLATES = { 'lesson_details': "lesson_details_form.html",
               'ingredents_details': "ingredents_details_form.html",
               'step_details': "step_details_form.html",
               }
 
-class LessonWizard(SessionWizardView):
-    def get_template_names(self):
-        return [TEMPLATES[self.steps.current]]
+@login_required
+def add_lesson(request, lesson_id=None):
+    if lesson_id:
+        instance = get_object_or_404(Lesson, pk=user_id)
+        if  request.user != lesson.teacher:
+            raise PermissionDeined
+    else:
+        instance = None
+    if request.method == "POST":
+        form = LessonDetailsForm(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            lesson = form.save()
+            return HttpRedirect(reverse("lesson_ingredients", args=[lesson.id]))
+    else:
+        form = LessonDetailsForm(instance=instance)
+    return direct_to_template(request, "lesson_details_form.html", {"form": form})
 
-    def done(self, form_list, **kwargs):
-        self.save(form_list)
-        return HttpResponseRedirect("aasdf")
+
+@login_required
+def lesson_ingredients(request, lesson_id):
+    pass
+
+@login_required
+def lesson_steps(request, lesson_id):
+    pass
 
 
 def cheiflist(request):
