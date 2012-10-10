@@ -29,12 +29,12 @@
 }
 #cboxLoadedContent{
   @extend .modal-body;
-  margin-top:48px;
-  margin-bottom:59px;
+  margin-top:0px;
+  margin-bottom:0px;
   max-height: none;
 }
 #cboxTitle{
-  @extend .modal-header;
+  /* @extend .modal-header; -- removing border at top of lightbox -- */
   position:absolute;
   top:10px;
   left:10px;

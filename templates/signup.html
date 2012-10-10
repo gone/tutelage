@@ -1,11 +1,13 @@
       <div id="signup">
 		<div class="row">
-		  <div class="span6 offset1">
-		    <h4>Sign up to start cooking</h4>
-
-		    <hr/>
+		  <div class="span4">
+			  
+		    <h4>Sign up to start cooking</h4>		    
 
 			<form class="signup-form" method="post" action="{% url account:register %}">
+				
+			  <hr/>
+			  	
               {% csrf_token %}
 			  <div id="firstname">
 				<h5>First Name</h5>
@@ -69,7 +71,8 @@
 			  </div>
 			  <div id="tos-checkbox" class="vertical-text-align">
 			    <input type="checkbox" name="tos" value="true" {% if signup_form.tos.value %}checked {% endif %}>
-			    <span class="">I have read and agree to the <a href="#">Terms of Service</a></span>
+			    <span class="">I have read and agree to the </span>
+			    <a href="#">Terms of Service</a>
                 {{signup_form.tos.errors}}
 			  </div>
 

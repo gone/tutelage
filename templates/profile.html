@@ -89,10 +89,17 @@
     {% endif %}
 
 	<div class="row">
-	  <div class="span12">
+	  <div class="span6">
 		<h3 class="colored-header">{{u.get_full_name}}{%if u.get_full_name%}'s{% endif %} Profile</h3>
 	  </div>
+	  
+	  <div class="span2 offset4 pull-right">
+		<input type="submit" class="btn btn-green btn-save pull-right" value="Save">
+	  </div>	  
+	  
 	</div>
+
+    <hr />
 
 	<div class="row">
 	  <div class="span6">
@@ -171,23 +178,16 @@
           {{form.first_name.errors}}
 		</div>
       </div>
-      <div class="span2 offset2">
-		<div id="profile-password-change">
-		  <a class="btn btn-blue btn-profile-action">
-		  Change Password
-		  </a>
-		</div>
-      </div>
-    </div>
-    <div class="row">
+      
       <div class="span6">
 		<div id="lastname">
 		  <h5>Last Name</h5>
 		  <input name="last_name" class="profile-input" type="text" placeholder="Last name" value="{{form.last_name.value|default:""}}">
           {{form.last_name.errors}}
 		</div>
-      </div>
+      </div>            
     </div>
+    
     <div class="row">
       <div class="span6">
 		<div id="email">
@@ -196,10 +196,17 @@
           {{form.email.errors}}
 		</div>
 	  </div>
-	  <div class="span2 offset4">
-		<input type="submit" class="btn btn-green btn-save btn-profile-action" value="Save Profile">
-	  </div>
+	  
+	  <div class="span6">
+		<div id="profile-password-change">
+		  <h5>Password</h5>
+		  <a class="btn btn-blue">
+		  Change
+		  </a>
+		</div>
+      </div>	  
 	</div>
+
     {% endif %}
   </div>
   </form>

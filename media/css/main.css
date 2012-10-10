@@ -4594,14 +4594,14 @@ input[type="submit"].btn.btn-mini {
   top: 50%;
 }
 
-.modal-header, #cboxTitle {
+.modal-header {
   padding: 9px 15px;
   border-bottom: 1px solid #eee;
 }
-.modal-header .close, #cboxTitle .close {
+.modal-header .close {
   margin-top: 2px;
 }
-.modal-header h3, #cboxTitle h3 {
+.modal-header h3 {
   margin: 0;
   line-height: 30px;
 }
@@ -5645,7 +5645,7 @@ a.label:hover, a.badge:hover {
 
 .btn-save {
   margin-right: 20px;
-  margin-top: 7px;
+  margin-top: 15px;
 }
 
 body {
@@ -5707,6 +5707,14 @@ input[type="submit"] {
   border-left: 1px lightgrey solid;
   margin-left: 0px !important;
   cursor: pointer;
+}
+
+.box a {
+  color: black !important;
+}
+
+.box:hover a {
+  color: white !important;
 }
 
 .box-login {
@@ -6086,12 +6094,13 @@ input[type="submit"] {
 }
 
 #cboxLoadedContent {
-  margin-top: 48px;
-  margin-bottom: 59px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   max-height: none;
 }
 
 #cboxTitle {
+  /* @extend .modal-header; -- removing border at top of lightbox -- */
   position: absolute;
   top: 10px;
   left: 10px;
@@ -6199,6 +6208,14 @@ input[type="submit"] {
   font-weight: bold;
 }
 
+.lesson-list {
+  margin: 0px !important;
+}
+
+.lesson-list li {
+  list-style-type: none !important;
+}
+
 #login {
   display: table;
 }
@@ -6262,7 +6279,7 @@ input[type="submit"] {
 }
 
 .profile-input-desc {
-  height: 200px !important;
+  height: 100px !important;
 }
 
 .btn-user-skill {
@@ -6271,7 +6288,7 @@ input[type="submit"] {
 }
 
 .btn-profile-action {
-  width: 200px;
+  width: 200px !important;
 }
 
 .create-lesson-title h2 {
