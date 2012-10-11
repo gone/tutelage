@@ -101,6 +101,23 @@
 	width: 120px;
 }
 
+#lessontype ul {	
+	margin: 0px;
+}
+
+#lessontype li {
+	list-style-type: none !important;
+	width: 200px !important;
+}
+
+#lessontype li, label, input {
+	display: inline-block;
+}
+
+#lessontype label {
+	@extend .radio;
+}
+
 .create-lesson-2-input-dropdown-small {
 	width: 55px;
 }
