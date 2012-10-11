@@ -109,12 +109,12 @@ def add_lesson(request, lesson_id=None):
 
 @login_required
 def lesson_ingredients(request, lesson_id):
-    pass
+    return direct_to_template(request, "ingredients_details_form.html", {"form": form})
 
 @login_required
 def lesson_steps(request, lesson_id):
-    pass
+    return direct_to_template(request, "step_details_form.html", {"form": form})
 
 
-def cheiflist(request):
+def cheflist(request):
     pass
