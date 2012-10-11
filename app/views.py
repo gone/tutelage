@@ -92,8 +92,8 @@ TEMPLATES = { 'lesson_details': "lesson_details_form.html",
 @login_required
 def add_lesson(request, lesson_id=None):
     if lesson_id:
-        instance = get_object_or_404(Lesson, pk=user_id)
-        if  request.user != lesson.teacher:
+        instance = get_object_or_404(Lesson, pk=lesson_id)
+        if  request.user != instance.teacher:
             raise PermissionDeined
     else:
         instance = None
@@ -109,11 +109,11 @@ def add_lesson(request, lesson_id=None):
 
 @login_required
 def lesson_ingredients(request, lesson_id):
-    return direct_to_template(request, "ingredients_details_form.html", {"form": form})
+    return direct_to_template(request, "ingredients_details_form.html")#, {"form": form})
 
 @login_required
 def lesson_steps(request, lesson_id):
-    return direct_to_template(request, "step_details_form.html", {"form": form})
+    return direct_to_template(request, "step_details_form.html")#, {"form": form})
 
 
 def cheflist(request):
