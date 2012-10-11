@@ -1,4 +1,4 @@
-DEBUG = False
+DEBUG = True
 
 #EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 
