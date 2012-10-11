@@ -251,6 +251,7 @@ INSTALLED_APPS = (
     'avatar',
     'django_shortcuts',
     'django_extensions',
+    'storages',
 )
 
 # List of processors used by RequestContext to populate the context.
