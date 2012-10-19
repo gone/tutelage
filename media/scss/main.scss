@@ -145,7 +145,12 @@ input[type="submit"]{
 	font-style: italic;
 }
 
+textarea {
+	resize: none;
+}
+
 @import "local_navbar";
+@import "footer";
 @import "icons";
 @import "home";
 @import "colorbox";

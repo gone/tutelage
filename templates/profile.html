@@ -76,7 +76,7 @@
 
 	<div class="row">
 	  <div class="span12">
-	    <hr />
+	    <hr class="profile-hr" />
 	  </div>
 	</div>
 
@@ -174,26 +174,26 @@
       <div class="span6">
 		<div id="firstname">
 		  <h5>First Name</h5>
-		  <input name="first_name" class="profile-input" type="text" placeholder="First name" value="{{form.first_name.value|default:""}}">
+		  <input name="first_name" class="profile-input" type="text" placeholder="" value="{{form.first_name.value|default:""}}">
           {{form.first_name.errors}}
 		</div>
       </div>
       
       <div class="span6">
-		<div id="lastname">
-		  <h5>Last Name</h5>
-		  <input name="last_name" class="profile-input" type="text" placeholder="Last name" value="{{form.last_name.value|default:""}}">
-          {{form.last_name.errors}}
+		<div id="email">
+		  <h5>Email</h5>
+		  <input name="email" class="profile-input" type="text" placeholder="" value="{{form.email.value|default:""}}">
+          {{form.email.errors}}
 		</div>
       </div>            
     </div>
     
     <div class="row">
       <div class="span6">
-		<div id="email">
-		  <h5>Email</h5>
-		  <input name="email" class="profile-input" type="text" placeholder="Email" value="{{form.email.value|default:""}}">
-          {{form.email.errors}}
+		<div id="lastname">
+		  <h5>Last Name</h5>
+		  <input name="last_name" class="profile-input" type="text" placeholder="" value="{{form.last_name.value|default:""}}">
+          {{form.last_name.errors}}
 		</div>
 	  </div>
 	  

@@ -37,7 +37,9 @@
     <form enctype="multipart/form-data" method="POST" action="">
             {% csrf_token%}
         <input type="file" name="avatar" value="Avatar Image" />
-        <input type="submit" value="Upload New Image" />
+        <a class="btn btn-blue btn-avatar pull-right">
+		Upload New Image
+        </a>
     </form>
     
     <hr />

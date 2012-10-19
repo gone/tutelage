@@ -49,6 +49,11 @@
       <div class="content" >
         {% block content %}  {% endblock %}
       </div>
+      <footer class="row">
+        {% include "footer.html" %}
+        {% block footer %} {% endblock %}
+      </footer>
+      
     </div>
     <div class="row no-display">
       {% if not request.user.is_authenticated %}

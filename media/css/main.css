@@ -5713,6 +5713,10 @@ input[type="submit"] {
   font-style: italic;
 }
 
+textarea {
+  resize: none;
+}
+
 /* Navbar */
 .box {
   height: 55px;
@@ -5784,7 +5788,7 @@ input[type="submit"] {
 
 .navbar {
   border: 1px lightgrey solid;
-  margin-top: 15px !important;
+  margin: 10px 0px 10px -2px !important;
   color: black !important;
   height: 100%;
   background-color: white;
@@ -5814,6 +5818,23 @@ input[type="submit"] {
   background-image: -webkit-linear-gradient(top, white, white);
   background-image: -o-linear-gradient(top, white, white);
   background-image: linear-gradient(#ffffff, #ffffff);
+}
+
+.footer {
+  height: 40px;
+  width: 960px;
+}
+
+.footer-text {
+  font-size: 16px !important;
+}
+
+.footer-links {
+  margin: 10px 20px 0px 0px;
+}
+
+.footer-links > a {
+  padding: 0px 0px 0px 20px !important;
 }
 
 .sprite-icons-login,
@@ -6030,8 +6051,17 @@ input[type="submit"] {
   width: 85%;
 }
 
+.hr-main {
+  margin: 10px 0px !important;
+  border-top: none !important;
+}
+
 .border-notop {
   border-top: 0px !important;
+}
+
+.main-movie-img {
+  width: 440px !important;
 }
 
 /*
@@ -6304,6 +6334,10 @@ input[type="submit"] {
 
 .btn-profile-action {
   width: 200px !important;
+}
+
+btn-avatar {
+  margin-right: 20px;
 }
 
 .create-lesson-title h2 {
