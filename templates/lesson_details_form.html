@@ -53,17 +53,15 @@
 	</div>
 
 	<div class="row">
-	  <form class="profile-form" action="" method="post">
+	  <form class="profile-form" action="" method="post" enctype="multipart/form-data">
         {%csrf_token%}
+        <input type="hidden" value="{{request.user.id}}" name="{{form.teacher.html_name}}">
         {{form.non_field_errors}}
 		  <div class="span6">
 			<div id="create-lesson-form-1-left">
 				<div id="createlessontitle">
 				  <h5>Lesson Title</h5>
-				  <input name={{form.title.html_name}}
-                         class="create-lesson-input-mid"
-                         value="{{form.title.value}}"
-                         type="text" placeholder="Lesson Title">
+                  {{form.title}}
                   {{form.lesson.errors}}
 				</div>
 
@@ -180,11 +178,7 @@
 
 	  <div class="row">
 	    <div class="span4 pull-right">
-		  <!-- <input type="submit" value="next" class="btn btn-green btn-save pull-right"> -->
-
-          <a class="btn btn-green btn-save pull-right" href="{% url lesson_ingredients lesson_id=1 %}">
-            submit
-          </a>
+		  <input type="submit" value="next" class="btn btn-green btn-save">
 	    </div>
 	  </div>
 

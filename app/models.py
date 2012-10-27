@@ -141,6 +141,7 @@ class Video(CreatedMixin):
     lesson = models.ForeignKey('Lesson', related_name='videos')
 
 class Lesson(CreatedMixin, Displayable):
+    #title included thanks to displayable
     teacher = models.ForeignKey(User, related_name='teaching')
     image = models.FileField(upload_to=file_url("lessonimage"))
     flavor_text = models.TextField(default="")

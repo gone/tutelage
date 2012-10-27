@@ -54,7 +54,8 @@
 	</div>
 
 	<div class="row">
-	  <form class="profile-form" target="" action="post">
+	  <form class="profile-form" target="" action="" method="POST">
+        {% csrf_token %}
 		  <div class="span6">
 			<div id="create-lesson-form-2-left">
 				<div id="createlessontitle">
@@ -168,7 +169,6 @@
 			</div>
 		  </div>
 
-	  </form>
 	</div>
 
 	<div class="row">
@@ -176,17 +176,18 @@
 	</div>
 
 	<div class="row">
-	  <div class="span11">
-		<a class="btn btn-green btn-save pull-right" href="{% url edit-lesson lesson_id=1 %}">
+      <div class="span1 pull-right">
+      </div>
+	  <div class="span1  pull-right">
+		  <input type="submit" value="next" class="btn btn-green btn-save">
+	  </div>
+	  <div class="span1 pull-right">
+		<a class="btn btn-green btn-save" href="{% url edit-lesson lesson_id=1 %}">
 		  back
 		</a>
 	  </div>
-	  <div class="span1 pull-right">
-		<a class="btn btn-green btn-save pull-right" href="{% url lesson_steps lesson_id=1 %}">
-		  next
-		</a>
-	  </div>
 	</div>
+    </form>
 
 
   </div>

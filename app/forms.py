@@ -43,16 +43,20 @@ class LessonDetailsForm(forms.ModelForm):
         model =Lesson
         fields = ('description', 'title', 'image', 'price', 'serving_size',
                   'prep_time', 'cooking_time', 'cuisine', 'restrictions',
-                  'course', 'primary_ingredients', 'kind' )
+                  'course', 'primary_ingredients', 'kind', 'teacher')
         widgets = {
              'primary_ingredients': forms.SelectMultiple(attrs={'class':'chzn'}),
              'course': forms.SelectMultiple(attrs={'class':'chzn'}),
              'restrictions': forms.SelectMultiple(attrs={'class':'chzn'}),
              'cuisine': forms.SelectMultiple(attrs={'class':'chzn'}),
-             'kind': forms.RadioSelect
+             'kind': forms.RadioSelect,
+             'title': forms.TextInput(attrs={'class':"create-lesson-input-mid", 'placeholder':"Lesson Title"}),
+             'teacher': forms.HiddenInput
         }
 
 class IngredentsDetailsForm(forms.Form):
+    # Name Number Measurement Type
+    # Name Size Type
     pass
 
 class StepDetailsForm(forms.Form):
