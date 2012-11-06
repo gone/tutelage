@@ -1,11 +1,13 @@
 import logging
 
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.simple import direct_to_template
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.core.validators import ValidationError
+
 
 from django.core.exceptions import PermissionDenied
 
@@ -13,13 +15,12 @@ from django.contrib.formtools.wizard.views import SessionWizardView
 
 
 logger = logging.getLogger(__name__)
-from .models import Lesson
+from .models import Lesson, Video
 from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm, StepDetailsForm
 
 from account.forms import PasswordChangeForm
 
 from django.contrib.auth.models import User
-
 
 
 def profile(request, user_id=None):
@@ -100,11 +101,25 @@ def add_lesson(request, lesson_id=None):
     if request.method == "POST":
         form = LessonDetailsForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
-            lesson = form.save()
-            return HttpRedirect(reverse("lesson_ingredients", args=[lesson.id]))
+            lesson = form.save(False)
+            lesson.teacher = request.user
+            lesson.save()
+            return redirect("lesson_ingredients", args=[lesson.id])
     else:
         form = LessonDetailsForm(instance=instance)
     return direct_to_template(request, "lesson_details_form.html", {"form": form})
+
+
+@login_required
+def add_lesson_video(request, lesson_id):
+    lesson = get_object_or_404(Lesson, pk=lesson_id)
+    video = Video(video=request.FILES['video'], lesson=lesson)
+    try:
+        video.clean()
+    except ValidationError, e:
+        return HttpResponse(str(e), status=400)
+    video.save()
+    return HttpResponse('OK')
 
 
 @login_required
@@ -118,4 +133,3 @@ def lesson_steps(request, lesson_id):
 
 def cheflist(request):
     pass
-    

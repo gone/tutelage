@@ -1,17 +1,24 @@
 import re
 from datetime import datetime
+import magic
 import time
 
 
 from django.db import models
+from django.db.models import Avg
 from django.contrib.auth.models import User
+from django.core.validators import ValidationError
 from mezzanine.pages.models import Page
 from mezzanine.core.models import Displayable
 from mezzanine.core.fields import RichTextField
 
 from durationfield.db.models.fields.duration import DurationField
 
-from .constants import SKILL_LEVELS
+from .constants import SKILL_LEVELS, VIDEO_TYPE, VIDEO_SUBTYPES
+
+
+UPLOADS_DIR = 'uploads/{0}/{1.year:04}/{1.month:02}/{1.day:02}/{2}/{3}'
+
 
 def file_url(name):
     def inner(instance, filename):
@@ -19,9 +26,9 @@ def file_url(name):
         filename = r.sub('', filename)
         now = datetime.now()
         timestamp = int(time.time())
-        return 'uploads/{0}/{1.year:04}/{1.month:02}/{1.day:02}/{2}/{3}'.format( \
-                name, now, timestamp, filename)
+        return  UPLOADS_DIR.format(name, now, timestamp, filename)
     return inner
+
 
 class CreatedMixin(models.Model):
     """
@@ -35,11 +42,9 @@ class CreatedMixin(models.Model):
         abstract = True
 
 
-
 class Home(Page):
     call_to_action = RichTextField()
     hero = models.ImageField(upload_to=file_url("home_hero"))
-
 
 
 class HomeBlock(CreatedMixin):
@@ -48,7 +53,6 @@ class HomeBlock(CreatedMixin):
     body = RichTextField()
     link_copy = models.CharField(max_length=126)
     link_target = models.CharField(max_length=126)
-
 
 
 class About(Page):
@@ -75,6 +79,7 @@ class FeaturedChef(Page):
 #         return self.name   #
 ##############################
 
+
 class Ingredient(CreatedMixin):
     name = models.CharField(max_length=32, null=False)
     number = models.IntegerField(null=False, blank=False, default="0")
@@ -84,20 +89,22 @@ class Ingredient(CreatedMixin):
     def __unicode__(self):
         return self.name
 
+
 class Tool(CreatedMixin):
     name = models.CharField(max_length=32, null=False)
     size = models.CharField(max_length=32, null=False)
     type = models.CharField(max_length=32)
 
-
     def __unicode__(self):
         return self.name
+
 
 class Category(CreatedMixin):
     name = models.CharField(max_length=128, unique=True)
 
     def __unicode__(self):
         return self.name
+
 
 class SubCategory(CreatedMixin):
     name = models.CharField(max_length=128)
@@ -109,6 +116,7 @@ class SubCategory(CreatedMixin):
     class Meta():
         unique_together = ('name', 'parent')
 
+
 class Profile(CreatedMixin):
     user = models.OneToOneField(User)
     about = models.CharField(max_length=300, default='')
@@ -119,6 +127,7 @@ class Profile(CreatedMixin):
 
     def __unicode__(self):
         return unicode(self.user)
+
 
 class CreditCard(CreatedMixin):
     user = models.ForeignKey(User)
@@ -140,13 +149,36 @@ class Video(CreatedMixin):
     video = models.FileField(upload_to=file_url("lessonvideos"))
     lesson = models.ForeignKey('Lesson', related_name='videos')
 
+    def validate_video(self):
+        try:
+            f = self.video.file
+        except ValueError:
+            raise ValidationError("Need a Video File")
+        # TODO: choice the video types to support
+        mime = magic.from_buffer(f.read(1024), mime=True)
+        try:
+            type_, subtype = mime.split('/')
+        except ValueError:
+            raise ValidationError("The file must be a video")
+        if type_ != VIDEO_TYPE:
+            raise ValidationError("The file is not a video")
+        if subtype not in VIDEO_SUBTYPES:
+            raise ValidationError("Video format not suported")
+
+    def clean(self):
+        self.validate_video()
+
+
 class Lesson(CreatedMixin, Displayable):
     teacher = models.ForeignKey(User, related_name='teaching')
     image = models.FileField(upload_to=file_url("lessonimage"))
     flavor_text = models.TextField(default="")
-    price = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True)
-    users_who_rated = models.ManyToManyField(User, through='LessonRating', related_name='rated_lessons')
-    followers = models.ManyToManyField(User, related_name='lessons',  blank=True, null=True)
+    price = models.DecimalField(max_digits=20, decimal_places=2, null=True,
+                                blank=True)
+    users_who_rated = models.ManyToManyField(User, through='LessonRating',
+                                             related_name='rated_lessons')
+    followers = models.ManyToManyField(User, related_name='lessons',
+                                       blank=True, null=True)
     serving_size = models.IntegerField()
 
    #tags = models.CharField(max_length=128, default="")
@@ -164,7 +196,6 @@ class Lesson(CreatedMixin, Displayable):
 
     ingredients = models.ManyToManyField(Ingredient, related_name="lessons")
     tools = models.ManyToManyField(Tool, related_name="lessons")
-
 
     class Meta():
         unique_together = ('teacher', 'title')
@@ -217,17 +248,20 @@ class LessonRating(CreatedMixin):
 
 class Course(CreatedMixin):
     course = models.CharField(max_length=256)
+
     def __unicode__(self):
         return self.course
 
 
-
 class Cuisine(CreatedMixin):
     cuisine = models.CharField(max_length=256)
+
     def __unicode__(self):
         return self.cuisine
 
+
 class DietaryRestrictions(CreatedMixin):
     restriction = models.CharField(max_length=256)
+
     def __unicode__(self):
         return self.restriction

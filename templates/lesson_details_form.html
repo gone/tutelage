@@ -1,5 +1,27 @@
 {% extends 'base.html' %}
 
+ 
+{% block media %}
+<script>
+require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], function($){
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+		/*
+            $.each(data.result, function (index, file) {
+                $('<p/>').text(file.name).appendTo(document.body);
+            });*/
+        },
+	progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .bar').css('width', progress + '%').html(progress + "%");
+    	}
+    });
+});
+</script>
+{% endblock %}
+
+
 {% block content %}
 <div class="bordered-row main bordered">
 
@@ -53,7 +75,7 @@
 	</div>
 
 	<div class="row">
-	  <form class="profile-form" action="" method="post">
+	  <form class="profile-form" action="" method="post" enctype="multipart/form-data">
         {%csrf_token%}
         {{form.non_field_errors}}
 		  <div class="span6">
@@ -109,8 +131,12 @@
 
 			  <div id="firstname" class="">
 				<h5>Select Your Video</h5>
-				<input class="create-lesson-input-file" type="text" placeholder="insert file path/URL here...">
-				<a class="btn btn-gray btn-lesson-file-upload"><strong>...</strong></a>
+				<input class="create-lesson-input-file"><!-- id="fileupload"
+				type="file" data-url="{% url add-lesson-video 1 %}" name="video"-->
+				<!--div id="progress" style="height:18px;background:gray">
+					<div class="bar" style="width: 0%; height:100%;background:green;"></div>
+				</div--!>
+				<!--a class="btn btn-gray btn-lesson-file-upload"><strong>...</strong></a --!>
 			  </div>
 			  <div id="firstname" class="">
 				<h5>Select Your Lesson Image</h5>
@@ -180,7 +206,7 @@
 
 	  <div class="row">
 	    <div class="span4 pull-right">
-		  <!-- <input type="submit" value="next" class="btn btn-green btn-save pull-right"> -->
+		  <input type="submit" value="next" class="btn btn-green btn-save pull-right">
 
           <a class="btn btn-green btn-save pull-right" href="{% url lesson_ingredients lesson_id=1 %}">
             submit
@@ -189,6 +215,20 @@
 	  </div>
 
 	  </form>
+
+	<form>
+	{%csrf_token%}
+	  <div id="firstname" class="">
+				<h5>Select Your Video</h5>
+				<input class="create-lesson-input-file" id="fileupload"
+				type="file" data-url="{% url add-lesson-video 1 %}" name="video">
+				<div id="progress" style="height:18px;background:gray; width:300px">
+					<div class="bar" style="width: 0%; height:100%;background:green;">0%</div>
+				</div>
+	  </div>
+	</form>
+
+
 
     </div>
   </div>

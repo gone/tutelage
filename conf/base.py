@@ -223,6 +223,9 @@ ROOT_URLCONF = "urls"
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 
 
+FILE_UPLOAD_TEMP_DIR = os.path.join(PROJECT_ROOT, 'tmp_uploads')
+
+
 ################
 # APPLICATIONS #
 ################

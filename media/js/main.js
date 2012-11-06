@@ -12,9 +12,9 @@ require({
         "liveValidationEn": "lib/jquery.validationEngine-en",
         "popcorn": "lib/popcorn-complete",
     },
-    shim:{
+    shim: {
         _: {
-            exports: "_",
+            exports: "_"
         },
         bootstrap: {
             deps: ['jquery']
@@ -31,8 +31,10 @@ require({
         popcorn: {
             exports: "Popcorn",
             deps: ['jquery']
+        },
+        fileupload: {
+            deps: ['jquery']
         }
-
     },
         urlArgs: "bust=" +  (new Date()).getTime(),
 },

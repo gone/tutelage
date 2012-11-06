@@ -18,7 +18,7 @@ class ProfileForm(forms.Form):
                   'first_name': user.first_name,
                   'last_name': user.last_name,
                   'email': user.email,
-                  'skill_level':profile.skill_level,
+                  'skill_level': profile.skill_level,
                   }
         kwargs['initial'] = initial
         return super(ProfileForm, self).__init__(*args, **kwargs)
@@ -35,17 +35,16 @@ class ProfileForm(forms.Form):
         return self.profile
 
 
-
 class LessonDetailsForm(forms.ModelForm):
     # video
 
     class Meta:
-        model =Lesson
+        model = Lesson
         fields = ('description', 'title', 'image', 'price', 'serving_size',
                   'prep_time', 'cooking_time', 'cuisine', 'restrictions',
-                  'course', 'primary_ingredients', 'kind' )
+                  'course', 'primary_ingredients', 'kind',)
         widgets = {
-             'primary_ingredients': forms.SelectMultiple(attrs={'class':'chzn'}),
+             'primary_ingredients': forms.SelectMultiple(attrs={'class': 'chzn'}),
              'course': forms.SelectMultiple(attrs={'class':'chzn'}),
              'restrictions': forms.SelectMultiple(attrs={'class':'chzn'}),
              'cuisine': forms.SelectMultiple(attrs={'class':'chzn'}),
