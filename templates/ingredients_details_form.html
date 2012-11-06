@@ -73,28 +73,23 @@
 				  <div class="span1">Type</div>
 				</div>
 
+                {{ ingredient_formset.management_form }}
+                {% for f in ingredient_formset %}
 				<div class="row">
 				  <div class="span2">
-					<input class="create-lesson-2-input-mid" type="text" placeholder="">
+                    {{f.ingredient}}
 				  </div>
 				  <div class="span1">
-				    <input class="create-lesson-2-input-small" name="ingredientamount" type="number" min="0" max="100" placeholder="">
+                    {{f.number}}
 				  </div>
 				  <div class="span2">
-				    <select class="create-lesson-2-input-dropdown-mid" name="ingredientmeasurement">
-				      <option>filet</option>
-				      <option>full</option>
-				      <option>processed</option>
-				    </select>
+                    {{f.measurement}}
 				  </div>
 				  <div class="span1">
-				    <select class="create-lesson-2-input-dropdown-small" name="ingredienttype">
-				      <option>fresh</option>
-				      <option>frozen</option>
-				    </select>
+                    {{f.prep}}
 				  </div>
 				</div>
-
+                {% endfor %}
 				<div class="row">
 				  <hr class="create-lesson-hr"/>
 				</div>
@@ -130,25 +125,22 @@
 				  <div class="span2">Type</div>
 				</div>
 
+                {{ tool_formset.management_form }}
+                {% for t in tool_formset %}
 				<div class="row">
+                    {{t.id}}
+
 				  <div class="span2">
-					<input class="create-lesson-2-input-mid" type="text" placeholder="">
+                    {{t.name}}
 				  </div>
 				  <div class="span2">
-				    <select class="create-lesson-2-input-dropdown-mid" name="ingredientmeasurement">
-				      <option>small</option>
-				      <option>medium</option>
-				      <option>large</option>
-				    </select>
+                    {{t.size}}
 				  </div>
 				  <div class="span2">
-				    <select class="create-lesson-2-input-dropdown-mid" name="ingredienttype">
-				      <option>sharpened</option>
-				      <option>dull</option>
-				    </select>
+                    {{t.type}}
 				  </div>
 				</div>
-
+                {% endfor %}
 				<div class="row">
 				  <hr class="create-lesson-hr"/>
 				</div>

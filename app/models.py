@@ -77,18 +77,24 @@ class FeaturedChef(Page):
 
 class Ingredient(CreatedMixin):
     name = models.CharField(max_length=32, null=False)
+
+    def __unicode__(self):
+        return self.name
+
+class LessonIngredient(CreatedMixin):
+    ingredient = models.ForeignKey(Ingredient)
+    lesson = models.ForeignKey("Lesson")
     number = models.IntegerField(null=False, blank=False, default="0")
     measurement = models.CharField(max_length=32, null=False)
     prep = models.CharField(max_length=32)
 
     def __unicode__(self):
-        return self.name
+        return "%s %s of %s" % (self.number, self.measurement, self.ingredient)
 
 class Tool(CreatedMixin):
     name = models.CharField(max_length=32, null=False)
     size = models.CharField(max_length=32, null=False)
     type = models.CharField(max_length=32)
-
 
     def __unicode__(self):
         return self.name
@@ -163,7 +169,7 @@ class Lesson(CreatedMixin, Displayable):
     kind = models.SmallIntegerField(choices=((0, "Recipe"),
                                              (1, "Technique")), default=0)
 
-    ingredients = models.ManyToManyField(Ingredient, related_name="lessons")
+    ingredients = models.ManyToManyField(Ingredient, through="LessonIngredient", related_name="lessons")
     tools = models.ManyToManyField(Tool, related_name="lessons")
 
 

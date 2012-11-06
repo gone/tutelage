@@ -1,5 +1,5 @@
 from django import forms
-from .models import Lesson
+from .models import Lesson, LessonIngredient
 from .constants import SKILL_LEVELS
 #from ajax_select.fields import AutoCompleteSelectMultipleField
 
@@ -54,10 +54,11 @@ class LessonDetailsForm(forms.ModelForm):
              'teacher': forms.HiddenInput
         }
 
-class IngredentsDetailsForm(forms.Form):
-    # Name Number Measurement Type
-    # Name Size Type
-    pass
+class IngredentsDetailsForm(forms.ModelForm):
+
+    class Meta:
+        model = LessonIngredient
+        fields =  ("number","ingredient", "number", "measurement", "prep")
 
 class StepDetailsForm(forms.Form):
     pass

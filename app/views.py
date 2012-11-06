@@ -7,13 +7,16 @@ from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
+from django.forms.models import inlineformset_factory, modelformset_factory
+
+
 from django.core.exceptions import PermissionDenied
 
 from django.contrib.formtools.wizard.views import SessionWizardView
 
 
 logger = logging.getLogger(__name__)
-from .models import Lesson
+from .models import Lesson, LessonIngredient, Tool, Step
 from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm, StepDetailsForm
 
 from account.forms import PasswordChangeForm
@@ -113,18 +116,43 @@ def lesson_ingredients(request, lesson_id):
     if request.user != lesson.teacher:
         raise PermissionDenied
 
+    IngredientsDetailsFormset = inlineformset_factory(Lesson, LessonIngredient, form=IngredentsDetailsForm, extra=1, )
+    ToolFormset = modelformset_factory(Tool, extra=1)
     if request.method == "POST":
-        #form = IngredientsDetailsForm(request.POST, instance=instance)
-        #if form.is_valid():
-            #lesson = form.save()
+        ingredient_formset = IngredientsDetailsFormset(request.POST, instance=lesson, prefix="ingredients")
+        tool_formset = ToolFormset(request.POST, prefix="tools", queryset=lesson.tools.all())
+        if ingredient_formset.is_valid() and tool_formset.is_valid():
+            ingredient_formset.save()
+            tools = tool_formset.save()
+            for tool in tools:
+                lesson.tools.add(tool)
         return HttpResponseRedirect(reverse("lesson_steps", args=[lesson.id]))
     else:
-        form = IngredentsDetailsForm(instance=lesson)
-    return direct_to_template(request, "ingredients_details_form.html", {"form": form})
+        ingredient_formset = IngredientsDetailsFormset(instance=lesson, prefix="ingredients")
+        tool_formset = ToolFormset(prefix="tools", queryset=lesson.tools.all())
+    return direct_to_template(request, "ingredients_details_form.html",
+                              {"ingredient_formset": ingredient_formset,
+                               "tool_formset": tool_formset,
+                               })
 
 @login_required
 def lesson_steps(request, lesson_id):
-    return direct_to_template(request, "step_details_form.html")#, {"form": form})
+    lesson = get_object_or_404(Lesson, pk=lesson_id)
+    if request.user != lesson.teacher:
+        raise PermissionDenied
+
+    StepFormset = inlineformset_factory(Lesson, Step, extra=1)
+    if request.method == "POST":
+        step_formset = StepFormset(request.POST, queryset=lesson.steps.all(), instance=lesson)
+        if step_formset.is_valid():
+            steps = step_formset.save()
+            for step in steps:
+                lesson.steps.add(step)
+            return HttpResponseRedirect(reverse("self_profile"))
+    else:
+        step_formset = StepFormset(queryset=lesson.steps.all(), instance=lesson)
+
+    return direct_to_template(request, "step_details_form.html", {"form": step_formset})
 
 
 def cheflist(request):

@@ -52,9 +52,17 @@
 	<div class="row">
 	  <hr class="create-lesson-hr"/>
 	</div>
-
+	<form class="profile-form" action="" method="post">
+      {% csrf_token %}
+      {{ form.management_form }}
+      {% for step in form %}
 	<div class="row">
-	  <form class="profile-form" target="" action="post">
+      <input type="hidden" name="{{step.order.html_name}}" value="{{step.order.value}}" id="{{step.order.auto_id}}">
+      {{step.id}}
+    {% if step.non_field_errors %}
+                {{step.non_field_errors}}
+    {% endif %}
+
 		  <div class="span1">
 			<div id="create-lesson-step-number">
 				<h5>1&#46;</h5>
@@ -65,16 +73,15 @@
 			<div id="create-lesson-form-3-left">
 				<div id="create-lesson-step-title" class="create-lesson-field-mid">
 				  <h5>Step Title</h5>
-				  <input class="create-lesson-input-mid" type="text" placeholder="" required>
+                  {{step.title}}
 				</div>
+                {{step.title.errors}}
 
 				<div id="createlessonstepdesc">
 				  <h5>Step Description (200 characters max)</h5>
-				  <textarea class="create-lesson-input-mid create-lesson-desc" required></textarea>
+				  {{step.text}}
 				</div>
-
-
-
+                {{step.text.errors}}
 			</div>
 		  </div>
 
@@ -85,19 +92,17 @@
 				  <div class="span3">
 					<div id="createlessontitle">
 					  <h5>Step Start Time (mm:ss)</h5>
-					  <input class="create-lesson-input-menu-small" type="time" min="00:00" max="60:00" step="1" name="steptime" required>
+			          {{step.start_time}}
 					</div>
+                    {{step.start_time.errors}}
 				  </div>
 
 				  <div class="span3">
 					<div id="lessonmealtype" class="">
 					  <h5>Technique Used</h5>
-					  <select class="create-lesson-input-menu-mid" name="mealtype" required>
-						<option>Fileting a Fish</option>
-						<option>Broiling</option>
-						<option>Using a Baster</option>
-				      </select>
+                      {{step.technique}}
 					</div>
+                    {{step.technique.errors}}
 				  </div>
 				</div>
 
@@ -105,33 +110,22 @@
 				  <div class="span3">
 					<div id="lastname" class="create-lesson-field-small">
 					  <h5>Ingredients Used</h5>
-					  <select class="create-lesson-input-menu" name="lessoncategory" multiple="multiple">
-						<option>Seafood</option>
-						<option>Chicken</option>
-						<option>Tofu</option>
-					  </select>
+					  {{step.ingredents}}
 					</div>
+                    {{step.ingredents.errors}}
 				  </div>
 
 				  <div class="span3">
 					<div id="email" class="create-lesson-field-small">
 					  <h5>Tools Used</h5>
-					  <select class="create-lesson-input-menu" name="lessoncategory" multiple="multiple">
-						<option>Large Knife</option>
-						<option>1/3 teaspoon</option>
-						<option>Medium Frying Pan</option>
-					  </select>
+                      {{step.tools}}
 					</div>
+                    {{step.tools.errors}}
 				  </div>
-
 				</div>
-
-
-
 			</div>
 		  </div>
-
-	  </form>
+          {% endfor %}
 	</div>
 
 	<div class="row">
@@ -161,13 +155,12 @@
 		</a>
 	  </div>
 	  <div class="span1 pull-right">
-		<a class="btn btn-green btn-save pull-right">
-		  preview
-		</a>
+		<input type="submit" value="preview" class="btn btn-green
+                                                    btn-save">
+	  </form>
+
 	  </div>
 	</div>
-
-
   </div>
 </div>
 
