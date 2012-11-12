@@ -101,7 +101,7 @@
 	width: 120px;
 }
 
-#lessontype ul {	
+#lessontype ul {
 	margin: 0px;
 }
 
@@ -140,4 +140,13 @@
 
 .create-lesson-question {
 	width: 100%;
+}
+
+
+.step_counter {
+  counter-increment: inc_steps;
+  }
+
+.step_counter:after {
+    content: counter(inc_steps);
 }

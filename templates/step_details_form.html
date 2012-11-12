@@ -1,38 +1,61 @@
 {% extends 'base.html' %}
+{% block media %}
+<script type="text/javascript">
+pagelogic = function(){
+
+    add_step = "<div class='row'>" +
+        "				  <div class='span1 pull-left'>" +
+        "					<a class='btn btn-green btn-save btn-add pull-left'>" +
+        "					<strong>&#43;</strong>" +
+        "					</a>" +
+        "				  </div>" +
+        "				  <div class='span2 create-lesson-add-step>" +
+        "				    <span class='vertical-align'><strong>add step</strong></span>" +
+        "				  </div>" +
+        "			    </div>"
+
+
+
+    $('#step_formset').formset({
+        addText: add_step
+    });
+}
+</script>
+{% endblock %}
 
 {% block content %}
 {% autoescape off %}
 <div class="bordered-row main bordered">
 
-    <div class="span6">
-	  <div class="create-lesson-title">
-	    <h2>Create New Lesson</h2>
-	  </div>
+  <div class="span6">
+	<div class="create-lesson-title">
+	  <h2>Create New Lesson</h2>
 	</div>
+  </div>
 
-	<div class="span2 vertical-align">
-	  <div class="create-step-btn">
-	    <a class="btn btn-lightgray btn-create-step pull-left">
-		  <span class="create-step-text">step &#160; &#160;</span><strong>1</strong>
-		</a>
-	  </div>
+  <div class="span2 vertical-align">
+	<div class="create-step-btn">
+	  <a class="btn btn-lightgray btn-create-step pull-left">
+		<span class="create-step-text">step &#160; &#160;</span><strong>1</strong>
+	  </a>
 	</div>
+  </div>
 
-	<div class="span2 btn-create-step-2">
-	  <div class="create-step-btn">
-		<a class="btn btn-lightgray btn-create-step">
-		  <span class="create-step-text">step &#160; &#160;</span><strong>2</strong>
-		</a>
-	  </div>
+  <div class="span2 btn-create-step-2">
+	<div class="create-step-btn">
+	  <a class="btn btn-lightgray btn-create-step">
+		<span class="create-step-text">step &#160; &#160;</span><strong>2</strong>
+	  </a>
 	</div>
+  </div>
 
-	<div class="span2">
-	  <div class="create-step-btn">
-		<a class="btn btn-darkgray btn-create-step pull-right">
-		  <span class="create-step-text">step &#160; &#160;</span><strong>3</strong>
-		</a>
-	  </div>
+  <div class="span2">
+	<div class="create-step-btn">
+	  <a class="btn btn-darkgray btn-create-step pull-right">
+		<span class="create-step-text">step &#160; &#160;</span><strong>3</strong>
+	  </a>
 	</div>
+  </div>
 
   <div class="span12">
 	<div class="row">
@@ -56,110 +79,102 @@
       {% csrf_token %}
       {{ form.management_form }}
       {% for step in form %}
-	<div class="row">
-      <input type="hidden" name="{{step.order.html_name}}" value="{{step.order.value}}" id="{{step.order.auto_id}}">
-      {{step.id}}
-    {% if step.non_field_errors %}
-                {{step.non_field_errors}}
-    {% endif %}
+      <span id="step_formset">
+	    <div class="row">
+          <input type="hidden" name="{{step.order.html_name}}" value="{{step.order.value}}" id="{{step.order.auto_id}}">
+          {{step.id}}
+          {% if step.non_field_errors %}
+          {{step.non_field_errors}}
+          {% endif %}
 
 		  <div class="span1">
 			<div id="create-lesson-step-number">
-				<h5>1&#46;</h5>
+			  <h5 class="step_counter"></h5>
 			</div>
 		  </div>
 
 		  <div class="span5">
 			<div id="create-lesson-form-3-left">
-				<div id="create-lesson-step-title" class="create-lesson-field-mid">
-				  <h5>Step Title</h5>
-                  {{step.title}}
-				</div>
-                {{step.title.errors}}
+			  <div id="create-lesson-step-title" class="create-lesson-field-mid">
+				<h5>Step Title</h5>
+                {{step.title}}
+			  </div>
+              {{step.title.errors}}
 
-				<div id="createlessonstepdesc">
-				  <h5>Step Description (200 characters max)</h5>
-				  {{step.text}}
-				</div>
-                {{step.text.errors}}
+			  <div id="createlessonstepdesc">
+				<h5>Step Description (200 characters max)</h5>
+				{{step.text}}
+			  </div>
+              {{step.text.errors}}
 			</div>
 		  </div>
 
 		  <div class="span6">
 			<div id="create-lesson-form-3-right">
 
-				<div class="row">
-				  <div class="span3">
-					<div id="createlessontitle">
-					  <h5>Step Start Time (mm:ss)</h5>
-			          {{step.start_time}}
-					</div>
-                    {{step.start_time.errors}}
+			  <div class="row">
+				<div class="span3">
+				  <div id="createlessontitle">
+					<h5>Step Start Time (mm:ss)</h5>
+			        {{step.start_time}}
 				  </div>
-
-				  <div class="span3">
-					<div id="lessonmealtype" class="">
-					  <h5>Technique Used</h5>
-                      {{step.technique}}
-					</div>
-                    {{step.technique.errors}}
-				  </div>
+                  {{step.start_time.errors}}
 				</div>
 
-				<div class="row">
-				  <div class="span3">
-					<div id="lastname" class="create-lesson-field-small">
-					  <h5>Ingredients Used</h5>
-					  {{step.ingredents}}
-					</div>
-                    {{step.ingredents.errors}}
+				<div class="span3">
+				  <div id="lessonmealtype" class="">
+					<h5>Technique Used</h5>
+                    {{step.technique}}
 				  </div>
-
-				  <div class="span3">
-					<div id="email" class="create-lesson-field-small">
-					  <h5>Tools Used</h5>
-                      {{step.tools}}
-					</div>
-                    {{step.tools.errors}}
-				  </div>
+                  {{step.technique.errors}}
 				</div>
+			  </div>
+
+			  <div class="row">
+				<div class="span3">
+				  <div id="lastname" class="create-lesson-field-small">
+					<h5>Ingredients Used</h5>
+					{{step.ingredients}}
+				  </div>
+                  {{step.ingredients.errors}}
+				</div>
+
+				<div class="span3">
+				  <div id="email" class="create-lesson-field-small">
+					<h5>Tools Used</h5>
+                    {{step.tools}}
+				  </div>
+                  {{step.tools.errors}}
+				</div>
+			  </div>
 			</div>
 		  </div>
+        </div>
           {% endfor %}
-	</div>
-
-	<div class="row">
-	  <hr class=""/>
-	</div>
-
-	<div class="row">
-	  <div class="span1 pull-left">
-	    <a class="btn btn-green btn-save btn-add pull-left">
-		  <strong>&#43;</strong>
-		</a>
+      </span>
 	  </div>
 
-	  <div class="span2 create-lesson-add-ingredient">
-		<span class="vertical-align"><strong>add step</strong></span>
+	  <div class="row">
+	    <hr/>
 	  </div>
+
+
+	  <div class="row">
+	    <hr />
+	  </div>
+
+	  <div class="row">
+	    <div class="span10">
+		  <a class="btn btn-green btn-save pull-right" href="{% url lesson_ingredients lesson_id=lesson.id %}">
+		    back
+		  </a>
+	    </div>
+	    <div class="span1 pull-right">
+		  <input type="submit" value="preview" class="btn btn-green
+                                                      btn-save">
+	</form>
+
 	</div>
-
-	<div class="row">
-	  <hr />
-	</div>
-
-	<div class="row">
-	  <div class="span10">
-		<a class="btn btn-green btn-save pull-right" href="{% url lesson_ingredients lesson_id=1 %}">
-		  back
-		</a>
-	  </div>
-	  <div class="span1 pull-right">
-		<input type="submit" value="preview" class="btn btn-green
-                                                    btn-save">
-	  </form>
-
-	  </div>
 	</div>
   </div>
 </div>

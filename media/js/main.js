@@ -11,6 +11,7 @@ require({
         "liveValidation": "lib/jquery.validationEngine",
         "liveValidationEn": "lib/jquery.validationEngine-en",
         "popcorn": "lib/popcorn-complete",
+        "formset":'lib/jquery.formset',
     },
     shim:{
         _: {
@@ -31,12 +32,14 @@ require({
         popcorn: {
             exports: "Popcorn",
             deps: ['jquery']
+        },
+        formset: {
+            deps: ['jquery']
         }
-
     },
         urlArgs: "bust=" +  (new Date()).getTime(),
 },
-        ["jquery", "_", "bootstrap", "colorbox", "chosen", "cs!main", "cs!validation", "cs!lessons"], function($, Em, _){
+        ["jquery", "_", "bootstrap", "colorbox", "chosen", "cs!main", "cs!validation", "formset", "cs!lessons"], function($, Em, _){
             $(function(){
                 if (typeof pagelogic !== "undefined") pagelogic()
             });

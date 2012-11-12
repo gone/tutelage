@@ -6478,6 +6478,14 @@ btn-avatar {
   width: 100%;
 }
 
+.step_counter {
+  counter-increment: inc_steps;
+}
+
+.step_counter:after {
+  content: counter(inc_steps);
+}
+
 /* Z-INDEX */
 .formError {
   z-index: 990;

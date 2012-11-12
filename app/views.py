@@ -107,7 +107,7 @@ def add_lesson(request, lesson_id=None):
             return HttpResponseRedirect(reverse("lesson_ingredients", args=[lesson.id]))
     else:
         form = LessonDetailsForm(instance=lesson)
-    return direct_to_template(request, "lesson_details_form.html", {"form": form})
+    return direct_to_template(request, "lesson_details_form.html", {"form": form, "lesson_id":lesson_id})
 
 
 @login_required
@@ -122,7 +122,7 @@ def lesson_ingredients(request, lesson_id):
         ingredient_formset = IngredientsDetailsFormset(request.POST, instance=lesson, prefix="ingredients")
         tool_formset = ToolFormset(request.POST, prefix="tools", queryset=lesson.tools.all())
         if ingredient_formset.is_valid() and tool_formset.is_valid():
-            ingredient_formset.save()
+            ingredients = ingredient_formset.save()
             tools = tool_formset.save()
             for tool in tools:
                 lesson.tools.add(tool)
@@ -133,6 +133,7 @@ def lesson_ingredients(request, lesson_id):
     return direct_to_template(request, "ingredients_details_form.html",
                               {"ingredient_formset": ingredient_formset,
                                "tool_formset": tool_formset,
+                               "lesson": lesson,
                                })
 
 @login_required
@@ -152,7 +153,7 @@ def lesson_steps(request, lesson_id):
     else:
         step_formset = StepFormset(queryset=lesson.steps.all(), instance=lesson)
 
-    return direct_to_template(request, "step_details_form.html", {"form": step_formset})
+    return direct_to_template(request, "step_details_form.html", {"form": step_formset, "lesson": lesson,})
 
 
 def cheflist(request):

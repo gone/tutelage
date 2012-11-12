@@ -197,7 +197,7 @@ class Step(CreatedMixin):
     order = models.PositiveSmallIntegerField(default=0)
     start_time = models.IntegerField(null=True, blank=True)
     technique = models.ManyToManyField(Lesson, related_name="technique_steps")
-    ingredents = models.ManyToManyField(Ingredient, related_name="steps")
+    ingredients = models.ManyToManyField(Ingredient, related_name="steps")
     tools = models.ManyToManyField(Tool, related_name="steps")
 
     class Meta():

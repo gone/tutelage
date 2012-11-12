@@ -1,5 +1,52 @@
 {% extends 'base.html' %}
 
+{% block media %}
+<script type="text/javascript">
+pagelogic = function(){
+    add_ingredient = "<div class='row'>" +
+        "				  <div class='span1 pull-left'>" +
+        "					<a class='btn btn-green btn-save btn-add pull-left'>" +
+        "					<strong>&#43;</strong>" +
+        "					</a>" +
+        "				  </div>" +
+        "				  <div class='span2 create-lesson-add-ingredient'>" +
+        "				    <span class='vertical-align'><strong>add ingredient</strong></span>" +
+        "				  </div>" +
+        "			    </div>"
+
+
+    add_tool = "<div class='row'>" +
+        "				  <div class='span1 pull-left'>" +
+        "					<a class='btn btn-green btn-save btn-add pull-left'>" +
+        "					<strong>&#43;</strong>" +
+        "					</a>" +
+        "				  </div>" +
+        "				  <div class='span2 create-lesson-add-tool'>" +
+        "				    <span class='vertical-align'><strong>add tool</strong></span>" +
+        "				  </div>" +
+        "			    </div>"
+
+
+
+
+    $('#ingredient_formset').formset({
+        prefix: '{{ ingredient_formset.prefix }}',
+        formCssClass: 'dynamic-formset1',
+        addText: add_ingredient,
+    });
+    $('#tool_formset').formset({
+        prefix: '{{ tool_formset.prefix }}',
+        formCssClass: 'dynamic-formset2',
+        addText: add_tool,
+    });
+
+
+
+};
+</script>
+{% endblock %}
+
+
 {% block content %}
 {% autoescape off %}
 <div class="bordered-row main bordered">
@@ -73,9 +120,10 @@
 				  <div class="span1">Type</div>
 				</div>
 
-                {{ ingredient_formset.management_form }}
+                <span id="ingredient_formset">
                 {% for f in ingredient_formset %}
 				<div class="row">
+                    {{f.id}}
 				  <div class="span2">
                     {{f.ingredient}}
 				  </div>
@@ -89,23 +137,13 @@
                     {{f.prep}}
 				  </div>
 				</div>
+                {% if form.instance.pk %}asdf{{ form.DELETE }}asdf{% endif %}
                 {% endfor %}
+                </span>
 				<div class="row">
 				  <hr class="create-lesson-hr"/>
 				</div>
 
-				<div class="row">
-				  <div class="span1 pull-left">
-					<a class="btn btn-green btn-save btn-add pull-left">
-					<strong>&#43;</strong>
-					</a>
-				  </div>
-
-				  <div class="span2 create-lesson-add-ingredient">
-				    <span class="vertical-align"><strong>add ingredient</strong></span>
-				  </div>
-
-			    </div>
 			</div>
 		  </div>
 
@@ -125,7 +163,7 @@
 				  <div class="span2">Type</div>
 				</div>
 
-                {{ tool_formset.management_form }}
+                <span id="tool_formset">
                 {% for t in tool_formset %}
 				<div class="row">
                     {{t.id}}
@@ -141,22 +179,10 @@
 				  </div>
 				</div>
                 {% endfor %}
+                </span>
 				<div class="row">
 				  <hr class="create-lesson-hr"/>
 				</div>
-
-				<div class="row">
-				  <div class="span1 pull-left">
-					<a class="btn btn-green btn-save btn-add pull-left">
-					<strong>&#43;</strong>
-					</a>
-				  </div>
-
-				  <div class="span2 create-lesson-add-ingredient">
-				    <span class="vertical-align"><strong>add tool</strong></span>
-				  </div>
-
-			    </div>
 
 			</div>
 		  </div>
@@ -174,11 +200,13 @@
 		  <input type="submit" value="next" class="btn btn-green btn-save">
 	  </div>
 	  <div class="span1 pull-right">
-		<a class="btn btn-green btn-save" href="{% url edit-lesson lesson_id=1 %}">
+		<a class="btn btn-green btn-save" href="{% url edit-lesson lesson_id=lesson.id %}">
 		  back
 		</a>
 	  </div>
 	</div>
+    {{ ingredient_formset.management_form }}
+    {{ tool_formset.management_form }}
     </form>
 
 
