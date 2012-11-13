@@ -13,9 +13,9 @@ require({
         "popcorn": "lib/popcorn-complete",
         "formset":'lib/jquery.formset',
     },
-    shim:{
+    shim: {
         _: {
-            exports: "_",
+            exports: "_"
         },
         bootstrap: {
             deps: ['jquery']
@@ -34,6 +34,9 @@ require({
             deps: ['jquery']
         },
         formset: {
+            deps: ['jquery']
+        },
+        fileupload: {
             deps: ['jquery']
         }
     },
