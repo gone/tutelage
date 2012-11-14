@@ -1,6 +1,6 @@
 import re
 from datetime import datetime
-import magic
+#import magic
 import time
 
 
@@ -156,24 +156,24 @@ class Video(CreatedMixin):
     video = models.FileField(upload_to=file_url("lessonvideos"))
     lesson = models.ForeignKey('Lesson', related_name='videos')
 
-    def validate_video(self):
-        try:
-            f = self.video.file
-        except ValueError:
-            raise ValidationError("Need a Video File")
-        # TODO: choice the video types to support
-        mime = magic.from_buffer(f.read(1024), mime=True)
-        try:
-            type_, subtype = mime.split('/')
-        except ValueError:
-            raise ValidationError("The file must be a video")
-        if type_ != VIDEO_TYPE:
-            raise ValidationError("The file is not a video")
-        if subtype not in VIDEO_SUBTYPES:
-            raise ValidationError("Video format not suported")
+    # def validate_video(self):
+    #     try:
+    #         f = self.video.file
+    #     except ValueError:
+    #         raise ValidationError("Need a Video File")
+    #     # TODO: choice the video types to support
+    #     mime = magic.from_buffer(f.read(1024), mime=True)
+    #     try:
+    #         type_, subtype = mime.split('/')
+    #     except ValueError:
+    #         raise ValidationError("The file must be a video")
+    #     if type_ != VIDEO_TYPE:
+    #         raise ValidationError("The file must be a video")
+    #     if subtype not in VIDEO_SUBTYPES:
+    #         raise ValidationError("Video format not suported")
 
-    def clean(self):
-        self.validate_video()
+    # def clean(self):
+    #     self.validate_video()
 
 
 class Lesson(CreatedMixin, Displayable):

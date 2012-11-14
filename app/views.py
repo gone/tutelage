@@ -174,3 +174,8 @@ def lesson_steps(request, lesson_id):
 
 def cheflist(request):
     pass
+
+
+def lesson(request, lesson_id):
+    lesson = get_object_or_404(Lesson, pk=lesson_id)
+    return direct_to_template(request, "lesson.html", {"lesson": lesson})
