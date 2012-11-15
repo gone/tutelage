@@ -16,9 +16,19 @@ pagelogic = function(){
 
 
 
-    $('#step_formset').formset({
-        addText: add_step
+    $('.step_formset').formset({
+        prefix: '{{ form.prefix }}',
+        addText: add_step,
+        added: function(row){
+            $(".orderval").each(function(idx, element){
+                $(element).attr("value", idx)
+            })
+        }
     });
+    $(".orderval").each(function(idx, element){
+        $(element).attr("value", idx)
+    })
+
 }
 </script>
 {% endblock %}
@@ -79,9 +89,8 @@ pagelogic = function(){
       {% csrf_token %}
       {{ form.management_form }}
       {% for step in form %}
-      <span id="step_formset">
+      <span class="step_formset">
 	    <div class="row">
-          <input type="hidden" name="{{step.order.html_name}}" value="{{step.order.value}}" id="{{step.order.auto_id}}">
           {{step.id}}
           {% if step.non_field_errors %}
           {{step.non_field_errors}}
@@ -150,8 +159,11 @@ pagelogic = function(){
 			</div>
 		  </div>
         </div>
-          {% endfor %}
+
+    <input type="hidden" name="{{step.order.html_name}}" class="orderval" value="{{step.order.value}}" id="{{step.order.auto_id}}">
       </span>
+    {% endfor %}
+
 	  </div>
 
 	  <div class="row">
@@ -172,6 +184,7 @@ pagelogic = function(){
 	    <div class="span1 pull-right">
 		  <input type="submit" value="preview" class="btn btn-green
                                                       btn-save">
+
 	</form>
 
 	</div>

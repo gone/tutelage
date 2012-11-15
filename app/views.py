@@ -108,7 +108,7 @@ def add_lesson(request, lesson_id=None):
             lesson = form.save(False)
             lesson.teacher = request.user
             lesson.save()
-            return redirect("lesson_ingredients", args=[lesson.id])
+            return redirect("lesson_ingredients", lesson_id=lesson.id)
     else:
         form = LessonDetailsForm(instance=lesson)
     return direct_to_template(request, "lesson_details_form.html", {"form": form, "lesson_id":lesson_id})
@@ -127,7 +127,7 @@ def add_lesson_video(request, lesson_id):
 
 
 @login_required
-def lesson_ingredients(request, lesson_id):
+def lesson_ingredients(request, lesson_id=None):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
     if request.user != lesson.teacher:
         raise PermissionDenied
@@ -142,7 +142,7 @@ def lesson_ingredients(request, lesson_id):
             tools = tool_formset.save()
             for tool in tools:
                 lesson.tools.add(tool)
-        return HttpResponseRedirect(reverse("lesson_steps", args=[lesson.id]))
+        return HttpResponseRedirect(reverse("lesson_steps",  kwargs={'lesson_id':lesson.id}))
     else:
         ingredient_formset = IngredientsDetailsFormset(instance=lesson, prefix="ingredients")
         tool_formset = ToolFormset(prefix="tools", queryset=lesson.tools.all())
@@ -153,7 +153,7 @@ def lesson_ingredients(request, lesson_id):
                                })
 
 @login_required
-def lesson_steps(request, lesson_id):
+def lesson_steps(request, lesson_id=None):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
     if request.user != lesson.teacher:
         raise PermissionDenied

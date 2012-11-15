@@ -17,7 +17,7 @@ try:
     with open('/home/dotcloud/environment.json') as f: pass
     settings_module = "conf.dotcloud"
 except IOError as e:
-    settings_module = "conf.local"
+    settings_module = "conf.ben"
 
 
 # Corrects some pathing issues in various contexts, such as cron jobs,

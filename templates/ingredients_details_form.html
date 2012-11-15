@@ -29,12 +29,12 @@ pagelogic = function(){
 
 
 
-    $('#ingredient_formset').formset({
+    $('.ingredient_formset').formset({
         prefix: '{{ ingredient_formset.prefix }}',
         formCssClass: 'dynamic-formset1',
         addText: add_ingredient,
     });
-    $('#tool_formset').formset({
+    $('.tool_formset').formset({
         prefix: '{{ tool_formset.prefix }}',
         formCssClass: 'dynamic-formset2',
         addText: add_tool,
@@ -120,8 +120,9 @@ pagelogic = function(){
 				  <div class="span1">Type</div>
 				</div>
 
-                <span id="ingredient_formset">
+
                 {% for f in ingredient_formset %}
+                <span class="ingredient_formset">
 				<div class="row">
                     {{f.id}}
 				  <div class="span2">
@@ -137,9 +138,10 @@ pagelogic = function(){
                     {{f.prep}}
 				  </div>
 				</div>
-                {% if form.instance.pk %}asdf{{ form.DELETE }}asdf{% endif %}
-                {% endfor %}
+                {% if f.instance.pk %}{{ f.DELETE }}{% endif %}
                 </span>
+                {% endfor %}
+
 				<div class="row">
 				  <hr class="create-lesson-hr"/>
 				</div>
@@ -163,8 +165,9 @@ pagelogic = function(){
 				  <div class="span2">Type</div>
 				</div>
 
-                <span id="tool_formset">
                 {% for t in tool_formset %}
+                <span class="tool_formset">
+
 				<div class="row">
                     {{t.id}}
 
@@ -178,8 +181,9 @@ pagelogic = function(){
                     {{t.type}}
 				  </div>
 				</div>
-                {% endfor %}
                 </span>
+                {% endfor %}
+
 				<div class="row">
 				  <hr class="create-lesson-hr"/>
 				</div>

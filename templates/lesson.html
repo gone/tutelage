@@ -3,7 +3,44 @@
 {% block media %}
 <script type="text/javascript" >
     pagelogic = function(){
-        lesson_data = {}
+        lesson_data = {
+            steps: [
+                {% for step in lesson.steps.all %}
+                  {
+                      title:"{{step.title}}",
+                      start_time: {{step.start_time}},
+                      text: "{{step.text}}",
+                      techniques: [
+                          {% for tech in step.technique.all %}
+                            {
+
+                            },
+                          {% endfor %}
+                      ],
+                      tools: [
+                          {% for tool in step.tools.all %}
+                          {
+                              name: "{{tool.name}}",
+                              size: "{{tool.size}}",
+                              type: "{{tool.type}}",
+
+                          },
+                          {% endfor %}
+                      ],
+                      ingredients: [
+                          {% for ingredient in step.ingredients.all %}
+                          {
+                              name: "{{ingredient.ingredient.name}}",
+                              number: "{{ingredient.number}}",
+                              measurement: "{{ingredient.measurement}}",
+                              prep: "{{ingredient.prep}}",
+                          },
+                          {% endfor %}
+                      ],
+                  },
+                {% endfor %}
+            ],
+        }
         lesson  = makeLesson("#lesson", lesson_data)
     };
 </script>

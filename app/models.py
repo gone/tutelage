@@ -228,9 +228,9 @@ class Step(CreatedMixin):
 
     order = models.PositiveSmallIntegerField(default=0)
     start_time = models.IntegerField(null=True, blank=True)
-    technique = models.ManyToManyField(Lesson, related_name="technique_steps")
-    ingredients = models.ManyToManyField(Ingredient, related_name="steps")
-    tools = models.ManyToManyField(Tool, related_name="steps")
+    technique = models.ManyToManyField(Lesson, related_name="technique_steps", blank=True)
+    ingredients = models.ManyToManyField(LessonIngredient, related_name="steps", blank=True)
+    tools = models.ManyToManyField(Tool, related_name="steps", blank=True)
 
     class Meta():
         ordering = ('order',)
@@ -238,6 +238,7 @@ class Step(CreatedMixin):
 
     def __unicode__(self):
         return "Step {}".format(self.order)
+
 
 
 class LessonRating(CreatedMixin):
