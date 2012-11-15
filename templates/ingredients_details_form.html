@@ -1,5 +1,52 @@
 {% extends 'base.html' %}
 
+{% block media %}
+<script type="text/javascript">
+pagelogic = function(){
+    add_ingredient = "<div class='row'>" +
+        "				  <div class='span1 pull-left'>" +
+        "					<a class='btn btn-green btn-save btn-add pull-left'>" +
+        "					<strong>&#43;</strong>" +
+        "					</a>" +
+        "				  </div>" +
+        "				  <div class='span2 create-lesson-add-ingredient'>" +
+        "				    <span class='vertical-align'><strong>add ingredient</strong></span>" +
+        "				  </div>" +
+        "			    </div>"
+
+
+    add_tool = "<div class='row'>" +
+        "				  <div class='span1 pull-left'>" +
+        "					<a class='btn btn-green btn-save btn-add pull-left'>" +
+        "					<strong>&#43;</strong>" +
+        "					</a>" +
+        "				  </div>" +
+        "				  <div class='span2 create-lesson-add-tool'>" +
+        "				    <span class='vertical-align'><strong>add tool</strong></span>" +
+        "				  </div>" +
+        "			    </div>"
+
+
+
+
+    $('.ingredient_formset').formset({
+        prefix: '{{ ingredient_formset.prefix }}',
+        formCssClass: 'dynamic-formset1',
+        addText: add_ingredient,
+    });
+    $('.tool_formset').formset({
+        prefix: '{{ tool_formset.prefix }}',
+        formCssClass: 'dynamic-formset2',
+        addText: add_tool,
+    });
+
+
+
+};
+</script>
+{% endblock %}
+
+
 {% block content %}
 {% autoescape off %}
 <div class="bordered-row main bordered">
@@ -54,7 +101,8 @@
 	</div>
 
 	<div class="row">
-	  <form class="profile-form" target="" action="post">
+	  <form class="profile-form" target="" action="" method="POST">
+        {% csrf_token %}
 		  <div class="span6">
 			<div id="create-lesson-form-2-left">
 				<div id="createlessontitle">
@@ -72,44 +120,32 @@
 				  <div class="span1">Type</div>
 				</div>
 
+
+                {% for f in ingredient_formset %}
+                <span class="ingredient_formset">
 				<div class="row">
+                    {{f.id}}
 				  <div class="span2">
-					<input class="create-lesson-2-input-mid" type="text" placeholder="">
+                    {{f.ingredient}}
 				  </div>
 				  <div class="span1">
-				    <input class="create-lesson-2-input-small" name="ingredientamount" type="number" min="0" max="100" placeholder="">
+                    {{f.number}}
 				  </div>
 				  <div class="span2">
-				    <select class="create-lesson-2-input-dropdown-mid" name="ingredientmeasurement">
-				      <option>filet</option>
-				      <option>full</option>
-				      <option>processed</option>
-				    </select>
+                    {{f.measurement}}
 				  </div>
 				  <div class="span1">
-				    <select class="create-lesson-2-input-dropdown-small" name="ingredienttype">
-				      <option>fresh</option>
-				      <option>frozen</option>
-				    </select>
+                    {{f.prep}}
 				  </div>
 				</div>
+                {% if f.instance.pk %}{{ f.DELETE }}{% endif %}
+                </span>
+                {% endfor %}
 
 				<div class="row">
 				  <hr class="create-lesson-hr"/>
 				</div>
 
-				<div class="row">
-				  <div class="span1 pull-left">
-					<a class="btn btn-green btn-save btn-add pull-left">
-					<strong>&#43;</strong>
-					</a>
-				  </div>
-
-				  <div class="span2 create-lesson-add-ingredient">
-				    <span class="vertical-align"><strong>add ingredient</strong></span>
-				  </div>
-
-			    </div>
 			</div>
 		  </div>
 
@@ -129,46 +165,32 @@
 				  <div class="span2">Type</div>
 				</div>
 
+                {% for t in tool_formset %}
+                <span class="tool_formset">
+
 				<div class="row">
+                    {{t.id}}
+
 				  <div class="span2">
-					<input class="create-lesson-2-input-mid" type="text" placeholder="">
+                    {{t.name}}
 				  </div>
 				  <div class="span2">
-				    <select class="create-lesson-2-input-dropdown-mid" name="ingredientmeasurement">
-				      <option>small</option>
-				      <option>medium</option>
-				      <option>large</option>
-				    </select>
+                    {{t.size}}
 				  </div>
 				  <div class="span2">
-				    <select class="create-lesson-2-input-dropdown-mid" name="ingredienttype">
-				      <option>sharpened</option>
-				      <option>dull</option>
-				    </select>
+                    {{t.type}}
 				  </div>
 				</div>
+                </span>
+                {% endfor %}
 
 				<div class="row">
 				  <hr class="create-lesson-hr"/>
 				</div>
 
-				<div class="row">
-				  <div class="span1 pull-left">
-					<a class="btn btn-green btn-save btn-add pull-left">
-					<strong>&#43;</strong>
-					</a>
-				  </div>
-
-				  <div class="span2 create-lesson-add-ingredient">
-				    <span class="vertical-align"><strong>add tool</strong></span>
-				  </div>
-
-			    </div>
-
 			</div>
 		  </div>
 
-	  </form>
 	</div>
 
 	<div class="row">
@@ -176,17 +198,20 @@
 	</div>
 
 	<div class="row">
-	  <div class="span11">
-		<a class="btn btn-green btn-save pull-right" href="{% url edit-lesson lesson_id=1 %}">
+      <div class="span1 pull-right">
+      </div>
+	  <div class="span1  pull-right">
+		  <input type="submit" value="next" class="btn btn-green btn-save">
+	  </div>
+	  <div class="span1 pull-right">
+		<a class="btn btn-green btn-save" href="{% url edit-lesson lesson_id=lesson.id %}">
 		  back
 		</a>
 	  </div>
-	  <div class="span1 pull-right">
-		<a class="btn btn-green btn-save pull-right" href="{% url lesson_steps lesson_id=1 %}">
-		  next
-		</a>
-	  </div>
 	</div>
+    {{ ingredient_formset.management_form }}
+    {{ tool_formset.management_form }}
+    </form>
 
 
   </div>

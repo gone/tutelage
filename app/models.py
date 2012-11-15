@@ -1,6 +1,6 @@
 import re
 from datetime import datetime
-import magic
+#import magic
 import time
 
 
@@ -82,12 +82,19 @@ class FeaturedChef(Page):
 
 class Ingredient(CreatedMixin):
     name = models.CharField(max_length=32, null=False)
+
+    def __unicode__(self):
+        return self.name
+
+class LessonIngredient(CreatedMixin):
+    ingredient = models.ForeignKey(Ingredient)
+    lesson = models.ForeignKey("Lesson")
     number = models.IntegerField(null=False, blank=False, default="0")
     measurement = models.CharField(max_length=32, null=False)
     prep = models.CharField(max_length=32)
 
     def __unicode__(self):
-        return self.name
+        return "%s %s of %s" % (self.number, self.measurement, self.ingredient)
 
 
 class Tool(CreatedMixin):
@@ -149,27 +156,28 @@ class Video(CreatedMixin):
     video = models.FileField(upload_to=file_url("lessonvideos"))
     lesson = models.ForeignKey('Lesson', related_name='videos')
 
-    def validate_video(self):
-        try:
-            f = self.video.file
-        except ValueError:
-            raise ValidationError("Need a Video File")
-        # TODO: choice the video types to support
-        mime = magic.from_buffer(f.read(1024), mime=True)
-        try:
-            type_, subtype = mime.split('/')
-        except ValueError:
-            raise ValidationError("The file must be a video")
-        if type_ != VIDEO_TYPE:
-            raise ValidationError("The file is not a video")
-        if subtype not in VIDEO_SUBTYPES:
-            raise ValidationError("Video format not suported")
+    # def validate_video(self):
+    #     try:
+    #         f = self.video.file
+    #     except ValueError:
+    #         raise ValidationError("Need a Video File")
+    #     # TODO: choice the video types to support
+    #     mime = magic.from_buffer(f.read(1024), mime=True)
+    #     try:
+    #         type_, subtype = mime.split('/')
+    #     except ValueError:
+    #         raise ValidationError("The file must be a video")
+    #     if type_ != VIDEO_TYPE:
+    #         raise ValidationError("The file must be a video")
+    #     if subtype not in VIDEO_SUBTYPES:
+    #         raise ValidationError("Video format not suported")
 
-    def clean(self):
-        self.validate_video()
+    # def clean(self):
+    #     self.validate_video()
 
 
 class Lesson(CreatedMixin, Displayable):
+    #title included thanks to displayable
     teacher = models.ForeignKey(User, related_name='teaching')
     image = models.FileField(upload_to=file_url("lessonimage"))
     flavor_text = models.TextField(default="")
@@ -194,7 +202,7 @@ class Lesson(CreatedMixin, Displayable):
     kind = models.SmallIntegerField(choices=((0, "Recipe"),
                                              (1, "Technique")), default=0)
 
-    ingredients = models.ManyToManyField(Ingredient, related_name="lessons")
+    ingredients = models.ManyToManyField(Ingredient, through="LessonIngredient", related_name="lessons")
     tools = models.ManyToManyField(Tool, related_name="lessons")
 
     class Meta():
@@ -220,9 +228,9 @@ class Step(CreatedMixin):
 
     order = models.PositiveSmallIntegerField(default=0)
     start_time = models.IntegerField(null=True, blank=True)
-    technique = models.ManyToManyField(Lesson, related_name="technique_steps")
-    ingredents = models.ManyToManyField(Ingredient, related_name="steps")
-    tools = models.ManyToManyField(Tool, related_name="steps")
+    technique = models.ManyToManyField(Lesson, related_name="technique_steps", blank=True)
+    ingredients = models.ManyToManyField(LessonIngredient, related_name="steps", blank=True)
+    tools = models.ManyToManyField(Tool, related_name="steps", blank=True)
 
     class Meta():
         ordering = ('order',)
@@ -230,6 +238,7 @@ class Step(CreatedMixin):
 
     def __unicode__(self):
         return "Step {}".format(self.order)
+
 
 
 class LessonRating(CreatedMixin):

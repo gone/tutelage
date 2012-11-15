@@ -1,5 +1,5 @@
 from django import forms
-from .models import Lesson
+from .models import Lesson, LessonIngredient
 from .constants import SKILL_LEVELS
 #from ajax_select.fields import AutoCompleteSelectMultipleField
 
@@ -43,16 +43,22 @@ class LessonDetailsForm(forms.ModelForm):
         fields = ('description', 'title', 'image', 'price', 'serving_size',
                   'prep_time', 'cooking_time', 'cuisine', 'restrictions',
                   'course', 'primary_ingredients', 'kind',)
+
         widgets = {
              'primary_ingredients': forms.SelectMultiple(attrs={'class': 'chzn'}),
              'course': forms.SelectMultiple(attrs={'class':'chzn'}),
              'restrictions': forms.SelectMultiple(attrs={'class':'chzn'}),
              'cuisine': forms.SelectMultiple(attrs={'class':'chzn'}),
-             'kind': forms.RadioSelect
+             'kind': forms.RadioSelect,
+             'title': forms.TextInput(attrs={'class':"create-lesson-input-mid", 'placeholder':"Lesson Title"}),
+             'teacher': forms.HiddenInput
         }
 
-class IngredentsDetailsForm(forms.Form):
-    pass
+class IngredentsDetailsForm(forms.ModelForm):
+
+    class Meta:
+        model = LessonIngredient
+        fields =  ("number","ingredient", "number", "measurement", "prep")
 
 class StepDetailsForm(forms.Form):
     pass
