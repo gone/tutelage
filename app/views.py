@@ -178,4 +178,10 @@ def cheflist(request):
 
 def lesson(request, lesson_id):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
+    steps = list(lesson.steps.all())
+    for idx, step in enumerate(steps):
+        if idx+1 == len(steps):
+            continue
+        step.end_time = steps[idx+1].start_time
+    lesson.s = steps
     return direct_to_template(request, "lesson.html", {"lesson": lesson})

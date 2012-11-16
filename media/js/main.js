@@ -42,8 +42,10 @@ require({
     },
         urlArgs: "bust=" +  (new Date()).getTime(),
 },
-        ["jquery", "_", "bootstrap", "colorbox", "chosen", "cs!main", "cs!validation", "formset", "cs!lessons"], function($, Em, _){
+        ["jquery", "_", "bootstrap", "colorbox", "chosen", "formset", "cs!main", "cs!validation", "cs!lessons"], function($, ddd){
             $(function(){
-                if (typeof pagelogic !== "undefined") pagelogic()
+                if (typeof pagelogic !== "undefined") {
+                    pagelogic()
+                }
             });
         });

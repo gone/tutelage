@@ -3,6 +3,7 @@ from django.contrib import admin
 
 from mezzanine.core.views import direct_to_template
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 admin.autodiscover()
 
@@ -93,3 +94,4 @@ urlpatterns = patterns("",
 # Adds ``STATIC_URL`` to the context of error pages, so that error
 # pages can use JS, CSS and images.
 handler500 = "mezzanine.core.views.server_error"
+urlpatterns += staticfiles_urlpatterns()
