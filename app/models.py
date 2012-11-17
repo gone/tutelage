@@ -3,7 +3,7 @@ from datetime import datetime
 #import magic
 import time
 
-
+from django.conf import settings
 from django.db import models
 from django.db.models import Avg
 from django.contrib.auth.models import User
@@ -11,6 +11,8 @@ from django.core.validators import ValidationError
 from mezzanine.pages.models import Page
 from mezzanine.core.models import Displayable
 from mezzanine.core.fields import RichTextField
+
+
 
 from durationfield.db.models.fields.duration import DurationField
 
@@ -156,6 +158,9 @@ class Video(CreatedMixin):
     video = models.FileField(upload_to=file_url("lessonvideos"))
     lesson = models.ForeignKey('Lesson', related_name='videos')
 
+    def get_absolute_url(self):
+        return "%s%s" % (settings.MEDIA_URL, self.video)
+
     # def validate_video(self):
     #     try:
     #         f = self.video.file
@@ -238,7 +243,6 @@ class Step(CreatedMixin):
 
     def __unicode__(self):
         return "Step {}".format(self.order)
-
 
 
 class LessonRating(CreatedMixin):

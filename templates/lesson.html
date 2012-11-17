@@ -3,12 +3,16 @@
 {% block media %}
 <script type="text/javascript" >
     pagelogic = function(){
+        lessons = require("cs!lessons")
         lesson_data = {
             steps: [
-                {% for step in lesson.steps.all %}
+                {% for step in lesson.s %}
                   {
                       title:"{{step.title}}",
                       start_time: {{step.start_time}},
+                      {% if step.end_time %}
+                      end_time: {{step.end_time}},
+                      {% endif %}
                       text: "{{step.text}}",
                       techniques: [
                           {% for tech in step.technique.all %}
@@ -41,7 +45,7 @@
                 {% endfor %}
             ],
         }
-        lesson  = makeLesson("#lesson", lesson_data)
+        lesson  = lessons.makeLesson("#lesson", lesson_data)
     };
 </script>
 {% endblock %}
@@ -50,9 +54,11 @@
 <div class="bordered-row main bordered">
     <video height="600" width="600" id="lesson">
         {% for video in lesson.videos.all %}
-        <source src="{{video.video}}"></source>
+        <source src="{{video.get_absolute_url}}"></source>
         {% endfor %}
     </video>
-    <div id="footnote"></div>
+    <div id="step"></div>
+    <div id="tools"></div>
+    <div id="ingredient"></div>
 </div>
 {% endblock %}
