@@ -89,10 +89,10 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], func
 
 				<div class="row">
 				  <div class="span3">
-					<div class="create-lesson-field-small input-prepend">
+					<div class="create-lesson-field-price input-prepend">
 					  <h5>Lesson Price (in $)</h5>
 					    <span class="add-on">$</span>
-					    <input class="create-lesson-input-small"
+					    <input class="create-lesson-input-price"
                                name="{{form.price.html_name}}"
                                type="number"
                                min="0"
@@ -115,18 +115,34 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], func
 				  </div>
 				</div>
 
-				<div class="">
-				  <h5>Primary Ingredient(s)</h5>
-                  {{form.primary_ingredients}}
-                  {{form.primary_ingredients.errors}}
-				</div>
+				<div class="row">
+				  <div class="span3">
+				    <h5>Featured Ingredient(s)</h5>
+                    {{form.primary_ingredients}}
+                    {{form.primary_ingredients.errors}}
+				  </div>
 
-				<div id="lessonmealtype" class="">
-				  <h5>Course Type(s)</h5>
-                  {{form.course}}
-                  {{form.course.errors}}
+				  <div id="lessonmealtype" class="span3">
+				    <h5>Course Type(s)</h5>
+                    {{form.course}}
+                    {{form.course.errors}}
+				  </div>
 				</div>
+				
+				<!-- ** Need to add these fields to the data model ** -->
+				<div class="row">
+				  <div class="span3">
+				    <h5>Main Technique(s)</h5>
+                    {{form.primary_ingredients}}
+                    {{form.primary_ingredients.errors}}
+				  </div>
 
+				  <div id="lessonmealtype" class="span3">
+				    <h5>Cooking Time</h5>
+                    {{form.course}}
+                    {{form.course.errors}}
+				  </div>
+				</div>
 
                 {% if lesson_id %}
 			  <div id="firstname" class="">
@@ -136,7 +152,7 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], func
 				<!--div id="progress" style="height:18px;background:gray">
 					<div class="bar" style="width: 0%; height:100%;background:green;"></div>
 				</div--!>
-				<!--a class="btn btn-gray btn-lesson-file-upload"><strong>...</strong></a --!>
+				<!--a class="btn btn-gray btn-lesson-file-upload"><strong>...</strong></a -->
 			  </div>
               {% endif %}
 			  <div id="firstname" class="">
@@ -174,26 +190,41 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], func
 				</div>
 			  </div>
 
-
-			  <div id="lessonmealtype" class="">
-				<h5>Cuisine</h5>
-                {{form.cuisine}}
-                {{ form.cuisine.errors}}
+			  <div class="row">
+				<div id="lessonmealtype" class="span3">
+				  <h5>Cuisine</h5>
+				  {{form.cuisine}}
+				  {{ form.cuisine.errors}}
+				</div>
+				
+			    <div id="lessonmealtype" class="span3">
+				  <h5>Dietary Restrictions</h5>
+                  {{form.restrictions}}
+                  {{form.restrictions.errors}}
+                </div>
 			  </div>
 
-			  <div id="lessonmealtype" class="">
-			  <div class="">
-				<h5>Dietary Restrictions</h5>
-                {{form.restrictions}}
-                {{form.restrictions.errors}}
+				<!-- ** Need to add these fields to the data model ** -->
+				<div class="row">
+				  <div class="span3">
+				    <h5>Social Impact(s)</h5>
+                    {{form.primary_ingredients}}
+                    {{form.primary_ingredients.errors}}
+				  </div>
 
-			  </div>
-              </div>
+				  <div id="lessonmealtype" class="span3">
+				    <h5>Skill Level</h5>
+                    {{form.course}}
+                    {{form.course.errors}}
+				  </div>
+				</div>
 
-			  <div id="createlessondesc">
-				<h5>Short Lesson Description (200 characters max)</h5>
-                {{form.description}}
-                {{form.description.errors}}
+			  <div class="row">
+			    <div id="createlessondesc" class="span6">
+				  <h5>Short Lesson Description (200 characters max)</h5>
+                  {{form.description}}
+                  {{form.description.errors}}
+			    </div>
 			  </div>
 
 			</div>
@@ -207,7 +238,7 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], func
 
 	  <div class="row">
 	    <div class="span4 pull-right">
-		  <input type="submit" value="next" class="btn btn-green btn-save">
+		  <input type="submit" value="next" class="btn btn-green btn-save pull-right">
 	    </div>
 	  </div>
 

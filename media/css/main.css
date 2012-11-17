@@ -6271,19 +6271,16 @@ textarea {
 }
 
 .login-input {
-  width: 285px;
+  width: 265px;
 }
 
 .btn-login {
   width: 75px !important;
+  margin-right: 20px;
 }
 
 .btn-login-span {
   margin-left: 40px;
-}
-
-.vertical-align-text {
-  vertical-align: middle;
 }
 
 .login-actions {
@@ -6293,6 +6290,26 @@ textarea {
 .login-text {
   text-align: right;
   margin-top: 20px;
+}
+
+.login-btn-text {
+  margin-top: 5px;
+}
+
+.signup-input {
+  width: 285px;
+}
+
+.signup-checkbox {
+  margin-bottom: 0px !important;
+}
+
+.signup-checkbox > input {
+  margin-right: 15px !important;
+}
+
+.tos-link {
+  margin-left: 8px !important;
 }
 
 .btn-profile-link {
@@ -6382,16 +6399,24 @@ btn-avatar {
   margin: 0px;
 }
 
+.create-lesson-input-price {
+  width: 145px;
+}
+
 .create-lesson-input-small {
-  width: 100px;
+  width: 175px;
+}
+
+.create-lesson-field-small input {
+  width: 175px;
 }
 
 .create-lesson-input-file {
   width: 280px;
 }
 
-.create-lesson-input-mid {
-  width: 340px;
+.create-lesson-input-title {
+  width: 415px;
 }
 
 .create-lesson-input-dropdown {
@@ -6415,8 +6440,13 @@ btn-avatar {
   width: 415px;
 }
 
-.create-lesson-desc {
+.chzn-container-multi {
+  width: 185px !important;
+}
+
+#createlessondesc > textarea {
   height: 100px !important;
+  width: 411px !important;
 }
 
 .btn-lesson-file-upload {
@@ -6444,6 +6474,7 @@ btn-avatar {
 
 #lessontype ul {
   margin: 0px;
+  padding-bottom: 14px;
 }
 
 #lessontype li {

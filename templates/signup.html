@@ -12,7 +12,7 @@
 			  <div id="firstname">
 				<h5>First Name</h5>
 				<input name="first_name"
-					   class="login-input"
+					   class="signup-input"
 					   type="text"
                        value="{{signup_form.first_name.value|default:""}}"
 					   placeholder=""
@@ -24,7 +24,7 @@
 				<h5>Last Name</h5>
 
 				<input name="last_name"
-					   class="login-input"
+					   class="signup-input"
 					   type="text"
                        value="{{signup_form.first_name.value|default:""}}"
 					   placeholder=""
@@ -35,7 +35,7 @@
 			  <div id="email">
 				<h5>Email</h5>
 				<input name="email"
-					   class="login-input"
+					   class="signup-input"
 					   type="text"
 					   placeholder=""
                        value="{{signup_form.email.value|default:""}}"
@@ -46,7 +46,7 @@
 			  <div id="password">
 				<h5>Password</h5>
 				<input name="password1"
-					   class="login-input"
+					   class="signup-input"
 					   type="password"
 					   placeholder=""
 					   data-validation-engine="validate[required]"
@@ -56,7 +56,7 @@
 			  <div id="confirm-password">
 				<h5>Confirm Password</h5>
 				<input name="password2"
-					   class="login-input"
+					   class="signup-input"
 					   type="password"
 					   placeholder=""
 					   data-validation-engine="validate[required]"
@@ -66,13 +66,17 @@
 			  </div>
 			  <div id="contact-checkbox" class="vertical-text-align">
                 {{signup_form.contact.errors}}
-			    <input type="checkbox" name="contact" value="">
-			    <span class="">Send me updates, news, and offers.</span>
+			    <label class="checkbox signup-checkbox">
+			      <input type="checkbox" name="contact" value="">
+				  Send me updates, news, and offers.
+				</label>
 			  </div>
 			  <div id="tos-checkbox" class="vertical-text-align">
-			    <input type="checkbox" name="tos" value="true" {% if signup_form.tos.value %}checked {% endif %}>
-			    <span class="">I have read and agree to the </span>
-			    <a href="#">Terms of Service</a>
+				<label class="checkbox signup-checkbox">
+			      <input type="checkbox" name="tos" value="true" {% if signup_form.tos.value %}checked {% endif %}>
+			      I have read and agree to the
+			      <p class="tos-link"><a href="#">Terms of Service</a></p>
+			    </label>
                 {{signup_form.tos.errors}}
 			  </div>
 
