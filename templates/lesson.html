@@ -52,13 +52,16 @@
 
 {% block content %}
 <div class="bordered-row main bordered">
-    <video height="600" width="600" id="lesson">
+    <div id="step_title"></div>
+    <div id="step_text"></div>
+
+    <video height="600" width="600" id="lesson" controls="controls">
         {% for video in lesson.videos.all %}
         <source src="{{video.get_absolute_url}}"></source>
         {% endfor %}
     </video>
-    <div id="step"></div>
     <div id="tools"></div>
+    <hr>
     <div id="ingredient"></div>
 </div>
 {% endblock %}
