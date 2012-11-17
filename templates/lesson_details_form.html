@@ -127,15 +127,18 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], func
                   {{form.course.errors}}
 				</div>
 
+
+                {% if lesson_id %}
 			  <div id="firstname" class="">
 				<h5>Select Your Video</h5>
 				<input class="create-lesson-input-file"><!-- id="fileupload"
-				type="file" data-url="{% url add-lesson-video 1 %}" name="video"-->
+				type="file" data-url="{% url add-lesson-video lesson_id %}" name="video"-->
 				<!--div id="progress" style="height:18px;background:gray">
 					<div class="bar" style="width: 0%; height:100%;background:green;"></div>
 				</div--!>
 				<!--a class="btn btn-gray btn-lesson-file-upload"><strong>...</strong></a --!>
 			  </div>
+              {% endif %}
 			  <div id="firstname" class="">
 				<h5>Select Your Lesson Image</h5>
 				{{form.image}}
@@ -212,14 +215,16 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], func
 
 	<form>
 	{%csrf_token%}
+    {% if lesson_id %}
 	  <div id="firstname" class="">
 				<h5>Select Your Video</h5>
 				<input class="create-lesson-input-file" id="fileupload"
-				type="file" data-url="{% url add-lesson-video 1 %}" name="video">
+				type="file" data-url="{% url add-lesson-video lesson_id %}" name="video">
 				<div id="progress" style="height:18px;background:gray; width:300px">
 					<div class="bar" style="width: 0%; height:100%;background:green;">0%</div>
 				</div>
 	  </div>
+      {% endif %}
 	</form>
 
 
