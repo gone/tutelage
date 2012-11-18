@@ -54,7 +54,7 @@
 <div class="bordered-row main bordered">
     <video height="600" width="600" id="lesson">
         {% for video in lesson.videos.all %}
-        <source src="{{video.get_absolute_url}}"></source>
+	<source src="{{ video.url }}" type="{{ video.mime }}"></source>
         {% endfor %}
     </video>
     <div id="step"></div>

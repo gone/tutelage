@@ -171,6 +171,9 @@ class Video(CreatedMixin):
     ext = models.CharField(max_length=10, editable=False)
     lesson = models.ForeignKey('Lesson', related_name='videos')
 
+    def __unicode__(self):
+        return u'Lesson:%s - %s' % (self.lesson_id, self.name)
+
     def get_absolute_url(self):
         return self.url
 

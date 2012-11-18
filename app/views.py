@@ -140,9 +140,13 @@ def add_lesson_video(request):
 
     # create Video
     duration = uploads[0]['meta']['duration']
-    for r in data['results']:
+    results = data['results']
+    # ignore the original video
+    results.pop(':original', None)
+    for r in results.values():
+        r = r[0]
         m = r['meta']
-        Video.object.create(
+        Video.objects.create(
             lesson=lesson,
             remote_id=r['id'],
             original_id=r['original_id'],
