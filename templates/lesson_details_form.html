@@ -1,27 +1,6 @@
 {% extends 'base.html' %}
 
 
-{% block media %}
-<script>
-require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], function($){
-    $('#fileupload').fileupload({
-        dataType: 'json',
-        done: function (e, data) {
-		/*
-            $.each(data.result, function (index, file) {
-                $('<p/>').text(file.name).appendTo(document.body);
-            });*/
-        },
-	progressall: function (e, data) {
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-            $('#progress .bar').css('width', progress + '%').html(progress + "%");
-    	}
-    });
-});
-</script>
-{% endblock %}
-
-
 {% block content %}
 <div class="bordered-row main bordered">
 
@@ -128,17 +107,6 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], func
 				</div>
 
 
-                {% if lesson_id %}
-			  <div id="firstname" class="">
-				<h5>Select Your Video</h5>
-				<input class="create-lesson-input-file"><!-- id="fileupload"
-				type="file" data-url="{% url add-lesson-video lesson_id %}" name="video"-->
-				<!--div id="progress" style="height:18px;background:gray">
-					<div class="bar" style="width: 0%; height:100%;background:green;"></div>
-				</div--!>
-				<!--a class="btn btn-gray btn-lesson-file-upload"><strong>...</strong></a --!>
-			  </div>
-              {% endif %}
 			  <div id="firstname" class="">
 				<h5>Select Your Lesson Image</h5>
 				{{form.image}}
@@ -212,21 +180,6 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], func
 	  </div>
 
 	  </form>
-
-	<form>
-	{%csrf_token%}
-    {% if lesson_id %}
-	  <div id="firstname" class="">
-				<h5>Select Your Video</h5>
-				<input class="create-lesson-input-file" id="fileupload"
-				type="file" data-url="{% url add-lesson-video lesson_id %}" name="video">
-				<div id="progress" style="height:18px;background:gray; width:300px">
-					<div class="bar" style="width: 0%; height:100%;background:green;">0%</div>
-				</div>
-	  </div>
-      {% endif %}
-	</form>
-
 
 
     </div>
