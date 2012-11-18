@@ -6386,6 +6386,22 @@ btn-avatar {
   margin: 0px 10px 0px 10px;
 }
 
+.dynamic-formset1 .row .span2 select, .dynamic-formset1 .bordered-row .span2 select {
+  width: 140px !important;
+}
+
+.dynamic-formset1 .row .span1 input, .dynamic-formset1 .bordered-row .span1 input {
+  width: 50px !important;
+}
+
+.dynamic-formset1 .row .span2 input, .dynamic-formset1 .bordered-row .span2 input {
+  width: 130px !important;
+}
+
+.dynamic-formset2 .row .span2 input, .dynamic-formset2 .bordered-row .span2 input {
+  width: 115px !important;
+}
+
 .create-lesson-title-step1 h3 {
   margin: 10px 0px;
   height: 32px;
@@ -6499,10 +6515,19 @@ btn-avatar {
   width: 20px;
   padding: 3px;
   font-size: 36px;
+  margin-bottom: 10px;
 }
 
 .create-lesson-add-ingredient {
-  margin: 10px 0px 0px 0px;
+  margin: 15px 0px 0px 0px;
+}
+
+.create-lesson-add-tool {
+  margin: 15px 0px 0px 0px;
+}
+
+.create-lesson-add-step {
+  margin: 15px 0px 0px 0px;
 }
 
 .create-lesson-question {
