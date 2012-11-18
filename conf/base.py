@@ -255,6 +255,7 @@ INSTALLED_APPS = (
     'django_shortcuts',
     'django_extensions',
     'storages',
+    'transloadit',
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -503,6 +504,9 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 # SESSION_ENGINE = 'redis_sessions.session'
 
 # try:
-#     from local_settings import *
-# except:
-#     pass
+#     LOADED_LOCAL
+# except NameError:
+#     try:
+#         from local import *
+#     except ImportError:
+#         pass

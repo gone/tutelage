@@ -1,12 +1,14 @@
 import logging
+import json
 
-from django.shortcuts import get_object_or_404, render_to_response, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.simple import direct_to_template
-from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-from django.core.validators import ValidationError
+from django.conf import settings
 
 
 from django.forms.models import inlineformset_factory, modelformset_factory
@@ -14,13 +16,13 @@ from django.forms.models import inlineformset_factory, modelformset_factory
 
 from django.core.exceptions import PermissionDenied
 
-from django.contrib.formtools.wizard.views import SessionWizardView
-
 
 logger = logging.getLogger(__name__)
 
 from .models import Lesson, LessonIngredient, Tool, Step, Video
-from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm, StepDetailsForm
+from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm
+# XXX: delete unused
+#from .forms import StepDetailsForm
 
 from account.forms import PasswordChangeForm
 
@@ -89,10 +91,11 @@ def mylessons(request, user_id):
 
 
 
-TEMPLATES = { 'lesson_details': "lesson_details_form.html",
-              'ingredents_details': "ingredents_details_form.html",
-              'step_details': "step_details_form.html",
-              }
+TEMPLATES = {'lesson_details': "lesson_details_form.html",
+             'ingredents_details': "ingredents_details_form.html",
+             'step_details': "step_details_form.html",
+            }
+
 
 @login_required
 def add_lesson(request, lesson_id=None):
@@ -111,19 +114,50 @@ def add_lesson(request, lesson_id=None):
             return redirect("lesson_ingredients", lesson_id=lesson.id)
     else:
         form = LessonDetailsForm(instance=lesson)
-    return direct_to_template(request, "lesson_details_form.html", {"form": form, "lesson_id":lesson_id})
+    return direct_to_template(request, "lesson_details_form.html",
+                              {"form": form, "lesson_id": lesson_id})
 
 
-@login_required
-def add_lesson_video(request, lesson_id):
-    lesson = get_object_or_404(Lesson, pk=lesson_id)
-    video = Video(video=request.FILES['video'], lesson=lesson)
-    try:
-        video.clean()
-    except ValidationError, e:
-        return HttpResponse(str(e), status=400)
-    video.save()
-    return HttpResponse('OK')
+@csrf_exempt
+def add_lesson_video(request):
+    data = request.POST[settings.TRANSLOADIT_DATAFIELD]
+    data = json.loads(data)
+    lesson = get_object_or_404(Lesson, pk=data['fields']['lesson_id'])
+
+    # TODO: move to other module, and use settings to use
+    response_ok = HttpResponse('OK')
+    code = data.get('error', False)
+    if code:
+        # TODO: handle error
+        return response_ok
+
+    # XXX: ignores more than one uploads
+    # Only accepting one video at a time
+    # may be later accept more
+    uploads = data['uploads']
+    if len(uploads) > 1:
+        return response_ok
+
+    # create Video
+    duration = uploads[0]['meta']['duration']
+    for r in data['results']:
+        m = r['meta']
+        Video.object.create(
+            lesson=lesson,
+            remote_id=r['id'],
+            original_id=r['original_id'],
+            mime=r['mime'],
+            size=r['size'],
+            url=r['url'],
+            ext=r['ext'],
+            name=r['name'],
+            duration=duration,
+            width=m['width'],
+            height=m['height'],
+            video_codec=m['video_codec'],
+            audio_codec=m['audio_codec'],
+        )
+    return response_ok
 
 
 @login_required
@@ -138,11 +172,13 @@ def lesson_ingredients(request, lesson_id=None):
         ingredient_formset = IngredientsDetailsFormset(request.POST, instance=lesson, prefix="ingredients")
         tool_formset = ToolFormset(request.POST, prefix="tools", queryset=lesson.tools.all())
         if ingredient_formset.is_valid() and tool_formset.is_valid():
+            # XXX: unused Ingredients
             ingredients = ingredient_formset.save()
             tools = tool_formset.save()
             for tool in tools:
                 lesson.tools.add(tool)
-        return HttpResponseRedirect(reverse("lesson_steps",  kwargs={'lesson_id':lesson.id}))
+        return HttpResponseRedirect(reverse("lesson_steps",
+                                            kwargs={'lesson_id': lesson.id}))
     else:
         ingredient_formset = IngredientsDetailsFormset(instance=lesson, prefix="ingredients")
         tool_formset = ToolFormset(prefix="tools", queryset=lesson.tools.all())

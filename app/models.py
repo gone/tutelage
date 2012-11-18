@@ -155,30 +155,24 @@ class CreditCard(CreatedMixin):
 
 
 class Video(CreatedMixin):
-    video = models.FileField(upload_to=file_url("lessonvideos"))
+
+    #video = models.FileField(upload_to=file_url("lessonvideos"))
+    remote_id = models.CharField(max_length=200, editable=False)
+    original_id = models.CharField(max_length=200, editable=False)
+    mime = models.CharField(max_length=100, editable=False)
+    size = models.IntegerField(editable=False)
+    url = models.CharField(max_length=200, editable=False)
+    duration = models.FloatField(editable=False)
+    width = models.IntegerField(editable=False)
+    height = models.IntegerField(editable=False)
+    video_codec = models.CharField(max_length=20, editable=False)
+    audio_codec = models.CharField(max_length=20, editable=False)
+    name = models.CharField(max_length=300, editable=False)
+    ext = models.CharField(max_length=10, editable=False)
     lesson = models.ForeignKey('Lesson', related_name='videos')
 
     def get_absolute_url(self):
-        return "%s%s" % (settings.MEDIA_URL, self.video)
-
-    # def validate_video(self):
-    #     try:
-    #         f = self.video.file
-    #     except ValueError:
-    #         raise ValidationError("Need a Video File")
-    #     # TODO: choice the video types to support
-    #     mime = magic.from_buffer(f.read(1024), mime=True)
-    #     try:
-    #         type_, subtype = mime.split('/')
-    #     except ValueError:
-    #         raise ValidationError("The file must be a video")
-    #     if type_ != VIDEO_TYPE:
-    #         raise ValidationError("The file must be a video")
-    #     if subtype not in VIDEO_SUBTYPES:
-    #         raise ValidationError("Video format not suported")
-
-    # def clean(self):
-    #     self.validate_video()
+        return self.url
 
 
 class Lesson(CreatedMixin, Displayable):
