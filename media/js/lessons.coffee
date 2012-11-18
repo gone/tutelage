@@ -7,7 +7,7 @@ define ["jquery", "popcorn"], ($, Popcorn) ->
 
     makeLesson = (selector, data) ->
         pop = Popcorn(selector)
-        stepButtons = []
+        step_div = $("#step_buttons")
 
         for step in data.steps
             pop.footnote({
@@ -36,15 +36,25 @@ define ["jquery", "popcorn"], ($, Popcorn) ->
                 text: ingredient_text
                 target: "ingredient"
             })
-            stepButtons.push(makeStepButton(step, pop))
-        step_div = $("#step_buttons")
-        [step_div.append(button) for button in stepButtons]
+
+            button = makeStepButton(step, pop)
+            step_div.append(button)
+
+
         return pop
     makeStepButton = (step, pop)->
-        button = $("<div class='step'>#{ step.order + 1 }</div>")
+        button = $("<div id='step-#{ step.order }' class='step'>#{ step.order + 1 }</div>")
         button.on "click", (event) ->
-            console.log(lesson.media.readyState)
             pop.play(step.start_time)
+        pop.code({
+            start: step.start_time,
+            end: step.end_time or false
+            onStart: (options) ->
+                $("#step-#{ step.order }").addClass('active')
+            onEnd: (options) ->
+                $("#step-#{ step.order }").removeClass('active')
+            })
+
         return button
 
 # //pause all other videos when playing an embedded technique video or lesson video

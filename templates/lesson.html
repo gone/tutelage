@@ -59,7 +59,7 @@
     <video height="600" width="600" id="lesson" controls="controls">
 
         {% for video in lesson.videos.all %}
-        <source src="http://localhost:8001{{video.get_absolute_url}}"></source>
+        <source src="{{video.get_absolute_url}}"></source>
         {% endfor %}
     </video>
     <div id="tools"></div>
