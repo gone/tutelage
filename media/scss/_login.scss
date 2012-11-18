@@ -11,21 +11,27 @@
 }
 
 .login-input {
-	width: 285px;
+	width: 265px;
 }
 
 .btn-login {
 	width: 75px !important;
+	margin-right: 20px;
 }
 
 .btn-login-span {
 	margin-left: 40px;
 }
 
-.vertical-align-text {
-	vertical-align: middle;
-}
-
 .login-actions {
 	margin-top:	10px;
+}
+
+.login-text{
+    text-align: right;
+    margin-top: 20px;
+}
+
+.login-btn-text {
+	margin-top:	5px;
 }
