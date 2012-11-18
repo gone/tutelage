@@ -9,6 +9,7 @@
                 {% for step in lesson.s %}
                   {
                       title:"{{step.title}}",
+                      order: {{step.order}},
                       start_time: {{step.start_time}},
                       {% if step.end_time %}
                       end_time: {{step.end_time}},
@@ -56,12 +57,14 @@
     <div id="step_text"></div>
 
     <video height="600" width="600" id="lesson" controls="controls">
+
         {% for video in lesson.videos.all %}
-        <source src="{{video.get_absolute_url}}"></source>
+        <source src="http://localhost:8001{{video.get_absolute_url}}"></source>
         {% endfor %}
     </video>
     <div id="tools"></div>
     <hr>
     <div id="ingredient"></div>
+    <div id="step_buttons"></div>
 </div>
 {% endblock %}
