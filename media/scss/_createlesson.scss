@@ -28,6 +28,22 @@
 	margin: 0px 10px 0px 10px;
 }
 
+.dynamic-formset1 .row .span2 select {
+	width: 140px !important;
+}
+
+.dynamic-formset1 .row .span1 input {
+	width: 50px !important;
+}
+
+.dynamic-formset1 .row .span2 input {
+	width: 130px !important;
+}
+
+.dynamic-formset2 .row .span2 input {
+	width: 115px !important;
+}
+
 .create-lesson-title-step1 h3 {
 	margin:	10px 0px;
 	height: 32px;
@@ -41,16 +57,24 @@
 	margin: 0px;
 }
 
+.create-lesson-input-price {
+	width: 145px;
+}
+
 .create-lesson-input-small {
-	width: 100px;
+	width: 175px;
+}
+
+.create-lesson-field-small input {
+	width: 175px;
 }
 
 .create-lesson-input-file {
 	width: 280px;
 }
 
-.create-lesson-input-mid {
-	width:	340px;
+.create-lesson-input-title {
+	width:	415px;
 }
 
 .create-lesson-input-dropdown {
@@ -74,8 +98,13 @@
 	width:	415px;
 }
 
-.create-lesson-desc {
+.chzn-container-multi {
+	width: 185px !important;
+}
+
+#createlessondesc > textarea {
 	height:	100px !important;
+	width: 411px !important;
 }
 
 .btn-lesson-file-upload {
@@ -103,6 +132,7 @@
 
 #lessontype ul {
 	margin: 0px;
+	padding-bottom: 14px;
 }
 
 #lessontype li {
@@ -132,10 +162,19 @@
 	width: 20px;
 	padding: 3px;
 	font-size: 36px;
+	margin-bottom: 10px;
 }
 
 .create-lesson-add-ingredient {
-	margin: 10px 0px 0px 0px;
+	margin: 15px 0px 0px 0px;
+}
+
+.create-lesson-add-tool {
+	margin: 15px 0px 0px 0px;
+}
+
+.create-lesson-add-step {
+	margin: 15px 0px 0px 0px;
 }
 
 .create-lesson-question {
