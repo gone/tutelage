@@ -47,6 +47,14 @@
             ],
         }
         lesson  = lessons.makeLesson("#lesson", lesson_data)
+        $('.tools').click(function(){
+            $.colorbox({inline:true, href:"#tools"})
+        });
+        $('.ingredients').click(function(){
+            $.colorbox({inline:true, href:"#ingredient"})
+
+        });
+
     };
 </script>
 {% endblock %}
@@ -62,9 +70,16 @@
         <source src="{{video.get_absolute_url}}"></source>
         {% endfor %}
     </video>
-    <div id="tools"></div>
-    <hr>
-    <div id="ingredient"></div>
+
+
     <div id="step_buttons"></div>
+    <a href="#" class="tools">Tools</a>
+    <a href="#" class="ingredients">Ingredients</a>
+
+    <div class="no-display">
+    <div id="tools"></div>
+    <div id="ingredient"></div>
+    </div>
+
 </div>
 {% endblock %}
