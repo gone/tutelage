@@ -6062,6 +6062,13 @@ textarea {
 
 .main-movie-img {
   width: 440px !important;
+  height: 250px !important;
+  border: solid 3px transparent;
+}
+
+.main-movie-img:hover {
+  border: solid 3px #4f4f4f;
+  cursor: pointer;
 }
 
 /*
@@ -6540,6 +6547,26 @@ btn-avatar {
 
 .step_counter:after {
   content: counter(inc_steps);
+}
+
+.testimonial {
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 375px;
+  height: 90px;
+  margin-top: 10px;
+}
+.testimonial p {
+  padding: 0px 0px 10px 10px !important;
+}
+
+.testimonial-left {
+  background-image: url("../img/testimonial_left_pink.png");
+}
+
+.testimonial-right {
+  background-image: url("../img/testimonial_right_pink.png");
+  margin-right: 20px;
 }
 
 /* Z-INDEX */
