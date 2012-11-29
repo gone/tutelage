@@ -97,7 +97,7 @@ HTTPS_SUPPORT=True
 
 MIDDLEWARE_CLASSES +=  ("mezzanine.core.middleware.FetchFromCacheMiddleware",)
 
-TEMPLATE_LOADERS += ('django.template.loaders.filesystem.cached',)
+TEMPLATE_LOADERS = ('django.template.loaders.cached',) + TEMPLATE_LOADERS
 
 
 

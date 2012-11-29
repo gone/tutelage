@@ -230,7 +230,7 @@ class Lesson(CreatedMixin, Displayable):
 
     @property
     def rating(self):
-        #TODO: user proper rating algo. Find that sucker online.
+        #TODO: user proper rating algo. http://www.evanmiller.org/how-not-to-sort-by-average-rating.html
         result = self.ratings.aggregate(avg=Avg('rating'))['avg']
         if not result:
             return 0
