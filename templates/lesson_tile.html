@@ -1,7 +1,7 @@
 <div class="span6 lesson">
  	  <div class="row">
 		  <div class="span5 green lesson-title">
-			<h3>{{lesson.title}}</h3>
+			<h3>{{lesson.title|title}}</h3>
 		  </div>
 		  <div class="span1">
 			<h3 class="pull-right">${{lesson.price|default:"0"}}</h3>
@@ -14,7 +14,7 @@
       <hr/>
       <div class="row">
 		<div class="span3 lesson-tile-left">
-		  <img src={{MEDIA_URL}}{{page.home.hero}} />
+		  <img src=""/>
 		</div>
         <div class="span3">
 		  <a class="btn btn-blue" href="{%url lesson_detail lesson.id %}">More details</a>
@@ -24,22 +24,23 @@
       <hr/>
 	  <div class="row">
         <div class="span3">
-		  <video width="100%" src={{MEDIA_URL}}{{lesson.video}} />
+            <img src="{{MEDIA_URL}}{{lesson.image}}"/>
         </div>
 		<div class="span3 lesson-tile-right">
 			<p><small>{{lesson.flavor_text}}</small></p>
 			<ul class="recipe-info">
-              <li>Serves: 4</li>
-			  <li>Prep Time: 15 minutes</li>
-			  <li>Cooking Time: 35 minutes</li>
+              <li>Serves: {{lesson.serving_size}}</li>
+			  <li>Prep Time: {{lesson.prep_in_min}} minutes</li>
+			  <li>Cooking Time: {{lesson.cook_in_min}} minutes</li>
             </ul>
 		</div>
       </div>
 
 	  <div class="row">
 		  <div class="span6 lesson-tile-left">
-			<a class="btn btn-clearblue">Seafood</a>
-			<a class="btn btn-clearblue">Gluten-free</a>
+              {% for tag in lesson.tags %}
+			  <a class="btn btn-clearblue">{{tag|title}}</a>
+              {% endfor %}
 		  </div>
       </div>
     </div>

@@ -2,12 +2,16 @@ import re
 from datetime import datetime
 #import magic
 import time
+from itertools import chain
+
 
 from django.conf import settings
 from django.db import models
 from django.db.models import Avg
 from django.contrib.auth.models import User
 from django.core.validators import ValidationError
+from django.utils.functional import cached_property
+
 from mezzanine.pages.models import Page
 from mezzanine.core.models import Displayable
 from mezzanine.core.fields import RichTextField
@@ -213,6 +217,17 @@ class Lesson(CreatedMixin, Displayable):
     class Meta():
         unique_together = ('teacher', 'title')
 
+    @cached_property
+    def tags(self):
+        """Grabs a list of the lessons dietary restrictions, cuisines, courses,
+        and primary ingredients from the database"""
+        primary_ingredients = self.primary_ingredients.all()
+        course = self.course.all()
+        cuisine = self.cuisine.all()
+        restrictions = self.restrictions.all()
+        #list it to prevent caching the generator
+        return list(chain(primary_ingredients, course, cuisine, restrictions))
+
     @property
     def rating(self):
         #TODO: user proper rating algo. Find that sucker online.
@@ -220,6 +235,15 @@ class Lesson(CreatedMixin, Displayable):
         if not result:
             return 0
         return result
+
+    @property
+    def prep_in_min(self):
+        return max(self.prep_time.total_seconds() / 60, 1)
+
+    @property
+    def cook_in_min(self):
+        return max(self.prep_time.total_seconds() / 60, 1)
+
 
     def __unicode__(self):
         return self.title

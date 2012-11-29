@@ -46,18 +46,9 @@
 
         <div class="row">
           <div class="span7">
-            {% for tag in lesson.primary_ingredients.all %}
-            <a class="btn btn-clearblue btn-tags">{{tag}}</a>
-            {% endfor %}
-            {% for tag in lesson.course.all %}
-            <a class="btn btn-clearblue btn-tags">{{tag}}</a>
-            {% endfor %}
-            {% for tag in lesson.cuisine.all %}
-            <a class="btn btn-clearblue btn-tags">{{tag}}</a>
-            {% endfor %}
-            {% for tag in lesson.restriction.alls %}
-            <a class="btn btn-clearblue btn-tags">{{tag}}</a>
-            {% endfor %}
+          {% for tag in lesson.tags %}
+          <a class="btn btn-clearblue btn-tags">{{tag|title}}</a>
+          {% endfor %}
 		  </div>
         </div>
 
