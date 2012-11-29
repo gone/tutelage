@@ -9,7 +9,7 @@
       </div>
 
       <div class="row">
-		<div class="span2 offset4 lesson-author">by <a class="miniprofile-btn" href="{% url miniprofile lesson.teacher.id %}">{{lesson.teacher.get_full_name}}</a></div>
+		<div class="span2 offset4 lesson-author">by <a class="miniprofile-btn" href="{% url miniprofile lesson.teacher.id %}">{{lesson.teacher.get_full_name|title}}</a></div>
       </div>
       <hr/>
       <div class="row">
