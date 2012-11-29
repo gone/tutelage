@@ -66,9 +66,11 @@
 
 <!-- colorbox is not currently part of loaded JS - how did we implement Colorbox library?-->
 <script type="text/javascript">
-  $(document).ready(function(){
-    $(".main-movie-img").colorbox({inline:true, width:"50%", href:".main-movie-video"});
-  });
+require(['colorbox'], function(){
+    $(function(){
+        $(".main-movie-img").colorbox({inline:true, width:"50%", href:".main-movie-video"});
+    });
+});
 </script>
 
 
