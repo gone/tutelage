@@ -42,7 +42,7 @@ require({
     },
         urlArgs: "bust=" +  (new Date()).getTime(),
 },
-        ["jquery", "_", "bootstrap", "colorbox", "chosen", "formset", "cs!main", "cs!validation", "cs!lessons"], function($, ddd){
+        ["jquery", "_", "bootstrap", "colorbox", "chosen", "formset", "cs!main", "cs!validation", "cs!lessons"], function($, _){
             $(function(){
                 if (typeof pagelogic !== "undefined") {
                     pagelogic()
