@@ -1,7 +1,7 @@
 {% for lesson in lessons %}
 {% cycle "True" "" as newrow silent %}
 {% if newrow %}
-<div class="bordered-row bordered lessons">
+<div class="bordered-row bordered">
 {% endif %}
 {% include "lesson_tile.html" with lesson=lesson %}
 {% if not newrow or forloop.last %}
@@ -10,7 +10,7 @@
 {% endfor %}
 
 
-<!-- Ben, can we remove this in favor of infinite scrolling? GS -->
+<!-- Ben, can we remove this in favor of infinite scrolling? GS 
 <ul class="pager">
   {% if lessons.has_previous %}
   <li class="previous">
@@ -31,3 +31,4 @@
   <li>
   {% endif %}
 </ul>
+-->

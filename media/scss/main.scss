@@ -1,11 +1,15 @@
 @import "bootstrap";
 
+$black					:				  #333333;
 $green                  :                 #01a64f;
+$green-active           :                 #028e44;
 $blue					:				  #4ba5ff;
+$blue-active			:				  #21a1c9;
+$gray					:				  #e4e4e4;
 $lightgray				:				  #cacaca;
 $darkgray				:				  #666666;
-$pink					:				  #ff9999;
-$background             :                 #eeeeee;
+$pink					:				  #ff7474;
+$background             :                 #fefefe;
 $border-color           :                 lightGray;
 
 
@@ -41,12 +45,16 @@ $border-color           :                 lightGray;
 }
 
 .btn-green:hover{
-	@include colored-button($blue)
+	@include colored-button($green-active,$green-active,$white)
 }
 
 .btn-blue {
     @include colored-button($blue)
  }
+
+.btn-blue:hover{
+	@include colored-button($blue-active,$blue-active,$white)
+}
 
 .btn-clearblue {
     @include colored-button($white,$blue,$blue)
@@ -77,12 +85,21 @@ $border-color           :                 lightGray;
 }
 
 .btn-white {
-    @include colored-button($white,$black,$black)
+    @include colored-button($white,$gray,$black)
  }
 
 .btn-white:hover {
     @include colored-button($pink,$pink,$white)
  }
+
+.btn-tags {
+	margin-bottom: 5px;
+	border-radius: 4px !important;
+}
+
+.btn-tags:hover, .btn-tags:active {
+	border-radius: 4px !important;
+}
 
 .btn-save {
 	margin-right:	20px;
@@ -111,7 +128,7 @@ body {
 
 .colored_header {
 	h3, h4 {
-	color:	black;
+	color:	$black;
 	}
 }
 input[type="submit"]{
@@ -122,6 +139,10 @@ input[type="submit"]{
 	vertical-align: middle;
 }
 
+.right-padding {
+	padding-right: 20px;
+}
+
 .errorlist {
 	@extend .alert;
 	@extend .alert-error;
@@ -130,10 +151,6 @@ input[type="submit"]{
 	margin-left: 0px;
 	padding-top: 4px;
 	padding-bottom: 4px;
-}
-
-.btn-tags {
-	margin-bottom: 5px;
 }
 
 .testimonial, .block-quote {

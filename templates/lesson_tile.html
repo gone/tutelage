@@ -1,7 +1,7 @@
 <div class="span6 lesson">
  	  <div class="row">
 		  <div class="span5 green lesson-title">
-			<h3>{{lesson.title|title}}</h3>
+			<a href="{%url lesson_detail lesson.id %}"><h3>{{lesson.title|title}}</h3></a>
 		  </div>
 		  <div class="span1">
 			<h3 class="pull-right">${{lesson.price|default:"0"}}</h3>
@@ -18,7 +18,7 @@
 		</div>
         <div class="span3">
 		  <a class="btn btn-blue" href="{%url lesson_detail lesson.id %}">More details</a>
-		  <a class="btn btn-green pull-right" href="{%url lesson_detail lesson.id %}">Purchase</a>
+		  <a class="btn btn-green pull-right" href="{%url lesson_detail lesson.id %}">Watch</a>
 		</div>
       </div>
       <hr/>
@@ -37,9 +37,13 @@
       </div>
 
 	  <div class="row">
+	    <br />
+	  </div>
+	
+	  <div class="row">
 		  <div class="span6 lesson-tile-left">
               {% for tag in lesson.tags %}
-			  <a class="btn btn-clearblue">{{tag|title}}</a>
+			  <a class="btn btn-clearblue btn-tags">{{tag|title}}</a>
               {% endfor %}
 		  </div>
       </div>

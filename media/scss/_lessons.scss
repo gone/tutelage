@@ -1,6 +1,6 @@
 .lesson {
-    margin-left: 5px !important;
-    padding-right:5px;
+    margin-left: 10px !important;
+	padding-right: 8px;
     padding-bottom: 20px;
     hr {
         margin: 5px 0px;
@@ -11,8 +11,14 @@
     white-space: nowrap;
 }
 
-.lesson-title:hover {
-    cursor: pointer;
+.lesson-title a {
+	cursor: pointer;
+    color: $green !important;
+    text-decoration: none;
+}
+
+.lesson-title a:hover {
+    color: $green-active !important;
 }
 
 .lesson:first-child {
@@ -31,10 +37,24 @@
     }
 }
 
+#lesson-photo img {
+	width: 360px;
+}
+
 .lesson-list {
 	margin: 0px !important;
 }
 
 .lesson-list li {
 	list-style-type: none !important;	
+	padding-bottom: 10px;
+}
+
+.lesson-list li img {
+	list-style-type: none !important;	
+	padding-right: 10px;
+}
+
+#lesson-list-items {
+	padding-bottom: 10px;
 }

@@ -11,43 +11,48 @@
 			<h3 class="pull-right">${{lesson.price|default:"0"}}</h3>
 		  </div>
       </div>
+      
       <div class="row">
-		<div class="span3 lesson-tile-left">
-            {% include "rating.html" with lesson=lesson%}
-		</div>
+        <br />
+      </div>
+      
+      <div class="row">
+        <span id="lesson-full-desc" class="span6">{{lesson.flavor_text}}</span>
+      </div>
+      
+      <div class="row">
+        <br />
       </div>
 
-      <hr />
-
-      <div class="row">
-        <div class="lesson-photo">
-		  <div class="span6">
-		  <img src={{MEDIA_URL}}{{lesson.image}} />
-		  <span id="lesson-full-desc">{{lesson.flavor_text}}</span>
-		  </div>
-		</div>
-
+      <div class="recipe-info">
+	    <ul class="recipe-info">
+          <li>Serves: {{lesson.serving_size}}</li>
       </div>
 
+      <div class="recipe-info">
+          <li>Prep: {{lesson.prep_in_min}} minutes</li>
+      </div>
 
-        <div class="span2 recipe-info">
-			<ul class="recipe-info">
-              <li>Serves: {{lesson.serving_size}}</li>
-        </div>
-
-
-        <div class="span2 recipe-info">
-              <li>Prep: {{lesson.prep_in_min}} minutes</li>
-        </div>
-        <div class="span3 recipe-info">
-              <li>Cooking: {{lesson.cook_in_min}} minutes</li>
-            </ul>
-        </div>
-
+      <div class="span3 recipe-info">
+          <li>Cooking: {{lesson.cook_in_min}} minutes</li>
+        </ul>
+      </div>
+	  
 	  <div class="row">
-		<br />
-        <hr />
+        <br />
+        <br />
       </div>
+	  
+	  <div class="row">
+	  <div class="span3">
+        {% include "rating.html" with lesson=lesson%}
+	  </div>
+	  </div>
+	  
+	  <div class="row">
+        <br />
+      </div>
+
 
         <div class="row">
           <div class="span7">
@@ -60,26 +65,29 @@
     </div>
 
     <div class="span5">
-      <div class="colored_header">
-        <div class="main-movie">
-          {% load avatar_tags %}
-		  <h3>Chef &#160; {{lesson.teacher}}</h3>
-          {% avatar lesson.teacher %}
-        </div>
-
-        <hr />
-
-        <div class="row">
-          <div class="span2">
-		    <a class="btn btn-blue pull-left" href="{% url lessons %}">Back to Lessons</a>
-		  </div>
-		  <div class="span2">
-		    <a class="btn btn-green pull-right">Purchase Lesson</a>
-		  </div>
+	  <div class="row">
+		<h3 class="right-padding pull-right">by Chef&#160;<a class="miniprofile-btn" href="{% url miniprofile lesson.teacher.id %}">{{lesson.teacher.get_full_name|title}}</a></h3>
+        
+		<div id="lesson-photo" class="span5">
+		  <img src={{MEDIA_URL}}{{lesson.image}} />
 		</div>
+	  </div>
+      
+	  <div class="row">
+        <br />
       </div>
-
+      	
+      <div class="row">
+        <div class="span2">
+   	      <a class="btn btn-white pull-left" href="{% url lessons %}"><small>back to lessons</small></a>
+		</div>
+		
+		<div class="span2 right-padding pull-right">
+	      <a class="btn btn-green pull-right">View Lesson</a>
+	    </div>
+	  </div>
     </div>
+
 
 </div>
 
@@ -91,13 +99,13 @@
     </div>
 </div>
 
-<div class="bordered-row bordered">
+<div id="lesson-list-items" class="bordered-row bordered">
 
     <div class="span3">
  	  <h5>Ingredients</h5>
  	  <ul class="lesson-list">
         {% for i in lesson.ingredients.all %}
- 	    <li>{{i.number}} <em>{{i.measurement}} </em>{{i.name}}<em>, {{i.prep}}</em></li>
+ 	    <li><img src="../../static/img/lesson-details-icon.png" />{{i.number}} <em>{{i.measurement}} </em>{{i.name}}<em>, {{i.prep}}</em></li>
         {% endfor %}
  	  </ul>
     </div>
@@ -106,7 +114,7 @@
 	  <h5>Tools</h5>
  	  <ul class="lesson-list">
         {% for i in lesson.tools.all %}
- 	    <li><em>{{i.size}} </em>{{i.name}}<em>, {{i.type}}</em></li>
+ 	    <li><img src="../../static/img/lesson-details-icon.png" /><em>{{i.size}} </em>{{i.name}}<em>, {{i.type}}</em></li>
         {% endfor %}
  	  </ul>
     </div>
@@ -116,46 +124,11 @@
  	  <ul class="lesson-list">
         {% for step in lesson.steps.all %}
         {% for tech in step.technique.all %}
- 	    <li>{{tech}}</li>
+ 	    <li><img src="../../static/img/lesson-details-icon.png" />{{tech}}</li>
         {% endfor %}
         {% endfor %}
  	  </ul>
-    </div>
-
-    <!-- <div class="span3"> -->
-	<!--   <h5>Nutrition</h5> -->
- 	<!--   <ul class="lesson-list"> -->
- 	<!--     <li>Realness Factor -->
- 	<!--       <div class="progress" style="width: 80%"> -->
-	<!-- 		  <div class="bar" style="width: 70%"></div> -->
- 	<!--       </div> -->
- 	<!--     </li> -->
- 	<!--     <li>Fruits -->
- 	<!--       <div class="progress progress-info" style="width: 80%"> -->
-	<!-- 		  <div class="bar" style="width: 5%"></div> -->
- 	<!--       </div> -->
- 	<!--     </li> -->
- 	<!--     <li>Vegetables -->
- 	<!--       <div class="progress progress-success" style="width: 80%"> -->
-	<!-- 		  <div class="bar" style="width: 30%"></div> -->
- 	<!--       </div> -->
- 	<!--     </li> -->
- 	<!--     <li>Meats -->
- 	<!--       <div class="progress progress-danger" style="width: 80%"> -->
-	<!-- 		  <div class="bar" style="width: 45%"></div> -->
- 	<!--       </div> -->
- 	<!--     </li> -->
- 	<!--     <li>Grains -->
- 	<!--       <div class="progress progress-warning progress-striped" style="width: 80%"> -->
-	<!-- 		  <div class="bar" style="width: 35%"></div> -->
- 	<!--       </div> -->
- 	<!--     </li> -->
- 	<!--     <li>Nuts/Seeds -->
- 	<!--       <div class="progress progress-success progress-striped" style="width: 80%"> -->
-	<!-- 		  <div class="bar" style="width: 20%"></div> -->
- 	<!--       </div> -->
- 	<!--     </li> -->
- 	<!--   </ul> -->
-    <!-- </div> -->
+    </div>	
+	
 </div>
 {% endblock %}
