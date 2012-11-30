@@ -194,6 +194,7 @@ class Lesson(CreatedMixin, Displayable):
                                 blank=True)
     users_who_rated = models.ManyToManyField(User, through='LessonRating',
                                              related_name='rated_lessons')
+
     followers = models.ManyToManyField(User, related_name='lessons',
                                        blank=True, null=True)
     serving_size = models.IntegerField()
@@ -234,7 +235,7 @@ class Lesson(CreatedMixin, Displayable):
         result = self.ratings.aggregate(avg=Avg('rating'))['avg']
         if not result:
             return 0
-        return result
+        return int(result)
 
     @property
     def prep_in_min(self):

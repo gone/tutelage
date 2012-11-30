@@ -36,7 +36,7 @@
       })();
     </script>
 
-    <script data-main="{{STATIC_URL}}js/main" src="{{STATIC_URL}}js/require/require-jquery.js"></script>
+    <script data-main="{{STATIC_URL}}js/{% block jsmain %}main{%endblock%}" src="{{STATIC_URL}}js/require/require-jquery.js"></script>
 
     {% block media %}{% endblock %}
   </head>
@@ -53,7 +53,7 @@
         {% include "footer.html" %}
         {% block footer %} {% endblock %}
       </footer>
-      
+
     </div>
     <div class="row no-display">
       {% if not request.user.is_authenticated %}
