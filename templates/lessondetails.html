@@ -11,6 +11,11 @@
 			<h3 class="pull-right">${{lesson.price|default:"0"}}</h3>
 		  </div>
       </div>
+      <div class="row">
+		<div class="span3 lesson-tile-left">
+            {% include "rating.html" with lesson=lesson%}
+		</div>
+      </div>
 
       <hr />
 
