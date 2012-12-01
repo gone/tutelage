@@ -5724,6 +5724,10 @@ input[type="submit"] {
   padding-right: 20px;
 }
 
+.no-margin {
+  margin: 0px !important;
+}
+
 .errorlist {
   list-style-type: none;
   width: 250px;
@@ -6314,6 +6318,63 @@ textarea {
 
 #lesson-list-items {
   padding-bottom: 10px;
+}
+
+#lesson-video-background {
+  background-color: black;
+}
+
+#lesson-wrapper {
+  position: absolute;
+  top: 88px;
+  width: 962px;
+  height: 400px;
+}
+
+.lesson-wrapper-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#step_title {
+  font-size: 1.0em;
+  color: #02A64F !important;
+  padding-right: 5px;
+}
+
+#step_text {
+  display: inline-block;
+  font-size: 1.0em !important;
+  color: white !important;
+  padding: 5px !important;
+}
+
+.lesson-panel {
+  position: absolute;
+  top: 135px;
+  width: 297px;
+  height: 335px;
+}
+
+#ingredient {
+  background-image: url("../img/lesson.oval.ingredients.png");
+  background-repeat: no-repeat;
+}
+
+#tools {
+  background-image: url("../img/lesson.oval.tools.png");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.panel-item {
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 28px;
+  width: 220px;
+  cursor: pointer;
+}
+
+.tool {
+  float: right;
 }
 
 #login {

@@ -106,7 +106,6 @@ $border-color           :                 lightGray;
 	margin-top:		15px;
 }
 
-
 body {
   background-color: $background !important;
 }
@@ -141,6 +140,10 @@ input[type="submit"]{
 
 .right-padding {
 	padding-right: 20px;
+}
+
+.no-margin {
+	margin: 0px !important;
 }
 
 .errorlist {
