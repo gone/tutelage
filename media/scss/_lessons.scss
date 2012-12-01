@@ -119,3 +119,98 @@
 .tool {
 	float: right;
 }
+
+.lesson-icon-text {
+	position: absolute;
+	padding: 3px;
+	height: 28px;
+	width: 170px;
+	color: black !important;
+}
+
+.lesson-icon-ingredients-text {
+	margin: 0px 0px 0px 30px !important;
+	text-align: right;
+}
+
+.lesson-icon-tools-text {
+	margin: 3px 0px 0px 10px !important;
+	text-align: left;
+}
+
+.lesson-icon-circle {
+	border-radius: 50%; 
+	height:36px; 
+	width: 36px; 
+	background-color: #02A64F; 
+	position: absolute; 
+}		
+
+.lesson-icon-circle-ingredients {
+	margin: -4px 0px 0px -8px;
+}	
+
+.lesson-icon-circle-tools {	  
+	margin: -4px 0px 0px 192px;
+}	
+
+.lessonimages {
+	position: relative;
+	padding: 13px 4px;
+}
+
+.ingredient1 {
+	margin: 20px 0px 0px 15px;
+}
+
+.ingredient2 {
+	margin: 15px 0px 0px 30px;
+}
+
+.ingredient3 {
+	margin: 15px 0px 0px 40px;
+}
+
+.ingredient4 {
+	margin: 15px 0px 0px 50px;
+}
+
+.ingredient5 {
+	margin: 15px 0px 0px 40px;
+}
+
+.ingredient6 {
+	margin: 15px 0px 0px 30px;
+}
+
+.ingredient7 {
+	margin: 15px 0px 0px 15px;
+}
+
+.tool1 {
+	margin: 20px 0px 0px 60px;
+}
+
+.tool2 {
+	margin: 15px 0px 0px 45px;
+}
+
+.tool3 {
+	margin: 15px 0px 0px 35px;
+}
+
+.tool4 {
+	margin: 15px 0px 0px 25px;
+}
+
+.tool5 {
+	margin: 15px 0px 0px 35px;
+}
+
+.tool6 {
+	margin: 15px 0px 0px 45px;
+}
+
+.tool7 {
+	margin: 15px 0px 0px 60px;
+}
