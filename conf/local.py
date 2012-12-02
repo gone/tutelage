@@ -16,6 +16,13 @@ CACHES = {
     }
 }
 
+
+TRANSLOADIT_URL = 'http://api2.transloadit.com/assemblies'
+TRANSLOADIT_SECRET = '1b13c165c4895ab9ad63d2fc7c14530d92b9ec75'
+TRANSLOADIT_AUTH = 'f0a96080595246828f687bb61ece3ae2'
+TRANSLOADIT_HTML5_VIDEO_TEMPLATE = 'a39b0b5afdb343b9a2b3adb0994396fc'
+TRANSLOADIT_DATAFIELD = 'transloadit'
+
 ####################
 # DYNAMIC SETTINGS #
 ####################

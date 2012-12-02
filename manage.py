@@ -4,7 +4,6 @@ import os
 import sys
 
 
-
 # Add the site ID CLI arg to the environment, which allows for the site
 # used in any site related queries to be manually set for management
 # commands.
@@ -14,7 +13,8 @@ for i, arg in enumerate(sys.argv):
         sys.argv.pop(i)
 
 try:
-    with open('/home/dotcloud/environment.json') as f: pass
+    with open('/home/dotcloud/environment.json') as f:
+        pass
     settings_module = "conf.dotcloud"
 except IOError as e:
     settings_module = "conf.local"
@@ -22,12 +22,10 @@ except IOError as e:
 
 # Corrects some pathing issues in various contexts, such as cron jobs,
 # and the project layout still being in Django 1.3 format.
-PROJECT_ROOT = os.path.dirname(__file__)
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
 os.chdir(PROJECT_ROOT)
 sys.path.insert(0, os.path.abspath(os.path.join(PROJECT_ROOT, "..")))
-
-
-
 
 
 # Run Django.

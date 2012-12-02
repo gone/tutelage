@@ -13,7 +13,7 @@ urlpatterns = patterns('app.views',
     url(r'^add-lesson/(?P<lesson_id>\d+)/ingredients/$', "lesson_ingredients", name="lesson_ingredients"),
     url(r'^add-lesson/(?P<lesson_id>\d+)/steps/$', "lesson_steps", name="lesson_steps"),
     url(r'^add-lesson/(?P<lesson_id>\d+)/$', "add_lesson", name="edit-lesson"),
-    url(r'^add-lesson-video/(?P<lesson_id>\d+)/$', "add_lesson_video", name="add-lesson-video"),
+    url(r'^add-lesson-video/$', "add_lesson_video", name="add-lesson-video"),
     url(r'^add-lesson/$', "add_lesson", name="add-lesson"),
     url(r'^lesson/(?P<lesson_id>\d+)/$', "lesson", name="lesson"),
 )

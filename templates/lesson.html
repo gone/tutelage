@@ -64,7 +64,7 @@
 	
     <video height="auto" width="960" id="lesson" controls="controls">
         {% for video in lesson.videos.all %}
-        <source src="{{video.get_absolute_url}}"></source>
+	<source src="{{ video.url }}" type="{{ video.mime }}"></source>
         {% endfor %}
     </video>
 
