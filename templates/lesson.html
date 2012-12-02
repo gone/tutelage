@@ -8,7 +8,8 @@
             steps: [
                 {% for step in lesson.s %}
                   {
-                      title:"{{step.title}}",
+                      title:"{{step.title}}:",
+                      order: {{step.order}},
                       start_time: {{step.start_time}},
                       {% if step.end_time %}
                       end_time: {{step.end_time}},
@@ -46,19 +47,72 @@
             ],
         }
         lesson  = lessons.makeLesson("#lesson", lesson_data)
+        $('.tools').click(function(){
+            $.colorbox({inline:true, href:"#tools"})
+        });
+        $('.ingredients').click(function(){
+            $.colorbox({inline:true, href:"#ingredient"})
+
+        });
+
     };
 </script>
 {% endblock %}
 
 {% block content %}
-<div class="bordered-row main bordered">
-    <video height="600" width="600" id="lesson">
+<div id="lesson-video-background" class="bordered-row bordered">
+	
+    <video height="auto" width="960" id="lesson" controls="controls">
         {% for video in lesson.videos.all %}
 	<source src="{{ video.url }}" type="{{ video.mime }}"></source>
         {% endfor %}
     </video>
-    <div id="step"></div>
-    <div id="tools"></div>
-    <div id="ingredient"></div>
+
 </div>
+
+<div id="lesson-wrapper" class="row">
+    <div class="span4 no-margin">
+      <div id="step_text" class="lesson-wrapper-overlay"><strong id="step_title"></strong></div>      
+    
+      <div id="ingredient" class="lesson-panel"></div>
+	</div>
+	
+	<div class="span4 pull-right"> 
+      <div id="tools" class="lesson-panel"></div>
+	</div>
+	
+	<div id="step_buttons" class="no-display">
+    <a href="#" class="tools">Tools</a>
+    <a href="#" id="ingredient-1" class="ingredients">Ingredients</a>
+	</div>
+	
+    <div class="no-display">
+    <div id="tools-0"></div>
+    <div id="ingredient-0"></div>
+    </div>
+    
+</div>
+<!--	
+<div id="top-panel" class="row">
+	
+    <div class="span4">
+	  <div id="directions" class="lesson-steps">	
+	  </div>
+	  <div id="ingredients" class="pull-left lesson-ingredients cboxElement">
+	  </div>
+	</div>
+
+	<div class="span4 pull-right">
+	  <div id="technique-tooltips" class="pull-right inline cboxElement">
+	  </div>
+	
+	  <div id="tools" class="pull-right lesson-tools">
+	  </div>
+	</div>
+</div>  
+
+
+-->
+
+
 {% endblock %}

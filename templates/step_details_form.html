@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% block media %}
 <script type="text/javascript">
-pagelogic = function(){
-
+require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload"], function($){
     add_step = "<div class='row'>" +
         "				  <div class='span1 pull-left'>" +
         "					<a class='btn btn-green btn-save btn-add pull-left'>" +
@@ -29,7 +28,22 @@ pagelogic = function(){
         $(element).attr("value", idx)
     })
 
-}
+
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+		/*
+            $.each(data.result, function (index, file) {
+                $('<p/>').text(file.name).appendTo(document.body);
+            });*/
+        },
+	progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .bar').css('width', progress + '%').html(progress + "%");
+    	}
+    });
+});
+
 </script>
 {% endblock %}
 
@@ -81,6 +95,26 @@ pagelogic = function(){
 		<a href="#" class="create-lesson-help-btn pull-right">Need help?</a>
 	  </div>
 	</div>
+
+
+    <div class="row">
+        <div class="span8">
+	        <form>
+	            {%csrf_token%}
+	            <div id="firstname" class="">
+				    <h5>Select Your Video</h5>
+				    <input class="create-lesson-input-file" id="fileupload"
+				           type="file" data-url='{% url add-lesson-video lesson.id %}' name="video" />
+				    <div id="progress" style="height:18px;background:gray; width:300px">
+					    <div class="bar" style="width: 0%; height:100%;background:green;">0%</div>
+	                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
 
 	<div class="row">
 	  <hr class="create-lesson-hr"/>

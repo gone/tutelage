@@ -1,1 +1,19 @@
+.testimonial {
+	background-repeat:no-repeat;
+	display: inline-block;
+	width: 375px;
+	height: 90px;
+	margin-top: 10px;
+	p { padding: 0px 0px 10px 10px !important;
+	}
+}
+
+.testimonial-left {
+	background-image:url('../img/testimonial_left_pink.png');	
+}
+
+.testimonial-right {
+	background-image:url('../img/testimonial_right_pink.png');
+	margin-right: 20px;
+}
 

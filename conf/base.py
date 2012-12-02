@@ -383,8 +383,9 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 # SECRET_KEY = 'z6c%x24oz36o)1^0pr+f7$54+jfs@sgl-o@v$02y45fpo%v$j)'
 
 # TEMPLATE_LOADERS = (
-#     'django.template.loaders.filesystem.Loader',
-#     'django.template.loaders.app_directories.Loader',
+#      'django.template.loaders.filesystem.cached',
+#      'django.template.loaders.filesystem.Loader',
+#      'django.template.loaders.app_directories.Loader',
 # )
 
 # MIDDLEWARE_CLASSES = (

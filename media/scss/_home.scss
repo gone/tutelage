@@ -26,4 +26,11 @@
 
 .main-movie-img {
 	width: 440px !important;
+	height: 250px !important;
+	border: solid 3px transparent;
+}
+
+.main-movie-img:hover {
+	border: solid 3px #4f4f4f;
+	cursor: pointer;
 }

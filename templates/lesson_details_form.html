@@ -107,7 +107,7 @@
                     {{form.course.errors}}
 				  </div>
 				</div>
-				
+
 				<!-- ** Need to add these fields to the data model ** -->
 				<div class="row">
 				  <div class="span3">
@@ -123,18 +123,6 @@
 				  </div>
 				</div>
 
-                {% if lesson_id %}
-              <!-- Taking out video upload from Step 1  
-			  <div id="firstname" class="">
-				<h5>Select Your Video</h5>
-				<input class="create-lesson-input-file"> id="fileupload"
-				type="file" data-url="{% url add-lesson-video lesson_id %}" name="video"-->
-				<!--div id="progress" style="height:18px;background:gray">
-					<div class="bar" style="width: 0%; height:100%;background:green;"></div>
-				</div--!>
-				<!--a class="btn btn-gray btn-lesson-file-upload"><strong>...</strong></a 
-			  </div> -->
-              {% endif %}
 			  <div id="firstname" class="">
 				<h5>Select Your Lesson Image</h5>
 				{{form.image}}
@@ -176,7 +164,7 @@
 				  {{form.cuisine}}
 				  {{ form.cuisine.errors}}
 				</div>
-				
+
 			    <div id="lessonmealtype" class="span3">
 				  <h5>Dietary Restrictions</h5>
                   {{form.restrictions}}

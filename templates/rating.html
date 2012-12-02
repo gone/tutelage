@@ -1,0 +1,13 @@
+{% load rating %}
+{% with followers=lesson.followers.all %}
+
+
+{% for rate in lesson.rating|times %}
+<img {% if request.user in followers %}class="ratingstar" data-lessonid={{lesson.id}} {%endif%} src="{{STATIC_URL}}img/star_on.png"/>
+{% endfor %}
+{% for rate in lesson.rating|add:"-5"|absolute|times %}
+<img {% if request.user in followers %}class="ratingstar" data-lessonid={{lesson.id}} {%endif%} src="{{STATIC_URL}}img/star_off.png"/>
+{% endfor %}
+
+
+{% endwith %}

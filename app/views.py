@@ -9,6 +9,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.core.validators import ValidationError
+from django.views.decorators.http import require_POST
 
 
 from django.forms.models import inlineformset_factory, modelformset_factory
@@ -19,10 +21,8 @@ from django.core.exceptions import PermissionDenied
 
 logger = logging.getLogger(__name__)
 
-from .models import Lesson, LessonIngredient, Tool, Step, Video
-from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm
-# XXX: delete unused
-#from .forms import StepDetailsForm
+from .models import Lesson, LessonIngredient, Tool, Step, Video, LessonRating
+from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm, StepDetailsForm
 
 from account.forms import PasswordChangeForm
 
@@ -225,3 +225,13 @@ def lesson(request, lesson_id):
         step.end_time = steps[idx+1].start_time
     lesson.s = steps
     return direct_to_template(request, "lesson.html", {"lesson": lesson})
+
+@csrf_exempt
+@require_POST
+@login_required
+def rate_lesson(request, lesson_id, rating):
+    r, created = LessonRating.objects.get_or_create(user=request.user, lesson_id=lesson_id, defaults={rating:rating})
+    if not created:
+        r.rating = rating
+        r.save()
+    return HttpResponse('OK')

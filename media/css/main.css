@@ -5449,17 +5449,17 @@ a.label:hover, a.badge:hover {
 }
 
 .btn-green:hover {
-  background-color: #4ba5ff !important;
+  background-color: #028e44 !important;
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#4ba5ff), to(#4ba5ff));
-  background-image: -moz-linear-gradient(top, #4ba5ff, #4ba5ff);
-  background-image: -ms-linear-gradient(top, #4ba5ff, #4ba5ff);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4ba5ff), color-stop(100%, #4ba5ff));
-  background-image: -webkit-linear-gradient(top, #4ba5ff, #4ba5ff);
-  background-image: -o-linear-gradient(top, #4ba5ff, #4ba5ff);
-  background-image: linear-gradient(#4ba5ff, #4ba5ff);
-  border: 1px solid #4ba5ff !important;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#028e44), to(#028e44));
+  background-image: -moz-linear-gradient(top, #028e44, #028e44);
+  background-image: -ms-linear-gradient(top, #028e44, #028e44);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #028e44), color-stop(100%, #028e44));
+  background-image: -webkit-linear-gradient(top, #028e44, #028e44);
+  background-image: -o-linear-gradient(top, #028e44, #028e44);
+  background-image: linear-gradient(#028e44, #028e44);
+  border: 1px solid #028e44 !important;
   color: white !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
@@ -5479,6 +5479,25 @@ a.label:hover, a.badge:hover {
   background-image: -o-linear-gradient(top, #4ba5ff, #4ba5ff);
   background-image: linear-gradient(#4ba5ff, #4ba5ff);
   border: 1px solid #4ba5ff !important;
+  color: white !important;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px !important;
+  font-weight: bold;
+}
+
+.btn-blue:hover {
+  background-color: #21a1c9 !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#21a1c9), to(#21a1c9));
+  background-image: -moz-linear-gradient(top, #21a1c9, #21a1c9);
+  background-image: -ms-linear-gradient(top, #21a1c9, #21a1c9);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #21a1c9), color-stop(100%, #21a1c9));
+  background-image: -webkit-linear-gradient(top, #21a1c9, #21a1c9);
+  background-image: -o-linear-gradient(top, #21a1c9, #21a1c9);
+  background-image: linear-gradient(#21a1c9, #21a1c9);
+  border: 1px solid #21a1c9 !important;
   color: white !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
@@ -5536,7 +5555,7 @@ a.label:hover, a.badge:hover {
   background-image: -o-linear-gradient(top, white, white);
   background-image: linear-gradient(#ffffff, #ffffff);
   border: 1px solid lightgrey !important;
-  color: black !important;
+  color: #333333 !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
   border-radius: 0px !important;
@@ -5555,7 +5574,7 @@ a.label:hover, a.badge:hover {
   background-image: -o-linear-gradient(top, lightgrey, lightgrey);
   background-image: linear-gradient(#d3d3d3, #d3d3d3);
   border: 1px solid lightgrey !important;
-  color: black !important;
+  color: #333333 !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
   border-radius: 0px !important;
@@ -5630,8 +5649,8 @@ a.label:hover, a.badge:hover {
   background-image: -webkit-linear-gradient(top, white, white);
   background-image: -o-linear-gradient(top, white, white);
   background-image: linear-gradient(#ffffff, #ffffff);
-  border: 1px solid black !important;
-  color: black !important;
+  border: 1px solid #e4e4e4 !important;
+  color: #333333 !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
   border-radius: 0px !important;
@@ -5639,22 +5658,31 @@ a.label:hover, a.badge:hover {
 }
 
 .btn-white:hover {
-  background-color: #ff9999 !important;
+  background-color: #ff7474 !important;
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#ff9999), to(#ff9999));
-  background-image: -moz-linear-gradient(top, #ff9999, #ff9999);
-  background-image: -ms-linear-gradient(top, #ff9999, #ff9999);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff9999), color-stop(100%, #ff9999));
-  background-image: -webkit-linear-gradient(top, #ff9999, #ff9999);
-  background-image: -o-linear-gradient(top, #ff9999, #ff9999);
-  background-image: linear-gradient(#ff9999, #ff9999);
-  border: 1px solid #ff9999 !important;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ff7474), to(#ff7474));
+  background-image: -moz-linear-gradient(top, #ff7474, #ff7474);
+  background-image: -ms-linear-gradient(top, #ff7474, #ff7474);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff7474), color-stop(100%, #ff7474));
+  background-image: -webkit-linear-gradient(top, #ff7474, #ff7474);
+  background-image: -o-linear-gradient(top, #ff7474, #ff7474);
+  background-image: linear-gradient(#ff7474, #ff7474);
+  border: 1px solid #ff7474 !important;
   color: white !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
   border-radius: 0px !important;
   font-weight: bold;
+}
+
+.btn-tags {
+  margin-bottom: 5px;
+  border-radius: 4px !important;
+}
+
+.btn-tags:hover, .btn-tags:active {
+  border-radius: 4px !important;
 }
 
 .btn-save {
@@ -5663,7 +5691,7 @@ a.label:hover, a.badge:hover {
 }
 
 body {
-  background-color: #eeeeee !important;
+  background-color: #fefefe !important;
 }
 
 .bordered {
@@ -5681,7 +5709,7 @@ body {
 }
 
 .colored_header h3, .colored_header h4 {
-  color: black;
+  color: #333333;
 }
 
 input[type="submit"] {
@@ -5692,16 +5720,20 @@ input[type="submit"] {
   vertical-align: middle;
 }
 
+.right-padding {
+  padding-right: 20px;
+}
+
+.no-margin {
+  margin: 0px !important;
+}
+
 .errorlist {
   list-style-type: none;
   width: 250px;
   margin-left: 0px;
   padding-top: 4px;
   padding-bottom: 4px;
-}
-
-.btn-tags {
-  margin-bottom: 5px;
 }
 
 .testimonial, .block-quote {
@@ -5728,7 +5760,7 @@ textarea {
 }
 
 .box a {
-  color: black !important;
+  color: #333333 !important;
 }
 
 .box:hover a {
@@ -6062,6 +6094,13 @@ textarea {
 
 .main-movie-img {
   width: 440px !important;
+  height: 250px !important;
+  border: solid 3px transparent;
+}
+
+.main-movie-img:hover {
+  border: solid 3px #4f4f4f;
+  cursor: pointer;
 }
 
 /*
@@ -6151,7 +6190,7 @@ textarea {
   right: 10px;
   font-size: 18px;
   font-weight: bold;
-  color: black;
+  color: #333333;
 }
 
 .modal-footer {
@@ -6221,8 +6260,8 @@ textarea {
 }
 
 .lesson {
-  margin-left: 5px !important;
-  padding-right: 5px;
+  margin-left: 10px !important;
+  padding-right: 8px;
   padding-bottom: 20px;
 }
 .lesson hr {
@@ -6233,8 +6272,14 @@ textarea {
   white-space: nowrap;
 }
 
-.lesson-title:hover {
+.lesson-title a {
   cursor: pointer;
+  color: #01a64f !important;
+  text-decoration: none;
+}
+
+.lesson-title a:hover {
+  color: #028e44 !important;
 }
 
 .lesson:first-child {
@@ -6253,12 +6298,178 @@ textarea {
   font-weight: bold;
 }
 
+#lesson-photo img {
+  width: 360px;
+}
+
 .lesson-list {
   margin: 0px !important;
 }
 
 .lesson-list li {
   list-style-type: none !important;
+  padding-bottom: 10px;
+}
+
+.lesson-list li img {
+  list-style-type: none !important;
+  padding-right: 10px;
+}
+
+#lesson-list-items {
+  padding-bottom: 10px;
+}
+
+#lesson-video-background {
+  background-color: black;
+}
+
+#lesson-wrapper {
+  position: absolute;
+  top: 88px;
+  width: 962px;
+  height: 400px;
+}
+
+.lesson-wrapper-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#step_title {
+  font-size: 1.0em;
+  color: #02A64F !important;
+  padding-right: 5px;
+}
+
+#step_text {
+  display: inline-block;
+  font-size: 1.0em !important;
+  color: white !important;
+  padding: 5px !important;
+}
+
+.lesson-panel {
+  position: absolute;
+  top: 135px;
+  width: 297px;
+  height: 335px;
+}
+
+#ingredient {
+  background-image: url("../img/lesson.oval.ingredients.png");
+  background-repeat: no-repeat;
+}
+
+#tools {
+  background-image: url("../img/lesson.oval.tools.png");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.panel-item {
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 28px;
+  width: 220px;
+  cursor: pointer;
+}
+
+.tool {
+  float: right;
+}
+
+.lesson-icon-text {
+  position: absolute;
+  padding: 3px;
+  height: 28px;
+  width: 170px;
+  color: black !important;
+}
+
+.lesson-icon-ingredients-text {
+  margin: 0px 0px 0px 30px !important;
+  text-align: right;
+}
+
+.lesson-icon-tools-text {
+  margin: 3px 0px 0px 10px !important;
+  text-align: left;
+}
+
+.lesson-icon-circle {
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  background-color: #02A64F;
+  position: absolute;
+}
+
+.lesson-icon-circle-ingredients {
+  margin: -4px 0px 0px -8px;
+}
+
+.lesson-icon-circle-tools {
+  margin: -4px 0px 0px 192px;
+}
+
+.lessonimages {
+  position: relative;
+  padding: 13px 4px;
+}
+
+.ingredient1 {
+  margin: 20px 0px 0px 15px;
+}
+
+.ingredient2 {
+  margin: 15px 0px 0px 30px;
+}
+
+.ingredient3 {
+  margin: 15px 0px 0px 40px;
+}
+
+.ingredient4 {
+  margin: 15px 0px 0px 50px;
+}
+
+.ingredient5 {
+  margin: 15px 0px 0px 40px;
+}
+
+.ingredient6 {
+  margin: 15px 0px 0px 30px;
+}
+
+.ingredient7 {
+  margin: 15px 0px 0px 15px;
+}
+
+.tool1 {
+  margin: 20px 0px 0px 60px;
+}
+
+.tool2 {
+  margin: 15px 0px 0px 45px;
+}
+
+.tool3 {
+  margin: 15px 0px 0px 35px;
+}
+
+.tool4 {
+  margin: 15px 0px 0px 25px;
+}
+
+.tool5 {
+  margin: 15px 0px 0px 35px;
+}
+
+.tool6 {
+  margin: 15px 0px 0px 45px;
+}
+
+.tool7 {
+  margin: 15px 0px 0px 60px;
 }
 
 #login {
@@ -6540,6 +6751,26 @@ btn-avatar {
 
 .step_counter:after {
   content: counter(inc_steps);
+}
+
+.testimonial {
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 375px;
+  height: 90px;
+  margin-top: 10px;
+}
+.testimonial p {
+  padding: 0px 0px 10px 10px !important;
+}
+
+.testimonial-left {
+  background-image: url("../img/testimonial_left_pink.png");
+}
+
+.testimonial-right {
+  background-image: url("../img/testimonial_right_pink.png");
+  margin-right: 20px;
 }
 
 /* Z-INDEX */

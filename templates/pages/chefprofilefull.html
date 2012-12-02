@@ -5,21 +5,45 @@
 <div class="bordered-row main bordered">
     <div class="span6">
       <div class="colored_header">
-        <h3>Chef [userfirstname] [userlastname]</h3>
-        <a href="#">([username])</a>
+        <h3>Chef <a href="#">[firstname] [lastname]</a></h3>
         
-        <hr />
+        
+        <br />
         
         <div class="user-bio user-photo">
-		  <img src={{MEDIA_URL}}{{page.home.hero}} />
-		  <span>Lnrem ipsum dolor sit arnet, Consectetur adipiscing eIitAenean ornare mattia magna, quis portlitor dolor ultriciessit ar</span>
+		  <img src="{{MEDIA_URL}}{{page.home.hero}}" />
 		</div>
+		<span>Lnrem ipsum dolor sit arnet, Consectetur adipiscing eIitAenean ornare mattia magna, quis portlitor dolor ultriciessit ar</span>
       </div>
- 
-        <hr />
+      
+	  <br />
+	  
+	  <div class="social-media">
+		<h4>More About Me</h4>
+			  
+		<div class="row">
+		  <div class="span3">
+			<a href="#">Where I Cook</a>
+			<a href="#">Personal Website</a>
+		  </div>
+		  
+		  <div class="span3">			  
+	        <div class="social-media-icons">
+			  <img src="../../static/img/social-facebook.png" />
+			  <img src="../../static/img/social-twitter.png" />
+			  <img src="../../static/img/social-pinterest.png" />
+			  <img src="../../static/img/social-google-plus.png" />
+			  <img src="../../static/img/social-tumblr.png" />
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  
+        <br />
         
-        <div class="row">
+        <div class="row"> 
 		  <div class="span6">
+			<h4>Specialties</h4>
 			<a class="btn btn-clearblue btn-tags">Seafood</a>
 			<a class="btn btn-clearblue btn-tags">Gluten-free</a>
 			<a class="btn btn-clearblue btn-tags">Japanese</a>
@@ -39,51 +63,25 @@
         </div>
       </div>
  
-        <hr />
+      <br />
         
-        
-	  <div class="social-media">
-		<h4>More About Me</h4>
-			  
-		<div class="row">
-		  <div class="span3">
-			<a href="#">Where I Cook</a>
-			<a href="#">Personal Website</a>
-		  </div>
-		  
-		  <div class="span3">			  
-	        <div class="social-media-icons">
-			  <img src="./media/img/fb_icon" />
-			  <img src="./media/img/tw_icon" />
-			  <img src="./media/img/gp_icon" />
-			  <img src="./media/img/pin_icon" />
-			</div>
-		  </div>
-		</div>
-		
-		<hr />
+      <br />
 		
 		<div class="row">  
 		  <div class="span6">
-			<div class="testimonial">
-			  <blockquote class="block-quote">
+			<div class="testimonial testimonial-left">
 				  <p>This chef is so amazing my tongue can't withstand food for mere mortals anymore.</p>
-				  <small>Jack Jackson</small>
-			  </blockquote>
+				  <span><small>Chef <strong class="green">Jack Jackson</strong></span></small>
 			</div>
-			<div class="testimonial">
-			  <blockquote class="block-quote block-quote-right pull-right">
+			<div class="testimonial testimonial-right pull-right">
 				  <p>I used to be normal. Now I'm extraordinary, all thanks to this wonderful chef!</p>
-				  <small>Jane Janet</small>
-			  </blockquote>
+				  <span class="pull-right"><small>Chef <strong class="green">Jane Janet</strong></span></small>
 			</div>
 			
-			<div class="testimonial">
-			  <blockquote class="block-quote">
-				  <p>I changed my name because of her. What more do you need to know?</p>
-				  <small>Jelly Bean</small>
-			  </blockquote>
-			</div>		  
+			<div class="testimonial testimonial-left">
+				  <p>This chef is so amazing my tongue can't withstand food for mere mortals anymore.</p>
+				  <span><small>Chef <strong class="green">Jack Jackson</strong></span></small>
+			</div> 
 		  </div>
 		 
 		</div>
@@ -105,7 +103,7 @@
     </div>
 </div>  
         
-<div class="row bordered lessons">
+<div class="bordered-row bordered lessons">
 
     <div class="span6 lesson">
  	  <div class="row">

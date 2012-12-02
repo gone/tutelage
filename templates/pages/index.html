@@ -11,13 +11,13 @@
         {% endeditable %}
       </div>
       {% if not request.user.is_authenticated %}
-      <a class="btn btn-green pull-right signup-btn">Signup</a>
+      <a class="btn btn-green signup-btn">Signup</a>
       {% endif %}
     </div>
     <div class="span6">
       <div class="main-movie">
         {% editable page.home.hero %}
-        <img class="main-movie-img"src="{{MEDIA_URL}}{{page.home.hero}}" />
+        <img class="main-movie-img" src="{{MEDIA_URL}}{{page.home.hero}}" />
         {% endeditable %}
       </div>
     </div>
@@ -51,6 +51,27 @@
 
     </div>
 </div>
+
+<!-- this should likely be moved somewhere else -->
+<div class="row no-display">
+  <video class="main-movie-video span6" controls="controls">
+	<!-- sample videos until we have our actual intro video -->
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4">
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv">
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm">
+    <!-- fallback  -->
+    <p>Your browser does not support HTML5 video.</p>
+  </video>
+</div>
+
+
+<script type="text/javascript">
+pagelogic = function(){
+        $(".main-movie-img").colorbox({inline:true, width:"50%", href:".main-movie-video"});
+};
+</script>
+
+
   {% endwith %}
   {% endautoescape %}
   {% endblock %}
