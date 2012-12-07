@@ -22,8 +22,8 @@ define ["jquery", "popcorn"], ($, Popcorn) ->
                 text: step.title,
                 target: "step_title"
             });
-            tool_text = [makeToolText(tool) for tool in step.tools]
-            ingredient_text = [makeIngredientText(ingredient) for ingredient in step.ingredients]
+            tool_text = (makeToolText(tool) for tool in step.tools).join("")
+            ingredient_text = (makeIngredientText(ingredient) for ingredient in step.ingredients).join("")
             pop.footnote({
                 start: step.start_time,
                 end: step.end_time or false
