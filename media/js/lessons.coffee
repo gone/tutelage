@@ -1,9 +1,9 @@
 define ["jquery", "popcorn"], ($, Popcorn) ->
     makeIngredientText = (ingredient) ->
-        return "<span class='ingredient'> #{ingredient.number} #{ingredient.measurement} #{ingredient.name} #{ingredient.prep} </span>"
+        return "<div class='panel-item ingredient'><div class='lesson-icon-text lesson-icon-ingredients-text'><strong>#{ingredient.number} #{ingredient.measurement} #{ingredient.name} #{ingredient.prep}</strong></div><div class='lesson-icon-circle lesson-icon-circle-ingredients'><img class='lessonimages' src='../../static/img/icon.pie.png' alt='' /></div></div>"
 
     makeToolText = (tool) ->
-        return "<span class='tool'> #{tool.name} #{tool.size} #{tool.type} </span>"
+        return "<div class='panel-item tool'><div class='lesson-icon-text lesson-icon-tools-text'><strong> #{tool.name} #{tool.size} #{tool.type} </strong></div><div class='lesson-icon-circle lesson-icon-circle-tools'><img class='lessonimages' src='../../static/img/icon.pie.png' alt='' /></div></div>"
 
     makeLesson = (selector, data) ->
         pop = Popcorn(selector)
