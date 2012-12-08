@@ -38,3 +38,10 @@ require ["jquery", "chosen", "cs!validation"], ($) ->
             return false
 
         $(".chzn").chosen()
+
+        $window = $(window)
+        $window.scroll () ->
+            if $window.scrollTop() > $('header .navbar').position().top
+                $('header').addClass("fixed-top")
+            else
+                $('header').removeClass("fixed-top")

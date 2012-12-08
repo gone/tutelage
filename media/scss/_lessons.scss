@@ -46,12 +46,12 @@
 }
 
 .lesson-list li {
-	list-style-type: none !important;	
+	list-style-type: none !important;
 	padding-bottom: 10px;
 }
 
 .lesson-list li img {
-	list-style-type: none !important;	
+	list-style-type: none !important;
 	padding-right: 10px;
 }
 
@@ -106,8 +106,8 @@
 }
 
 .panel-item {
-	 background-color: rgba(255, 255, 255, 0.7); 
-	 height:28px; 
+	 background-color: rgba(255, 255, 255, 0.7);
+	 height:28px;
 	 width: 220px;
      cursor: pointer;
 }
@@ -139,20 +139,20 @@
 }
 
 .lesson-icon-circle {
-	border-radius: 50%; 
-	height:36px; 
-	width: 36px; 
-	background-color: #02A64F; 
-	position: absolute; 
-}		
+	border-radius: 50%;
+	height:36px;
+	width: 36px;
+	background-color: #02A64F;
+	position: absolute;
+}
 
 .lesson-icon-circle-ingredients {
 	margin: -4px 0px 0px -8px;
-}	
+}
 
-.lesson-icon-circle-tools {	  
+.lesson-icon-circle-tools {
 	margin: -4px 0px 0px 192px;
-}	
+}
 
 .lessonimages {
 	position: relative;
@@ -213,4 +213,11 @@
 
 .tool7 {
 	margin: 15px 0px 0px 60px;
+}
+
+.starcontainer {
+    height: 35px;
+    width: 30px;
+    display: inline-block;
+    overflow: auto;
 }

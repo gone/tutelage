@@ -25,14 +25,16 @@ class RegistrationBackend(object):
         Create and immediately log in a new user.
 
         """
-        email, password = kwargs['email'], kwargs['password1']
-        username = kwargs['first_name'].lower() + kwargs['last_name'].lower()
+        email, password, first_name, last_name = kwargs['email'], kwargs['password1'], kwargs['first_name'].lower(), kwargs['last_name'].lower()
+        username = first_name + last_name
         username = re.sub('\W', "", username)
 
         otherusers = User.objects.filter(username__startswith=username).count()
         username = username + str(otherusers)
 
-        user = User.objects.create_user(username, email, password)
+        user = User.objects.create_user(username, email,password)
+        user.first_name = first_name
+        user.last_name = last_name
         Profile.objects.create(user=user)
 
         # authenticate() always has to be called before login(), and

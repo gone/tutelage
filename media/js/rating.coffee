@@ -16,5 +16,16 @@ define ["jquery"], ($) ->
                     s.attr("src", path.replace("on", "off"))
 
 
+    shrinkGrow = (height, width) ->
+        return (event) ->
+            $(this).animate({
+                'height': height
+                'width': width
+            },{
+                duration: 100,
+            });
+
 
     $(".ratingstar").click(rateLesson)
+    $(".starcontainer").on('mouseover', '.ratingstar', shrinkGrow(30, 29))
+    $(".starcontainer").on('mouseout', '.ratingstar', shrinkGrow(26, 25))

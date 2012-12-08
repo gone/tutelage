@@ -133,7 +133,7 @@ class SubCategory(CreatedMixin):
 class Profile(CreatedMixin):
     user = models.OneToOneField(User)
     about = models.CharField(max_length=300, default='')
-
+    professional_chief = models.BooleanField(default=False)
     ingredients = models.ManyToManyField(Ingredient, related_name='profiles')
     tools = models.ManyToManyField(Tool, related_name='profiles')
     skill_level = models.IntegerField(choices=SKILL_LEVELS, default=0)

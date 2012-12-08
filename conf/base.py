@@ -452,7 +452,7 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 # }
 
 # LOGIN_REDIRECT_URL = '/'
-# LOGIN_URL = '/login'
+LOGIN_URL = "/account/login/"
 # LOGOUT_URL = '/logout'
 
 # DEBUG_TOOLBAR_PANELS = (

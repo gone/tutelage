@@ -18,7 +18,7 @@
 		</div>
         <div class="span3">
 		  <a class="btn btn-blue" href="{%url lesson_detail lesson.id %}">More details</a>
-		  <a class="btn btn-green pull-right" href="{% url lesson lesson.id %}">Watch</a>
+		  <a class="btn btn-green pull-right" href="{% url purchase lesson.id %}">Watch</a>
 		</div>
       </div>
       <hr/>
@@ -39,7 +39,7 @@
 	  <div class="row">
 	    <br />
 	  </div>
-	
+
 	  <div class="row">
 		  <div class="span6 lesson-tile-left">
               {% for tag in lesson.tags %}

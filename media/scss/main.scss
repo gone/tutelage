@@ -169,6 +169,10 @@ textarea {
 	resize: none;
 }
 
+body{
+    padding-top: 40px;
+}
+
 @import "local_navbar";
 @import "footer";
 @import "icons";

@@ -70,7 +70,7 @@ def lessons(request):
 
 def lesson_detail(request, lesson_id):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
-    return direct_to_template(request, "lessondetails.html", {"lesson": lesson})
+    return direct_to_template(request, "lesson_details.html", {"lesson": lesson})
 
 
 def mylessons(request, user_id):
@@ -173,6 +173,11 @@ def lesson_steps(request, lesson_id=None):
 
     return direct_to_template(request, "step_details_form.html", {"form": step_formset, "lesson": lesson,})
 
+@login_required
+def purchase(request, lesson_id):
+    lesson = get_object_or_404(Lesson, pk=lesson_id)
+    lesson.followers.add(request.user)
+    return HttpResponseRedirect(reverse("lesson", kwargs={'lesson_id':lesson.id}))
 
 def cheflist(request):
     pass
