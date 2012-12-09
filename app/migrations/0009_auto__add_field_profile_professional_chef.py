@@ -9,13 +9,13 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding field 'Profile.professional_cheif'
-        db.add_column('app_profile', 'professional_chief',
+        db.add_column('app_profile', 'professional_chef',
                       self.gf('django.db.models.fields.BooleanField')(default=False),
                       keep_default=False)
 
     def backwards(self, orm):
-        # Deleting field 'Profile.professional_chief'
-        db.delete_column('app_profile', 'professional_chief')
+        # Deleting field 'Profile.professional_chef'
+        db.delete_column('app_profile', 'professional_chef')
 
     models = {
         'app.about': {
@@ -164,7 +164,7 @@ class Migration(SchemaMigration):
             'created_on': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'ingredients': ('django.db.models.fields.related.ManyToManyField', [], {'related_name': "'profiles'", 'symmetrical': 'False', 'to': "orm['app.Ingredient']"}),
-            'professional_chief': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'professional_chef': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'skill_level': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'tools': ('django.db.models.fields.related.ManyToManyField', [], {'related_name': "'profiles'", 'symmetrical': 'False', 'to': "orm['app.Tool']"}),
             'updated_on': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
