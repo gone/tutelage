@@ -251,6 +251,7 @@ INSTALLED_APPS = (
     #"mezzanine.accounts",
     #"mezzanine.mobile",
     'app',
+    'account',
     'avatar',
     'django_shortcuts',
     'django_extensions',
