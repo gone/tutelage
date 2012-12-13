@@ -68,7 +68,7 @@ class About(Page):
     hero = models.ImageField(upload_to=file_url("about_hero"))
 
 
-class FeaturedChef(Page):
+class FeaturedChef(Displayable):
     intro_video = models.ImageField(upload_to=file_url("featured_chef_intro"))
     intro_text = RichTextField()
     chef = models.OneToOneField(User, related_name="featured_chef")

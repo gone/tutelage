@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% autoescape off %}
+<div class="bordered-row main bordered">
+    <div class="span6">
+      <div class="colored_header">
+        <h3>Our Chefs</h3>
+        <div class="main-movie">
+          <img src={{MEDIA_URL}}{{chef.introvideo}} />
+        </div>
+
+        <hr />
+
+        <h4>Bringing Passion and Expertise</h4>
+        <p>{{chef.intro_text}}
+        </p>
+      </div>
+    </div>
+    <div class="span6">
+	  <h3>Meet Chef {{chef.chef.get_full_name|title}}</h3>
+      <div class="main-movie">
+        <img src={{MEDIA_URL}}{{chef.intro_text}} />
+      </div>
+
+      <hr />
+
+      <h3>{{chef.chef.get}}'s Lessons</h3>
+      {% for lesson in chef.featured_lessons %}
+      {% insert lesson_time with lesson=lesson %}
+      {% endfor %}
+    </div>
+</div>
+  {% endautoescape %}
+  {% endblock %}

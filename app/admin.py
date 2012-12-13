@@ -21,7 +21,7 @@ class LessonAdmin(admin.ModelAdmin):
 
 admin.site.register(Home, HomeAdmin)
 admin.site.register(About, PageAdmin)
-admin.site.register(FeaturedChef, PageAdmin)
+admin.site.register(FeaturedChef, admin.ModelAdmin)
 admin.site.register(Lesson, LessonAdmin)
 admin.site.register(DietaryRestrictions, admin.ModelAdmin)
 admin.site.register(Ingredient, admin.ModelAdmin)

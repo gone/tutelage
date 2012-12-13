@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.validators import ValidationError
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
+from django.template import RequestContext
 
 
 from django.forms.models import inlineformset_factory, modelformset_factory
@@ -21,7 +22,7 @@ from django.contrib.formtools.wizard.views import SessionWizardView
 
 logger = logging.getLogger(__name__)
 
-from .models import Lesson, LessonIngredient, Tool, Step, Video, LessonRating
+from .models import Lesson, LessonIngredient, Tool, Step, Video, LessonRating, FeaturedChef
 from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm, StepDetailsForm
 
 from account.forms import PasswordChangeForm
@@ -202,3 +203,10 @@ def rate_lesson(request, lesson_id, rating):
         r.rating = rating
         r.save()
     return HttpResponse('OK')
+
+
+def featured_chefs(request):
+    import pdb
+    pdb.set_trace()
+    chef = FeaturedChef.objects.published().order_by('-id').select_related('chef')[0]
+    return render_to_response("featured_chef.html", {"chef": chef}, context_instance=RequestContext(request))
