@@ -14,6 +14,8 @@
             {% avatar u %}
 		</div>
 		<span>{{u.profile.about}}</span>
+	    <br />
+        {{u.profile.location}}
       </div>
 
 	  <br />
@@ -26,7 +28,7 @@
               {% if u.profile.website1_url %}
 			  <a href="{{u.profile.website1_url}}">{{u.profile.website1}}</a>
               {% endif %}
-              {% if u.profile.website1_url % and u.profile.website2_url %}
+              {% if u.profile.website1_url and u.profile.website2_url %}
               |
               {% endif %}
               {% if u.profile.website2_url %}
@@ -61,14 +63,9 @@
         <div class="row">
 		  <div class="span6">
 			<h4>Specialties</h4>
-			<a class="btn btn-clearblue btn-tags">Seafood</a>
-			<a class="btn btn-clearblue btn-tags">Gluten-free</a>
-			<a class="btn btn-clearblue btn-tags">Japanese</a>
-			<a class="btn btn-clearblue btn-tags">Snacks</a>
-			<a class="btn btn-clearblue btn-tags">Salads</a>
-			<a class="btn btn-clearblue btn-tags">Brunch</a>
-			<a class="btn btn-clearblue btn-tags">Cocktails</a>
-			<a class="btn btn-clearblue btn-tags">Low-sodium</a>
+            {% for tag in u.profile.tags %}
+			   <a class="btn btn-clearblue btn-tags">{{tag}}</a>
+            {% endfor %}
 		  </div>
 		</div>
     </div>
@@ -76,7 +73,7 @@
     <div class="span6">
       <div class="colored_header">
         <div class="main-movie">
-          <img src={{MEDIA_URL}}{{page.home.hero}} />
+          <img class="movie-img" src={{MEDIA_URL}}{{u.profile.personal_video_image}} />
         </div>
       </div>
 
@@ -86,19 +83,30 @@
 
 		<div class="row">
 		  <div class="span6">
-			<div class="testimonial testimonial-left">
-				  <p>This chef is so amazing my tongue can't withstand food for mere mortals anymore.</p>
-				  <span><small>Chef <strong class="green">Jack Jackson</strong></span></small>
-			</div>
-			<div class="testimonial testimonial-right pull-right">
-				  <p>I used to be normal. Now I'm extraordinary, all thanks to this wonderful chef!</p>
-				  <span class="pull-right"><small>Chef <strong class="green">Jane Janet</strong></span></small>
-			</div>
 
-			<div class="testimonial testimonial-left">
-				  <p>This chef is so amazing my tongue can't withstand food for mere mortals anymore.</p>
-				  <span><small>Chef <strong class="green">Jack Jackson</strong></span></small>
+              {% if u.profile.testimonial1_text %}
+			  <div class="testimonial testimonial-left">
+                <p>{{u.profile.testimonial1_text}}</p>
+                <a href="{{u.profile.testimonial1_link}}">{{u.profile.testimonial1_src}}</a>
 			</div>
+            {% endif %}
+            {% if u.profile.testimonial2_text %}
+			<div class="testimonial testimonial-right pull-right">
+
+                <p>{{u.profile.testimonial2_text}}</p>
+                <a href="{{u.profile.testimonial2_link}}">{{u.profile.testimonial2_src}}</a>
+
+			</div>
+            {% endif %}
+
+            {% if u.profile.testimonial3_text %}
+			<div class="testimonial testimonial-left">
+
+                <p>{{u.profile.testimonial3_text}}</p>
+                <a href="{{u.profile.testimonial3_link}}">{{u.profile.testimonial3_src}}</a>
+
+			</div>
+            {% endif %}
 		  </div>
 
 		</div>
@@ -108,8 +116,22 @@
 
 <div class="bordered-row bordered">
     <div class="span6">
-        <div class="colored_header">
-          <h4>Lessons Taught</h4>
+        <h4>Lessons Taught</h4>
+        <div id="lessons" class="carousel slide">
+            <div class="carousel-inner">
+                {% for lesson in u.lessons.all %}
+                {% if forloop.first %}
+                <div class="active item">
+                {% else %}
+                <div class="item">
+                {% endif %}
+
+                {% include "lesson_tile.html" with lesson=lesson %}
+                </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control left" href="#lessons" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#lessons" data-slide="next">&rsaquo;</a>
         </div>
     </div>
 
@@ -120,57 +142,26 @@
     </div>
 </div>
 
-<div class="bordered-row bordered lessons">
 
-    <div class="span6 lesson">
- 	  <div class="row">
-		  <div class="span5 green lesson-title">
-			<h3>{{lesson.title}}</h3>
-		  </div>
-		  <div class="span1">
-			<h3 class="pull-right">${{lesson.price|default_if_none:"0"}}</h3>
-		  </div>
-      </div>
-
-      <div class="row">
-		<div class="span2 offset4 lesson-author">by <a href="#">{{lesson.teacher}}</a></div>
-      </div>
-      <hr/>
-      <div class="row">
-		<div class="span3 lesson-tile-left">
-		  <img src={{MEDIA_URL}}{{page.home.hero}} />
-		</div>
-        <div class="span3">
-		  <a class="btn btn-blue">Preview</a>
-		  <a class="btn btn-green pull-right">Purchase</a>
-		</div>
-      </div>
-      <hr/>
-	  <div class="row">
-        <div class="span3">
-		  <video width="100%" src={{MEDIA_URL}}{{lesson.video}} />
-        </div>
-		<div class="span3 lesson-tile-right">
-			<p><small>{{lesson.flavor_text}}</small></p>
-			<ul class="recipe-info">
-              <li>Serves: 4</li>
-			  <li>Prep Time: 15 minutes</li>
-			  <li>Cooking Time: 35 minutes</li>
-            </ul>
-		</div>
-      </div>
-
-	  <div class="row">
-		  <div class="span6">
-			<h4>Specialties</h4>
-			<a class="btn btn-clearblue btn-tags">Seafood</a>
-			<a class="btn btn-clearblue btn-tags">Gluten-free</a>
-		  </div>
-      </div>
-    </div>
-
-    <div class="span6 request">
-    </div>
+<!-- this should likely be moved somewhere else -->
+<div class="row no-display">
+  <video class="movie-video span6" controls="controls">
+	<!-- sample videos until we have our actual intro video -->
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4">
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv">
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm">
+    <!-- fallback  -->
+    <p>Your browser does not support HTML5 video.</p>
+  </video>
 </div>
-  {% endautoescape %}
-  {% endblock %}
+
+
+<script type="text/javascript">
+pagelogic = function(){
+        $(".movie-img").colorbox({inline:true, width:"50%", href:".movie-video"});
+};
+</script>
+
+
+{% endautoescape %}
+{% endblock %}

@@ -158,14 +158,32 @@ class Profile(CreatedMixin):
     cuisine = models.ManyToManyField('Cuisine', blank=True)
     restrictions = models.ManyToManyField("DietaryRestrictions", blank=True)
 
-    Testimonial1_text = models.TextField(blank=True)
-    Testimonial1_src = models.CharField(max_length=255, blank=True)
+    testimonial1_text = models.TextField(blank=True)
+    testimonial1_src = models.CharField(max_length=255, blank=True)
+    testimonial1_link = models.URLField(max_length=255, blank=True)
 
-    Testimonial2_text = models.TextField(blank=True)
-    Testimonial2_src = models.CharField(max_length=255, blank=True)
+    testimonial2_text = models.TextField(blank=True)
+    testimonial2_src = models.CharField(max_length=255, blank=True)
+    testimonial2_link = models.URLField(max_length=255, blank=True)
 
-    Testimonial3_text = models.TextField(blank=True)
-    Testimonial3_src = models.CharField(max_length=255, blank=True)
+    testimonial3_text = models.TextField(blank=True)
+    testimonial3_src = models.CharField(max_length=255, blank=True)
+    testimonial3_link = models.URLField(max_length=255, blank=True)
+
+    personal_video = models.FileField(upload_to=file_url("personal_video"), blank=True)
+    personal_video_image = models.ImageField(upload_to=file_url("personal_video_intro"), blank=True)
+
+
+    @cached_property
+    def tags(self):
+        """Grabs a list of the lessons dietary restrictions, cuisines, courses,
+        and primary ingredients from the database"""
+        course = self.course.all()
+        cuisine = self.cuisine.all()
+        restrictions = self.restrictions.all()
+        #list it to prevent caching the generator
+        return list(chain(course, cuisine, restrictions))
+
 
     def __unicode__(self):
         return unicode(self.user)

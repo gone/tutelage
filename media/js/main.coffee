@@ -38,6 +38,7 @@ require ["jquery", "chosen", "cs!validation"], ($) ->
             return false
 
         $(".chzn").chosen()
+        $('.carousel').carousel()
 
         $window = $(window)
         $window.scroll () ->
