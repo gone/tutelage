@@ -15,6 +15,7 @@ require ["jquery", "liveValidation"], ($) ->
         forms.validationEngine(
             focusFirstField : false
             showPrompt:true
+            scroll:false
         )
 
         forms.each (idx, form) ->
