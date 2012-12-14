@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load avatar_tags %}
 {% block content %}
 {% autoescape off %}
 <div class="bordered-row main bordered">
@@ -13,21 +13,18 @@
         <hr />
 
         <h4>Bringing Passion and Expertise</h4>
-        <p>{{chef.intro_text}}
-        </p>
+        <p>{{chef.intro_text}}</p>
       </div>
     </div>
     <div class="span6">
 	  <h3>Meet Chef {{chef.chef.get_full_name|title}}</h3>
-      <div class="main-movie">
-        <img src={{MEDIA_URL}}{{chef.intro_text}} />
-      </div>
+          {% avatar chef.chef %}
 
-      <hr />
+      <hr/>
 
-      <h3>{{chef.chef.get}}'s Lessons</h3>
-      {% for lesson in chef.featured_lessons %}
-      {% insert lesson_time with lesson=lesson %}
+      <h3>{{chef.chef.get_full_name|title}}'s Lessons</h3>
+      {% for lesson in chef.featured_lessons.all %}
+      {% include "lesson_tile.html" with lesson=lesson %}
       {% endfor %}
     </div>
 </div>

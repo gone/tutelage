@@ -46,8 +46,8 @@ def profile(request, user_id=None):
     elif request.user.is_anonymous() and user_id is None:
         return HttpResponseRedirect(reverse("account:auth_login"))
     else:
-        user = get_object_or_404(User, pk=user_id)
-        return direct_to_template(request, "profile.html", {"u":user})
+        user = get_object_or_404(User, pk=user_id, profile__professional_chef=True)
+        return direct_to_template(request, "chef_profile.html", {"u":user})
 
 def miniprofile(request, user_id):
     """The mini profile for user profile's in light boxes"""
@@ -206,7 +206,5 @@ def rate_lesson(request, lesson_id, rating):
 
 
 def featured_chefs(request):
-    import pdb
-    pdb.set_trace()
     chef = FeaturedChef.objects.published().order_by('-id').select_related('chef')[0]
     return render_to_response("featured_chef.html", {"chef": chef}, context_instance=RequestContext(request))

@@ -132,11 +132,40 @@ class SubCategory(CreatedMixin):
 
 class Profile(CreatedMixin):
     user = models.OneToOneField(User)
-    about = models.CharField(max_length=300, default='')
-    professional_chef = models.BooleanField(default=False)
-    ingredients = models.ManyToManyField(Ingredient, related_name='profiles')
-    tools = models.ManyToManyField(Tool, related_name='profiles')
+    about = models.CharField(max_length=300, default='', blank=True)
+
+    ingredients = models.ManyToManyField(Ingredient, related_name='profiles', blank=True)
+    tools = models.ManyToManyField(Tool, related_name='profiles', blank=True)
     skill_level = models.IntegerField(choices=SKILL_LEVELS, default=0)
+
+    professional_chef = models.BooleanField(default=False)
+
+    location = models.CharField(max_length=255, blank=True)
+    website1 = models.CharField(max_length=255, blank=True)
+    website1_url = models.URLField(blank=True)
+    website2 = models.CharField(max_length=255, blank=True)
+    website2_url = models.URLField(blank=True)
+
+    facebook =  models.URLField(blank=True)
+    twitter = models.URLField(blank=True)
+    linkedin = models.URLField(blank=True)
+    pinterest = models.URLField(blank=True)
+    youtube = models.URLField(blank=True)
+    googleplus = models.URLField(blank=True)
+    tumblr = models.URLField(blank=True)
+
+    course = models.ManyToManyField('Course', blank=True)
+    cuisine = models.ManyToManyField('Cuisine', blank=True)
+    restrictions = models.ManyToManyField("DietaryRestrictions", blank=True)
+
+    Testimonial1_text = models.TextField(blank=True)
+    Testimonial1_src = models.CharField(max_length=255, blank=True)
+
+    Testimonial2_text = models.TextField(blank=True)
+    Testimonial2_src = models.CharField(max_length=255, blank=True)
+
+    Testimonial3_text = models.TextField(blank=True)
+    Testimonial3_src = models.CharField(max_length=255, blank=True)
 
     def __unicode__(self):
         return unicode(self.user)
@@ -199,7 +228,7 @@ class Lesson(CreatedMixin, Displayable):
                                        blank=True, null=True)
     serving_size = models.IntegerField()
 
-   #tags = models.CharField(max_length=128, default="")
+   #tags = models.ChraField(max_length=128, default="")
 
     prep_time = DurationField()
     cooking_time = DurationField()

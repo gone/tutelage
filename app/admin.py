@@ -14,9 +14,10 @@ class HomeAdmin(PageAdmin):
 class StepAdmin(admin.TabularInline):
     model = Step
 
-
 class LessonAdmin(admin.ModelAdmin):
     inlines = (StepAdmin,)
+
+
 
 
 admin.site.register(Home, HomeAdmin)

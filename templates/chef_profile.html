@@ -1,47 +1,64 @@
 {% extends 'base.html' %}
+{% load avatar_tags %}
 
 {% block content %}
 {% autoescape off %}
 <div class="bordered-row main bordered">
     <div class="span6">
       <div class="colored_header">
-        <h3>Chef <a href="#">[firstname] [lastname]</a></h3>
-        
-        
+        <h3>Chef <a href="#">{{u.get_full_name|title}}</a></h3>
+
         <br />
-        
+
         <div class="user-bio user-photo">
-		  <img src="{{MEDIA_URL}}{{page.home.hero}}" />
+            {% avatar u %}
 		</div>
-		<span>Lnrem ipsum dolor sit arnet, Consectetur adipiscing eIitAenean ornare mattia magna, quis portlitor dolor ultriciessit ar</span>
+		<span>{{u.profile.about}}</span>
       </div>
-      
+
 	  <br />
-	  
+
 	  <div class="social-media">
 		<h4>More About Me</h4>
-			  
+
 		<div class="row">
 		  <div class="span3">
-			<a href="#">Where I Cook</a>
-			<a href="#">Personal Website</a>
+              {% if u.profile.website1_url %}
+			  <a href="{{u.profile.website1_url}}">{{u.profile.website1}}</a>
+              {% endif %}
+              {% if u.profile.website1_url % and u.profile.website2_url %}
+              |
+              {% endif %}
+              {% if u.profile.website2_url %}
+			  <a href="{{u.profile.website2_url}}">{{u.profile.website2}}</a>
+              {% endif %}
 		  </div>
-		  
-		  <div class="span3">			  
+
+		  <div class="span3">
 	        <div class="social-media-icons">
-			  <img src="../../static/img/social-facebook.png" />
-			  <img src="../../static/img/social-twitter.png" />
-			  <img src="../../static/img/social-pinterest.png" />
-			  <img src="../../static/img/social-google-plus.png" />
-			  <img src="../../static/img/social-tumblr.png" />
+                {% if u.profile.facebook %}
+			    <a href="{{u.profile.facebook}}"><img src="{{STATIC_URL}}img/social-facebook.png" /> </a>
+                {% endif %}
+                {% if u.profile.twitter %}
+			    <a href="{{u.profile.twitter}}"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
+                {% endif %}
+                {% if u.profile.pinterest %}
+			    <a href="{{u.profile.pinterest}}"><img src="{{STATIC_URL}}img/social-pinterest.png"/>  </a>
+                {% endif %}
+			    {% if u.profile.googleplus %}
+                <a href="{{u.profile.googleplus}}"><img src="{{STATIC_URL}}img/social-google-plus.png"/></a>
+                {% endif %}
+                {% if u.profile.tumblr %}
+			    <a href="{{u.profile.tumblr}}"><img src="{{STATIC_URL}}img/social-tumblr.png" /></a>
+                {% endif %}
 			</div>
 		  </div>
 		</div>
 	  </div>
-	  
+
         <br />
-        
-        <div class="row"> 
+
+        <div class="row">
 		  <div class="span6">
 			<h4>Specialties</h4>
 			<a class="btn btn-clearblue btn-tags">Seafood</a>
@@ -55,19 +72,19 @@
 		  </div>
 		</div>
     </div>
-    
+
     <div class="span6">
       <div class="colored_header">
         <div class="main-movie">
           <img src={{MEDIA_URL}}{{page.home.hero}} />
         </div>
       </div>
- 
+
       <br />
-        
+
       <br />
-		
-		<div class="row">  
+
+		<div class="row">
 		  <div class="span6">
 			<div class="testimonial testimonial-left">
 				  <p>This chef is so amazing my tongue can't withstand food for mere mortals anymore.</p>
@@ -77,32 +94,32 @@
 				  <p>I used to be normal. Now I'm extraordinary, all thanks to this wonderful chef!</p>
 				  <span class="pull-right"><small>Chef <strong class="green">Jane Janet</strong></span></small>
 			</div>
-			
+
 			<div class="testimonial testimonial-left">
 				  <p>This chef is so amazing my tongue can't withstand food for mere mortals anymore.</p>
 				  <span><small>Chef <strong class="green">Jack Jackson</strong></span></small>
-			</div> 
+			</div>
 		  </div>
-		 
+
 		</div>
       </div>
-    </div>   
-</div>  
+    </div>
+</div>
 
 <div class="bordered-row bordered">
-    <div class="span6">        
+    <div class="span6">
         <div class="colored_header">
           <h4>Lessons Taught</h4>
         </div>
     </div>
-    
-    <div class="span6">        
+
+    <div class="span6">
         <div class="colored_header">
           <h4>Active Requests</h4>
         </div>
     </div>
-</div>  
-        
+</div>
+
 <div class="bordered-row bordered lessons">
 
     <div class="span6 lesson">
@@ -151,9 +168,9 @@
 		  </div>
       </div>
     </div>
-    
+
     <div class="span6 request">
     </div>
-</div>       
+</div>
   {% endautoescape %}
   {% endblock %}
