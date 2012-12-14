@@ -63,6 +63,11 @@ $nav-padding: 5px;
 
 
 /*  overwriting some of the base bootstrap */
+.fixed-top {
+	width: 960px !important;
+	margin-top: -10px;
+}
+
 .navbar .divider-vertical {
     height: 100% !important;
     border: 0px !important;

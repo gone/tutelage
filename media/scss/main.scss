@@ -169,15 +169,11 @@ textarea {
 	resize: none;
 }
 
-body{
-    padding-top: 40px;
-}
-
+@import "colorbox";
 @import "local_navbar";
 @import "footer";
 @import "icons";
 @import "home";
-@import "colorbox";
 @import "about";
 @import "lessons";
 @import "login";

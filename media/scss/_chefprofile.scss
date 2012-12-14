@@ -1,19 +1,44 @@
+.chef-profile-location, .chef-links {
+	padding-top: 5px;
+}
+
+.social-media-icons a:hover, .testimonial a:hover {
+	text-decoration: none;
+}
+
+.testimonial a:hover {
+	color: $green-active;
+}
+
 .testimonial {
 	background-repeat:no-repeat;
 	display: inline-block;
 	width: 375px;
-	height: 90px;
+	height: 75px;
 	margin-top: 10px;
-	p { padding: 0px 0px 10px 10px !important;
+	p { width: 355px;
+	    height: 50px;
 	}
 }
 
 .testimonial-left {
-	background-image:url('../img/testimonial_left_pink.png');	
+	background-image:url('../img/testimonial_left_pink.png');
 }
 
 .testimonial-right {
 	background-image:url('../img/testimonial_right_pink.png');
 	margin-right: 20px;
+	text-align: right;
 }
 
+.testimonial-text {
+	padding: 0px 0px 10px 10px !important;
+}
+
+.testimonial-source {
+	margin-top: -10px;
+}
+
+.testimonial-source-right {
+	padding-left: 5px;
+}

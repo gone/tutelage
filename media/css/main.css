@@ -5757,8 +5757,160 @@ textarea {
   resize: none;
 }
 
-body {
-  padding-top: 40px;
+/*
+    ColorBox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10001;
+  overflow: hidden;
+}
+
+#cboxOverlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#cboxMiddleLeft, #cboxBottomLeft {
+  clear: left;
+}
+
+#cboxContent {
+  position: relative;
+}
+
+#cboxLoadedContent {
+  overflow: auto;
+}
+
+#cboxTitle {
+  margin: 0;
+}
+
+#cboxLoadingOverlay, #cboxLoadingGraphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
+  cursor: pointer;
+}
+
+.cboxPhoto {
+  float: left;
+  margin: auto;
+  border: 0;
+  display: block;
+}
+
+.cboxIframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+/*
+    User Style:
+    Change the following styles to modify the appearance of ColorBox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#cboxOverlay {
+  background: #222;
+}
+
+#colorbox {
+  margin: 0 !important;
+  z-index: 10002;
+}
+
+#cboxLoadedContent {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  max-height: none;
+}
+
+#cboxTitle {
+  /* @extend .modal-header; -- removing border at top of lightbox -- */
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.modal-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.cb-icon, #cboxPrevious, #cboxNext, #cboxClose {
+  border: 0;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: transparent;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  background-image: url("../img/glyphicons-halflings.png");
+  background-repeat: no-repeat;
+  *margin-right: .3em;
+}
+
+#cboxCurrent {
+  position: absolute;
+  bottom: 4px;
+  left: 58px;
+  color: #333333;
+}
+
+#cboxSlideshow {
+  position: absolute;
+  bottom: 4px;
+  right: 30px;
+  color: #333333;
+}
+
+#cboxPrevious {
+  bottom: 8px;
+  left: 5px;
+}
+
+#cboxNext {
+  bottom: 8px;
+  left: 19px;
+}
+
+#cboxClose {
+  top: 5px;
+  right: 5px;
+}
+
+#cboxLoadingGraphic {
+  background: url(img/loading.gif) no-repeat center center;
+}
+
+.cboxIE #cboxTopLeft,
+.cboxIE #cboxTopCenter,
+.cboxIE #cboxTopRight,
+.cboxIE #cboxBottomLeft,
+.cboxIE #cboxBottomCenter,
+.cboxIE #cboxBottomRight,
+.cboxIE #cboxMiddleLeft,
+.cboxIE #cboxMiddleRight {
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)";
 }
 
 /* Navbar */
@@ -5819,6 +5971,11 @@ body {
 }
 
 /*  overwriting some of the base bootstrap */
+.fixed-top {
+  width: 960px !important;
+  margin-top: -10px;
+}
+
 .navbar .divider-vertical {
   height: 100% !important;
   border: 0px !important;
@@ -6115,160 +6272,9 @@ body {
   cursor: pointer;
 }
 
-/*
-    ColorBox Core Style:
-    The following CSS is consistent between example themes and should not be altered.
-*/
-#colorbox, #cboxOverlay, #cboxWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10001;
-  overflow: hidden;
-}
-
-#cboxOverlay {
-  position: fixed;
+.main-movie-video {
   width: 100%;
-  height: 100%;
-}
-
-#cboxMiddleLeft, #cboxBottomLeft {
-  clear: left;
-}
-
-#cboxContent {
-  position: relative;
-}
-
-#cboxLoadedContent {
-  overflow: auto;
-}
-
-#cboxTitle {
-  margin: 0;
-}
-
-#cboxLoadingOverlay, #cboxLoadingGraphic {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
-  cursor: pointer;
-}
-
-.cboxPhoto {
-  float: left;
-  margin: auto;
-  border: 0;
-  display: block;
-}
-
-.cboxIframe {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border: 0;
-}
-
-/*
-    User Style:
-    Change the following styles to modify the appearance of ColorBox.  They are
-    ordered & tabbed in a way that represents the nesting of the generated HTML.
-*/
-#cboxOverlay {
-  background: #222;
-}
-
-#colorbox {
-  margin: 0 !important;
-  z-index: 10002;
-}
-
-#cboxLoadedContent {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  max-height: none;
-}
-
-#cboxTitle {
-  /* @extend .modal-header; -- removing border at top of lightbox -- */
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #333333;
-}
-
-.modal-footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.cb-icon, #cboxPrevious, #cboxNext, #cboxClose {
-  border: 0;
-  font: 0/0 a;
-  text-shadow: none;
-  color: transparent;
-  background-color: transparent;
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  line-height: 14px;
-  background-image: url("../img/glyphicons-halflings.png");
-  background-repeat: no-repeat;
-  *margin-right: .3em;
-}
-
-#cboxCurrent {
-  position: absolute;
-  bottom: 4px;
-  left: 58px;
-  color: #333333;
-}
-
-#cboxSlideshow {
-  position: absolute;
-  bottom: 4px;
-  right: 30px;
-  color: #333333;
-}
-
-#cboxPrevious {
-  bottom: 8px;
-  left: 5px;
-}
-
-#cboxNext {
-  bottom: 8px;
-  left: 19px;
-}
-
-#cboxClose {
-  top: 5px;
-  right: 5px;
-}
-
-#cboxLoadingGraphic {
-  background: url(img/loading.gif) no-repeat center center;
-}
-
-.cboxIE #cboxTopLeft,
-.cboxIE #cboxTopCenter,
-.cboxIE #cboxTopRight,
-.cboxIE #cboxBottomLeft,
-.cboxIE #cboxBottomCenter,
-.cboxIE #cboxBottomRight,
-.cboxIE #cboxMiddleLeft,
-.cboxIE #cboxMiddleRight {
-  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)";
+  height: 265px;
 }
 
 .lesson {
@@ -6776,15 +6782,28 @@ btn-avatar {
   content: counter(inc_steps);
 }
 
+.chef-profile-location, .chef-links {
+  padding-top: 5px;
+}
+
+.social-media-icons a:hover, .testimonial a:hover {
+  text-decoration: none;
+}
+
+.testimonial a:hover {
+  color: #028e44;
+}
+
 .testimonial {
   background-repeat: no-repeat;
   display: inline-block;
   width: 375px;
-  height: 90px;
+  height: 75px;
   margin-top: 10px;
 }
 .testimonial p {
-  padding: 0px 0px 10px 10px !important;
+  width: 355px;
+  height: 50px;
 }
 
 .testimonial-left {
@@ -6794,6 +6813,19 @@ btn-avatar {
 .testimonial-right {
   background-image: url("../img/testimonial_right_pink.png");
   margin-right: 20px;
+  text-align: right;
+}
+
+.testimonial-text {
+  padding: 0px 0px 10px 10px !important;
+}
+
+.testimonial-source {
+  margin-top: -10px;
+}
+
+.testimonial-source-right {
+  padding-left: 5px;
 }
 
 /* Z-INDEX */
