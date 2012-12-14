@@ -207,4 +207,4 @@ def rate_lesson(request, lesson_id, rating):
 
 def featured_chefs(request):
     chef = FeaturedChef.objects.published().order_by('-id').select_related('chef')[0]
-    return render_to_response("featured_chef.html", {"chef": chef}, context_instance=RequestContext(request))
+    return profile(request, user_id=chef.id)
