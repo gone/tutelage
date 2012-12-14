@@ -76,7 +76,7 @@ def lesson_detail(request, lesson_id):
 
 def mylessons(request, user_id):
     user = get_object_or_404(User, pk=user_id)
-    all_lessons = user.teaching.all()
+    all_lessons = user.lessons.all()
     lesson_paginator = Paginator(all_lessons, 16)
     lesson_page = request.GET.get('lessons')
     try:
