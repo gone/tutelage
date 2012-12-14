@@ -6568,6 +6568,10 @@ btn-avatar {
   margin-right: 20px;
 }
 
+.mylessons-title h4 {
+  padding-top: 10px;
+}
+
 .create-lesson-title h2 {
   margin: 0px;
   height: 25px;
