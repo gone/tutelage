@@ -92,11 +92,11 @@
 	  <div class="span6">
 		<h3 class="colored-header">{{u.get_full_name}}{%if u.get_full_name%}'s{% endif %} Profile</h3>
 	  </div>
-	  
+
 	  <div class="span2 offset4 pull-right">
 		<input type="submit" class="btn btn-green btn-save pull-right" value="Save">
-	  </div>	  
-	  
+	  </div>
+
 	</div>
 
     <hr />
@@ -117,7 +117,11 @@
 		<div id="profile-user-type">
 		  <h5>Account Type</h5>
 		  <a class="btn btn-blue ">
-		  Chef
+		      {% if u.get_profile.professional_chef %}
+              Chef
+              {% else %}
+              Homechef
+              {% endif %}
 		  </a>
 		</div>
       </div>
@@ -178,16 +182,16 @@
           {{form.first_name.errors}}
 		</div>
       </div>
-      
+
       <div class="span6">
 		<div id="email">
 		  <h5>Email</h5>
 		  <input name="email" class="profile-input" type="text" placeholder="" value="{{form.email.value|default:""}}">
           {{form.email.errors}}
 		</div>
-      </div>            
+      </div>
     </div>
-    
+
     <div class="row">
       <div class="span6">
 		<div id="lastname">
@@ -196,7 +200,7 @@
           {{form.last_name.errors}}
 		</div>
 	  </div>
-	  
+
 	  <div class="span6">
 		<div id="profile-password-change">
 		  <h5>Password</h5>
@@ -204,7 +208,7 @@
 		  Change
 		  </a>
 		</div>
-      </div>	  
+      </div>
 	</div>
 
     {% endif %}
