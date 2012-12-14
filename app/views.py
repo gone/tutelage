@@ -198,7 +198,7 @@ def lesson(request, lesson_id):
 @require_POST
 @login_required
 def rate_lesson(request, lesson_id, rating):
-    r, created = LessonRating.objects.get_or_create(user=request.user, lesson_id=lesson_id, defaults={rating:rating})
+    r, created = LessonRating.objects.get_or_create(user=request.user, lesson_id=int(lesson_id), defaults={"rating":int(rating)})
     if not created:
         r.rating = rating
         r.save()
