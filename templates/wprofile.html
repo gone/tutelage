@@ -34,63 +34,49 @@
 
 	    <hr />
 
-	    <div class="row">
+        {% for lesson in u.teaching.all %}
+	    {% cycle "True" "" as newrow silent %}
+        {% if newrow %}
+        <div class="row">
 	      <div class="span5">
-	        <div class="profile-btn">
-	          <a class="btn btn-blue btn-profile-link">
-		        chicken tikka masala (gluten-free)
-		      </a>
-		    </div>
-
-		    <div class="profile-btn">
-		      <a class="btn btn-blue btn-profile-link">
-		        vegetarian dosas
-		      </a>
-		    </div>
-		    <div class="profile-btn">
-		      <a class="btn btn-blue btn-profile-link">
-		        chicken tikka masala (gluten-free)
-		      </a>
-		    </div>
-		    <div class="profile-btn">
-		      <a href="#" class="see-more-link vertical-align-text">
+           {% else %}
+          <div class="span5">
+               {% endif %}
+	          <div class="profile-btn">
+	              <a href="{% url lesson_detail lesson.id %}" class="btn btn-blue btn-profile-link">
+		              {{lesson.title}}
+		          </a>
+		      </div>
+          </div>
+          {% if not newrow or forloop.last %}
+          </div>
+        {% endif %}
+        {% endfor %}
+        <div class="row">
+		    <div class="profile-btn span5">
+		        <a href="{% url profile u.id %}" class="see-more-link vertical-align-text">
+			        See more...
+		        </a>
+	        </div>
+	        <div class="profile-btn span5">
+		      	<a href="{% url profile u.id %}" class="see-more-link vertical-align-text">
 			    See more...
 		      </a>
 	        </div>
-	      </div>
-
-	      <div class="span5">
-	        <div class="profile-btn">
-	          <a class="btn btn-blue btn-profile-link">
-		        phad thai with green curry
-		      </a>
-		    </div>
-		    <div class="profile-btn">
-		      <a class="btn btn-blue btn-profile-link">
-		        blue cheese veggie burgers
-		      </a>
-		    </div>
-		    <div class="profile-btn">
-		      <a href="#" class="see-more-link vertical-align-text">
-			    See more...
-		      </a>
-	        </div>
-	      </div>
 	    </div>
 
-	    <hr />
 
-	    <div class="row">
-	      <div class="span5">
-	        <div class="social-media-icons">
-		      <img src="{{STATIC_URL}}img/fb_icon.png" />
-		      <img src="{{STATIC_URL}}img/tw_icon.png" />
-		      <img src="{{STATIC_URL}}img/gp_icon.png" />
-		      <img src="{{STATIC_URL}}img/pin_icon.png" />
-	        </div>
-	      </div>
-	    </div>
-      </div>
+	  <!--   <div class="row"> -->
+	  <!--     <div class="span5"> -->
+	  <!--       <div class="social-media-icons"> -->
+	  <!--         <img src="{{STATIC_URL}}img/fb_icon.png" /> -->
+	  <!--         <img src="{{STATIC_URL}}img/tw_icon.png" /> -->
+	  <!--         <img src="{{STATIC_URL}}img/gp_icon.png" /> -->
+	  <!--         <img src="{{STATIC_URL}}img/pin_icon.png" /> -->
+	  <!--       </div> -->
+	  <!--     </div> -->
+	  <!--   </div> -->
+      <!-- </div> -->
     </div>
   </div>
 </div>
