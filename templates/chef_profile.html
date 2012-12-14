@@ -5,53 +5,74 @@
 {% autoescape off %}
 <div class="bordered-row main bordered">
     <div class="span6">
-      <div class="colored_header">
-        <h3>Chef <a href="#">{{u.get_full_name|title}}</a></h3>
-
-        <br />
-
-        <div class="user-bio user-photo">
-            {% avatar u %}
-		</div>
-		<span>{{u.profile.about}}</span>
-	    <br />
-        {{u.profile.location}}
-      </div>
-
+	  <div class="row">
+        <div class="span4 colored_header">
+          <h3>Chef {{u.get_full_name|title}}</h3>
+       	</div>
+	  
+	    <div class="span2">
+		  <h5 class="chef-profile-location pull-right">{{u.profile.location}}</h5>        		
+        </div>
+	  </div>
+	  
+	  <div class="user-photo">
+      {% avatar u %}
+	  </div>
+	  
 	  <br />
+	  
+	  <div class="user-bio">{{u.profile.about}}</div>
+	  
+	  <br />
+	</div>
+	  
+	<div class="span6">
+      <div class="colored_header">
+        <div class="chef-movie">
+          <img class="main-movie-img" src={{MEDIA_URL}}{{u.profile.personal_video_image}} />
+        </div>
+      </div>
+    </div>
 
+	<div class="span6">
 	  <div class="social-media">
-		<h4>More About Me</h4>
+		<h4>More About Chef {{u.get_full_name|title}}</h4>
 
 		<div class="row">
-		  <div class="span3">
+		  <div class="span3 chef-links">
               {% if u.profile.website1_url %}
-			  <a href="{{u.profile.website1_url}}">{{u.profile.website1}}</a>
+			  <a href="{{u.profile.website1_url}}" target="_blank">{{u.profile.website1}}</a>
               {% endif %}
               {% if u.profile.website1_url and u.profile.website2_url %}
               |
               {% endif %}
               {% if u.profile.website2_url %}
-			  <a href="{{u.profile.website2_url}}">{{u.profile.website2}}</a>
+			  <a href="{{u.profile.website2_url}}" target="_blank">{{u.profile.website2}}</a>
               {% endif %}
 		  </div>
 
 		  <div class="span3">
 	        <div class="social-media-icons">
                 {% if u.profile.facebook %}
-			    <a href="{{u.profile.facebook}}"><img src="{{STATIC_URL}}img/social-facebook.png" /> </a>
+			    <a href="{{u.profile.facebook}}" target="_blank"><img src="{{STATIC_URL}}img/social-facebook.png" /> </a>
                 {% endif %}
                 {% if u.profile.twitter %}
-			    <a href="{{u.profile.twitter}}"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
+			    <a href="{{u.profile.twitter}}" target="_blank"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
+                {% endif %}
+                {% if u.profile.linkedin %}
+			    <a href="{{u.profile.linkedin}}" target="_blank"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
                 {% endif %}
                 {% if u.profile.pinterest %}
-			    <a href="{{u.profile.pinterest}}"><img src="{{STATIC_URL}}img/social-pinterest.png"/>  </a>
+			    <a href="{{u.profile.pinterest}}" target="_blank"><img src="{{STATIC_URL}}img/social-pinterest.png"/>  </a>
+                {% endif %}
+                {% if u.profile.youtube %}
+			    <a href="{{u.profile.youtube}}" target="_blank"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
                 {% endif %}
 			    {% if u.profile.googleplus %}
-                <a href="{{u.profile.googleplus}}"><img src="{{STATIC_URL}}img/social-google-plus.png"/></a>
+                <a href="{{u.profile.googleplus}}" target="_blank"><img src="{{STATIC_URL}}img/social-google-plus.png"/></a>
                 {% endif %}
                 {% if u.profile.tumblr %}
-			    <a href="{{u.profile.tumblr}}"><img src="{{STATIC_URL}}img/social-tumblr.png" /></a>
+			    <a href="{{u.profile.tumblr}}" target="_blank"><img src="{{STATIC_URL}}img/social-tumblr.png" /></a>
                 {% endif %}
 			</div>
 		  </div>
@@ -70,41 +91,48 @@
 		</div>
     </div>
 
-    <div class="span6">
-      <div class="colored_header">
-        <div class="main-movie">
-          <img class="movie-img" src={{MEDIA_URL}}{{u.profile.personal_video_image}} />
-        </div>
-      </div>
-
-      <br />
-
-      <br />
-
+    
+    
+	<div class="span6">
 		<div class="row">
 		  <div class="span6">
 
-              {% if u.profile.testimonial1_text %}
-			  <div class="testimonial testimonial-left">
-                <p>{{u.profile.testimonial1_text}}</p>
-                <a href="{{u.profile.testimonial1_link}}">{{u.profile.testimonial1_src}}</a>
+            {% if u.profile.testimonial1_text %}
+			<div class="testimonial testimonial-left">
+                <p class="testimonial-text"><strong>{{u.profile.testimonial1_text}}</strong></p>
+                
+                <p class="testimonial-source">
+				  Chef
+				  <a class="green" href="{{u.profile.testimonial1_link}}" target="_blank">
+				    <strong>{{u.profile.testimonial1_src}}</strong>
+				  </a>
+				</p>
 			</div>
             {% endif %}
+            
             {% if u.profile.testimonial2_text %}
 			<div class="testimonial testimonial-right pull-right">
-
-                <p>{{u.profile.testimonial2_text}}</p>
-                <a href="{{u.profile.testimonial2_link}}">{{u.profile.testimonial2_src}}</a>
-
+                <p class="testimonial-text"><strong>{{u.profile.testimonial2_text}}</strong></p>
+                
+                <p class="testimonial-source pull-right">
+				  Chef
+				  <a class="green testimonial-source-right pull-right" href="{{u.profile.testimonial2_link}}" target="_blank">
+				    <strong>{{u.profile.testimonial2_src}}</strong>
+				  </a>
+				</p>
 			</div>
             {% endif %}
 
             {% if u.profile.testimonial3_text %}
 			<div class="testimonial testimonial-left">
-
-                <p>{{u.profile.testimonial3_text}}</p>
-                <a href="{{u.profile.testimonial3_link}}">{{u.profile.testimonial3_src}}</a>
-
+                <p class="testimonial-text"><strong>{{u.profile.testimonial3_text}}</strong></p>
+                
+                <p class="testimonial-source">
+				  Chef
+				  <a class="green" href="{{u.profile.testimonial3_link}}" target="_blank">
+				    <strong>{{u.profile.testimonial3_src}}</strong>
+				  </a>
+				</p>
 			</div>
             {% endif %}
 		  </div>
@@ -116,7 +144,7 @@
 
 <div class="bordered-row bordered">
     <div class="span6">
-        <h4>Lessons Taught</h4>
+        <h4>Chef {{u.get_full_name|title}}'s Lessons</h4>
         <div id="lessons" class="carousel slide">
             <div class="carousel-inner">
                 {% for lesson in u.lessons.all %}
@@ -145,7 +173,7 @@
 
 <!-- this should likely be moved somewhere else -->
 <div class="row no-display">
-  <video class="movie-video span6" controls="controls">
+  <video class="chef-movie-video span6" controls="controls">
 	<!-- sample videos until we have our actual intro video -->
     <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4">
     <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv">
@@ -158,7 +186,7 @@
 
 <script type="text/javascript">
 pagelogic = function(){
-        $(".movie-img").colorbox({inline:true, width:"50%", href:".movie-video"});
+        $(".main-movie-img").colorbox({inline:true, width:"50%", href:".chef-movie-video"});
 };
 </script>
 
