@@ -17,7 +17,11 @@
             {% include "rating.html" with lesson=lesson%}
 		</div>
         <div class="span3">
-		  <a class="btn btn-blue" href="{%url lesson_detail lesson.id %}">More details</a>
+            {% if request.user == lesson.teacher %}
+            <a class="btn btn-blue" href="{%url edit-lesson lesson.id %}">Edit Lesson</a>
+            {% else %}
+		    <a class="btn btn-blue" href="{%url lesson_detail lesson.id %}">More details</a>
+            {% endif %}
 		  <a class="btn btn-green pull-right" href="{% url purchase lesson.id %}">Watch</a>
 		</div>
       </div>
