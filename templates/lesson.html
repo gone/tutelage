@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="lesson-video-background" class="bordered-row bordered">
+<div id="lesson-wrapper" class="bordered-row bordered">
         <div id="lessons" class="carousel slide">
             <div class="carousel-inner">
                 {% for step in lesson.steps.all %}
@@ -21,14 +21,16 @@
                 {% else %}
                 <div class="item">
                 {% endif %}
-
-                    <p class="step-text">{{step.text}}</p>
-                    <img class="lesson-pic" src="{{MEDIA_URL}}{{step.picture}}" />
+				  <div id="step-text" class="span4 no-margin lesson-wrapper-overlay"><strong id="step-title">{{step.title}}:</strong>{{step.text}}</div>
+				  
+				  <img class="lesson-picture" src="{{MEDIA_URL}}{{step.picture}}" />
+                 
+                  <div class="span4 no-margin">
                     <div id="ingredient" class="lesson-panel">
                       {% for ingredient in step.ingredients.all %}
                         <div class='panel-item ingredient'>
                              <div class='lesson-icon-text lesson-icon-ingredients-text'>
-                                  <strong>{{ingredient.number}} {{ingredient.measurement}} {{ingredient.name}} {{ingredient.prep}}</strong>
+                                  <strong>{{ingredient.number}} {{ingredient.measurement}} {{ingredient.prep}} {{ingredient.ingredient.name}}</strong>
                              </div>
                              <div class='lesson-icon-circle lesson-icon-circle-ingredients'>
                                   <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{ingredient.name}}' />
@@ -36,8 +38,9 @@
                          </div>
                       {% endfor %}
                     </div>
+                  </div>
 
-
+                  <div class="span4 pull-right">
                     <div id="tools" class="lesson-panel">
                       {% for tool in step.tools.all %}
                           <div class='panel-item tool'>
@@ -50,6 +53,7 @@
                           </div>
                       {% endfor %}
                     </div>
+                  </div>
 
                     {% for tech in step.technique.all %}
                     <a href="#" class="tech">{{tech.title}}</a>

@@ -80,35 +80,32 @@
 	padding-bottom: 10px;
 }
 
+#lesson-video-background {
+	background-color: black;
+}
+
 #lesson-wrapper {
-    background-color: black;
+    position: 		absolute;
     top: 			88px;
     width: 			962px;
-    height: 		541px;
+    height: 		400px;
 }
 
 .lesson-wrapper-overlay {
 	background-color: rgba(0, 0, 0, 0.7);
 }
 
-.lesson-picture {
-	width: 			962px;
-    height: 		541px;
+#step_title {
+	font-size: 1.0em;
+	color: #02A64F !important;
+	padding-right: 5px;
 }
 
-
-#step-text {
-	position: absolute;
+#step_text {
 	display: inline-block;
 	font-size: 1.0em !important;
 	color: white !important;
 	padding: 5px !important;
-}
-
-#step-title {
-	font-size: 1.0em;
-	color: #02A64F !important;
-	padding-right: 5px;
 }
 
 .lesson-panel {
