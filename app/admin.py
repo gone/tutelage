@@ -1,6 +1,6 @@
 from django.contrib import admin
 from mezzanine.pages.admin import PageAdmin
-from .models import Home, HomeBlock, Lesson, Step, About, FeaturedChef
+from .models import Home, HomeBlock, Lesson, Step, About, FeaturedChef, LessonIngredient
 from .models import Ingredient, Tool, DietaryRestrictions, Cuisine, Course, Video
 
 
@@ -14,8 +14,12 @@ class HomeAdmin(PageAdmin):
 class StepAdmin(admin.TabularInline):
     model = Step
 
+class LessonIngredientAdmin(admin.TabularInline):
+    model = LessonIngredient
+
+
 class LessonAdmin(admin.ModelAdmin):
-    inlines = (StepAdmin,)
+    inlines = (StepAdmin,LessonIngredient)
 
 class FeaturedChefAdmin(admin.ModelAdmin):
     def formfield_for_foreignkey(self, db_field, request=None, **kwargs):
