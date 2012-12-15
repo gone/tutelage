@@ -1,7 +1,6 @@
 .lesson {
     margin-left: 10px !important;
-	padding-right: 8px;
-    padding-bottom: 20px;
+    padding: 5px 8px 15px 0px;
     hr {
         margin: 5px 0px;
     }
@@ -13,7 +12,6 @@
 
 .lesson-title a {
 	cursor: pointer;
-    color: $green !important;
     text-decoration: none;
 }
 
@@ -29,7 +27,24 @@
     text-align:right
 }
 
-.recipe-info{
+.lesson-author a:hover {
+	color: $green-active !important;
+	text-decoration: none;
+}
+
+.lesson-tile-image {
+	max-height: 125px;
+}
+
+.lesson-tile-description {
+
+}
+
+.lesson-tile-description small {
+
+}
+
+.lesson-tile-info{
     margin: 0px;
     li {
         list-style-type:none;
@@ -37,8 +52,13 @@
     }
 }
 
+.lesson-tile-tags {
+	max-height: 70px;
+	overflow: hidden;
+}
+
 #lesson-photo img {
-	width: 360px;
+	max-width: 360px;
 }
 
 .lesson-list {
@@ -46,6 +66,7 @@
 }
 
 .lesson-list li {
+	cursor: pointer;
 	list-style-type: none !important;
 	padding-bottom: 10px;
 }

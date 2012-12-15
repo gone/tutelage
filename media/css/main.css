@@ -5429,12 +5429,22 @@ a.label:hover, a.badge:hover {
   box-sizing: border-box;
 }
 
+body {
+  background-color: #fefefe !important;
+  line-height: 115% !important;
+}
+
 .no-display {
   display: none;
 }
 
 .green {
   color: #01a64f;
+}
+
+.green:hover {
+  color: #028e44 !important;
+  text-decoration: none;
 }
 
 .btn-green {
@@ -5698,10 +5708,6 @@ a.label:hover, a.badge:hover {
   margin-top: 15px;
 }
 
-body {
-  background-color: #fefefe !important;
-}
-
 .bordered {
   background-color: #fff;
   border: 1px solid lightgrey;
@@ -5709,6 +5715,11 @@ body {
 
 .green {
   color: #01a64f;
+}
+
+a.green:hover {
+  color: #028e44 !important;
+  text-decoration: none !important;
 }
 
 .bordered-row {
@@ -5725,7 +5736,7 @@ input[type="submit"] {
 }
 
 .vertical-align {
-  vertical-align: middle;
+  vertical-align: top;
 }
 
 .right-padding {
@@ -5784,7 +5795,7 @@ textarea {
 }
 
 #cboxLoadedContent {
-  overflow: auto;
+  overflow: hidden;
 }
 
 #cboxTitle {
@@ -5898,10 +5909,7 @@ textarea {
   right: 5px;
 }
 
-#cboxLoadingGraphic {
-  background: url(img/loading.gif) no-repeat center center;
-}
-
+/* #cboxLoadingGraphic{background:url(img/loading.gif) no-repeat center center;} */
 .cboxIE #cboxTopLeft,
 .cboxIE #cboxTopCenter,
 .cboxIE #cboxTopRight,
@@ -5974,6 +5982,7 @@ textarea {
 .fixed-top {
   width: 960px !important;
   margin-top: -10px;
+  z-index: 1;
 }
 
 .navbar .divider-vertical {
@@ -6279,8 +6288,7 @@ textarea {
 
 .lesson {
   margin-left: 10px !important;
-  padding-right: 8px;
-  padding-bottom: 20px;
+  padding: 5px 8px 15px 0px;
 }
 .lesson hr {
   margin: 5px 0px;
@@ -6292,7 +6300,6 @@ textarea {
 
 .lesson-title a {
   cursor: pointer;
-  color: #01a64f !important;
   text-decoration: none;
 }
 
@@ -6308,16 +6315,30 @@ textarea {
   text-align: right;
 }
 
-.recipe-info {
+.lesson-author a:hover {
+  color: #028e44 !important;
+  text-decoration: none;
+}
+
+.lesson-tile-image {
+  max-height: 125px;
+}
+
+.lesson-tile-info {
   margin: 0px;
 }
-.recipe-info li {
+.lesson-tile-info li {
   list-style-type: none;
   font-weight: bold;
 }
 
+.lesson-tile-tags {
+  max-height: 70px;
+  overflow: hidden;
+}
+
 #lesson-photo img {
-  width: 360px;
+  max-width: 360px;
 }
 
 .lesson-list {
@@ -6325,6 +6346,7 @@ textarea {
 }
 
 .lesson-list li {
+  cursor: pointer;
   list-style-type: none !important;
   padding-bottom: 10px;
 }
@@ -6548,12 +6570,16 @@ textarea {
   margin-left: 8px !important;
 }
 
-.btn-profile-link {
-  width: 300px;
-  margin-bottom: 20px;
+.chef-mini-profile-features {
+  margin-top: 5px;
 }
 
-.profile-desc {
+.btn-profile-link {
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.mini-profile-description {
   font-size: 18px;
   font-weight: 150;
   line-height: 24px;
@@ -6786,12 +6812,13 @@ btn-avatar {
   padding-top: 5px;
 }
 
-.social-media-icons a:hover, .testimonial a:hover {
+.social-media-icons a:hover {
   text-decoration: none;
 }
 
-.testimonial a:hover {
-  color: #028e44;
+.chef-specialities {
+  height: 175px;
+  overflow: hidden;
 }
 
 .testimonial {
@@ -6826,6 +6853,25 @@ btn-avatar {
 
 .testimonial-source-right {
   padding-left: 5px;
+}
+
+.chef-lesson-btn-group a:nth-child(2) {
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.chef-lesson-nav-icon {
+  margin: 5px 20px 0px 0px;
+}
+
+.chef-profile-lessons-title {
+  display: inline-block;
+  width: 310px;
+  text-align: center;
 }
 
 /* Z-INDEX */
