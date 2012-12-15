@@ -12,6 +12,10 @@ $pink					:				  #ff7474;
 $background             :                 #fefefe;
 $border-color           :                 lightGray;
 
+body {
+  background-color: $background !important;
+  line-height: 115% !important;
+}
 
 @mixin colored-button($color,$border-color:$color,$text-color:white){
     background-color: $color !important;
@@ -106,10 +110,6 @@ $border-color           :                 lightGray;
 	margin-top:		15px;
 }
 
-body {
-  background-color: $background !important;
-}
-
 .bordered{
     background-color: #fff;
     border: 1px solid $border-color;
@@ -117,6 +117,11 @@ body {
 
 .green {
     color: $green;
+}
+
+a.green:hover {
+	color: $green-active !important;
+	text-decoration: none !important;
 }
 
 .bordered-row {
@@ -135,7 +140,7 @@ input[type="submit"]{
 }
 
 .vertical-align {
-	vertical-align: middle;
+	vertical-align: top;
 }
 
 .right-padding {
