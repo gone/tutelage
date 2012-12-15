@@ -26,7 +26,7 @@
                     <img class="lesson-pic" src="{{MEDIA_URL}}{{step.picture}}" />
                     <div id="ingredient" class="lesson-panel">
                       {% for ingredient in step.ingredients.all %}
-                        <div class='panel-item ingredient'>
+                        <div class='panel-item ingredient ingredient{{forloop.counter}}'>
                              <div class='lesson-icon-text lesson-icon-ingredients-text'>
                                   <strong>{{ingredient.number}} {{ingredient.measurement}} {{ingredient.name}} {{ingredient.prep}}</strong>
                              </div>
@@ -40,7 +40,7 @@
 
                     <div id="tools" class="lesson-panel">
                       {% for tool in step.tools.all %}
-                          <div class='panel-item tool'>
+                          <div class='panel-item tool tool{{forloop.counter}}'>
                             <div class='lesson-icon-text lesson-icon-tools-text'>
                               <strong>{{tool.name}}</strong>
                             </div>
