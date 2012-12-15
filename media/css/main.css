@@ -5442,6 +5442,11 @@ body {
   color: #01a64f;
 }
 
+.green:hover {
+  color: #028e44 !important;
+  text-decoration: none;
+}
+
 .btn-green {
   background-color: #01a64f !important;
   background-repeat: repeat-x;
@@ -5790,7 +5795,7 @@ textarea {
 }
 
 #cboxLoadedContent {
-  overflow: auto;
+  overflow: hidden;
 }
 
 #cboxTitle {
@@ -5904,10 +5909,7 @@ textarea {
   right: 5px;
 }
 
-#cboxLoadingGraphic {
-  background: url(img/loading.gif) no-repeat center center;
-}
-
+/* #cboxLoadingGraphic{background:url(img/loading.gif) no-repeat center center;} */
 .cboxIE #cboxTopLeft,
 .cboxIE #cboxTopCenter,
 .cboxIE #cboxTopRight,
@@ -6344,6 +6346,7 @@ textarea {
 }
 
 .lesson-list li {
+  cursor: pointer;
   list-style-type: none !important;
   padding-bottom: 10px;
 }
@@ -6567,12 +6570,16 @@ textarea {
   margin-left: 8px !important;
 }
 
-.btn-profile-link {
-  width: 300px;
-  margin-bottom: 20px;
+.chef-mini-profile-features {
+  margin-top: 5px;
 }
 
-.profile-desc {
+.btn-profile-link {
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.mini-profile-description {
   font-size: 18px;
   font-weight: 150;
   line-height: 24px;

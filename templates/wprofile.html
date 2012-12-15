@@ -3,8 +3,45 @@
   <div class="row">
     <div class="span10">
       <div id="window-profile">
-	    <h4><strong>{{u.get_full_name}}</strong>'s profile</h4>
-
+		<div class="row">
+			<h4 class="span5"><strong>{{u.get_full_name}}</strong>'s appetizer profile</h4>
+			{% if u.get_profile.professional_chef %}
+			<div class="row chef-mini-profile-features">
+			  <div class="span3">
+				<div class="social-media-icons">
+					{% if u.get_profile.facebook %}
+					<a href="{{u.profile.facebook}}" target="_blank"><img src="{{STATIC_URL}}img/social-facebook.png" /> </a>
+					{% endif %}
+					{% if u.get_profile.twitter %}
+					<a href="{{u.profile.twitter}}" target="_blank"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
+					{% endif %}
+					{% if u.get_profile.linkedin %}
+					<a href="{{u.profile.linkedin}}" target="_blank"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
+					{% endif %}
+					{% if u.get_profile.pinterest %}
+					<a href="{{u.profile.pinterest}}" target="_blank"><img src="{{STATIC_URL}}img/social-pinterest.png"/>  </a>
+					{% endif %}
+					{% if u.get_profile.youtube %}
+					<a href="{{u.profile.youtube}}" target="_blank"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
+					{% endif %}
+					{% if u.get_profile.googleplus %}
+					<a href="{{u.profile.googleplus}}" target="_blank"><img src="{{STATIC_URL}}img/social-google-plus.png"/></a>
+					{% endif %}
+					{% if u.get_profile.tumblr %}
+					<a href="{{u.profile.tumblr}}" target="_blank"><img src="{{STATIC_URL}}img/social-tumblr.png" /></a>
+					{% endif %}
+				</div>
+			  </div>	
+			  
+		      <div class="span2 profile-btn">
+		        <a href="{% url profile u.id %}" class="btn btn-green full-profile-link pull-right">
+			        See full profile
+		        </a>
+	          </div>
+			</div>
+			{% endif %}
+		</div>
+	    
 	    <hr />
 
 	    <div class="row">
@@ -15,13 +52,13 @@
           </div>
 
           <div class="span8">
-	        <p class="profile-desc">{{u.get_profile.about}}
+	        <p class="mini-profile-description">{{u.get_profile.about}}
 	        </p>
 	      </div>
 	    </div>
-
-	    <hr />
-
+		
+		<br />
+		
 	    <div class="row">
 	      <div class="span5">
 	        <p>What <strong>{{u.get_full_name}}</strong> is teaching to cook</p>
@@ -31,8 +68,6 @@
 	      <!--   <p>What <strong>{{u.get_full_name}}</strong> is asking to cook</p> -->
 	      <!-- </div> -->
 	    </div>
-
-	    <hr />
 
         {% for lesson in u.teaching.all %}
 	    {% cycle "True" "" as newrow silent %}
@@ -52,31 +87,6 @@
           </div>
         {% endif %}
         {% endfor %}
-        <div class="row">
-		    <div class="profile-btn span5">
-		        <a href="{% url profile u.id %}" class="see-more-link vertical-align-text">
-			        See more...
-		        </a>
-	        </div>
-	        <div class="profile-btn span5">
-		      	<a href="{% url profile u.id %}" class="see-more-link vertical-align-text">
-			    See more...
-		      </a>
-	        </div>
-	    </div>
-
-
-	  <!--   <div class="row"> -->
-	  <!--     <div class="span5"> -->
-	  <!--       <div class="social-media-icons"> -->
-	  <!--         <img src="{{STATIC_URL}}img/fb_icon.png" /> -->
-	  <!--         <img src="{{STATIC_URL}}img/tw_icon.png" /> -->
-	  <!--         <img src="{{STATIC_URL}}img/gp_icon.png" /> -->
-	  <!--         <img src="{{STATIC_URL}}img/pin_icon.png" /> -->
-	  <!--       </div> -->
-	  <!--     </div> -->
-	  <!--   </div> -->
-      <!-- </div> -->
     </div>
   </div>
 </div>

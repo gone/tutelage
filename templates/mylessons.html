@@ -28,7 +28,8 @@
             {% endif %}
 		  </div>		  
 	    </div>  
-		
+	    
+		{% if u.get_profile.professional_chef %} 
 	    <div class="span3">
 		  <div class="mylessons-title">
             {% if u == user %}
@@ -44,7 +45,8 @@
 		  create new lesson
 		  </a>
 	    </div>
-	    
+        {% endif %}
+        
 	  </div>
 	</div>
 

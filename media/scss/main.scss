@@ -44,6 +44,11 @@ body {
     color: $green;
 }
 
+.green:hover {
+    color: $green-active !important;
+	text-decoration: none;
+}
+
 .btn-green {
     @include colored-button($green)
 }
