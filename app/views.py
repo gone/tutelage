@@ -76,7 +76,7 @@ def lesson_detail(request, lesson_id):
 
 def mylessons(request, user_id):
     user = get_object_or_404(User, pk=user_id)
-    all_lessons = user.teaching.all()
+    all_lessons = user.lessons.all()
     lesson_paginator = Paginator(all_lessons, 16)
     lesson_page = request.GET.get('lessons')
     try:
@@ -198,7 +198,7 @@ def lesson(request, lesson_id):
 @require_POST
 @login_required
 def rate_lesson(request, lesson_id, rating):
-    r, created = LessonRating.objects.get_or_create(user=request.user, lesson_id=lesson_id, defaults={rating:rating})
+    r, created = LessonRating.objects.get_or_create(user=request.user, lesson_id=int(lesson_id), defaults={"rating":int(rating)})
     if not created:
         r.rating = rating
         r.save()
@@ -207,4 +207,4 @@ def rate_lesson(request, lesson_id, rating):
 
 def featured_chefs(request):
     chef = FeaturedChef.objects.published().order_by('-id').select_related('chef')[0]
-    return render_to_response("featured_chef.html", {"chef": chef}, context_instance=RequestContext(request))
+    return profile(request, user_id=chef.id)

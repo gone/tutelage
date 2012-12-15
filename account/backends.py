@@ -35,6 +35,7 @@ class RegistrationBackend(object):
         user = User.objects.create_user(username, email,password)
         user.first_name = first_name
         user.last_name = last_name
+        user.save()
         Profile.objects.create(user=user)
 
         # authenticate() always has to be called before login(), and
