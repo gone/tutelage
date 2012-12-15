@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% block media %}
 <script type="text/javascript">
@@ -88,7 +89,7 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload", "lib/
 
 	<div class="row">
 	  <div class="span8 create-lesson-title-step1">
-		<h3 class="colored-header">3. Steps &amp; Techniques</h3>
+		<h3 class="colored-header">3. Video</h3>
 	  </div>
 
 	  <div class="span4 pull-right">
@@ -97,110 +98,22 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload", "lib/
 	</div>
 
 
-	<div class="row">
-	  <hr class="create-lesson-hr"/>
-	</div>
-	<form class="profile-form" action="" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form.management_form }}
-      {% for step in form %}
-      <span class="step_formset">
-	    <div class="row">
-          {{step.id}}
-          {% if step.non_field_errors %}
-          {{step.non_field_errors}}
-          {% endif %}
-
-		  <div class="span1">
-			<div id="create-lesson-step-number">
-			  <h5 class="step_counter"></h5>
-			</div>
-		  </div>
-
-		  <div class="span5">
-			<div id="create-lesson-form-3-left">
-			  <div id="create-lesson-step-title" class="create-lesson-field-mid">
-				<h5>Step Title</h5>
-                {{step.title}}
-			  </div>
-              {{step.title.errors}}
-
-			  <div id="createlessonstepdesc">
-				<h5>Step Description (200 characters max)</h5>
-				{{step.text}}
-			  </div>
-              {{step.text.errors}}
-			</div>
-		  </div>
-
-		  <div class="span6">
-			<div id="create-lesson-form-3-right">
-
-			  <div class="row">
-				<div class="span3">
-				  <div id="createlessontitle">
-					<h5>Step Image</h5>
-			        {{step.picture}}
-				  </div>
-                  {{step.picture.errors}}
-				</div>
-
-				<div class="span3">
-				  <div id="lessonmealtype" class="">
-					<h5>Technique Used</h5>
-                    {{step.technique}}
-				  </div>
-                  {{step.technique.errors}}
-				</div>
-			  </div>
-
-			  <div class="row">
-				<div class="span3">
-				  <div id="lastname" class="create-lesson-field-small">
-					<h5>Ingredients Used</h5>
-					{{step.ingredients}}
-				  </div>
-                  {{step.ingredients.errors}}
-				</div>
-
-				<div class="span3">
-				  <div id="email" class="create-lesson-field-small">
-					<h5>Tools Used</h5>
-                    {{step.tools}}
-				  </div>
-                  {{step.tools.errors}}
-				</div>
-			  </div>
-			</div>
-		  </div>
+    <div class="row">
+        <div class="span8">
+	        <form>
+	            {%csrf_token%}
+	            <div id="firstname" class="">
+				    <h5>Select Your Video</h5>
+				    <input class="create-lesson-input-file" id="fileupload"
+				           type="file" data-url='{% url add-lesson-video lesson.id %}' name="video" />
+				    <div id="progress" style="height:18px;background:gray; width:300px">
+					    <div class="bar" style="width: 0%; height:100%;background:green;">0%</div>
+	                </div>
+                </div>
+            </form>
         </div>
+    </div>
 
-    <input type="hidden" name="{{step.order.html_name}}" class="orderval" value="{{step.order.value}}" id="{{step.order.auto_id}}">
-      </span>
-    {% endfor %}
-
-	  </div>
-
-	  <div class="row">
-	    <hr/>
-	  </div>
-
-
-	  <div class="row">
-	    <hr />
-	  </div>
-
-	  <div class="row">
-	    <div class="span10">
-		  <a class="btn btn-green btn-save pull-right" href="{% url lesson_ingredients lesson_id=lesson.id %}">
-		    back
-		  </a>
-	    </div>
-	    <div class="span1 pull-right">
-		  <input type="submit" value="preview" class="btn btn-green
-                                                      btn-save">
-
-	</form>
 
 	</div>
 	</div>

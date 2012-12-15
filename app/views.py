@@ -145,7 +145,10 @@ def lesson_ingredients(request, lesson_id=None):
             tools = tool_formset.save()
             for tool in tools:
                 lesson.tools.add(tool)
-        return HttpResponseRedirect(reverse("lesson_steps",  kwargs={'lesson_id':lesson.id}))
+        if lesson.kind == 1:
+            return HttpResponseRedirect(reverse("lesson_video",  kwargs={'lesson_id':lesson.id}))
+        else:
+            return HttpResponseRedirect(reverse("lesson_steps",  kwargs={'lesson_id':lesson.id}))
     else:
         ingredient_formset = IngredientsDetailsFormset(instance=lesson, prefix="ingredients")
         tool_formset = ToolFormset(prefix="tools", queryset=lesson.tools.all())
@@ -154,6 +157,13 @@ def lesson_ingredients(request, lesson_id=None):
                                "tool_formset": tool_formset,
                                "lesson": lesson,
                                })
+@login_required
+def lesson_video(request, lesson_id=None):
+    lesson = get_object_or_404(Lesson, pk=lesson_id)
+    if request.user != lesson.teacher:
+        raise PermissionDenied
+
+    return direct_to_template(request, "video_details_form.html", {"lesson": lesson,})
 
 @login_required
 def lesson_steps(request, lesson_id=None):
@@ -163,12 +173,12 @@ def lesson_steps(request, lesson_id=None):
 
     StepFormset = inlineformset_factory(Lesson, Step, extra=1)
     if request.method == "POST":
-        step_formset = StepFormset(request.POST, queryset=lesson.steps.all(), instance=lesson)
+        step_formset = StepFormset(request.POST, request.FILES, queryset=lesson.steps.all(), instance=lesson)
         if step_formset.is_valid():
             steps = step_formset.save()
             for step in steps:
                 lesson.steps.add(step)
-            return HttpResponseRedirect(reverse("self_profile"))
+            return HttpResponseRedirect(reverse("mylessons", args=[request.user.id]))
     else:
         step_formset = StepFormset(queryset=lesson.steps.all(), instance=lesson)
 
@@ -186,12 +196,6 @@ def cheflist(request):
 
 def lesson(request, lesson_id):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
-    steps = list(lesson.steps.all())
-    for idx, step in enumerate(steps):
-        if idx+1 == len(steps):
-            continue
-        step.end_time = steps[idx+1].start_time
-    lesson.s = steps
     return direct_to_template(request, "lesson.html", {"lesson": lesson})
 
 @csrf_exempt

@@ -305,10 +305,11 @@ class Step(CreatedMixin):
     text = models.TextField()
 
     order = models.PositiveSmallIntegerField(default=0)
-    start_time = models.IntegerField(null=True, blank=True)
     technique = models.ManyToManyField(Lesson, related_name="technique_steps", blank=True)
     ingredients = models.ManyToManyField(LessonIngredient, related_name="steps", blank=True)
     tools = models.ManyToManyField(Tool, related_name="steps", blank=True)
+
+    picture = models.ImageField(upload_to=file_url(""))
 
     class Meta():
         ordering = ('order',)

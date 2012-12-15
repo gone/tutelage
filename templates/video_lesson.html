@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block media %}
+<script type="text/javascript" >
+    pagelogic = function(){
+        lessons = require("cs!lessons")
+        lesson_data = {
+            steps: [
+                {% for step in lesson.s %}
+                  {
+                      title:"{{step.title}}:",
+                      order: {{step.order}},
+                      start_time: {{step.start_time}},
+                      {% if step.end_time %}
+                      end_time: {{step.end_time}},
+                      {% endif %}
+                      text: "{{step.text}}",
+                      techniques: [
+                          {% for tech in step.technique.all %}
+                            {
+
+                            },
+                          {% endfor %}
+                      ],
+                      tools: [
+                          {% for tool in step.tools.all %}
+                          {
+                              name: "{{tool.name}}",
+                              size: "{{tool.size}}",
+                              type: "{{tool.type}}",
+
+                          },
+                          {% endfor %}
+                      ],
+                      ingredients: [
+                          {% for ingredient in step.ingredients.all %}
+                          {
+                              name: "{{ingredient.ingredient.name}}",
+                              number: "{{ingredient.number}}",
+                              measurement: "{{ingredient.measurement}}",
+                              prep: "{{ingredient.prep}}",
+                          },
+                          {% endfor %}
+                      ],
+                  },
+                {% endfor %}
+            ],
+        }
+        lesson  = lessons.makeLesson("#lesson", lesson_data)
+        $('.tools').click(function(){
+            $.colorbox({inline:true, href:"#tools"})
+        });
+        $('.ingredients').click(function(){
+            $.colorbox({inline:true, href:"#ingredient"})
+
+        });
+
+    };
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="lesson-video-background" class="bordered-row bordered">
+
+    <video height="auto" width="960" id="lesson" controls="controls">
+        {% for video in lesson.videos.all %}
+        <source src="{{video.get_absolute_url}}"></source>
+        {% endfor %}
+    </video>
+
+</div>
+
+<div id="lesson-wrapper" class="row">
+    <div class="span4 no-margin">
+      <div id="step_text" class="lesson-wrapper-overlay"><strong id="step_title"></strong></div>
+
+      <div id="ingredient" class="lesson-panel"></div>
+	</div>
+
+	<div class="span4 pull-right">
+      <div id="tools" class="lesson-panel"></div>
+	</div>
+
+	<div id="step_buttons" class="no-display">
+    <a href="#" class="tools">Tools</a>
+    <a href="#" id="ingredient-1" class="ingredients">Ingredients</a>
+	</div>
+
+    <div class="no-display">
+    <div id="tools-0"></div>
+    <div id="ingredient-0"></div>
+    </div>
+
+</div>
+
+
+{% endblock %}

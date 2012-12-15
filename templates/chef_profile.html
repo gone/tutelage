@@ -9,23 +9,23 @@
         <div class="span4 colored_header">
           <h3>Chef {{u.get_full_name|title}}</h3>
        	</div>
-	  
+
 	    <div class="span2">
-		  <h5 class="chef-profile-location pull-right">{{u.profile.location}}</h5>        		
+		  <h5 class="chef-profile-location pull-right">{{u.profile.location}}</h5>
         </div>
 	  </div>
-	  
+
 	  <div class="user-photo">
       {% avatar u %}
 	  </div>
-	  
+
 	  <br />
-	  
+
 	  <div class="user-bio">{{u.profile.about}}</div>
-	  
+
 	  <br />
 	</div>
-	  
+
 	<div class="span6">
       <div class="colored_header">
         <div class="chef-movie">
@@ -91,8 +91,8 @@
 		</div>
     </div>
 
-    
-    
+
+
 	<div class="span6">
 		<div class="row">
 		  <div class="span6">
@@ -100,7 +100,7 @@
             {% if u.profile.testimonial1_text %}
 			<div class="testimonial testimonial-left">
                 <p class="testimonial-text"><strong>{{u.profile.testimonial1_text}}</strong></p>
-                
+
                 <p class="testimonial-source">
 				  Chef
 				  <a class="green" href="{{u.profile.testimonial1_link}}" target="_blank">
@@ -109,11 +109,11 @@
 				</p>
 			</div>
             {% endif %}
-            
+
             {% if u.profile.testimonial2_text %}
 			<div class="testimonial testimonial-right pull-right">
                 <p class="testimonial-text"><strong>{{u.profile.testimonial2_text}}</strong></p>
-                
+
                 <p class="testimonial-source pull-right">
 				  Chef
 				  <a class="green testimonial-source-right pull-right" href="{{u.profile.testimonial2_link}}" target="_blank">
@@ -126,7 +126,7 @@
             {% if u.profile.testimonial3_text %}
 			<div class="testimonial testimonial-left">
                 <p class="testimonial-text"><strong>{{u.profile.testimonial3_text}}</strong></p>
-                
+
                 <p class="testimonial-source">
 				  Chef
 				  <a class="green" href="{{u.profile.testimonial3_link}}" target="_blank">
@@ -182,7 +182,6 @@
     <p>Your browser does not support HTML5 video.</p>
   </video>
 </div>
-
 
 <script type="text/javascript">
 pagelogic = function(){
