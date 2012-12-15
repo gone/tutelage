@@ -24,6 +24,33 @@
 
                     <p class="step-text">{{step.text}}</p>
                     <img class="lesson-pic" src="{{MEDIA_URL}}{{step.picture}}" />
+                    <div id="ingredient" class="lesson-panel">
+                      {% for ingredient in step.ingredients.all %}
+                        <div class='panel-item ingredient'>
+                             <div class='lesson-icon-text lesson-icon-ingredients-text'>
+                                  <strong>{{ingredient.number}} {{ingredient.measurement}} {{ingredient.name}} {{ingredient.prep}}</strong>
+                             </div>
+                             <div class='lesson-icon-circle lesson-icon-circle-ingredients'>
+                                  <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{ingredient.name}}' />
+                             </div>
+                         </div>
+                      {% endfor %}
+                    </div>
+
+
+                    <div id="tools" class="lesson-panel">
+                      {% for tool in step.tools.all %}
+                          <div class='panel-item tool'>
+                            <div class='lesson-icon-text lesson-icon-tools-text'>
+                              <strong>{{tool.name}}</strong>
+                            </div>
+                            <div class='lesson-icon-circle lesson-icon-circle-tools'>
+                              <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{tool.name}}' />
+                            </div>
+                          </div>
+                      {% endfor %}
+                    </div>
+
                     {% for tech in step.technique.all %}
                     <a href="#" class="tech">{{tech.title}}</a>
                     <!-- this should likely be moved somewhere else -->
