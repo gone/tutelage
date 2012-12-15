@@ -19,7 +19,7 @@ class LessonIngredientAdmin(admin.TabularInline):
 
 
 class LessonAdmin(admin.ModelAdmin):
-    inlines = (StepAdmin,LessonIngredient)
+    inlines = (StepAdmin,LessonIngredientAdmin)
 
 class FeaturedChefAdmin(admin.ModelAdmin):
     def formfield_for_foreignkey(self, db_field, request=None, **kwargs):
