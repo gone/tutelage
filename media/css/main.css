@@ -5931,6 +5931,10 @@ textarea {
 }
 
 /* Navbar */
+.nav li a {
+  padding: 0px !important;
+}
+
 .box {
   height: 55px;
   width: 55px;
@@ -5972,6 +5976,8 @@ textarea {
 
 .box:hover {
   background-color: #01a64f;
+}
+.box:hover h5 {
   color: white;
 }
 
@@ -5980,6 +5986,7 @@ textarea {
   width: 100%;
   font-weight: bold;
   text-align: center;
+  color: #333333;
 }
 
 .nav-icon {
