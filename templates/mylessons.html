@@ -26,10 +26,10 @@
             {% else %}
 			<h4>Lessons {{u.get_full_name}} is Learning</h4>
             {% endif %}
-		  </div>		  
-	    </div>  
-	    
-		{% if u.get_profile.professional_chef %} 
+		  </div>
+	    </div>
+
+		{% if u.get_profile.professional_chef %}
 	    <div class="span3">
 		  <div class="mylessons-title">
             {% if u == user %}
@@ -37,16 +37,16 @@
             {% else %}
 			<h4>Lessons {{u.get_full_name}} is Tutoring</h4>
             {% endif %}
-		  </div>  
+		  </div>
 	    </div>
-	    
+
 	    <div class="span3 my-lessons-create-lesson">
 		  <a class="btn btn-green btn-save pull-right" href="{% url add-lesson %}">
 		  create new lesson
 		  </a>
 	    </div>
         {% endif %}
-        
+
 	  </div>
 	</div>
 

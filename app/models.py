@@ -12,10 +12,12 @@ from django.contrib.auth.models import User
 from django.core.validators import ValidationError
 from django.utils.functional import cached_property
 
+from django.db.models import Sum
+
+
 from mezzanine.pages.models import Page
 from mezzanine.core.models import Displayable
 from mezzanine.core.fields import RichTextField
-
 
 
 from durationfield.db.models.fields.duration import DurationField
@@ -24,6 +26,21 @@ from .constants import SKILL_LEVELS, VIDEO_TYPE, VIDEO_SUBTYPES
 
 
 UPLOADS_DIR = 'uploads/{0}/{1.year:04}/{1.month:02}/{1.day:02}/{2}/{3}'
+
+
+
+from decimal import Decimal
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules([], ["^app\.models\.CurrencyField"])
+
+class CurrencyField(models.DecimalField):
+    __metaclass__ = models.SubfieldBase
+
+    def to_python(self, value):
+        try:
+           return super(CurrencyField, self).to_python(value).quantize(Decimal("0.01"))
+        except AttributeError:
+           return None
 
 
 def file_url(name):
@@ -332,6 +349,53 @@ class LessonRating(CreatedMixin):
     class Meta():
         unique_together = ('user', 'lesson')
 
+class LessonRequest(CreatedMixin):
+    active = models.BooleanField(default=True)
+    title = models.CharField(max_length=255)
+    time_in_min  = models.SmallIntegerField()
+
+    serving_size = models.SmallIntegerField()
+    description = models.TextField()
+    need_by = models.DateField()
+    kind = models.SmallIntegerField(choices=((0, "Recipe"),
+                                             (1, "Technique")), default=0)
+
+    course = models.ManyToManyField('Course', related_name="requests", blank=True)
+    cuisine = models.ManyToManyField('Cuisine', related_name="requests", blank=True)
+    restrictions = models.ManyToManyField("DietaryRestrictions", related_name="requests", blank=True)
+    primary_ingredients = models.ManyToManyField(Ingredient, related_name="requests", blank=True)
+
+    @cached_property
+    def chef_attatched(self):
+        try:
+            return self.chefs.filter(active=True)[0]
+        except IndexError:
+            return None
+
+    @cached_property
+    def in_pot(self):
+        return self.pledges.all().aggregate(Sum('amount'))['amount__sum']
+
+
+class LessonPledge(CreatedMixin):
+    user = models.ForeignKey(User)
+    amount = CurrencyField(max_digits=4, decimal_places=2)
+    email = models.BooleanField(help_text="keep me informed via email")
+    request = models.ForeignKey(LessonRequest, related_name="pledges")
+
+    class Meta:
+        unique_together = (("user", "request"))
+
+
+class ChefPledge(CreatedMixin):
+    user = models.ForeignKey(User)
+    amount_required = CurrencyField(max_digits=4, decimal_places=2)
+    request = models.ForeignKey(LessonRequest, related_name="chefs")
+    active = models.BooleanField(default=True)
+
+    # class Meta:
+    #     unique_together = (("user", "request", "active"###where active is true ))
+    #     this is handled via a postgres unique partal index.
 
 class Course(CreatedMixin):
     course = models.CharField(max_length=256)

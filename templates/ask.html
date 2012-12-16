@@ -1,27 +1,31 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
-
-<div class='wrapper'>
-  <div class='learn'>
-    <div class='search'>
-      <h4>Find a cooking lesson that suits your needs...</h4>
-      <input type='text'/>
-      <select>
-        <option>Category</option>
-      </select>
-      <select>
-        <option>Style</option>
-      </select>
-      <img src='{{ MEDIA_URL }}img/search_button.png'/>
+<div class="bordered-row main bordered">
+  <div class="row">
+    <div class="span12">
+      Click on a request for more details
     </div>
   </div>
-  <div class='request'></div>
-  <div class='ask'>
-  
+  <div class="row">
+    <div class="span6">
+      {% for req in lesson_requests %}
+      <div class="row">
+        <div class="span3 reqtitle">{{req.title}} </div>
+        <div class="span2 offset1 inpot">${{req.in_pot|default:"0"}} in pot</div>
+      </div>
+      <div class="row">
+        <div class="span3">{{req.description}} </div>
+        <div class="span2 offset1"><span class="timetoraise">{{req.need_by|timeuntil}} left to raise $</span>
+              </br>
+              <span class="attatchedchef">{{req.chef_attatched|default:"No Chef yet!"}}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 
-  {% endblock %}
 
+{% include "pager.html" with lesson_requests=pager %}
+{% endblock %}

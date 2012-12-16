@@ -22,7 +22,8 @@ from django.contrib.formtools.wizard.views import SessionWizardView
 
 logger = logging.getLogger(__name__)
 
-from .models import Lesson, LessonIngredient, Tool, Step, Video, LessonRating, FeaturedChef
+from .models import (Lesson, LessonIngredient, Tool, Step, Video,
+                     LessonRating, FeaturedChef, LessonRequest)
 from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm, StepDetailsForm
 
 from account.forms import PasswordChangeForm
@@ -78,7 +79,7 @@ def mylessons(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     all_lessons = user.lessons.all()
     lesson_paginator = Paginator(all_lessons, 16)
-    lesson_page = request.GET.get('lessons')
+    lesson_page = request.GET.get('page')
     try:
         lessons = lesson_paginator.page(lesson_page)
     except PageNotAnInteger:
@@ -192,6 +193,22 @@ def purchase(request, lesson_id):
 
 def cheflist(request):
     pass
+
+def ask(request):
+    all_lesson_requests = LessonRequest.objects.filter(active=True)
+    req_paginator = Paginator(all_lesson_requests, 16)
+    lesson_page = request.GET.get('page')
+    try:
+        lesson_requests = req_paginator.page(lesson_page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        lesson_requests = req_paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        lesson_requests = req_paginator.page(req_paginator.num_pages)
+
+    return direct_to_template(request, "ask.html", {"lesson_requests": lesson_requests,})
+
 
 
 def lesson(request, lesson_id):
