@@ -412,7 +412,7 @@ class LessonRequest(CreatedMixin):
 
     @cached_property
     def in_pot(self):
-        return self.pledges.all().aggregate(Sum('amount'))['amount__sum']
+        return self.pledges.all().aggregate(Sum('amount'))['amount__sum'] or 0
 
 
 class LessonPledge(CreatedMixin):
@@ -424,7 +424,8 @@ class LessonPledge(CreatedMixin):
 
     def to_dict(self):
         return {
-            "user": self.user,
+            "user_id": self.user.id,
+            "user_name": self.user.get_full_name(),
             "amount": int(self.amount),
             "date_pledged": datetime.strftime(self.date_pledged, "%m/%d/%y"),
             }
