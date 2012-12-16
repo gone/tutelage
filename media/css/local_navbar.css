@@ -1,9 +1,9 @@
 /*
 Syntax error: Undefined variable: "$border-color".
-        on line 15 of /home/geoffrey/workspace/tutelage/media/scss/local_navbar.scss
+        on line 16 of /home/geoffrey/workspace/tutelage/media/scss/local_navbar.scss
 
 Backtrace:
-/home/geoffrey/workspace/tutelage/media/scss/local_navbar.scss:15
+/home/geoffrey/workspace/tutelage/media/scss/local_navbar.scss:16
 /var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/script/variable.rb:49:in `_perform'
 /var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/script/node.rb:40:in `perform'
 /var/lib/gems/1.8/gems/sass-3.2.1/lib/sass/../sass/script/list.rb:70:in `_perform'
@@ -83,4 +83,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$border-color\".\A         on line 15 of /home/geoffrey/workspace/tutelage/media/scss/local_navbar.scss"; }
+  content: "Syntax error: Undefined variable: \"$border-color\".\A         on line 16 of /home/geoffrey/workspace/tutelage/media/scss/local_navbar.scss"; }
