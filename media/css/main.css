@@ -6953,6 +6953,7 @@ btn-avatar {
   overflow: hidden;
   margin-left: 10px !important;
   padding: 5px 10px 10px 0px;
+  border-bottom: 1px solid lightgrey;
 }
 
 .ask-pot, .attatchedchef {
