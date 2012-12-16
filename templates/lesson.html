@@ -12,8 +12,8 @@
 {% endblock %}
 
 {% block content %}
-<div id="lesson-wrapper" class="bordered-row bordered">
-        <div id="lessons" class="carousel slide">
+	  <div id="lesson-wrapper" class="bordered-row bordered">
+        <div id="lessons" class="carousel slide no-margin">
             <div class="carousel-inner">
                 {% for step in lesson.steps.all %}
                 {% if forloop.first %}
@@ -21,23 +21,45 @@
                 {% else %}
                 <div class="item">
                 {% endif %}
-				  <div id="step-text" class="span4 no-margin lesson-wrapper-overlay"><strong id="step-title">{{step.title}}:</strong>{{step.text}}</div>
+				  
 				  
 				  <img class="lesson-picture" src="{{MEDIA_URL}}{{step.picture}}" />
-                 
-                  <div class="span4 no-margin">
-                    <div id="ingredient" class="lesson-panel">
+                  <div class="step-text no-margin lesson-wrapper-overlay">
+					<div class="step-title span6">Step {{step.order}}: {{step.title}}</div>
+					
+					<div class="step-technique span5">
+					    {% for tech in step.technique.all %}
+						<a href="#" class="step-technique-text step-title blue pull-right">Watch 
+						  <img class="technique-play-icon" src="{{STATIC_URL}}img/technique-play-icon.png" /> 
+						  {{tech.title}}</a>
+						<!-- this should likely be moved somewhere else -->
+						<div class="row no-display video-row">
+						  <video class="chef-movie-video span6" controls="controls">
+							<!-- sample videos until we have our actual intro video -->
+							<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" />
+							<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" />
+							<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" />
+							<!-- fallback  -->
+							<p>Your browser does not support HTML5 video.</p>
+						  </video>
+						</div>
+						{% endfor %}
+					</div>			
+					
+					<div class="step-description span12">{{step.text}}</div>
+				  </div>
+				  
+                  <div id="ingredient" class="span4 no-margin lesson-panel">
                       {% for ingredient in step.ingredients.all %}
                         <div class='panel-item ingredient ingredient{{forloop.counter}}'>
                              <div class='lesson-icon-text lesson-icon-ingredients-text'>
-                                  <strong>{{ingredient.number}} {{ingredient.measurement}} {{ingredient.prep}} {{ingredient.ingredient.name}}</strong>
+                               <strong>{{ingredient.number}} {{ingredient.measurement}} {{ingredient.prep}} {{ingredient.ingredient.name}}</strong>
                              </div>
                              <div class='lesson-icon-circle lesson-icon-circle-ingredients'>
-                                  <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{ingredient.name}}' />
+                               <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{ingredient.name}}' />
                              </div>
                          </div>
                       {% endfor %}
-                    </div>
                   </div>
 
                   <div class="span4 pull-right">
@@ -55,27 +77,28 @@
                     </div>
                   </div>
 
-                    {% for tech in step.technique.all %}
-                    <a href="#" class="tech">{{tech.title}}</a>
-                    <!-- this should likely be moved somewhere else -->
-                    <div class="row no-display video-row">
-                      <video class="chef-movie-video span6" controls="controls">
-	                    <!-- sample videos until we have our actual intro video -->
-                        <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" />
-                        <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" />
-                        <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" />
-                        <!-- fallback  -->
-                        <p>Your browser does not support HTML5 video.</p>
-                      </video>
-                    </div>
-                    {% endfor %}
                 </div>
                 {% endfor %}
-            </div>
-            <a class="carousel-control left" href="#lessons" data-slide="prev">&lsaquo;</a>
-            <a class="carousel-control right" href="#lessons" data-slide="next">&rsaquo;</a>
+            </div>           
         </div>
-</div>
+	  </div>
+	  
+	  <div class="row">
+	    <div id="lesson-timeline" class="">
+		  <a class="lesson-nav-btn" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
+		  <a class="lesson-nav-btn pull-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>
+		  <div id="lesson-timeline-images">
+		    {% for step in lesson.steps.all %}
+		    {% if forloop.first %}
+		    <img class="lesson-timeline-picture lesson-timeline-picture-active" src="{{MEDIA_URL}}{{step.picture}}"/>
+		    {% else %}
+            <img class="lesson-timeline-picture" src="{{MEDIA_URL}}{{step.picture}}" />
+            {% endif %}                  
+		    {% endfor %}
+		  </div>
+	    </div>
+	  </div>
+
 
 <!-- <div id="lesson-wrapper" class="row"> -->
 <!--     <div class="span4 no-margin"> -->
