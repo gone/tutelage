@@ -22,7 +22,10 @@ require ["jquery", "chosen", "cs!validation"], ($) ->
 
         $(".signup-btn").click () ->
             setupColorbox("#signup")
-
+		
+		$(".create-lesson-help-btn").click () ->
+            setupColorbox("#lesson-help")
+		
         $(".forgot-pass-btn").click () ->
             setupColorbox("#forgot-password")
 

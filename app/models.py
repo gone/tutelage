@@ -117,7 +117,7 @@ class LessonIngredient(CreatedMixin):
     lesson = models.ForeignKey("Lesson")
     number = models.IntegerField(null=False, blank=False, default="0")
     measurement = models.CharField(max_length=32, null=False)
-    prep = models.CharField(max_length=32)
+    prep = models.CharField(max_length=32, blank=True)
 
     def __unicode__(self):
         return "%s %s of %s" % (self.number, self.measurement, self.ingredient)
