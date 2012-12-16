@@ -445,7 +445,7 @@ class ChefPledge(CreatedMixin):
         return {
             "user_id": self.user.id,
             "user_name": self.user.get_full_name(),
-            "amount_required": self.amount_required,
+            "amount_required": int(self.amount_required),
             "active": self.active,
             }
 
