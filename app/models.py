@@ -392,7 +392,7 @@ class LessonRequest(CreatedMixin):
             "cuisine": [str(cuisine) for cuisine in self.cuisine.all()],
             "restrictions": [str(restrictions) for restrictions in self.restrictions.all()],
             "primary_ingredients": [str(primary_ingredients) for primary_ingredients in self.primary_ingredients.all()],
-            "chef": self.chef_attatched,
+            "chef": self.chef_attatched.to_dict() if self.chef_attatched else None,
             "inpot": int(self.in_pot),
             "pledges":[pledge.to_dict() for pledge in self.pledges.all()[:10]],
             }
@@ -439,6 +439,15 @@ class ChefPledge(CreatedMixin):
     amount_required = CurrencyField(max_digits=7, decimal_places=5)
     request = models.ForeignKey(LessonRequest, related_name="chefs")
     active = models.BooleanField(default=True)
+
+
+    def to_dict(self):
+        return {
+            "user_id": self.user.id,
+            "user_name": self.user.get_full_name(),
+            "amount_required": self.amount_required,
+            "active": self.active,
+            }
 
     # class Meta:
     #     unique_together = (("user", "request", "active"###where active is true ))
