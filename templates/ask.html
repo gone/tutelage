@@ -1,7 +1,54 @@
 {% extends 'base.html' %}
+{% load verbatim %}
 {% block media %}
+
+{% verbatim %}
+<script id="featured-request-templ" type="text/x-handlebars-template">
+
+{{title}}
+{{in_pot}}
+{{serving_size}}
+{{time_in_min}}
+{{description}}
+{{need_by}}
+{{#each primary_ingredients}}
+{{this}}
+{{/each}}}
+{{#each restrictions}}
+{{this}}
+{{/each}}
+{{#each course}}
+{{this}}
+{{/each}}}
+{{#each cuisine}}
+{{this}}
+{{/each}}
+{{chef}}
+{{inpot}}
+</script>
+{% endverbatim %}
+
 <script type="text/javascript">
+require(['common',], function(){
+    require(['handlebars'], function(){
+
+        source = $("#featured-request-templ").html();
+        template = Handlebars.compile(source);
+
+
+
+        $('.lessonrequest').click(function(){
+            t = $(this)
+            slug = t.data('slug')
+            data = lesson_data[slug]
+            dest = $("#featuredrequest")
+            dest.html(template(data))
+
+        })
+    })
+})
 lesson_data = {{lesson_json|safe}}
+$()
 </script>
 {% endblock %}
 
@@ -20,6 +67,7 @@ lesson_data = {{lesson_json|safe}}
       </div>
     </div>
   </div>
+<<<<<<< HEAD
 </div>
 
 
@@ -27,6 +75,7 @@ lesson_data = {{lesson_json|safe}}
   <div class="span6"></div>
   <div class="span6">
    {% for req in lesson_requests %}
+   <span class="lessonrequest" data-slug="{{req.slug}}">
    <div class="row">  
 	<div class="span6 request">
 	  
@@ -55,6 +104,7 @@ lesson_data = {{lesson_json|safe}}
      
     </div>
    </div>
+   </span>
    {% endfor %}
   </div>
 </div>	

@@ -392,6 +392,9 @@ class LessonRequest(CreatedMixin):
             "cuisine": [str(cuisine) for cuisine in self.cuisine.all()],
             "restrictions": [str(restrictions) for restrictions in self.restrictions.all()],
             "primary_ingredients": [str(primary_ingredients) for primary_ingredients in self.primary_ingredients.all()],
+            "chef": self.chef_attatched,
+            "inpot": int(self.in_pot),
+            "pledges":[pledge.to_dict() for pledge in self.pledges.all()[:10]],
             }
 
     def save(self):
@@ -409,14 +412,23 @@ class LessonRequest(CreatedMixin):
 
     @cached_property
     def in_pot(self):
-        return self.pledges.all().aggregate(Sum('amount'))['amount__sum']
+        return self.pledges.all().aggregate(Sum('amount'))['amount__sum'] or 0
 
 
 class LessonPledge(CreatedMixin):
     user = models.ForeignKey(User)
-    amount = CurrencyField(max_digits=4, decimal_places=2)
+    amount = CurrencyField(max_digits=7, decimal_places=5)
     email = models.BooleanField(help_text="keep me informed via email")
     request = models.ForeignKey(LessonRequest, related_name="pledges")
+    date_pledged =models.DateField(auto_now_add=True)
+
+    def to_dict(self):
+        return {
+            "user_id": self.user.id,
+            "user_name": self.user.get_full_name(),
+            "amount": int(self.amount),
+            "date_pledged": datetime.strftime(self.date_pledged, "%m/%d/%y"),
+            }
 
     class Meta:
         unique_together = (("user", "request"))
@@ -424,7 +436,7 @@ class LessonPledge(CreatedMixin):
 
 class ChefPledge(CreatedMixin):
     user = models.ForeignKey(User)
-    amount_required = CurrencyField(max_digits=4, decimal_places=2)
+    amount_required = CurrencyField(max_digits=7, decimal_places=5)
     request = models.ForeignKey(LessonRequest, related_name="chefs")
     active = models.BooleanField(default=True)
 
