@@ -12,6 +12,8 @@ from django.contrib.auth.models import User
 from django.core.validators import ValidationError
 from django.utils.functional import cached_property
 
+from django.template.defaultfilters import slugify, timeuntil
+
 from django.db.models import Sum
 
 
@@ -349,6 +351,16 @@ class LessonRating(CreatedMixin):
     class Meta():
         unique_together = ('user', 'lesson')
 
+def SlugifyUniquely(value, model, slugfield="slug"):
+    suffix = 0
+    potential = base = slugify(value)
+    while True:
+        if suffix:
+            potential = "-".join([base, str(suffix)])
+        if not model.objects.filter(**{slugfield: potential}).count():
+            return potential
+        suffix += 1
+
 class LessonRequest(CreatedMixin):
     active = models.BooleanField(default=True)
     title = models.CharField(max_length=255)
@@ -360,10 +372,33 @@ class LessonRequest(CreatedMixin):
     kind = models.SmallIntegerField(choices=((0, "Recipe"),
                                              (1, "Technique")), default=0)
 
+
+    slug = models.SlugField()
     course = models.ManyToManyField('Course', related_name="requests", blank=True)
     cuisine = models.ManyToManyField('Cuisine', related_name="requests", blank=True)
     restrictions = models.ManyToManyField("DietaryRestrictions", related_name="requests", blank=True)
     primary_ingredients = models.ManyToManyField(Ingredient, related_name="requests", blank=True)
+
+    def to_dict(self):
+        return {
+            "title":self.title,
+            "time_in_min":self.time_in_min,
+            "serving_size":self.serving_size,
+            "description":self.description,
+            "need_by":timeuntil(self.need_by),
+            "kind": self.kind,
+            "slug":self.slug,
+            "course": [str(course) for course in self.course.all()],
+            "cuisine": [str(cuisine) for cuisine in self.cuisine.all()],
+            "restrictions": [str(restrictions) for restrictions in self.restrictions.all()],
+            "primary_ingredients": [str(primary_ingredients) for primary_ingredients in self.primary_ingredients.all()],
+            }
+
+    def save(self):
+        if not self.id:
+            # replace self.name with your prepopulate_from field
+            self.slug = SlugifyUniquely(self.title, self.__class__)
+        super(self.__class__, self).save()
 
     @cached_property
     def chef_attatched(self):

@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
+{% block media %}
+<script type="text/javascript">
+lesson_data = {{lesson_json|safe}}
+</script>
+{% endblock %}
+
 {% block content %}
 
 <div class="bordered-row main bordered">
@@ -10,6 +16,7 @@
   <div class="row">
     <div class="span6">
       {% for req in lesson_requests %}
+      <span class="lessonrequest" data-id="{{req.id}}">
       <div class="row">
         <div class="span3 reqtitle">{{req.title}} </div>
         <div class="span2 offset1 inpot">${{req.in_pot|default:"0"}} in pot</div>
@@ -21,6 +28,7 @@
               <span class="attatchedchef">{{req.chef_attatched|default:"No Chef yet!"}}</span>
         </div>
       </div>
+      </span>
       {% endfor %}
     </div>
   </div>

@@ -1,4 +1,6 @@
+import json
 import logging
+from itertools import chain
 
 from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -10,7 +12,7 @@ from django.core.validators import ValidationError
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext
-
+from django.core import serializers
 
 from django.forms.models import inlineformset_factory, modelformset_factory
 
@@ -194,12 +196,13 @@ def purchase(request, lesson_id):
 def cheflist(request):
     pass
 
-def ask(request):
+def ask(request, slug=None):
     all_lesson_requests = LessonRequest.objects.filter(active=True)
     req_paginator = Paginator(all_lesson_requests, 16)
-    lesson_page = request.GET.get('page')
+    req_page = request.GET.get('page')
+
     try:
-        lesson_requests = req_paginator.page(lesson_page)
+        lesson_requests = req_paginator.page(req_page)
     except PageNotAnInteger:
         # If page is not an integer, deliver first page.
         lesson_requests = req_paginator.page(1)
@@ -207,8 +210,8 @@ def ask(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         lesson_requests = req_paginator.page(req_paginator.num_pages)
 
-    return direct_to_template(request, "ask.html", {"lesson_requests": lesson_requests,})
-
+    lesson_json = json.dumps({x.slug:x.to_dict() for x in lesson_requests.object_list})
+    return direct_to_template(request, "ask.html", {"lesson_requests": lesson_requests, 'slug': slug, 'lesson_json':lesson_json})
 
 
 def lesson(request, lesson_id):
