@@ -6944,8 +6944,12 @@ btn-avatar {
   text-align: center;
 }
 
+.request-links {
+  padding-top: 5px;
+}
+
 .request {
-  height: 120px;
+  height: 100px;
   overflow: hidden;
 }
 

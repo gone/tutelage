@@ -7,33 +7,57 @@ lesson_data = {{lesson_json|safe}}
 
 {% block content %}
 
-<div class="bordered-row main bordered">
-  <div class="row">
-    <div class="span12">
-      Click on a request for more details
-    </div>
-  </div>
-  <div class="row">
-    <div class="span6">
-      {% for req in lesson_requests %}
-      <span class="lessonrequest" data-id="{{req.id}}">
-      <div class="row">
-        <div class="span3 reqtitle">{{req.title}} </div>
-        <div class="span2 offset1 inpot">${{req.in_pot|default:"0"}} in pot</div>
+<div class="bordered-row bordered">
+  <div class="span12">
+	<div class="row">   
+      <div class="span6">
+        <h4>Click on a request for more details</h4>
       </div>
-      <div class="row">
-        <div class="span3">{{req.description}} </div>
-        <div class="span2 offset1"><span class="timetoraise">{{req.need_by|timeuntil}} left to raise $</span>
-              </br>
-              <span class="attatchedchef">{{req.chef_attatched|default:"No Chef yet!"}}</span>
-        </div>
+    
+      <div class="span6 request-links">
+        Still looking? <a href="#" class="btn btn-green">create a request</a> 
+        or check out our <a href="{% url lessons %}" class="btn btn-blue">lessons</a>
       </div>
-      </span>
-      {% endfor %}
     </div>
   </div>
 </div>
 
 
+<div class="bordered-row bordered">
+  <div class="span6">
+   {% for req in lesson_requests %}
+   <div class="row">  
+	<div class="span6 lesson request">
+	  
+ 	  <div class="row">
+		  <div class="span4 lesson-title">
+			<a class="green reqtitle"><h3 class="no-margin">{{req.title}}</h3></a>
+		  </div>
+		  
+		  <div class="span2">
+			<h4 class="ask-pot no-margin pull-right">${{req.in_pot|default:"0"}} in pot</h4>
+		  </div>
+      </div>
+
+	  <div class="row">
+		<div class="span4">
+		  <div class="lesson-tile-description">  
+		    <small>{{req.description}}</small>
+		  </div>
+        </div>
+        
+        <div class="span2">
+		  <div class="timetoraise pull-right"><strong>{{req.need_by|timeuntil}} left</strong></div>
+          <div class="attatchedchef pull-right"><strong>by <a href="#" class="green">{{req.chef_attatched|default:"No Chef yet!"}}</strong></a></div>
+		</div>
+      </div>
+     
+    </div>
+   </div>
+   {% endfor %}
+  </div>
+</div>	
+
+ 
 {% include "pager.html" with lesson_requests=pager %}
 {% endblock %}
