@@ -6951,6 +6951,8 @@ btn-avatar {
 .request {
   height: 100px;
   overflow: hidden;
+  margin-left: 10px !important;
+  padding: 5px 10px 10px 0px;
 }
 
 .ask-pot, .attatchedchef {
