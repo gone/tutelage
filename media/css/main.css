@@ -5933,6 +5933,7 @@ textarea {
 /* Navbar */
 .nav li a {
   padding: 0px !important;
+  text-shadow: none !important;
 }
 
 .box {
@@ -6941,6 +6942,16 @@ btn-avatar {
   display: inline-block;
   width: 310px;
   text-align: center;
+}
+
+.request {
+  height: 120px;
+  overflow: hidden;
+}
+
+.ask-pot, .attatchedchef {
+  padding-top: 12px;
+  text-align: right;
 }
 
 /* Z-INDEX */
