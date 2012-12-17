@@ -271,10 +271,10 @@ class Lesson(CreatedMixin, Displayable):
     prep_time = DurationField()
     cooking_time = DurationField()
 
-    primary_ingredients = models.ManyToManyField(Ingredient, related_name='primary_lessons')
-    course = models.ManyToManyField('Course')
-    cuisine = models.ManyToManyField('Cuisine')
-    restrictions = models.ManyToManyField("DietaryRestrictions")
+    primary_ingredients = models.ManyToManyField(Ingredient, related_name='primary_lessons', blank=True)
+    course = models.ManyToManyField('Course', blank=True)
+    cuisine = models.ManyToManyField('Cuisine', blank=True)
+    restrictions = models.ManyToManyField("DietaryRestrictions", blank=True)
 
     kind = models.SmallIntegerField(choices=((0, "Recipe"),
                                              (1, "Technique")), default=0)
