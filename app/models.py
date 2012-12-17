@@ -421,6 +421,13 @@ class LessonRequest(CreatedMixin):
         return self.pledges.all().aggregate(Sum('amount'))['amount__sum'] or 0
 
 
+    def __unicode__(self):
+        return self.title
+
+    class Meta:
+        ordering = ('need_by','id')
+
+
 class LessonPledge(CreatedMixin):
     user = models.ForeignKey(User)
     amount = CurrencyField(max_digits=7, decimal_places=5)
@@ -439,7 +446,6 @@ class LessonPledge(CreatedMixin):
     class Meta:
         unique_together = (("user", "request"))
 
-
 class ChefPledge(CreatedMixin):
     user = models.ForeignKey(User)
     amount_required = CurrencyField(max_digits=7, decimal_places=5)
@@ -454,6 +460,10 @@ class ChefPledge(CreatedMixin):
             "amount_required": int(self.amount_required),
             "active": self.active,
             }
+
+    def __unicode__(self):
+        return self.user
+
 
     # class Meta:
     #     unique_together = (("user", "request", "active"###where active is true ))

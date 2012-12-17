@@ -202,16 +202,25 @@ def ask_form(request):
         form = LessonRequestForm(request, request.POST)
         if form.is_valid():
             lesson_request = form.save()
-            return HttpResponseRedirect(reverse("ask", kwargs={'slug':lesson_request.slug}))
+            return HttpResponseRedirect("%s?slug=%s" % (redirect('ask'), lesson_request.slug))
     else:
         form = LessonRequestForm(request)
     return direct_to_template(request, "lesson_request_standalone.html", {"request_form": form})
 
 
-def ask(request, slug=None):
+def ask(request):
     all_lesson_requests = LessonRequest.objects.filter(active=True)
-    req_paginator = Paginator(all_lesson_requests, 16)
-    req_page = request.GET.get('page')
+
+    per_page = 6
+    req_paginator = Paginator(all_lesson_requests, per_page)
+
+    slug = request.GET.get('slug')
+    if slug:
+        lesson_request = get_object_or_404(LessonRequest, slug=slug, active=True)
+        count = LessonRequest.objects.filter(active=True, need_by__lte=lesson_request.need_by, id__gt=lesson_request.id).count()
+        req_page = count / per_page
+    else:
+        req_page = request.GET.get('page')
 
     try:
         lesson_requests = req_paginator.page(req_page)
@@ -225,6 +234,9 @@ def ask(request, slug=None):
     lesson_json = json.dumps({x.slug:x.to_dict() for x in lesson_requests.object_list})
 
     form = LessonRequestForm(request)
+
+    if not slug:
+        slug = lesson_requests.object_list[0].slug
 
     return direct_to_template(request, "ask.html", {"lesson_requests": lesson_requests, 'slug': slug, 'lesson_json':lesson_json, 'form':form})
 
