@@ -5,12 +5,51 @@
 {% verbatim %}
 <script id="featured-request-templ" type="text/x-handlebars-template">
 
-{{title}}
-{{in_pot}}
+	<div class="row">
+	  <div class="span4 lesson-title featured-request-span">
+		<a class="green reqtitle"><h3 class="no-margin">{{title}}</h3></a>
+	  </div>
+
+	  <div class="span2">
+		<h4 class="featured-request-pot pull-right">${{inpot}} in pot</h4>
+	  </div>
+    </div>
+
+	<div class="row">
+	  <div class="span4 funding-progress featured-request-span">
+		
+	  </div>
+
+	  <div class="span2">
+		<strong class="ask-pot no-margin pull-right">{{need_by}} left</strong>
+	  </div>
+    </div>
+    
+    <hr />
+    
+    <div class="row">
+	  <div class="span6 featured-request-span">
+		<div class="request-details-chef"><strong>by <a href="#" class="green">{{chef.user_name}}</strong></a></div>
+
+		<div class="request-contribute pull-right">
+		<span class="">Contribute</strong>
+		<div class="request-contribute-input input-prepend">
+		  <span class="add-on">$</span>
+          <input class="span1 no-margin request-contribute-price" name="price" type="number" min="1" value="1" max="1000" placeholder="Price">              
+		</div>
+		
+		<a href="#" class="btn btn-green btn-request-contribute">contribute</a>
+	  </div>
+    </div>
+    
+    <hr />
+    
+    <hr />
+
 {{serving_size}}
 {{time_in_min}}
 {{description}}
-{{need_by}}
+
 {{#each primary_ingredients}}
 {{this}}
 {{/each}}}
@@ -23,8 +62,8 @@
 {{#each cuisine}}
 {{this}}
 {{/each}}
-{{chef.user_name}}
-{{inpot}}
+
+
 </script>
 {% endverbatim %}
 
@@ -59,8 +98,8 @@ $()
 <div class="bordered-row bordered">
   <div class="span12">
 	<div class="row">
-      <div class="span6">
-        <h4>Click on a request for more details</h4>
+      <div class="span6 request-message">
+        Click on a request for more details
       </div>
 
       <div class="span6 request-links">
@@ -100,7 +139,7 @@ $()
 	<div class="span6 request">
 	{% endif %}
  	  <div class="row">
-		  <div class="span4 lesson-title">
+		  <div class="span4 lesson-title request-title">
 			<a class="green reqtitle"><h3 class="no-margin">{{req.title}}</h3></a>
 		  </div>
 

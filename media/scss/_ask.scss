@@ -1,11 +1,21 @@
-#request-details {
+.request-message {
+	font-size: 18px;
+	padding: 12px 0px;
+	margin-left: 10px;
+}
+
+#featuredrequest {
 	border-right: 1px solid $border-color;
 	margin-left: 19px !important;
 	height: 300px;
 }
 
+#featuredrequest > hr {
+	margin: 10px 0px !important;
+}
+
 .request-links {
-	padding-top: 5px;
+	padding: 5px 0px;
 }
 
 .request {
@@ -25,6 +35,14 @@
 	border-bottom: 1px solid $border-color;
 }
 
+.featured-request-span {
+	margin: 5px 0px 0px 10px !important;	
+}
+
+.featured-request-pot {
+	padding-top: 5px;
+}
+
 .request-margin {
 	margin-left: -20px;
 	height: 20px;
@@ -34,5 +52,21 @@
 
 .ask-pot, .attatchedchef {
 	padding-top: 12px;
+	text-align: right;
+}
+
+.request-details-chef {
+	display: inline-block;
+	padding-top: 5px;
+	max-width: 155px;
+}
+
+.request-contribute, .request-contribute-input {
+	display: inline;
+	margin: 0px 10px;
+}
+
+.request-contribute-price {
+	padding-right: 5px;
 	text-align: right;
 }
