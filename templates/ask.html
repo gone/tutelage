@@ -137,41 +137,6 @@ $()
 {% include "pager.html" with lesson_requests=pager %}
 
 <div class="row no-display">
-  <div class="span6" id="requestform">
-    <form method="POST">
-      {% csrf_token %}
-      <div class="row">
-        <div class="span2">
-          Ask Your Own Request
-        </div>
-      </div>
-      <div class="row">
-        <div class="span3">
-          Lesson title
-        </div>
-      </div>
-      <div class="row">
-        <div class="span3">
-          {{form.title}}
-        </div>
-        <div class="span3">
-          {{form.kind}}
-        </div>
-        {{form.restrictions}}
-        {{form.category}}
-        {{form.cusine}}
-        {{form.course}}
-        {{form.primary_ingredients}}
-        {{form.time_in_min}}
-        {{form.serving_size}}
-        {{form.description}}
-        {{form.need_by}}
-        {{form.intital}}
-        {{form.email}}
 
-      </div>
-      <input type="submit" value="submit">
-    </form>
-  </div>
 </div>
 {% endblock %}

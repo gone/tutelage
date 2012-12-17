@@ -1,0 +1,90 @@
+<div class="span6" id="requestform">
+    <form id="request-form" class="request-form" action="{% url ask_form %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="span2">
+                Ask Your Own Request
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3">
+                {{request_form.title.label_tag}}
+			    <input name="{{request_form.title.html_name}}"
+                   class="request-input"
+                   type="text"
+                   placeholder=""
+                   value="{{request_form.title.value|default:""}}"
+                   data-validation-engine="validate[required]"
+                   data-errormessage-value-missing="Title is required!"
+                   />
+                   {{request_form.title.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.kind.label_tag}}
+                {{request_form.kind}}
+                {{request_form.kind.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.restrictions.label_tag}}
+                {{request_form.restrictions}}
+                {{request_form.restrictions.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.category.label_tag}}
+                {{request_form.category}}
+                {{request_form.category.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.cusinse.label_tag}}
+                {{request_form.cusine}}
+                {{request_form.cusine.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.course.label_tag}}
+                {{request_form.course}}
+                {{request_form.course.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.primary_ingredients.label_tag}}
+                {{request_form.primary_ingredients}}
+                {{request_form.primary_ingredients.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.time_in_min.label_tag}}
+                {{request_form.time_in_min}}
+                {{request_form.time_in_min.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.serving_size.label_tag}}
+                {{request_form.serving_size}}
+                {{request_form.serving_size.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.description.label_tag}}
+                {{request_form.description}}
+                {{request_form.description.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.need_by.label_tag}}
+                {{request_form.need_by}}
+                {{request_form.need_by.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.initial.label_tag}}
+                {{request_form.initial}}
+                {{request_form.initial.errors}}
+            </div>
+            <div class="span3">
+                {{request_form.email.label_tag}}
+                {{request_form.email}}
+                {{request_form.email.errors}}
+            </div>
+        </div>
+        <input type="submit" value="submit">
+        </form>
+    </div>

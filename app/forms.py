@@ -1,3 +1,5 @@
+import decimal
+
 from django import forms
 from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge
 from .constants import SKILL_LEVELS
@@ -94,10 +96,11 @@ class LessonRequestForm(forms.ModelForm):
 
     def save(self, *args, **kwargs):
         lesson_request = super(LessonRequestForm, self).save(*args, **kwargs)
-        initial = self.cleaned_data['initial'],
-        email = self.cleaned_data['email'],
+        initial = decimal.Decimal(self.cleaned_data['initial'])
+        email = self.cleaned_data['email']
         LessonPledge.objects.create(user=self.user,
                                     amount=initial,
                                     email=email,
                                     request=lesson_request
                                     )
+        return lesson_request
