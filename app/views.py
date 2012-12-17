@@ -202,7 +202,7 @@ def ask_form(request):
         form = LessonRequestForm(request, request.POST)
         if form.is_valid():
             lesson_request = form.save()
-            return HttpResponseRedirect("%s?slug=%s" % (redirect('ask'), lesson_request.slug))
+            return HttpResponseRedirect("%s?slug=%s" % (reverse('ask'), lesson_request.slug))
     else:
         form = LessonRequestForm(request)
     return direct_to_template(request, "lesson_request_standalone.html", {"request_form": form})
@@ -217,8 +217,8 @@ def ask(request):
     slug = request.GET.get('slug')
     if slug:
         lesson_request = get_object_or_404(LessonRequest, slug=slug, active=True)
-        count = LessonRequest.objects.filter(active=True, need_by__lte=lesson_request.need_by, id__gt=lesson_request.id).count()
-        req_page = count / per_page
+        count = LessonRequest.objects.filter(active=True, need_by__lte=lesson_request.need_by, id__lt=lesson_request.id).count()
+        req_page = max(count / per_page, 1)
     else:
         req_page = request.GET.get('page')
 
