@@ -1,11 +1,23 @@
-#request-details {
+.request-message {
+	font-size: 18px;
+	padding: 12px 0px;
+	margin-left: 10px;
+}
+
+#featuredrequest {
 	border-right: 1px solid $border-color;
 	margin-left: 19px !important;
 	height: 300px;
 }
 
+.request-hr {
+	margin: 10px -10px 0px -10px !important;
+	display: inline-block;
+	width: 460px;
+}
+
 .request-links {
-	padding-top: 5px;
+	padding: 5px 0px;
 }
 
 .request {
@@ -25,9 +37,17 @@
 	border-bottom: 1px solid $border-color;
 }
 
+.featured-request-span {
+	margin: 5px 0px 0px 10px !important;	
+}
+
+.featured-request-text {
+	padding-top: 5px;
+}
+
 .request-margin {
 	margin-left: -20px;
-	height: 20px;
+	height: 10px;
 	width: 480px;
 	background-color: $border-color;
 }
@@ -35,4 +55,59 @@
 .ask-pot, .attatchedchef {
 	padding-top: 12px;
 	text-align: right;
+}
+
+.request-details-chef {
+	display: inline-block;
+	padding-top: 5px;
+	max-width: 155px;
+}
+
+.request-contribute {
+	display: inline;
+	margin-left: 10px;
+}
+
+.request-contribute-input {
+	display: inline;
+	margin: 0px 10px;
+}
+
+.request-contribute-price {
+	padding-right: 5px;
+	text-align: right;
+}
+
+.request-form-field {
+	padding-bottom: 5px;
+}
+
+.request-form-description textarea {
+	height: 70px;
+	width: 445px;
+}
+
+.request-form-field label {
+	display: block;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: bold;
+}
+
+.request-input {
+	width: 200px;
+}
+
+.request-form-field ul {
+	display: inline-block;
+	margin: 0px 0px 10px 0px;
+}
+
+.request-form-field ul li {
+	display: inline-block;
+	list-style-type: none !important;
+}
+
+.request-form-buttons {
+	margin-top: 15px;
 }
