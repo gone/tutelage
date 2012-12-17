@@ -30,7 +30,7 @@
 
 <script type="text/javascript">
 require(['common',], function(){
-    require(['cs!colorboxcommon', 'handlebars'], function(cc){
+    require(['cs!colorboxcommon', 'liveValidation', 'handlebars'], function(cc){
         source = $("#featured-request-templ").html();
         template = Handlebars.compile(source);
 
@@ -137,6 +137,6 @@ $()
 {% include "pager.html" with lesson_requests=pager %}
 
 <div class="row no-display">
-
+  {% include "lesson_request.html" with request_form=form %}
 </div>
 {% endblock %}

@@ -203,8 +203,8 @@ def ask_form(request):
         if form.is_valid():
             lesson_request = form.save()
             return HttpResponseRedirect(reverse("ask", kwargs={'slug':lesson_request.slug}))
-
-    form = LessonRequestForm(request, request.POST)
+    else:
+        form = LessonRequestForm(request)
     return direct_to_template(request, "lesson_request_standalone.html", {"request_form": form})
 
 
