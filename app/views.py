@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 from .models import (Lesson, LessonIngredient, Tool, Step, Video,
                      LessonRating, FeaturedChef, LessonRequest)
-from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm, StepDetailsForm
+from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm, StepDetailsForm, LessonRequestForm
 
 from account.forms import PasswordChangeForm
 
@@ -197,6 +197,9 @@ def cheflist(request):
     pass
 
 def ask(request, slug=None):
+    if request.method =="POST"
+
+
     all_lesson_requests = LessonRequest.objects.filter(active=True)
     req_paginator = Paginator(all_lesson_requests, 16)
     req_page = request.GET.get('page')
@@ -211,7 +214,10 @@ def ask(request, slug=None):
         lesson_requests = req_paginator.page(req_paginator.num_pages)
 
     lesson_json = json.dumps({x.slug:x.to_dict() for x in lesson_requests.object_list})
-    return direct_to_template(request, "ask.html", {"lesson_requests": lesson_requests, 'slug': slug, 'lesson_json':lesson_json})
+
+    form = LessonRequestForm(request)
+
+    return direct_to_template(request, "ask.html", {"lesson_requests": lesson_requests, 'slug': slug, 'lesson_json':lesson_json, 'form':form})
 
 
 def lesson(request, lesson_id):

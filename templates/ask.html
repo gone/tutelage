@@ -30,8 +30,7 @@
 
 <script type="text/javascript">
 require(['common',], function(){
-    require(['handlebars'], function(){
-
+    require(['cs!colorboxcommon', 'handlebars'], function(cc){
         source = $("#featured-request-templ").html();
         template = Handlebars.compile(source);
 
@@ -43,6 +42,10 @@ require(['common',], function(){
             dest = $("#featuredrequest")
             dest.html(template(data))
 
+        })
+
+        $("#requestform-btn").click(function(){
+           cc.setupColorbox("#requestform")
         })
     })
 })
@@ -61,8 +64,12 @@ $()
       </div>
 
       <div class="span6 request-links">
-        Still looking? <a href="#" class="btn btn-green">create a request</a>
-        or check out our <a href="{% url lessons %}" class="btn btn-blue">lessons</a>
+        Still looking?
+        {% if request.user.is_authenticated %}
+        <a href="#" id="requestform-btn" class="btn btn-green">create a request</a>
+        or
+        {% endif %}
+        check out our <a href="{% url lessons %}" class="btn btn-blue">lessons</a>
       </div>
     </div>
   </div>
@@ -109,4 +116,43 @@ $()
 
 
 {% include "pager.html" with lesson_requests=pager %}
+
+<div class="row no-display">
+  <div class="span6" id="requestform">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="row">
+        <div class="span2">
+          Ask Your Own Request
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3">
+          Lesson title
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3">
+          {{form.title}}
+        </div>
+        <div class="span3">
+          {{form.kind}}
+        </div>
+        {{form.restrictions}}
+        {{form.category}}
+        {{form.cusine}}
+        {{form.course}}
+        {{form.primary_ingredients}}
+        {{form.time_in_min}}
+        {{form.serving_size}}
+        {{form.description}}
+        {{form.need_by}}
+        {{form.intital}}
+        {{form.email}}
+
+      </div>
+      <input type="submit" value="submit">
+    </form>
+  </div>
+</div>
 {% endblock %}

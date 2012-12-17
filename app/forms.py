@@ -1,5 +1,5 @@
 from django import forms
-from .models import Lesson, LessonIngredient
+from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge
 from .constants import SKILL_LEVELS
 #from ajax_select.fields import AutoCompleteSelectMultipleField
 
@@ -62,3 +62,42 @@ class IngredentsDetailsForm(forms.ModelForm):
 
 class StepDetailsForm(forms.Form):
     pass
+
+
+
+class LessonRequestForm(forms.ModelForm):
+
+    initial = forms.CharField()
+    email = forms.BooleanField(required=False)
+
+    class Meta:
+        model = LessonRequest
+        fields = ('title', 'kind', 'restrictions', 'serving_size',
+                  'time_in_min', 'cuisine', 'restrictions',
+                  'course', 'primary_ingredients', 'description',
+                  'need_by')
+
+        widgets = {
+             'primary_ingredients': forms.SelectMultiple(attrs={'class': 'chzn'}),
+             'course': forms.SelectMultiple(attrs={'class':'chzn'}),
+             'restrictions': forms.SelectMultiple(attrs={'class':'chzn'}),
+             'cuisine': forms.SelectMultiple(attrs={'class':'chzn'}),
+             'kind': forms.RadioSelect,
+             'title': forms.TextInput(attrs={'class':"create-lesson-input-mid", 'placeholder':"Lesson Title"}),
+             'teacher': forms.HiddenInput
+        }
+
+
+    def __init__(self, request, *args, **kwargs):
+        user = self.user = request.user
+        return super(LessonRequestForm, self).__init__(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        lesson_request = super(LessonRequestForm, self).save(*args, **kwargs)
+        initial = self.cleaned_data['initial'],
+        email = self.cleaned_data['email'],
+        LessonPledge.objects.create(user=self.user,
+                                    amount=initial,
+                                    email=email,
+                                    request=lesson_request
+                                    )

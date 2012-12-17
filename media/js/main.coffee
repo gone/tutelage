@@ -1,43 +1,27 @@
-require ["jquery", "chosen", "cs!validation"], ($) ->
+require ["jquery", "cs!colorboxcommon", "chosen", "cs!validation"], ($, cc) ->
     $(document).ready () ->
-        setupColorbox = (selector, href) ->
-            form = $(selector).find("form")
-            form.validationEngine('hide')
-            if href?
-                link = href
-                inline = false
-            else
-                link = selector
-                inline = true
-            $.colorbox
-                inline: inline
-                href: link
-                onComplete:() ->
-                    $(selector).find('input[type="text"]').filter(":first").focus()
-                onCleanup: () ->
-                    form.validationEngine('hide')
 
         $(".login-btn").click () ->
-            setupColorbox("#login")
+            cc.setupColorbox("#login")
 
         $(".signup-btn").click () ->
-            setupColorbox("#signup")
-		
+            cc.setupColorbox("#signup")
+
 		$(".create-lesson-help-btn").click () ->
-            setupColorbox("#lesson-help")
-		
+            cc.setupColorbox("#lesson-help")
+
         $(".forgot-pass-btn").click () ->
-            setupColorbox("#forgot-password")
+            cc.setupColorbox("#forgot-password")
 
         $(".changepass-btn").click () ->
-            setupColorbox("#change-password")
+            cc.setupColorbox("#change-password")
 
         $(".cancel-btn").click () ->
             $.colorbox.close()
 
         $(".miniprofile-btn").click (e) ->
             href = $(this).attr("href")
-            setupColorbox(this, href)
+            cc.setupColorbox(this, href)
             return false
 
         $(".chzn").chosen()
