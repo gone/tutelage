@@ -30,11 +30,9 @@
 
 <script type="text/javascript">
 require(['common',], function(){
-    require(['handlebars'], function(){
-
+    require(['cs!colorboxcommon', 'handlebars'], function(cc){
         source = $("#featured-request-templ").html();
         template = Handlebars.compile(source);
-
 
 
         $('.lessonrequest').click(function(){
@@ -44,6 +42,10 @@ require(['common',], function(){
             dest = $("#featuredrequest")
             dest.html(template(data))
 
+        })
+
+        $("#requestform-btn").click(function(){
+           cc.setupColorbox("#requestform")
         })
     })
 })
@@ -56,13 +58,16 @@ $()
 
 <div class="bordered-row bordered">
   <div class="span12">
-	<div class="row">   
+	<div class="row">
       <div class="span6">
         <h4>Click on a request for more details</h4>
       </div>
-    
+
       <div class="span6 request-links">
-        Still looking? <a href="#" class="btn btn-green">create a request</a> 
+        Still looking? 
+        {% if request.user.is_authenticated %}
+        <a href="#" id="requestform-btn" class="btn btn-green">create a request</a>
+        {% endif %} 
         <a href="{% url lessons %}" class="btn btn-blue"> view lessons</a>
       </div>
     </div>
@@ -71,7 +76,8 @@ $()
 
 
 <div class="bordered-row bordered">
-  <div id="request-details" class="span6">
+
+  <div id="featuredrequest" class="span6">
     <div class="row">
 		  <div class="span4 lesson-title">
 			<a class="green reqtitle"><h3 class="no-margin">[Title]</h3></a>
@@ -97,7 +103,7 @@ $()
 		  <div class="span4 lesson-title">
 			<a class="green reqtitle"><h3 class="no-margin">{{req.title}}</h3></a>
 		  </div>
-		  
+
 		  <div class="span2">
 			<h4 class="ask-pot no-margin pull-right">${{req.in_pot|default:"0"}} in pot</h4>
 		  </div>
@@ -105,17 +111,17 @@ $()
 
 	  <div class="row">
 		<div class="span4">
-		  <div class="lesson-tile-description">  
+		  <div class="lesson-tile-description">
 		    <small>{{req.description}}</small>
 		  </div>
         </div>
-        
+
         <div class="span2">
 		  <div class="timetoraise pull-right"><strong>{{req.need_by|timeuntil}} left</strong></div>
           <div class="attatchedchef pull-right"><strong>by <a href="#" class="green">{{req.chef_attatched|default:"No Chef yet!"}}</strong></a></div>
 		</div>
       </div>
-     
+
     </div>
    </div>
    </span>
@@ -125,8 +131,47 @@ $()
    {% endif %}  
    {% endfor %}
   </div>
-</div>	
+</div>
 
- 
+
 {% include "pager.html" with lesson_requests=pager %}
+
+<div class="row no-display">
+  <div class="span6" id="requestform">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="row">
+        <div class="span2">
+          Ask Your Own Request
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3">
+          Lesson title
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3">
+          {{form.title}}
+        </div>
+        <div class="span3">
+          {{form.kind}}
+        </div>
+        {{form.restrictions}}
+        {{form.category}}
+        {{form.cusine}}
+        {{form.course}}
+        {{form.primary_ingredients}}
+        {{form.time_in_min}}
+        {{form.serving_size}}
+        {{form.description}}
+        {{form.need_by}}
+        {{form.intital}}
+        {{form.email}}
+
+      </div>
+      <input type="submit" value="submit">
+    </form>
+  </div>
+</div>
 {% endblock %}
