@@ -23,7 +23,7 @@
 {{#each cuisine}}
 {{this}}
 {{/each}}
-{{chef}}
+{{chef.user_name}}
 {{inpot}}
 </script>
 {% endverbatim %}
@@ -64,10 +64,10 @@ $()
       </div>
 
       <div class="span6 request-links">
-        Still looking? 
+        Still looking?
         {% if request.user.is_authenticated %}
         <a href="#" id="requestform-btn" class="btn btn-green">create a request</a>
-        {% endif %} 
+        {% endif %}
         <a href="{% url lessons %}" class="btn btn-blue"> view lessons</a>
       </div>
     </div>
@@ -82,7 +82,7 @@ $()
 		  <div class="span4 lesson-title">
 			<a class="green reqtitle"><h3 class="no-margin">[Title]</h3></a>
 		  </div>
-		  
+
 		  <div class="span2">
 			<h4 class="ask-pot no-margin pull-right">$[] in pot</h4>
 		  </div>
@@ -98,7 +98,7 @@ $()
 	<div class="span6 request request-last">
 	{% else %}
 	<div class="span6 request">
-	{% endif %}    
+	{% endif %}
  	  <div class="row">
 		  <div class="span4 lesson-title">
 			<a class="green reqtitle"><h3 class="no-margin">{{req.title}}</h3></a>
@@ -128,7 +128,7 @@ $()
    {% if forloop.last %}
    {% else %}
 	<div class="span6 request-margin"></div>
-   {% endif %}  
+   {% endif %}
    {% endfor %}
   </div>
 </div>
