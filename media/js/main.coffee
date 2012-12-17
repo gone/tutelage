@@ -1,5 +1,6 @@
-require ["jquery", "cs!colorboxcommon", "chosen", "cs!validation"], ($, cc) ->
+require ["jquery", "datepicker", "cs!colorboxcommon", "chosen", "cs!validation"], ($, cc) ->
     $(document).ready () ->
+
 
         $(".login-btn").click () ->
             cc.setupColorbox("#login")
@@ -29,9 +30,9 @@ require ["jquery", "cs!colorboxcommon", "chosen", "cs!validation"], ($, cc) ->
           interval: false
         )
 
-        $window = $(window)
-        $window.scroll () ->
-            if $window.scrollTop() > $('header .navbar').position().top
-                $('header').addClass("fixed-top")
-            else
-                $('header').removeClass("fixed-top")
+        # $window = $(window)
+        # $window.scroll () ->
+        #     if $window.scrollTop() > $('header .navbar').position().top
+        #         $('header').addClass("fixed-top")
+        #     else
+        #         $('header').removeClass("fixed-top")

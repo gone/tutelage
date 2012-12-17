@@ -1,3 +1,9 @@
+<script type="text/javascript">
+    require(['common'], function(){
+        require(["jquery", "datepicker"], function(){
+        })
+})
+</script>
 <div class="span6" id="requestform">
     <form id="request-form" class="request-form" action="{% url ask_form %}" method="post">
         {% csrf_token %}

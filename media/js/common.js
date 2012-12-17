@@ -12,6 +12,7 @@ requirejs.config({
         "liveValidationEn": "lib/jquery.validationEngine-en",
         "popcorn": "lib/popcorn-complete",
         "formset":'lib/jquery.formset',
+        "datepicker":'lib/bootstrap-datepicker',
     },
     shim: {
         _: {
@@ -19,6 +20,9 @@ requirejs.config({
         },
         bootstrap: {
             deps: ['jquery']
+        },
+        datepicker: {
+            deps: ['jquery', 'bootstrap']
         },
         colorbox: {
             deps: ['jquery']

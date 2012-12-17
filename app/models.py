@@ -365,6 +365,12 @@ class LessonRequest(CreatedMixin):
     active = models.BooleanField(default=True)
     title = models.CharField(max_length=255)
     time_in_min  = models.SmallIntegerField()
+    time_in_min = models.SmallIntegerField(choices=(
+            (0, "Quick (less than 30 min)"),
+            (1, "Moderate (30-90 min)"),
+            (2, "Slow (90 min or more)"),
+            ), default=0)
+
 
     serving_size = models.SmallIntegerField()
     description = models.TextField()

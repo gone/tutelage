@@ -84,6 +84,7 @@ class LessonRequestForm(forms.ModelForm):
              'course': forms.SelectMultiple(attrs={'class':'chzn'}),
              'restrictions': forms.SelectMultiple(attrs={'class':'chzn'}),
              'cuisine': forms.SelectMultiple(attrs={'class':'chzn'}),
+             'need_by': forms.DateTimeInput(attrs={'class':'datepicker'}),
              'kind': forms.RadioSelect,
              'title': forms.TextInput(attrs={'class':"create-lesson-input-mid", 'placeholder':"Lesson Title"}),
              'teacher': forms.HiddenInput
