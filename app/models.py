@@ -462,7 +462,7 @@ class ChefPledge(CreatedMixin):
             }
 
     def __unicode__(self):
-        return self.user
+        return unicode(self.user)
 
 
     # class Meta:
