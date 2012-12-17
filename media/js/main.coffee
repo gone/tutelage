@@ -26,6 +26,7 @@ require ["jquery", "datepicker", "cs!colorboxcommon", "chosen", "cs!validation"]
             return false
 
         $(".chzn").chosen()
+        $(".datepicker").datepicker()
         $('.carousel').carousel(
           interval: false
         )
