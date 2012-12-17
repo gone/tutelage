@@ -30,7 +30,7 @@
 					<div class="step-technique span5">
 					    {% for tech in step.technique.all %}
 						<a href="#" class="step-technique-text step-title blue pull-right">Watch 
-						  <img class="technique-play-icon" src="{{STATIC_URL}}img/technique-play-icon.png" /> 
+						  <img class="technique-play-icon" src="{{STATIC_URL}}img/play-button-blue.png" /> 
 						  {{tech.title}}</a>
 						<!-- this should likely be moved somewhere else -->
 						<div class="row no-display video-row">
@@ -56,7 +56,9 @@
                                <strong>{{ingredient.number}} {{ingredient.measurement}} {{ingredient.prep}} {{ingredient.ingredient.name}}</strong>
                              </div>
                              <div class='lesson-icon-circle lesson-icon-circle-ingredients'>
+                               <!-- add icons once they've been added to the data model
                                <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{ingredient.name}}' />
+                               -->
                              </div>
                          </span>
                       {% endfor %}
@@ -70,7 +72,9 @@
                               <strong>{{tool.name}}</strong>
                             </div>
                             <div class='lesson-icon-circle lesson-icon-circle-tools'>
+							  <!-- add icons once they've been added to the data model
                               <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{tool.name}}' />
+                              -->
                             </div>
                           </div>
                       {% endfor %}
