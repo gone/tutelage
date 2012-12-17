@@ -85,11 +85,6 @@
 {% endverbatim %}
 
 <script type="text/javascript">
-function getURLParameter(name) {
-    return decodeURI(
-        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
-    );
-}
 require(['common',], function(){
     require(['cs!colorboxcommon', 'liveValidation', 'handlebars'], function(cc){
         source = $("#featured-request-templ").html();
@@ -99,6 +94,8 @@ require(['common',], function(){
             data = lesson_data[slug]
             dest = $("#featuredrequest")
             dest.html(template(data))
+            url = "?slug=" + slug
+            window.history.replaceState({}, document.title, url)
         }
 
 
