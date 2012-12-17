@@ -8198,32 +8198,34 @@ body .ui-tooltip {
 }
 
 .panel-item {
+  display: block;
   height: 28px;
   min-width: 100px;
-  max-width: 220px;
   cursor: pointer;
 }
 
-.tool {
-  float: right;
-}
-
 .lesson-icon-text {
-  position: absolute;
-  padding: 3px;
-  height: 28px;
+  display: inline-block;
+  height: 22px;
+  max-width: 75%;
   color: black !important;
   background-color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .lesson-icon-ingredients-text {
-  margin: 3px 0px 0px 30px !important;
+  margin: 0px 0px 0px 20px !important;
+  padding: 5px 10px 0px 20px;
   text-align: right;
+  position: absolute;
 }
 
 .lesson-icon-tools-text {
-  margin: 3px 0px 0px 10px !important;
+  margin: 0px -10px 0px 0px !important;
+  padding: 5px 20px 0px 10px;
   text-align: left;
+  float: right;
 }
 
 .lesson-icon-circle {
@@ -8231,15 +8233,17 @@ body .ui-tooltip {
   height: 36px;
   width: 36px;
   background-color: #02A64F;
-  position: absolute;
 }
 
 .lesson-icon-circle-ingredients {
   margin: -4px 0px 0px -8px;
+  position: absolute;
 }
 
 .lesson-icon-circle-tools {
-  margin: -4px 0px 0px 192px;
+  display: inline-block;
+  margin: -4px 0px 0px 0px;
+  float: right;
 }
 
 .lessonimages {
@@ -8276,31 +8280,31 @@ body .ui-tooltip {
 }
 
 .tool1 {
-  margin: 20px 20px 0px 0px;
+  margin: 20px 10px 0px 0px;
 }
 
 .tool2 {
-  margin: 15px 35px 0px 0px;
+  margin: 15px 25px 0px 0px;
 }
 
 .tool3 {
-  margin: 15px 45px 0px 0px;
-}
-
-.tool4 {
-  margin: 15px 55px 0px 0px;
-}
-
-.tool5 {
-  margin: 15px 45px 0px 0px;
-}
-
-.tool6 {
   margin: 15px 35px 0px 0px;
 }
 
+.tool4 {
+  margin: 15px 45px 0px 0px;
+}
+
+.tool5 {
+  margin: 15px 35px 0px 0px;
+}
+
+.tool6 {
+  margin: 15px 25px 0px 0px;
+}
+
 .tool7 {
-  margin: 15px 20px 0px 0px;
+  margin: 15px 10px 0px 0px;
 }
 
 #lesson-timeline {
@@ -8311,6 +8315,21 @@ body .ui-tooltip {
 .lesson-nav-btn {
   display: inline-block;
   margin: 10px 0px 0px -2px;
+  padding: 28px 5px !important;
+}
+
+.lesson-nav-btn-top-left {
+  position: absolute;
+  bottom: 0;
+  margin: 0px 0px -2px -6px;
+  padding: 28px 5px !important;
+}
+
+.lesson-nav-btn-top-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0px 0px -2px -6px;
   padding: 28px 5px !important;
 }
 
@@ -8652,7 +8671,7 @@ btn-avatar {
 .testimonial {
   background-repeat: no-repeat;
   display: inline-block;
-  width: 375px;
+  width: 380px;
   height: 75px;
   margin-top: 10px;
 }
@@ -8662,17 +8681,17 @@ btn-avatar {
 }
 
 .testimonial-left {
-  background-image: url("../img/testimonial_left_pink.png");
+  background-image: url("../img/testimonial_left.png");
 }
 
 .testimonial-right {
-  background-image: url("../img/testimonial_right_pink.png");
+  background-image: url("../img/testimonial_right.png");
   margin-right: 20px;
   text-align: right;
 }
 
 .testimonial-text {
-  padding: 0px 0px 10px 10px !important;
+  padding: 3px 0px 10px 10px !important;
 }
 
 .testimonial-source {
@@ -8693,7 +8712,17 @@ btn-avatar {
 }
 
 .chef-lesson-nav-icon {
+  height: 37px;
+  width: 37px;
   margin: 5px 20px 0px 0px;
+}
+
+.lesson-nav-icon-left {
+  margin-top: -7px;
+}
+
+.lesson-nav-icon-right {
+  margin-top: -1px;
 }
 
 .chef-profile-lessons-title {

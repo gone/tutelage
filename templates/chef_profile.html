@@ -60,13 +60,13 @@
 			    <a href="{{u.profile.twitter}}" target="_blank"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
                 {% endif %}
                 {% if u.profile.linkedin %}
-			    <a href="{{u.profile.linkedin}}" target="_blank"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
+			    <a href="{{u.profile.linkedin}}" target="_blank"><img src="{{STATIC_URL}}img/social-linkedin.png" />  </a>
                 {% endif %}
                 {% if u.profile.pinterest %}
 			    <a href="{{u.profile.pinterest}}" target="_blank"><img src="{{STATIC_URL}}img/social-pinterest.png"/>  </a>
                 {% endif %}
                 {% if u.profile.youtube %}
-			    <a href="{{u.profile.youtube}}" target="_blank"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
+			    <a href="{{u.profile.youtube}}" target="_blank"><img src="{{STATIC_URL}}img/social-youtube.png" />  </a>
                 {% endif %}
 			    {% if u.profile.googleplus %}
                 <a href="{{u.profile.googleplus}}" target="_blank"><img src="{{STATIC_URL}}img/social-google-plus.png"/></a>
@@ -146,8 +146,12 @@
     <div class="span6">
 	  
       <div class="btn-group chef-lesson-btn-group">
-		<a class="btn chef-lesson-nav-icon vertical-align" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
-		<a class="btn chef-lesson-nav-icon pull-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>
+		<a class="chef-lesson-nav-icon vertical-align" href="#lessons" data-slide="prev">
+		  <img class="lesson-nav-icon-left" src="{{STATIC_URL}}img/carousel-left.png" />
+		</a>
+		<a class="chef-lesson-nav-icon pull-right" href="#lessons" data-slide="next">
+		  <img class="lesson-nav-icon-right" src="{{STATIC_URL}}img/carousel-right.png" />
+		</a>
 		<h4 class="chef-profile-lessons-title">Chef {{u.get_full_name|title}}'s Lessons</h4>
 	  </div>  
 	</div>

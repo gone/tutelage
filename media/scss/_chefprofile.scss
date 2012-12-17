@@ -14,7 +14,7 @@
 .testimonial {
 	background-repeat:no-repeat;
 	display: inline-block;
-	width: 375px;
+	width: 380px;
 	height: 75px;
 	margin-top: 10px;
 	p { width: 355px;
@@ -23,17 +23,17 @@
 }
 
 .testimonial-left {
-	background-image:url('../img/testimonial_left_pink.png');
+	background-image:url('../img/testimonial_left.png');
 }
 
 .testimonial-right {
-	background-image:url('../img/testimonial_right_pink.png');
+	background-image:url('../img/testimonial_right.png');
 	margin-right: 20px;
 	text-align: right;
 }
 
 .testimonial-text {
-	padding: 0px 0px 10px 10px !important;
+	padding: 3px 0px 10px 10px !important;
 }
 
 .testimonial-source {
@@ -54,7 +54,17 @@
 }
 
 .chef-lesson-nav-icon {
+	height: 37px;
+	width: 37px;
 	margin: 5px 20px 0px 0px;
+}
+
+.lesson-nav-icon-left {
+	margin-top: -7px;
+}
+
+.lesson-nav-icon-right {
+	margin-top: -1px;
 }
 
 .chef-profile-lessons-title {
