@@ -25,6 +25,8 @@
 				  
 				  <img class="lesson-picture" src="{{MEDIA_URL}}{{step.picture}}" />
                   <div class="step-text no-margin lesson-wrapper-overlay">
+					<a class="lesson-nav-btn-top-left" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
+					<a class="lesson-nav-btn-top-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>  
 					<div class="step-title span6">Step {{step.order}}: {{step.title}}</div>
 					
 					<div class="step-technique span5">
@@ -51,7 +53,7 @@
 				  
                   <div id="ingredient" class="span4 no-margin lesson-panel">
                       {% for ingredient in step.ingredients.all %}
-                        <span class='panel-item ingredient ingredient{{forloop.counter}}'>
+                        <div class='panel-item ingredient ingredient{{forloop.counter}}'>
                              <div class='lesson-icon-text lesson-icon-ingredients-text'>
                                <strong>{{ingredient.number}} {{ingredient.measurement}} {{ingredient.prep}} {{ingredient.ingredient.name}}</strong>
                              </div>
@@ -60,7 +62,7 @@
                                <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{ingredient.name}}' />
                                -->
                              </div>
-                         </span>
+                         </div>
                       {% endfor %}
                   </div>
 
@@ -68,14 +70,14 @@
                     <div id="tools" class="lesson-panel">
                       {% for tool in step.tools.all %}
                           <div class='panel-item tool tool{{forloop.counter}}'>
+							<div class='lesson-icon-circle lesson-icon-circle-tools'>
+							</div>
                             <div class='lesson-icon-text lesson-icon-tools-text'>
                               <strong>{{tool.name}}</strong>
                             </div>
-                            <div class='lesson-icon-circle lesson-icon-circle-tools'>
 							  <!-- add icons once they've been added to the data model
                               <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{tool.name}}' />
                               -->
-                            </div>
                           </div>
                       {% endfor %}
                     </div>

@@ -6440,32 +6440,34 @@ textarea {
 }
 
 .panel-item {
+  display: block;
   height: 28px;
   min-width: 100px;
-  max-width: 220px;
   cursor: pointer;
 }
 
-.tool {
-  float: right;
-}
-
 .lesson-icon-text {
-  position: absolute;
-  padding: 3px;
-  height: 28px;
+  display: inline-block;
+  height: 22px;
+  max-width: 75%;
   color: black !important;
   background-color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .lesson-icon-ingredients-text {
-  margin: 3px 0px 0px 30px !important;
+  margin: 0px 0px 0px 20px !important;
+  padding: 5px 10px 0px 20px;
   text-align: right;
+  position: absolute;
 }
 
 .lesson-icon-tools-text {
-  margin: 3px 0px 0px 10px !important;
+  margin: 0px -10px 0px 0px !important;
+  padding: 5px 20px 0px 10px;
   text-align: left;
+  float: right;
 }
 
 .lesson-icon-circle {
@@ -6473,15 +6475,17 @@ textarea {
   height: 36px;
   width: 36px;
   background-color: #02A64F;
-  position: absolute;
 }
 
 .lesson-icon-circle-ingredients {
   margin: -4px 0px 0px -8px;
+  position: absolute;
 }
 
 .lesson-icon-circle-tools {
-  margin: -4px 0px 0px 192px;
+  display: inline-block;
+  margin: -4px 0px 0px 0px;
+  float: right;
 }
 
 .lessonimages {
@@ -6518,31 +6522,31 @@ textarea {
 }
 
 .tool1 {
-  margin: 20px 20px 0px 0px;
+  margin: 20px 10px 0px 0px;
 }
 
 .tool2 {
-  margin: 15px 35px 0px 0px;
+  margin: 15px 25px 0px 0px;
 }
 
 .tool3 {
-  margin: 15px 45px 0px 0px;
-}
-
-.tool4 {
-  margin: 15px 55px 0px 0px;
-}
-
-.tool5 {
-  margin: 15px 45px 0px 0px;
-}
-
-.tool6 {
   margin: 15px 35px 0px 0px;
 }
 
+.tool4 {
+  margin: 15px 45px 0px 0px;
+}
+
+.tool5 {
+  margin: 15px 35px 0px 0px;
+}
+
+.tool6 {
+  margin: 15px 25px 0px 0px;
+}
+
 .tool7 {
-  margin: 15px 20px 0px 0px;
+  margin: 15px 10px 0px 0px;
 }
 
 #lesson-timeline {
@@ -6553,6 +6557,21 @@ textarea {
 .lesson-nav-btn {
   display: inline-block;
   margin: 10px 0px 0px -2px;
+  padding: 28px 5px !important;
+}
+
+.lesson-nav-btn-top-left {
+  position: absolute;
+  bottom: 0;
+  margin: 0px 0px -2px -6px;
+  padding: 28px 5px !important;
+}
+
+.lesson-nav-btn-top-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0px 0px -2px -6px;
   padding: 28px 5px !important;
 }
 
@@ -6940,7 +6959,7 @@ btn-avatar {
   margin: 5px 20px 0px 0px;
 }
 
-.lesson-nav-icon-right {
+.lesson-nav-icon-left {
   margin-top: -7px;
 }
 
