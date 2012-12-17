@@ -84,6 +84,11 @@
 {% endverbatim %}
 
 <script type="text/javascript">
+function getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}
 require(['common',], function(){
     require(['cs!colorboxcommon', 'liveValidation', 'handlebars'], function(cc){
         source = $("#featured-request-templ").html();
