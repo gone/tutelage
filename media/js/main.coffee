@@ -1,14 +1,12 @@
-require ["jquery", "datepicker", "cs!colorboxcommon", "chosen", "cs!validation"], ($, cc) ->
+require ["jquery", "cs!colorboxcommon", 'jqueryui', "chosen", "cs!validation"], ($, cc) ->
     $(document).ready () ->
-
-
         $(".login-btn").click () ->
             cc.setupColorbox("#login")
 
         $(".signup-btn").click () ->
             cc.setupColorbox("#signup")
 
-		$(".create-lesson-help-btn").click () ->
+        $(".create-lesson-help-btn").click () ->
             cc.setupColorbox("#lesson-help")
 
         $(".forgot-pass-btn").click () ->

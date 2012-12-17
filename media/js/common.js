@@ -5,6 +5,7 @@ requirejs.config({
         "handlebars" : "lib/handlebars-1.0.0.beta.6",
         "_": "lib/underscore-min",
         "jquery": "require/require-jquery",
+        "jqueryui": "lib/jquery-ui-1.9.2.custom.min",
         "bootstrap": "lib/bootstrap",
         "colorbox": "lib/jquery.colorbox-min",
         "chosen": "lib/chosen.jquery.min",
@@ -12,7 +13,6 @@ requirejs.config({
         "liveValidationEn": "lib/jquery.validationEngine-en",
         "popcorn": "lib/popcorn-complete",
         "formset":'lib/jquery.formset',
-        "datepicker":'lib/bootstrap-datepicker',
     },
     shim: {
         _: {
@@ -21,8 +21,8 @@ requirejs.config({
         bootstrap: {
             deps: ['jquery']
         },
-        datepicker: {
-            deps: ['jquery', 'bootstrap']
+        jqueryui: {
+            deps: ['jquery']
         },
         colorbox: {
             deps: ['jquery']
