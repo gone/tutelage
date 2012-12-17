@@ -197,7 +197,8 @@ def cheflist(request):
     pass
 
 def ask(request, slug=None):
-    if request.method =="POST"
+    if request.method =="POST":
+        pass
 
 
     all_lesson_requests = LessonRequest.objects.filter(active=True)
