@@ -11,7 +11,7 @@
 	  </div>
 
 	  <div class="span2">
-		<h4 class="featured-request-pot pull-right">${{inpot}} in pot</h4>
+		<h4 class="featured-request-text pull-right">${{inpot}} in pot</h4>
 	  </div>
     </div>
 
@@ -25,9 +25,7 @@
 	  </div>
     </div>
     
-    <div class="row">    
-      <hr />
-    </div>
+    <hr class="request-hr" />
     
     <div class="row">
 	  <div class="span6 featured-request-span">
@@ -41,30 +39,48 @@
 		</div>
 		
 		<a href="#" class="btn btn-green btn-request-contribute">contribute</a>
+		</div>
 	  </div>
     </div>
     
-    <hr />
+    <hr class="request-hr" />
     
-    <hr />
+    <div class="row">	
+	  <div class="span3 featured-request-span">
+	    <strong class="">serving {{serving_size}}</strong>
+	  </div>
 
-{{serving_size}}
-{{time_in_min}}
-{{description}}
+	  <div class="span3">
+		<strong class="featured-request-text pull-right">taking {{time_in_min}} minutes</strong>
+	  </div>
+    </div>
+    
+    <hr class="request-hr" />
 
-{{#each primary_ingredients}}
-{{this}}
-{{/each}}}
-{{#each restrictions}}
-{{this}}
-{{/each}}
-{{#each course}}
-{{this}}
-{{/each}}}
-{{#each cuisine}}
-{{this}}
-{{/each}}
-
+	<div class="row">
+	  <div class="span6 featured-request-span">
+      {{description}}
+      </div>
+    </div>
+    
+    <hr class="request-hr" />
+    
+	<div class="row">
+	  <div class="span6 featured-request-span">
+        {{#each primary_ingredients}}
+		<a class="btn btn-clearblue btn-tags">{{this}}</a>
+        {{/each}}
+        {{#each restrictions}}
+		<a class="btn btn-clearblue btn-tags">{{this}}</a>
+        {{/each}}
+        {{#each course}}
+		<a class="btn btn-clearblue btn-tags">{{this}}</a>
+        {{/each}}
+        {{#each cuisine}}
+		<a class="btn btn-clearblue btn-tags">{{this}}</a>
+        {{/each}}
+	  </div>
+    </div>
 
 </script>
 {% endverbatim %}

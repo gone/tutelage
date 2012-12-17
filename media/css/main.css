@@ -6956,8 +6956,10 @@ btn-avatar {
   height: 300px;
 }
 
-#featuredrequest > hr {
-  margin: 10px 0px !important;
+.request-hr {
+  margin: 10px -10px 0px -10px !important;
+  display: inline-block;
+  width: 460px;
 }
 
 .request-links {
@@ -6985,13 +6987,13 @@ btn-avatar {
   margin: 5px 0px 0px 10px !important;
 }
 
-.featured-request-pot {
+.featured-request-text {
   padding-top: 5px;
 }
 
 .request-margin {
   margin-left: -20px;
-  height: 20px;
+  height: 10px;
   width: 480px;
   background-color: lightgrey;
 }
@@ -7007,7 +7009,12 @@ btn-avatar {
   max-width: 155px;
 }
 
-.request-contribute, .request-contribute-input {
+.request-contribute {
+  display: inline;
+  margin-left: 10px;
+}
+
+.request-contribute-input {
   display: inline;
   margin: 0px 10px;
 }
@@ -7015,6 +7022,40 @@ btn-avatar {
 .request-contribute-price {
   padding-right: 5px;
   text-align: right;
+}
+
+.request-form-field {
+  padding-bottom: 5px;
+}
+
+.request-form-description textarea {
+  height: 70px;
+  width: 445px;
+}
+
+.request-form-field label {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.request-input {
+  width: 200px;
+}
+
+.request-form-field ul {
+  display: inline-block;
+  margin: 0px 0px 10px 0px;
+}
+
+.request-form-field ul li {
+  display: inline-block;
+  list-style-type: none !important;
+}
+
+.request-form-buttons {
+  margin-top: 15px;
 }
 
 /* Z-INDEX */

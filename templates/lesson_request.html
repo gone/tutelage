@@ -2,17 +2,15 @@
     <form id="request-form" class="request-form" action="{% url ask_form %}" method="post">
         {% csrf_token %}
         <div class="row">
-            <div class="span2">
-                Ask Your Own Request
+            <div class="span6">
+                <h4 class="no-margin">Ask Your Own Request</h4>
             </div>
         </div>
+        
+        <hr class="request-hr" />
+        
         <div class="row">
-            <div class="span3">
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="span3">
+            <div class="span3 request-form-field">
                 {{request_form.title.label_tag}}
 			    <input name="{{request_form.title.html_name}}"
                    class="request-input"
@@ -24,67 +22,72 @@
                    />
                    {{request_form.title.errors}}
             </div>
-            <div class="span3">
+            <div class="span3 request-form-field">
                 {{request_form.kind.label_tag}}
                 {{request_form.kind}}
                 {{request_form.kind.errors}}
             </div>
-            <div class="span3">
+		</div>
+		
+        <div class="row">
+            <div class="span3 request-form-field">
                 {{request_form.restrictions.label_tag}}
                 {{request_form.restrictions}}
                 {{request_form.restrictions.errors}}
             </div>
-            <div class="span3">
-                {{request_form.category.label_tag}}
-                {{request_form.category}}
-                {{request_form.category.errors}}
+            <div class="span3 request-form-field">
+                {{request_form.cuisine.label_tag}}
+                {{request_form.cuisine}}
+                {{request_form.cuisine.errors}}
             </div>
-            <div class="span3">
-                {{request_form.cusinse.label_tag}}
-                {{request_form.cusine}}
-                {{request_form.cusine.errors}}
-            </div>
-            <div class="span3">
+            <div class="span3 request-form-field">
                 {{request_form.course.label_tag}}
                 {{request_form.course}}
                 {{request_form.course.errors}}
             </div>
-            <div class="span3">
+            <div class="span3 request-form-field">
                 {{request_form.primary_ingredients.label_tag}}
                 {{request_form.primary_ingredients}}
                 {{request_form.primary_ingredients.errors}}
             </div>
-            <div class="span3">
+            <div class="span3 request-form-field">
                 {{request_form.time_in_min.label_tag}}
                 {{request_form.time_in_min}}
                 {{request_form.time_in_min.errors}}
             </div>
-            <div class="span3">
+            <div class="span3 request-form-field">
                 {{request_form.serving_size.label_tag}}
                 {{request_form.serving_size}}
                 {{request_form.serving_size.errors}}
             </div>
-            <div class="span3">
+            <div class="span6 request-form-field request-form-description">
                 {{request_form.description.label_tag}}
                 {{request_form.description}}
                 {{request_form.description.errors}}
             </div>
-            <div class="span3">
+            <div class="span3 request-form-field">
                 {{request_form.need_by.label_tag}}
                 {{request_form.need_by}}
                 {{request_form.need_by.errors}}
             </div>
-            <div class="span3">
+            <div class="span3 request-form-field">
                 {{request_form.initial.label_tag}}
                 {{request_form.initial}}
                 {{request_form.initial.errors}}
             </div>
-            <div class="span3">
+        </div>
+        
+        <div class="row">
+          <div class="span2 request-form-field">
                 {{request_form.email.label_tag}}
                 {{request_form.email}}
+                Email me updates
                 {{request_form.email.errors}}
-            </div>
-        </div>
-        <input type="submit" value="submit">
+          </div>
+          <div class="span4 request-form-field request-form-buttons pull-right">
+			<a href="{% url ask %}" class="btn btn-white">return to requests</a>
+			<input type="submit" value="submit" class="btn btn-green pull-right">
+		  </div>
+		</div>
         </form>
     </div>
