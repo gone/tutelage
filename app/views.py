@@ -196,11 +196,19 @@ def purchase(request, lesson_id):
 def cheflist(request):
     pass
 
+@login_required
+def ask_form(request):
+    if request.method == "POST":
+        form = LessonRequestForm(request, request.POST)
+        if form.is_valid():
+            lesson_request = form.save()
+            return HttpResponseRedirect(reverse("ask", kwargs={'slug':lesson_request.slug}))
+
+    form = LessonRequestForm(request, request.POST)
+    return direct_to_template(request, "lesson_request_standalone.html", {"request_form": form})
+
+
 def ask(request, slug=None):
-    if request.method =="POST":
-        pass
-
-
     all_lesson_requests = LessonRequest.objects.filter(active=True)
     req_paginator = Paginator(all_lesson_requests, 16)
     req_page = request.GET.get('page')
