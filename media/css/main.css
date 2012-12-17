@@ -6440,9 +6440,9 @@ textarea {
 }
 
 .panel-item {
-  background-color: rgba(255, 255, 255, 0.7);
   height: 28px;
-  width: 220px;
+  min-width: 100px;
+  max-width: 220px;
   cursor: pointer;
 }
 
@@ -6454,8 +6454,8 @@ textarea {
   position: absolute;
   padding: 3px;
   height: 28px;
-  width: 170px;
   color: black !important;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .lesson-icon-ingredients-text {
@@ -6944,6 +6944,12 @@ btn-avatar {
   text-align: center;
 }
 
+#request-details {
+  border-right: 1px solid lightgrey;
+  margin-left: 19px !important;
+  height: 300px;
+}
+
 .request-links {
   padding-top: 5px;
 }
@@ -6953,7 +6959,23 @@ btn-avatar {
   overflow: hidden;
   margin-left: 10px !important;
   padding: 5px 10px 10px 0px;
+  /*border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;*/
+}
+
+.request-first {
+  border-top: none;
+}
+
+.request-last {
   border-bottom: 1px solid lightgrey;
+}
+
+.request-margin {
+  margin-left: -20px;
+  height: 20px;
+  width: 480px;
+  background-color: lightgrey;
 }
 
 .ask-pot, .attatchedchef {

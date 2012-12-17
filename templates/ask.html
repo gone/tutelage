@@ -63,7 +63,7 @@ $()
     
       <div class="span6 request-links">
         Still looking? <a href="#" class="btn btn-green">create a request</a> 
-        or check out our <a href="{% url lessons %}" class="btn btn-blue">lessons</a>
+        <a href="{% url lessons %}" class="btn btn-blue"> view lessons</a>
       </div>
     </div>
   </div>
@@ -71,13 +71,28 @@ $()
 
 
 <div class="bordered-row bordered">
-  <div class="span6"></div>
-  <div class="span6">
+  <div id="request-details" class="span6">
+    <div class="row">
+		  <div class="span4 lesson-title">
+			<a class="green reqtitle"><h3 class="no-margin">[Title]</h3></a>
+		  </div>
+		  
+		  <div class="span2">
+			<h4 class="ask-pot no-margin pull-right">$[] in pot</h4>
+		  </div>
+    </div>
+  </div>
+  <div id="requests-list" class="span6">
    {% for req in lesson_requests %}
    <span class="lessonrequest" data-slug="{{req.slug}}">
-   <div class="row">  
+   <div class="row">
+	{% if forloop.first %}
+	<div class="span6 request request-first">
+	{% elif forloop.last %}
+	<div class="span6 request request-last">
+	{% else %}
 	<div class="span6 request">
-	  
+	{% endif %}    
  	  <div class="row">
 		  <div class="span4 lesson-title">
 			<a class="green reqtitle"><h3 class="no-margin">{{req.title}}</h3></a>
@@ -104,6 +119,10 @@ $()
     </div>
    </div>
    </span>
+   {% if forloop.last %}
+   {% else %}
+	<div class="span6 request-margin"></div>
+   {% endif %}  
    {% endfor %}
   </div>
 </div>	

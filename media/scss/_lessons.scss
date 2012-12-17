@@ -144,9 +144,10 @@
 }
 
 .panel-item {
-	 background-color: rgba(255, 255, 255, 0.7);
+	 
 	 height:28px;
-	 width: 220px;
+	 min-width: 100px;
+	 max-width: 220px;
      cursor: pointer;
 }
 
@@ -162,8 +163,9 @@
 	position: absolute;
 	padding: 3px;
 	height: 28px;
-	width: 170px;
+	
 	color: black !important;
+	background-color: rgba(255, 255, 255, 0.7);
 }
 
 .lesson-icon-ingredients-text {

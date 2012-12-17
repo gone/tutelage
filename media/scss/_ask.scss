@@ -1,3 +1,9 @@
+#request-details {
+	border-right: 1px solid $border-color;
+	margin-left: 19px !important;
+	height: 300px;
+}
+
 .request-links {
 	padding-top: 5px;
 }
@@ -7,7 +13,23 @@
 	overflow: hidden;
 	margin-left: 10px !important;
 	padding: 5px 10px 10px 0px;
+	/*border-top: 1px solid $border-color;
+	border-bottom: 1px solid $border-color;*/
+}
+
+.request-first {
+	border-top: none;
+}
+
+.request-last {
 	border-bottom: 1px solid $border-color;
+}
+
+.request-margin {
+	margin-left: -20px;
+	height: 20px;
+	width: 480px;
+	background-color: $border-color;
 }
 
 .ask-pot, .attatchedchef {

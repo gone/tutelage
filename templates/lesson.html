@@ -51,14 +51,14 @@
 				  
                   <div id="ingredient" class="span4 no-margin lesson-panel">
                       {% for ingredient in step.ingredients.all %}
-                        <div class='panel-item ingredient ingredient{{forloop.counter}}'>
+                        <span class='panel-item ingredient ingredient{{forloop.counter}}'>
                              <div class='lesson-icon-text lesson-icon-ingredients-text'>
                                <strong>{{ingredient.number}} {{ingredient.measurement}} {{ingredient.prep}} {{ingredient.ingredient.name}}</strong>
                              </div>
                              <div class='lesson-icon-circle lesson-icon-circle-ingredients'>
                                <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{ingredient.name}}' />
                              </div>
-                         </div>
+                         </span>
                       {% endfor %}
                   </div>
 
