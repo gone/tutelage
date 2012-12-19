@@ -7805,6 +7805,16 @@ body .ui-tooltip {
   background-image: linear-gradient(#ffffff, #ffffff);
 }
 
+.navbar .brand {
+  padding: 0px;
+  margin: 7px 0px 7px -13px;
+}
+
+.navbar-logo {
+  height: 50px;
+  width: 150px;
+}
+
 .footer {
   height: 40px;
   width: 960px;
@@ -8393,7 +8403,6 @@ body .ui-tooltip {
 }
 
 .login-text {
-  text-align: right;
   margin-top: 20px;
 }
 
