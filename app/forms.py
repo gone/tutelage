@@ -1,7 +1,7 @@
 import decimal
 
 from django import forms
-from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge
+from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge, Step
 from .constants import SKILL_LEVELS
 #from ajax_select.fields import AutoCompleteSelectMultipleField
 
@@ -62,9 +62,19 @@ class IngredentsDetailsForm(forms.ModelForm):
         model = LessonIngredient
         fields =  ("number","ingredient", "number", "measurement", "prep")
 
-class StepDetailsForm(forms.Form):
-    pass
+class StepDetailsForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        rv = super(StepDetailsForm, self).__init__(*args, **kwargs)
+        try:
+            self.fields['tools'].queryset = self.instance.lesson.tools.all()
+            self.fields['ingredients'].queryset = self.instance.lesson.ingredients.all()
+        except:
+            self.fields['tools'].queryset = self.initial['lesson'].tools.all()
+            self.fields['ingredients'].queryset = self.initial['lesson'].ingredients.all()
+        return rv
 
+    class Meta:
+        model = Step
 
 
 class LessonRequestForm(forms.ModelForm):
