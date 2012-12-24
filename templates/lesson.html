@@ -117,10 +117,77 @@
 <div class="lesson-components row no-display">
   {% for step in lesson.steps.all %}
   {% for ingredient in step.ingredients.all %}
-  <div id="ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}" class="lightbox ingredient-lightbox">
+  <div id="ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}" class="lightbox product-lightbox">
      <!-- {{ingredient.number}} -->
-     {{ingredient.measurement}} {{ingredient.prep}} {{ingredient.ingredient.name}} 
-     <img src="{{MEDIA_URL}}{{ingredient.ingredient.image}}" />
+      
+     <div class="row">
+        <div class="span2">
+            <img class="product-image" src="{{MEDIA_URL}}{{ingredient.ingredient.image}}" />
+        </div>
+        <div class="span4">
+            <div class="row">
+                <div class="span4">
+                    <h4>{{ingredient.ingredient.name}}</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span4">
+                    <div class="lesson-icon-circle lesson-icon-circle-products">
+                        <div class="span3 product-category"><strong>{{ingredient.ingredient.category}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span4">
+                    <p class=""><em>{{ingredient.measurement}} {{ingredient.prep}}</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr class="lightbox-hr">
+    
+    <div class="row">
+        <div class="span4">{{ingredient.ingredient.description}}</div>
+        <div class="span2"><strong>Substitutions</strong>
+            <li>{{ingredient.ingredient.substitution1}}</li>
+            <li>{{ingredient.ingredient.substitution2}}</li>
+        </div>
+    </div>
+    
+    <hr class="lightbox-hr">
+    
+    <div class="row">
+        <div class="span4">Try <em>{{ingredient.ingredient.name}}</em> recommended by our chefs</div>
+        <div class="span2">
+            <a class="item-buy-button" href="{{ingredient.ingredient.product_link}}"
+            target="_blank">Purchase</a>
+        </div>
+    </div>
+    
+    <hr class="lightbox-hr">
+    
+    <div class="row">
+        <div class="span2">
+            <div class="item-info">
+                <a href="http://www.thefairtradewinecompany.com/varietals/chenin-blanc"
+                target="_blank">
+                    <img class="item-image-ad" src="{{STATIC_URL}}img/fairtrade-wine.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="span4">
+            <p>Consider pairing <em>The Fair Trade Wine Company Chenin Blanc</em> with
+                your <em>Citrus Vinaigrette Salad</em> and support sustainability. This South
+                African wine offers a superb balance between bright acidity and sweetness.</p>
+            <a
+            class="item-ad-buy-button" href="http://shop.barrelcavewines.com/Fair-Trade-Wine-Company-Chenin-Blanc-FT1003.htm"
+            target="_blank">Try it today</a>
+        </div>
+    </div>
+    
   </div>
   {% endfor %}
   

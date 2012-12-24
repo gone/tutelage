@@ -175,6 +175,10 @@ input[type="submit"]{
 	padding-bottom: 4px;
 }
 
+.lightbox-hr {
+    margin: 10px 0px !important;
+}
+
 .testimonial, .block-quote {
 	height: 70px;
 }
@@ -187,6 +191,7 @@ input[type="submit"]{
 textarea {
 	resize: none;
 }
+
 @import "jquery-ui";
 @import "colorbox";
 @import "local_navbar";

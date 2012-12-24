@@ -108,7 +108,13 @@ class FeaturedChef(Displayable):
 
 class Ingredient(CreatedMixin):
     name = models.CharField(max_length=32, null=False)
-
+    image = models.ImageField(upload_to=file_url("ingredient_images"), null=True, blank=True)
+    category = models.CharField(max_length=32, null=True, blank=True)
+    description = models.CharField(max_length=255, null=True, blank=True)
+    substitution1 = models.CharField(max_length=32, null=True, blank=True)
+    substitution2 = models.CharField(max_length=32, null=True, blank=True)
+    product_link = models.URLField(max_length=255, null=True, blank=True)
+    
     def __unicode__(self):
         return self.name
 
@@ -120,13 +126,19 @@ class LessonIngredient(CreatedMixin):
     prep = models.CharField(max_length=32, blank=True)
 
     def __unicode__(self):
-        return "%s %s of %s" % (self.number, self.measurement, self.ingredient)
+        return "%s %s %s" % (self.number, self.measurement, self.ingredient)
 
 
 class Tool(CreatedMixin):
     name = models.CharField(max_length=32, null=False)
-    size = models.CharField(max_length=32, null=False)
-    type = models.CharField(max_length=32)
+    size = models.CharField(max_length=32, null=True, default="")
+    type = models.CharField(max_length=32, null=True, default="")
+    image = models.ImageField(upload_to=file_url("tool_images"), null=True, blank=True)
+    category = models.CharField(max_length=32, null=True, blank=True)
+    description = models.CharField(max_length=255, null=True, blank=True)
+    substitution1 = models.CharField(max_length=32, null=True, blank=True)
+    substitution2 = models.CharField(max_length=32, null=True, blank=True)
+    product_link = models.URLField(max_length=255, null=True, blank=True)
 
     def __unicode__(self):
         return self.name
