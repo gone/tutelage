@@ -318,6 +318,14 @@ class Lesson(CreatedMixin, Displayable):
 
 
 class Step(CreatedMixin):
+
+
+    def get_ingredient_set(self):
+        return self.lesson.ingredients.all().values('pk')
+
+    def get_tools_set(self):
+        return self.lesson.tools.all().values('pk')
+
     lesson = models.ForeignKey(Lesson, related_name='steps')
     title = models.CharField(max_length=128, blank=False, null=False)
 
@@ -329,6 +337,8 @@ class Step(CreatedMixin):
     tools = models.ManyToManyField(Tool, related_name="steps", blank=True)
 
     picture = models.ImageField(upload_to=file_url(""))
+
+
 
     class Meta():
         ordering = ('order',)

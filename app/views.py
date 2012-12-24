@@ -174,17 +174,19 @@ def lesson_steps(request, lesson_id=None):
     if request.user != lesson.teacher:
         raise PermissionDenied
 
-    StepFormset = inlineformset_factory(Lesson, Step, extra=1)
+    StepFormset = inlineformset_factory(Lesson, Step, extra=1, form=StepDetailsForm)
     if request.method == "POST":
-        step_formset = StepFormset(request.POST, request.FILES, queryset=lesson.steps.all(), instance=lesson)
+        step_formset = StepFormset(request.POST, request.FILES, queryset=lesson.steps.all(), instance=lesson, initial=[{'lesson': lesson}])
+
+
+
         if step_formset.is_valid():
             steps = step_formset.save()
             for step in steps:
                 lesson.steps.add(step)
             return HttpResponseRedirect(reverse("mylessons", args=[request.user.id]))
     else:
-        step_formset = StepFormset(queryset=lesson.steps.all(), instance=lesson)
-
+        step_formset = StepFormset(queryset=lesson.steps.all(), instance=lesson, initial=[{'lesson': lesson}])
     return direct_to_template(request, "step_details_form.html", {"form": step_formset, "lesson": lesson,})
 
 @login_required
