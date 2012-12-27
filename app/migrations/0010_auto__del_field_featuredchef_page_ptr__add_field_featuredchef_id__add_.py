@@ -13,22 +13,22 @@ class Migration(SchemaMigration):
 
         # Adding field 'FeaturedChef.id'
         db.add_column('app_featuredchef', 'id',
-                      self.gf('django.db.models.fields.AutoField')(default='', primary_key=True),
+                      self.gf('django.db.models.fields.AutoField')(default='', primary_key=True, blank=True, null=True,),
                       keep_default=False)
 
         # Adding field 'FeaturedChef.keywords_string'
         db.add_column('app_featuredchef', 'keywords_string',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=500, blank=True),
+                      self.gf('django.db.models.fields.CharField')(default='', max_length=500, blank=True, null=True,),
                       keep_default=False)
 
         # Adding field 'FeaturedChef.site'
         db.add_column('app_featuredchef', 'site',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['sites.Site']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['sites.Site'], null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'FeaturedChef.title'
         db.add_column('app_featuredchef', 'title',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=500),
+                      self.gf('django.db.models.fields.CharField')(default='', max_length=500, null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'FeaturedChef.slug'
@@ -53,7 +53,7 @@ class Migration(SchemaMigration):
 
         # Adding field 'FeaturedChef.status'
         db.add_column('app_featuredchef', 'status',
-                      self.gf('django.db.models.fields.IntegerField')(default=),
+                      self.gf('django.db.models.fields.IntegerField')(default="", blank=True, null=True,),
                       keep_default=False)
 
         # Adding field 'FeaturedChef.publish_date'
