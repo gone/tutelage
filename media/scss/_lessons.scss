@@ -331,7 +331,8 @@
 }
 
 .product-lightbox {
-    padding: 10px;
+    width: 460px;
+    padding: 0px;
 }
 
 .product-image {
@@ -371,7 +372,7 @@
     margin: -4px 0px 0px 10px;
 }
 
-.item-buy-button:hover, .item-buy-button:active, .item-ad-buy_button:hover, .item-ad-buy-button:active {
+.item-buy-button:hover, .item-buy-button:active, .item-ad-buy-button:hover, .item-ad-buy-button:active {
 	cursor: pointer;
     background-color: #21a1c9 !important;
 	color: white !important;

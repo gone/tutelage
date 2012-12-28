@@ -296,11 +296,11 @@
 pagelogic = function(){
     {% for step in lesson.steps.all %}
     {% for ingredient in step.ingredients.all %}
-    $(".ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"50%", href:"#ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
+    $(".ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"480px", href:"#ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
     {% endfor %}
     
     {% for tool in step.tools.all %}
-    $(".tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"50%", href:"#tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
+    $(".tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"480px", href:"#tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
     {% endfor %}
     {% endfor %}
     
