@@ -11,15 +11,15 @@
 			<h3 class="pull-right">${{lesson.price|default:"0"}}</h3>
 		  </div>
       </div>
-      
+
       <div class="row">
         <br />
       </div>
-      
+
       <div class="row">
         <span id="lesson-full-desc" class="span6">{{lesson.flavor_text}}</span>
       </div>
-      
+
       <div class="row">
         <br />
       </div>
@@ -37,18 +37,18 @@
           <li>Cooking: {{lesson.cook_in_min}} minutes</li>
         </ul>
       </div>
-	  
+
 	  <div class="row">
         <br />
         <br />
       </div>
-	  
+
 	  <div class="row">
 	  <div class="span3">
         {% include "rating.html" with lesson=lesson%}
 	  </div>
 	  </div>
-	  
+
 	  <div class="row">
         <br />
       </div>
@@ -67,21 +67,21 @@
     <div class="span5">
 	  <div class="row">
 		<h3 class="right-padding pull-right">by Chef&#160;<a class="green miniprofile-btn" href="{% url miniprofile lesson.teacher.id %}">{{lesson.teacher.get_full_name|title}}</a></h3>
-        
+
 		<div id="lesson-photo" class="span5">
 		  <img src={{MEDIA_URL}}{{lesson.image}} />
 		</div>
 	  </div>
-      
+
 	  <div class="row">
         <br />
       </div>
-      	
+
       <div class="row">
         <div class="span2">
    	      <a class="btn btn-white pull-left" href="{% url lessons %}"><small>back to lessons</small></a>
 		</div>
-		
+
 		<div class="span2 right-padding pull-right">
 	      <a class="btn btn-green pull-right" href="{% url lesson lesson.id %}">View Lesson</a>
 	    </div>
@@ -104,8 +104,8 @@
     <div class="span3">
  	  <h5>Ingredients</h5>
  	  <ul class="lesson-list">
-        {% for i in lesson.ingredients.all %}
- 	    <li><img src="../../static/img/lesson-details-icon.png" />{{i.number}} <em>{{i.measurement}} </em>{{i.name}}<em> {{i.prep}}</em></li>
+        {% for i in lesson.ingredients.all.distinct %}
+ 	    <li><img src="../../static/img/lesson-details-icon.png" />{{i.number}} <em>{{i.measurement}} </em>{{i.name}}<em>, {{i.prep}}</em></li>
         {% endfor %}
  	  </ul>
     </div>
@@ -113,8 +113,8 @@
     <div class="span3">
 	  <h5>Tools</h5>
  	  <ul class="lesson-list">
-        {% for i in lesson.tools.all %}
- 	    <li><img src="../../static/img/lesson-details-icon.png" /><em>{{i.size}} </em>{{i.name}}<em> {{i.type}}</em></li>
+        {% for l in lesson.tools.all %}
+ 	    <li><img src="../../static/img/lesson-details-icon.png" /><em>{{l.size}} </em>{{l.name}}<em>, {{l.type}}</em></li>
         {% endfor %}
  	  </ul>
     </div>
@@ -128,7 +128,7 @@
         {% endfor %}
         {% endfor %}
  	  </ul>
-    </div>	
-	
+    </div>
+
 </div>
 {% endblock %}
