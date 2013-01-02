@@ -118,6 +118,8 @@ $nav-padding: 5px;
     background-image: -webkit-linear-gradient(top, white, white);
     background-image: -o-linear-gradient(top, white, white);
     background-image: linear-gradient(white, white);
+    filter: none;
+    -ms-filter: none;
 }
 
 .navbar .brand {
