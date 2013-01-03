@@ -20,7 +20,9 @@ body {
 @mixin colored-button($color,$border-color:$color,$text-color:white){
     background-color: $color !important;
     background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color", endColorstr="$color");
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color', endColorstr='$color');*/
+    -ms-filter: none;
+    filter: none;
     background-image: -khtml-gradient(linear, left top, left bottom, from($color), to($color));
     background-image: -moz-linear-gradient(top, $color, $color);
     background-image: -ms-linear-gradient(top, $color, $color);

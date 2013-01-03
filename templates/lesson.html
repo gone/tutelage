@@ -78,7 +78,7 @@
                     <div id="tools" class="lesson-panel">
                       {% for tool in step.tools.all %}
                           <div class='panel-item tool tool{{forloop.counter}} tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}'>
-							<div class='lesson-icon-circle lesson-icon-circle-tools'>
+							<div class='lesson-icon-circle lesson-icon-circle-tools lesson-icon-circle-tool{{forloop.counter}}'>
 							</div>
                             <div class='lesson-icon-text lesson-icon-tools-text'>
                               <strong>{{tool.size}} {{tool.type}} {{tool.name}}</strong>
@@ -296,11 +296,11 @@
 pagelogic = function(){
     {% for step in lesson.steps.all %}
     {% for ingredient in step.ingredients.all %}
-    $(".ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"50%", href:"#ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
+    $(".ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"480px", href:"#ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
     {% endfor %}
     
     {% for tool in step.tools.all %}
-    $(".tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"50%", href:"#tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
+    $(".tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"480px", href:"#tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
     {% endfor %}
     {% endfor %}
     
@@ -322,30 +322,5 @@ pagelogic = function(){
         
 };
 </script>
-
-<!--
- <div id="lesson-wrapper" class="row"> -->
-<!--     <div class="span4 no-margin"> -->
-<!--       <div id="step_text" class="lesson-wrapper-overlay"><strong id="step_title"></strong></div> -->
-
-<!--       <div id="ingredient" class="lesson-panel"></div> -->
-<!-- 	</div> -->
-
-<!-- 	<div class="span4 pull-right"> -->
-<!--       <div id="tools" class="lesson-panel"></div> -->
-<!-- 	</div> -->
-
-<!-- 	<div id="step_buttons" class="no-display"> -->
-<!--     <a href="#" class="tools">Tools</a> -->
-<!--     <a href="#" id="ingredient-1" class="ingredients">Ingredients</a> -->
-<!-- 	</div> -->
-
-<!--     <div class="no-display"> -->
-<!--     <div id="tools-0"></div> -->
-<!--     <div id="ingredient-0"></div> -->
-<!--     </div> -->
-
-<!-- </div> -->
-
 
 {% endblock %}

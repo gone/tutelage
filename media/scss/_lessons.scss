@@ -177,7 +177,7 @@
 }
 
 .lesson-icon-tools-text {
-	margin: 0px -10px 0px 0px !important;
+    margin: 5px 25px 0px 0px !important;
 	padding: 5px 20px 0px 10px;
 	text-align: left;
 	float: right;
@@ -196,9 +196,7 @@
 }
 
 .lesson-icon-circle-tools {
-	display: inline-block;
-	margin: -4px 0px 0px 0px;
-	float: right;
+    position: absolute;
 }
 
 .lessonimages {
@@ -270,6 +268,34 @@
 	@include tool(15px,10px)
 }
 
+.lesson-icon-circle-tool1 {
+    right: 5px;
+}
+
+.lesson-icon-circle-tool2 {
+    right: 25px;
+}
+
+.lesson-icon-circle-tool3 {
+    right: 35px;
+}
+
+.lesson-icon-circle-tool4 {
+    right: 45px;
+}
+
+.lesson-icon-circle-tool5 {
+    right: 35px;
+}
+
+.lesson-icon-circle-tool6 {
+    right: 25px;
+}
+
+.lesson-icon-circle-tool7 {
+    right: 5px;
+}
+
 #lesson-timeline {
 	height: 84px;
 	width: 962px;
@@ -285,6 +311,7 @@
 .lesson-nav-btn-top-left {
 	position: absolute;
 	bottom: 0;
+    left: 0;
 	margin: 0px 0px -2px -6px;
 	padding: 28px 5px !important;
 }
@@ -331,7 +358,8 @@
 }
 
 .product-lightbox {
-    padding: 10px;
+    width: 460px;
+    padding: 0px;
 }
 
 .product-image {
@@ -371,7 +399,7 @@
     margin: -4px 0px 0px 10px;
 }
 
-.item-buy-button:hover, .item-buy-button:active, .item-ad-buy_button:hover, .item-ad-buy-button:active {
+.item-buy-button:hover, .item-buy-button:active, .item-ad-buy-button:hover, .item-ad-buy-button:active {
 	cursor: pointer;
     background-color: #21a1c9 !important;
 	color: white !important;
