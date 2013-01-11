@@ -144,7 +144,7 @@
 
 <div class="bordered-row bordered">
     <div class="span6">
-	  
+
       <div class="btn-group chef-lesson-btn-group">
 		<a class="chef-lesson-nav-icon vertical-align" href="#lessons" data-slide="prev">
 		  <img class="lesson-nav-icon-left" src="{{STATIC_URL}}img/carousel-left.png" />
@@ -153,9 +153,9 @@
 		  <img class="lesson-nav-icon-right" src="{{STATIC_URL}}img/carousel-right.png" />
 		</a>
 		<h4 class="chef-profile-lessons-title">Chef {{u.get_full_name|title}}'s Lessons</h4>
-	  </div>  
+	  </div>
 	</div>
-	
+
 	<div class="span6">
         <div class="colored_header">
           <h4>Active Requests</h4>
@@ -164,11 +164,11 @@
 </div>
 
 <div class="bordered-row bordered">
-    <div class="span6">	  
+    <div class="span6">
       <div class="row">
         <div id="lessons" class="carousel slide">
             <div class="carousel-inner">
-                {% for lesson in u.lessons.all %}
+                {% for lesson in u.teaching.all %}
                 {% if forloop.first %}
                 <div class="active item">
                 {% else %}
@@ -178,12 +178,12 @@
                 {% include "lesson_tile.html" with lesson=lesson %}
                 </div>
                 {% endfor %}
-            </div>            
+            </div>
         </div>
       </div>
     </div>
 
-    
+
 </div>
 
 
