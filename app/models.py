@@ -114,7 +114,7 @@ class Ingredient(CreatedMixin):
     substitution1 = models.CharField(max_length=32, null=True, blank=True)
     substitution2 = models.CharField(max_length=32, null=True, blank=True)
     product_link = models.URLField(max_length=255, null=True, blank=True)
-    
+
     def __unicode__(self):
         return self.name
 
