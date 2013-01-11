@@ -86,9 +86,9 @@
 {% endverbatim %}
 
 <script type="text/javascript">
-require(['common',], function(){
+require(['./common',], function(){
     require(['cs!colorboxcommon', 'liveValidation', 'handlebars'], function(cc){
-        source = $("#featured-request-templ").html();
+        source = $("#featbured-request-templ").html();
         template = Handlebars.compile(source);
 
         function switchDisplay(slug){
