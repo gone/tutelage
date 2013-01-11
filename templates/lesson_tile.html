@@ -36,8 +36,8 @@
 			</div>
 			<ul class="lesson-tile-info">
               <li>Serves: {{lesson.serving_size}}</li>
-			  <li>Prep Time: {{lesson.prep_in_min}} minutes</li>
-			  <li>Cooking Time: {{lesson.cook_in_min}} minutes</li>
+			  <li>Prep Time: {{lesson.prep_in_min}} minute{{lesson.prep_in_min|pluralize}}</li>
+			  <li>Cooking Time: {{lesson.cook_in_min}} minute{{lesson.cook_in_min|pluralize}}</li>
             </ul>
 		</div>
       </div>
