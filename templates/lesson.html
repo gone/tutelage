@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %} {{lesson.title}}{% endblock %}
 
 {% block media %}
                 <script type="text/javascript">
@@ -21,23 +22,23 @@
                 {% else %}
                 <div class="item">
                 {% endif %}
-				  
-				  
+
+
 				  <img class="lesson-picture" src="{{MEDIA_URL}}{{step.picture}}" />
                   <div class="step-text no-margin lesson-wrapper-overlay">
 					<a class="lesson-nav-btn-top-left" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
-					<a class="lesson-nav-btn-top-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>  
-					
+					<a class="lesson-nav-btn-top-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>
+
 					{% if forloop.first %}
 					<div class="step-title span6">{{step.title}}</div>
 					{% else %}
 					<div class="step-title span6">Step {{step.order}}: {{step.title}}</div>
 					{% endif %}
-					
+
 					<div class="step-technique span5">
 					    {% for tech in step.technique.all %}
-						<a class="technique-{{forloop.parentloop.counter0}} step-technique-text step-title blue pull-right">Watch 
-						  <img class="technique-play-icon" src="{{STATIC_URL}}img/play-button-blue.png" /> 
+						<a class="technique-{{forloop.parentloop.counter0}} step-technique-text step-title blue pull-right">Watch
+						  <img class="technique-play-icon" src="{{STATIC_URL}}img/play-button-blue.png" />
 						  {{tech.title}}</a>
 						<!-- this should likely be moved somewhere else -->
 						<div class="row no-display video-row">
@@ -51,14 +52,14 @@
 						  </video>
 						</div>
 						{% endfor %}
-					</div>			
-					
+					</div>
+
 					<div class="step-description span12">{{step.text}}</div>
 				  </div>
-				  
+
                   <div id="ingredient" class="span4 no-margin lesson-panel">
                       {% for ingredient in step.ingredients.all %}
-                        <div class='panel-item ingredient ingredient{{forloop.counter}} ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}'> 
+                        <div class='panel-item ingredient ingredient{{forloop.counter}} ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}'>
                              <div class='lesson-icon-text lesson-icon-ingredients-text'>
                                <strong>
                                  <!-- taking out until fractions can be displayed {{ingredient.number}} -->
@@ -93,11 +94,11 @@
 
                 </div>
                 {% endfor %}
-            </div>           
+            </div>
         </div>
 	  </div>
-	  
-      
+
+
 	  <div class="row no-display">
 	    <div id="lesson-timeline" class="">
 		  <a class="lesson-nav-btn" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
@@ -108,7 +109,7 @@
 		    <img class="lesson-timeline-picture lesson-timeline-picture-active" src="{{MEDIA_URL}}{{step.picture}}"/>
 		    {% else %}
             <img class="lesson-timeline-picture" src="{{MEDIA_URL}}{{step.picture}}" />
-            {% endif %}                  
+            {% endif %}
 		    {% endfor %}
 		  </div>
 	    </div>
@@ -119,7 +120,7 @@
   {% for ingredient in step.ingredients.all %}
   <div id="ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}" class="lightbox product-lightbox">
      <!-- {{ingredient.number}} -->
-      
+
      <div class="row">
         <div class="span2">
             <img class="product-image" src="{{MEDIA_URL}}{{ingredient.ingredient.image}}" />
@@ -146,9 +147,9 @@
             </div>
         </div>
     </div>
-    
+
     <hr class="lightbox-hr">
-    
+
     <div class="row">
         <div class="span4">{{ingredient.ingredient.description}}</div>
         <div class="span2"><strong>Substitutions</strong>
@@ -156,9 +157,9 @@
             <li>{{ingredient.ingredient.substitution2}}</li>
         </div>
     </div>
-    
+
     <hr class="lightbox-hr">
-    
+
     <div class="row">
         <div class="span4">Try <em>{{ingredient.ingredient.name}}</em> recommended by our chefs</div>
         <div class="span2">
@@ -166,9 +167,9 @@
             target="_blank">Purchase</a>
         </div>
     </div>
-    
+
     <hr class="lightbox-hr">
-    
+
     <div class="row">
         <div class="span2">
             <div class="item-info">
@@ -187,10 +188,10 @@
             target="_blank">Try it today</a>
         </div>
     </div>
-    
+
   </div>
   {% endfor %}
-  
+
   {% for tool in step.tools.all %}
   <div id="tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}" class="lightbox product-lightbox">
      <div class="row">
@@ -219,9 +220,9 @@
             </div>
         </div>
     </div>
-    
+
     <hr class="lightbox-hr">
-    
+
     <div class="row">
         <div class="span4">{{tool.description}}</div>
         <div class="span2"><strong>Substitutions</strong>
@@ -229,9 +230,9 @@
             <li>{{tool.substitution2}}</li>
         </div>
     </div>
-    
+
     <hr class="lightbox-hr">
-    
+
     <div class="row">
         <div class="span4">Try <em>{{tool.name}}</em> recommended by our chefs</div>
         <div class="span2">
@@ -239,9 +240,9 @@
             target="_blank">Purchase</a>
         </div>
     </div>
-    
+
     <hr class="lightbox-hr">
-    
+
     <div class="row">
         <div class="span2">
             <div class="item-info">
@@ -260,11 +261,11 @@
             target="_blank">Try it today</a>
         </div>
     </div>
-    
+
   </div>
   {% endfor %}
   {% endfor %}
-  
+
   <div id="lesson-technique-videos">
     <video id="technique-7" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/orange-zesting-screenshot.png" preload="auto" controls="controls">
       <source src="{{STATIC_URL}}videos/orange-zesting-medium.mp4">
@@ -273,7 +274,7 @@
       <!-- fallback  -->
       <p>Your browser does not support HTML5 video.</p>
     </video>
-    
+
     <video id="technique-9" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/apple-cutting-screenshot.png" preload="auto" controls="controls">
       <source src="{{STATIC_URL}}videos/apple-cutting-medium.mp4">
       <source src="{{STATIC_URL}}videos/apple-cutting-medium.ogv">
@@ -281,7 +282,7 @@
       <!-- fallback  -->
       <p>Your browser does not support HTML5 video.</p>
     </video>
-    
+
     <video id="technique-10" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/pomegranate-seeding-screenshot.png" preload="auto" controls="controls">
       <source src="{{STATIC_URL}}videos/pomegranate-seeding-medium.mp4">
       <source src="{{STATIC_URL}}videos/pomegranate-seeding-medium.ogv">
@@ -298,28 +299,28 @@ pagelogic = function(){
     {% for ingredient in step.ingredients.all %}
     $(".ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"480px", href:"#ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
     {% endfor %}
-    
+
     {% for tool in step.tools.all %}
     $(".tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"480px", href:"#tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
     {% endfor %}
     {% endfor %}
-    
+
     {% for step in lesson.steps.all %}
     {% for tech in step.technique.all %}
     $(".technique-{{forloop.parentloop.counter0}}").colorbox({inline:true, width:"50%", href:"#technique-{{forloop.parentloop.counter0}}"});
     {% endfor %}
     {% endfor %}
-    
+
     $(document.documentElement).keyup(function (event) {
       // handle cursor keys
 	  if (event.keyCode == 37 || event.keyCode == 38) {
         $('a.lesson-nav-btn-top-left').trigger('click');
-      } 
+      }
       else if (event.keyCode == 39 || event.keyCode == 40) {
 		$('a.lesson-nav-btn-top-right').trigger('click');
       }
     });
-        
+
 };
 </script>
 
