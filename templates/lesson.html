@@ -99,21 +99,17 @@
 	  </div>
 
 
-	  <div class="row no-display">
+
 	    <div id="lesson-timeline" class="">
 		  <a class="lesson-nav-btn" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
 		  <a class="lesson-nav-btn pull-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>
 		  <div id="lesson-timeline-images">
 		    {% for step in lesson.steps.all %}
-		    {% if forloop.first %}
-		    <img class="lesson-timeline-picture lesson-timeline-picture-active" src="{{MEDIA_URL}}{{step.picture}}"/>
-		    {% else %}
-            <img class="lesson-timeline-picture" src="{{MEDIA_URL}}{{step.picture}}" />
-            {% endif %}
+		       <img class="lesson-timeline-picture{% if forloop.first %} lesson-timeline-picture-active {% endif %}" src="{{MEDIA_URL}}{{step.picture}}"/>
 		    {% endfor %}
 		  </div>
 	    </div>
-	  </div>
+
 
 <div class="lesson-components row no-display">
   {% for step in lesson.steps.all %}
