@@ -2,13 +2,27 @@
 {% block title %} {{lesson.title}}{% endblock %}
 
 {% block media %}
-                <script type="text/javascript">
-                  require(["jquery", "lib/jquery.colorbox-min"], function($){
-                      $(".tech").colorbox({inline:true, width:"50%", href:function(){
-                          return $(this).siblings('.video-row').children('.chef-movie-video');
-                       }
-                    });
-                  });
+<script type="text/javascript">
+        require(['./common',], function(){
+            require(["jquery", "colorbox"], function($){
+                $(".tech").colorbox({
+                    inline:true,
+                    width:"50%",
+                    href:function(){
+                        return $(this).siblings('.video-row').children('.chef-movie-video');
+                    }
+                })
+                $('#myModal').on('show', function (e) {
+                    if (!data) return e.preventDefault() // stops modal from being shown
+                })
+                $('.carousel').on('slid', function (e) {
+                    idx = $('.carousel').find('.active').index()
+                    $('#lesson-timeline-images').children().removeClass('lesson-timeline-picture-active')
+                    to_activate = $('#lesson-timeline-images').children()[idx]
+                    $(to_activate).addClass('lesson-timeline-picture-active')
+                });
+            });
+        });
                 </script>
 {% endblock %}
 
@@ -48,7 +62,8 @@
 							<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" />
 							<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" />
 							<!-- fallback  -->
-							<p>Your browser does not support HTML5 video.</p>
+
+    <p>Your browser does not support HTML5 video.</p>
 						  </video>
 						</div>
 						{% endfor %}
@@ -100,7 +115,7 @@
 
 
 
-	    <div id="lesson-timeline" class="">
+	    <div id="lesson-timeline">
 		  <a class="lesson-nav-btn" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
 		  <a class="lesson-nav-btn pull-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>
 		  <div id="lesson-timeline-images">
