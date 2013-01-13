@@ -79,7 +79,7 @@ class StepDetailsForm(forms.ModelForm):
 
 class LessonRequestForm(forms.ModelForm):
 
-    initial = forms.CharField()
+    initial = forms.CharField(label="Initial Contribution")
     email = forms.BooleanField(required=False)
 
     class Meta:
@@ -103,7 +103,10 @@ class LessonRequestForm(forms.ModelForm):
 
     def __init__(self, request, *args, **kwargs):
         user = self.user = request.user
-        return super(LessonRequestForm, self).__init__(*args, **kwargs)
+        rv =  super(LessonRequestForm, self).__init__(*args, **kwargs)
+        self.fields['kind'].label = "Type"
+        self.fields['title'].label = "Name"
+        return rv
 
     def save(self, *args, **kwargs):
         lesson_request = super(LessonRequestForm, self).save(*args, **kwargs)

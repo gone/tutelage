@@ -104,7 +104,7 @@
     <div class="span3">
  	  <h5>Ingredients</h5>
  	  <ul class="lesson-list">
-        {% for i in lesson.ingredients.all.distinct %}
+        {% for i in lesson.lessoningredient_set.all.distinct %}
  	    <li><img src="../../static/img/lesson-details-icon.png" />{{i.number}} <em>{{i.measurement}} </em>{{i.name}}<em>, {{i.prep}}</em></li>
         {% endfor %}
  	  </ul>

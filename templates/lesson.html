@@ -1,13 +1,28 @@
 {% extends 'base.html' %}
+{% block title %} {{lesson.title}}{% endblock %}
 
 {% block media %}
-                <script type="text/javascript">
-                  require(["jquery", "lib/jquery.colorbox-min"], function($){
-                      $(".tech").colorbox({inline:true, width:"50%", href:function(){
-                          return $(this).siblings('.video-row').children('.chef-movie-video');
-                       }
-                    });
-                  });
+<script type="text/javascript">
+        require(['./common',], function(){
+            require(["jquery", "colorbox"], function($){
+                $(".tech").colorbox({
+                    inline:true,
+                    width:"50%",
+                    href:function(){
+                        return $(this).siblings('.video-row').children('.chef-movie-video');
+                    }
+                })
+                $('#myModal').on('show', function (e) {
+                    if (!data) return e.preventDefault() // stops modal from being shown
+                })
+                $('.carousel').on('slid', function (e) {
+                    idx = $('.carousel').find('.active').index()
+                    $('#lesson-timeline-images').children().removeClass('lesson-timeline-picture-active')
+                    to_activate = $('#lesson-timeline-images').children()[idx]
+                    $(to_activate).addClass('lesson-timeline-picture-active')
+                });
+            });
+        });
                 </script>
 {% endblock %}
 
@@ -91,206 +106,202 @@
                     </div>
                   </div>
 
-                </div>
-                {% endfor %}
-            </div>           
         </div>
-	  </div>
-	  
-      
-	  <div class="row no-display">
-	    <div id="lesson-timeline" class="">
-		  <a class="lesson-nav-btn" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
-		  <a class="lesson-nav-btn pull-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>
-		  <div id="lesson-timeline-images">
-		    {% for step in lesson.steps.all %}
-		    {% if forloop.first %}
-		    <img class="lesson-timeline-picture lesson-timeline-picture-active" src="{{MEDIA_URL}}{{step.picture}}"/>
-		    {% else %}
-            <img class="lesson-timeline-picture" src="{{MEDIA_URL}}{{step.picture}}" />
-            {% endif %}                  
-		    {% endfor %}
-		  </div>
-	    </div>
-	  </div>
-
-<div class="lesson-components row no-display">
-  {% for step in lesson.steps.all %}
-  {% for ingredient in step.ingredients.all %}
-  <div id="ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}" class="lightbox product-lightbox">
-     <!-- {{ingredient.number}} -->
-      
-     <div class="row">
-        <div class="span2">
-            <img class="product-image" src="{{MEDIA_URL}}{{ingredient.ingredient.image}}" />
-        </div>
-        <div class="span4">
-            <div class="row">
-                <div class="span4">
-                    <h4>{{ingredient.ingredient.name}}</h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="span4">
-                    <div class="lesson-icon-circle lesson-icon-circle-products">
-                        <div class="span3 product-category"><strong>{{ingredient.ingredient.category}}</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="span4">
-                    <p class=""><em>{{ingredient.measurement}} {{ingredient.prep}}</em>
-                    </p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
+      </div>
     </div>
-    
-    <hr class="lightbox-hr">
-    
-    <div class="row">
-        <div class="span4">{{ingredient.ingredient.description}}</div>
-        <div class="span2"><strong>Substitutions</strong>
-            <li>{{ingredient.ingredient.substitution1}}</li>
-            <li>{{ingredient.ingredient.substitution2}}</li>
-        </div>
-    </div>
-    
-    <hr class="lightbox-hr">
-    
-    <div class="row">
-        <div class="span4">Try <em>{{ingredient.ingredient.name}}</em> recommended by our chefs</div>
-        <div class="span2">
-            <a class="item-buy-button" href="{{ingredient.ingredient.product_link}}"
-            target="_blank">Purchase</a>
-        </div>
-    </div>
-    
-    <hr class="lightbox-hr">
-    
-    <div class="row">
-        <div class="span2">
-            <div class="item-info">
-                <a href="http://www.thefairtradewinecompany.com/varietals/chenin-blanc"
-                target="_blank">
-                    <img class="item-image-ad" src="{{STATIC_URL}}img/fairtrade-wine.png" alt="">
-                </a>
-            </div>
-        </div>
-        <div class="span4">
-            <p>Consider pairing <em>The Fair Trade Wine Company Chenin Blanc</em> with
-                your <em>Citrus Vinaigrette Salad</em> and support sustainability. This South
-                African wine offers a superb balance between bright acidity and sweetness.</p>
-            <a
-            class="item-ad-buy-button" href="http://shop.barrelcavewines.com/Fair-Trade-Wine-Company-Chenin-Blanc-FT1003.htm"
-            target="_blank">Try it today</a>
-        </div>
-    </div>
-    
-  </div>
-  {% endfor %}
-  
-  {% for tool in step.tools.all %}
-  <div id="tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}" class="lightbox product-lightbox">
-     <div class="row">
-        <div class="span2">
-            <img class="product-image" src="{{MEDIA_URL}}{{tool.image}}" />
-        </div>
-        <div class="span4">
-            <div class="row">
-                <div class="span4">
-                    <h4>{{tool.name}}</h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="span4">
-                    <div class="lesson-icon-circle lesson-icon-circle-products">
-                        <div class="span3 product-category"><strong>{{tool.category}}</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="span4">
-                    <p class=""><em></em>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <hr class="lightbox-hr">
-    
-    <div class="row">
-        <div class="span4">{{tool.description}}</div>
-        <div class="span2"><strong>Substitutions</strong>
-            <li>{{tool.substitution1}}</li>
-            <li>{{tool.substitution2}}</li>
-        </div>
-    </div>
-    
-    <hr class="lightbox-hr">
-    
-    <div class="row">
-        <div class="span4">Try <em>{{tool.name}}</em> recommended by our chefs</div>
-        <div class="span2">
-            <a class="item-buy-button" href="{{tool.product_link}}"
-            target="_blank">Purchase</a>
-        </div>
-    </div>
-    
-    <hr class="lightbox-hr">
-    
-    <div class="row">
-        <div class="span2">
-            <div class="item-info">
-                <a href="http://www.thefairtradewinecompany.com/varietals/chenin-blanc"
-                target="_blank">
-                    <img class="item-image-ad" src="{{STATIC_URL}}img/fairtrade-wine.png" alt="">
-                </a>
-            </div>
-        </div>
-        <div class="span4">
-            <p>Consider pairing <em>The Fair Trade Wine Company Chenin Blanc</em> with
-                your <em>Citrus Vinaigrette Salad</em> and support sustainability. This South
-                African wine offers a superb balance between bright acidity and sweetness.</p>
-            <a
-            class="item-ad-buy-button" href="http://shop.barrelcavewines.com/Fair-Trade-Wine-Company-Chenin-Blanc-FT1003.htm"
-            target="_blank">Try it today</a>
-        </div>
-    </div>
-    
-  </div>
-  {% endfor %}
-  {% endfor %}
-  
-  <div id="lesson-technique-videos">
-    <video id="technique-7" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/orange-zesting-screenshot.png" preload="auto" controls="controls">
-      <source src="{{STATIC_URL}}videos/orange-zesting-medium.mp4">
-      <source src="{{STATIC_URL}}videos/orange-zesting-medium.ogv">
-      <source src="{{STATIC_URL}}videos/orange-zesting-medium.webm">
-      <!-- fallback  -->
-      <p>Your browser does not support HTML5 video.</p>
-    </video>
-    
-    <video id="technique-9" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/apple-cutting-screenshot.png" preload="auto" controls="controls">
-      <source src="{{STATIC_URL}}videos/apple-cutting-medium.mp4">
-      <source src="{{STATIC_URL}}videos/apple-cutting-medium.ogv">
-      <source src="{{STATIC_URL}}videos/apple-cutting-medium.webm">
-      <!-- fallback  -->
-      <p>Your browser does not support HTML5 video.</p>
-    </video>
-    
-    <video id="technique-10" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/pomegranate-seeding-screenshot.png" preload="auto" controls="controls">
-      <source src="{{STATIC_URL}}videos/pomegranate-seeding-medium.mp4">
-      <source src="{{STATIC_URL}}videos/pomegranate-seeding-medium.ogv">
-      <source src="{{STATIC_URL}}videos/pomegranate-seeding-medium.webm">
-      <!-- fallback  -->
-      <p>Your browser does not support HTML5 video.</p>
-    </video>
   </div>
 </div>
+
+<div id="lesson-wrapper" class="row">
+  <div id="lesson-timeline">
+	<a class="lesson-nav-btn" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
+	<a class="lesson-nav-btn pull-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>
+	<div id="lesson-timeline-images">
+	  {% for step in lesson.steps.all %}
+	  <img class="lesson-timeline-picture{% if forloop.first %} lesson-timeline-picture-active {% endif %}" src="{{MEDIA_URL}}{{step.picture}}"/>
+	  {% endfor %}
+	</div>
+  </div>
+
+
+  <div class="lesson-components row no-display">
+    {% for step in lesson.steps.all %}
+    {% for ingredient in step.ingredients.all %}
+    <div id="ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}" class="lightbox product-lightbox">
+      <!-- {{ingredient.number}} -->
+
+      <div class="row">
+        <div class="span2">
+          <img class="product-image" src="{{MEDIA_URL}}{{ingredient.ingredient.image}}" />
+        </div>
+        <div class="span4">
+          <div class="row">
+            <div class="span4">
+              <h4>{{ingredient.ingredient.name}}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span4">
+              <div class="lesson-icon-circle lesson-icon-circle-products">
+                <div class="span3 product-category"><strong>{{ingredient.ingredient.category}}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span4">
+              <p class=""><em>{{ingredient.measurement}} {{ingredient.prep}}</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="lightbox-hr">
+
+      <div class="row">
+        <div class="span4">{{ingredient.ingredient.description}}</div>
+        <div class="span2"><strong>Substitutions</strong>
+          <li>{{ingredient.ingredient.substitution1}}</li>
+          <li>{{ingredient.ingredient.substitution2}}</li>
+        </div>
+      </div>
+
+      <hr class="lightbox-hr">
+
+      <div class="row">
+        <div class="span4">Try <em>{{ingredient.ingredient.name}}</em> recommended by our chefs</div>
+        <div class="span2">
+          <a class="item-buy-button" href="{{ingredient.ingredient.product_link}}"
+             target="_blank">Purchase</a>
+        </div>
+      </div>
+
+      <hr class="lightbox-hr">
+
+      <div class="row">
+        <div class="span2">
+          <div class="item-info">
+            <a href="http://www.thefairtradewinecompany.com/varietals/chenin-blanc"
+               target="_blank">
+              <img class="item-image-ad" src="{{STATIC_URL}}img/fairtrade-wine.png" alt="">
+            </a>
+          </div>
+        </div>
+        <div class="span4">
+          <p>Consider pairing <em>The Fair Trade Wine Company Chenin Blanc</em> with
+            your <em>Citrus Vinaigrette Salad</em> and support sustainability. This South
+            African wine offers a superb balance between bright acidity and sweetness.</p>
+          <a
+             class="item-ad-buy-button" href="http://shop.barrelcavewines.com/Fair-Trade-Wine-Company-Chenin-Blanc-FT1003.htm"
+             target="_blank">Try it today</a>
+        </div>
+      </div>
+
+    </div>
+    {% endfor %}
+
+    {% for tool in step.tools.all %}
+    <div id="tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}" class="lightbox product-lightbox">
+      <div class="row">
+        <div class="span2">
+          <img class="product-image" src="{{MEDIA_URL}}{{tool.image}}" />
+        </div>
+        <div class="span4">
+          <div class="row">
+            <div class="span4">
+              <h4>{{tool.name}}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span4">
+              <div class="lesson-icon-circle lesson-icon-circle-products">
+                <div class="span3 product-category"><strong>{{tool.category}}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span4">
+              <p class=""><em></em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="lightbox-hr">
+
+      <div class="row">
+        <div class="span4">{{tool.description}}</div>
+        <div class="span2"><strong>Substitutions</strong>
+          <li>{{tool.substitution1}}</li>
+          <li>{{tool.substitution2}}</li>
+        </div>
+      </div>
+
+      <hr class="lightbox-hr">
+
+      <div class="row">
+        <div class="span4">Try <em>{{tool.name}}</em> recommended by our chefs</div>
+        <div class="span2">
+          <a class="item-buy-button" href="{{tool.product_link}}"
+             target="_blank">Purchase</a>
+        </div>
+      </div>
+
+      <hr class="lightbox-hr">
+
+      <div class="row">
+        <div class="span2">
+          <div class="item-info">
+            <a href="http://www.thefairtradewinecompany.com/varietals/chenin-blanc"
+               target="_blank">
+              <img class="item-image-ad" src="{{STATIC_URL}}img/fairtrade-wine.png" alt="">
+            </a>
+          </div>
+        </div>
+        <div class="span4">
+          <p>Consider pairing <em>The Fair Trade Wine Company Chenin Blanc</em> with
+            your <em>Citrus Vinaigrette Salad</em> and support sustainability. This South
+            African wine offers a superb balance between bright acidity and sweetness.</p>
+          <a
+             class="item-ad-buy-button" href="http://shop.barrelcavewines.com/Fair-Trade-Wine-Company-Chenin-Blanc-FT1003.htm"
+             target="_blank">Try it today</a>
+        </div>
+      </div>
+
+    </div>
+    {% endfor %}
+    {% endfor %}
+
+    <div id="lesson-technique-videos">
+      <video id="technique-7" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/orange-zesting-screenshot.png" preload="auto" controls="controls">
+        <source src="{{STATIC_URL}}videos/orange-zesting-medium.mp4">
+          <source src="{{STATIC_URL}}videos/orange-zesting-medium.ogv">
+            <source src="{{STATIC_URL}}videos/orange-zesting-medium.webm">
+              <!-- fallback  -->
+              <p>Your browser does not support HTML5 video.</p>
+      </video>
+
+      <video id="technique-9" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/apple-cutting-screenshot.png" preload="auto" controls="controls">
+        <source src="{{STATIC_URL}}videos/apple-cutting-medium.mp4">
+          <source src="{{STATIC_URL}}videos/apple-cutting-medium.ogv">
+            <source src="{{STATIC_URL}}videos/apple-cutting-medium.webm">
+              <!-- fallback  -->
+              <p>Your browser does not support HTML5 video.</p>
+      </video>
+
+      <video id="technique-10" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/pomegranate-seeding-screenshot.png" preload="auto" controls="controls">
+        <source src="{{STATIC_URL}}videos/pomegranate-seeding-medium.mp4">
+          <source src="{{STATIC_URL}}videos/pomegranate-seeding-medium.ogv">
+            <source src="{{STATIC_URL}}videos/pomegranate-seeding-medium.webm">
+              <!-- fallback  -->
+              <p>Your browser does not support HTML5 video.</p>
+      </video>
+    </div>
+  </div>
 
 <script type="text/javascript">
 pagelogic = function(){
@@ -298,28 +309,28 @@ pagelogic = function(){
     {% for ingredient in step.ingredients.all %}
     $(".ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"480px", href:"#ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
     {% endfor %}
-    
+
     {% for tool in step.tools.all %}
     $(".tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}").colorbox({inline:true, width:"480px", href:"#tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}"});
     {% endfor %}
     {% endfor %}
-    
+
     {% for step in lesson.steps.all %}
     {% for tech in step.technique.all %}
     $(".technique-{{forloop.parentloop.counter0}}").colorbox({inline:true, width:"50%", href:"#technique-{{forloop.parentloop.counter0}}"});
     {% endfor %}
     {% endfor %}
-    
+
     $(document.documentElement).keyup(function (event) {
       // handle cursor keys
 	  if (event.keyCode == 37 || event.keyCode == 38) {
         $('a.lesson-nav-btn-top-left').trigger('click');
-      } 
+      }
       else if (event.keyCode == 39 || event.keyCode == 40) {
 		$('a.lesson-nav-btn-top-right').trigger('click');
       }
     });
-        
+
 };
 </script>
 

@@ -72,6 +72,7 @@ def lessons(request):
 
     return direct_to_template(request, "lessons.html", {"lessons": lessons})
 
+@login_required
 def lesson_detail(request, lesson_id):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
     return direct_to_template(request, "lesson_details.html", {"lesson": lesson})

@@ -197,6 +197,13 @@ textarea {
 .loadedavatar {
     height: 80px;
 }
+.goldstar{
+     content:url(images/star_on.png);
+}
+.whitestar{
+    content:url(images/star_off.png);
+}
+
 @import "jquery-ui";
 @import "colorbox";
 @import "local_navbar";

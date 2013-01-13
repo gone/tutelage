@@ -114,7 +114,7 @@ class Ingredient(CreatedMixin):
     substitution1 = models.CharField(max_length=32, null=True, blank=True)
     substitution2 = models.CharField(max_length=32, null=True, blank=True)
     product_link = models.URLField(max_length=255, null=True, blank=True)
-    
+
     def __unicode__(self):
         return self.name
 
@@ -292,7 +292,7 @@ class Lesson(CreatedMixin, Displayable):
                                              (1, "Technique")), default=0)
 
     ingredients = models.ManyToManyField(Ingredient, through="LessonIngredient", related_name="lessons")
-    tools = models.ManyToManyField(Tool, related_name="lessons")
+    tools = models.ManyToManyField(Tool, related_name="lessons", blank=True)
 
     class Meta():
         unique_together = ('teacher', 'title')
@@ -318,11 +318,11 @@ class Lesson(CreatedMixin, Displayable):
 
     @property
     def prep_in_min(self):
-        return max(self.prep_time.total_seconds() / 60, 1)
+        return int(max(self.prep_time.total_seconds() / 60, 1))
 
     @property
     def cook_in_min(self):
-        return max(self.prep_time.total_seconds() / 60, 1)
+        return int(max(self.prep_time.total_seconds() / 60, 1))
 
 
     def __unicode__(self):
@@ -452,7 +452,7 @@ class LessonRequest(CreatedMixin):
 
 class LessonPledge(CreatedMixin):
     user = models.ForeignKey(User)
-    amount = CurrencyField(max_digits=7, decimal_places=5)
+    amount = CurrencyField(max_digits=7, decimal_places=2)
     email = models.BooleanField(help_text="keep me informed via email")
     request = models.ForeignKey(LessonRequest, related_name="pledges")
     date_pledged =models.DateField(auto_now_add=True)
@@ -470,7 +470,7 @@ class LessonPledge(CreatedMixin):
 
 class ChefPledge(CreatedMixin):
     user = models.ForeignKey(User)
-    amount_required = CurrencyField(max_digits=7, decimal_places=5)
+    amount_required = CurrencyField(max_digits=7, decimal_places=2)
     request = models.ForeignKey(LessonRequest, related_name="chefs")
     active = models.BooleanField(default=True)
 

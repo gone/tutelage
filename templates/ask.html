@@ -86,8 +86,8 @@
 {% endverbatim %}
 
 <script type="text/javascript">
-require(['common',], function(){
-    require(['cs!colorboxcommon', 'liveValidation', 'handlebars'], function(cc){
+require(['./common',], function(){
+    require(['cs!main', 'cs!colorboxcommon', 'liveValidation', 'handlebars'], function(main, cc){
         source = $("#featured-request-templ").html();
         template = Handlebars.compile(source);
 
@@ -179,7 +179,13 @@ $()
 
         <div class="span2">
 		  <div class="timetoraise pull-right"><strong>{{req.need_by|timeuntil}} left</strong></div>
-          <div class="attatchedchef pull-right"><strong>by <a href="#" class="green">{{req.chef_attatched|default:"No Chef yet!"}}</strong></a></div>
+
+          <div class="attatchedchef pull-right"><strong>by
+          {% if req.chef_attatched %}
+          <a href="{% url miniprofile req.chef_attatched.id %}" class="miniprofile-btn green">{{req.chef_attatched}}</strong></a></div>
+          {% else %}
+          <a href="#" class="green">No Chef yet!</strong></a></div>
+          {% endif %}
 		</div>
       </div>
 

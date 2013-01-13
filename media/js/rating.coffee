@@ -4,7 +4,7 @@ define ["jquery"], ($) ->
             starContainer = star.parent()
             lesson_id = star.data("lessonid")
             rating = starContainer.prevAll().length + 1
-            #TODO: tie this into django's resolve method somehow
+            #TODO: tie this into django's url resolve method
             url = "/rate-lesson/#{lesson_id}/#{rating}/"
             $.post(url).success () ->
                 starContainer.prevAll().add(starContainer).each (index, value) ->
@@ -15,6 +15,17 @@ define ["jquery"], ($) ->
                     s = $(value).children()
                     path = s.attr("src")
                     s.attr("src", path.replace("on", "off"))
+
+
+    mouseOver = () ->
+        container = $(this)
+        container.parent().prevAll().children().add(container).addClass('goldstar')
+        container.parent().nextAll().children().addClass('whitestar')
+
+
+
+    mouseOut = () ->
+        $(this).find('img').removeClass('whitestar').removeClass('goldstar')
 
 
     shrinkGrow = (height, width) ->
@@ -28,5 +39,5 @@ define ["jquery"], ($) ->
 
 
     $(".ratingstar").click(rateLesson)
-    $(".starcontainer").on('mouseover', '.ratingstar', shrinkGrow(30, 29))
-    $(".starcontainer").on('mouseout', '.ratingstar', shrinkGrow(26, 25))
+    $(".starcontainer").on('mouseover', '.ratingstar', mouseOver)
+    $(".ratingblock").parent().on('mouseout',  mouseOut)
