@@ -16,6 +16,7 @@ from django.template.defaultfilters import slugify, timeuntil
 
 from django.db.models import Sum
 
+from django.core.urlresolvers import reverse
 
 from mezzanine.pages.models import Page
 from mezzanine.core.models import Displayable
@@ -421,6 +422,7 @@ class LessonRequest(CreatedMixin):
             "restrictions": [str(restrictions) for restrictions in self.restrictions.all()],
             "primary_ingredients": [str(primary_ingredients) for primary_ingredients in self.primary_ingredients.all()],
             "chef": self.chef_attatched.to_dict() if self.chef_attatched else None,
+            "chef_profile_url": reverse('miniprofile', args=[self.chef_attatched.id]) if self.chef_attatched else "#",
             "inpot": int(self.in_pot),
             "pledges":[pledge.to_dict() for pledge in self.pledges.all()[:10]],
             }

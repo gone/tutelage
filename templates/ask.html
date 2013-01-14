@@ -29,7 +29,12 @@
 
     <div class="row">
 	  <div class="span6 featured-request-span">
-		<div class="request-details-chef"><strong>by <a href="#" class="green">{{chef.user_name}}</strong></a></div>
+        <a href="" >{{req.chef_attatched}}</strong></a>
+        {{# if chef }}
+		   <div class="request-details-chef"><strong>by <a href="{{chef_profile_url}}" class="miniprofile-btn green">{{chef.user_name}}</strong></a></div>
+        {{ else }}
+           <div class="request-details-chef"><strong>by <a href="#" class="green">No Chef Yet!</strong></a></div>
+        {{/ if }}
 		<a href="#" class="btn btn-blue btn-request-contribute">answer</a>
 
 		<div class="request-contribute pull-right">
