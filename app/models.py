@@ -322,7 +322,7 @@ class Lesson(CreatedMixin, Displayable):
 
     @property
     def cook_in_min(self):
-        return int(max(self.prep_time.total_seconds() / 60, 1))
+        return int(max(self.cook_time.total_seconds() / 60, 1))
 
 
     def __unicode__(self):
