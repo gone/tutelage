@@ -180,12 +180,15 @@ $()
         <div class="span2">
 		  <div class="timetoraise pull-right"><strong>{{req.need_by|timeuntil}} left</strong></div>
 
-          <div class="attatchedchef pull-right"><strong>by
+          <div class="attatchedchef pull-right"><strong>
           {% if req.chef_attatched %}
-          <a href="{% url miniprofile req.chef_attatched.id %}" class="miniprofile-btn green">{{req.chef_attatched}}</strong></a></div>
+          by <a href="{% url miniprofile req.chef_attatched.id %}" class="miniprofile-btn green">{{req.chef_attatched}}</strong></a>
+          {% elif user.get_profile.professional_chef %}
+            <div class="btn btn-green">Create lesson</div>
           {% else %}
-          <a href="#" class="green">No Chef yet!</strong></a></div>
+          <a href="#" class="green">No Chef yet!</strong></a>
           {% endif %}
+          </div>
 		</div>
       </div>
 

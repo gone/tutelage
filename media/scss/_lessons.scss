@@ -86,7 +86,9 @@
 }
 
 .lesson-wrapper-overlay {
-	background-color: rgba(255, 255, 255, 0.7);
+	/* background-color: rgba(255, 255, 255, 0.7); */
+    padding-left: 2px;
+    padding-bottom: 5px;
 }
 
 .lesson-picture {
@@ -156,7 +158,7 @@
 }
 
 .tool {
-	
+
 }
 
 .lesson-icon-text {
@@ -165,7 +167,7 @@
 	max-width: 75%;
 	color: black !important;
 	background-color: rgba(255, 255, 255, 0.7);
-	white-space: nowrap; 
+	white-space: nowrap;
 	overflow: hidden;
 }
 
@@ -313,7 +315,7 @@
 	bottom: 0;
     left: 0;
 	margin: 0px 0px -2px -6px;
-	padding: 28px 5px !important;
+	padding: 28px 10px !important;
 }
 
 .lesson-nav-btn-top-right {
@@ -329,13 +331,14 @@
 	width: 20px;
 }
 
-.lesson-nav-btn:hover { 
+.lesson-nav-btn:hover {
 	color: white !important;
 }
 
 #lesson-timeline-images {
 	display: inline-block;
-	width: 875px;
+	width: 900px;
+    height: 80px;
 }
 
 .lesson-timeline-picture {

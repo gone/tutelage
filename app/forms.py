@@ -1,7 +1,7 @@
 import decimal
 
 from django import forms
-from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge, Step
+from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge, Step, ChefPledge
 from .constants import SKILL_LEVELS
 #from ajax_select.fields import AutoCompleteSelectMultipleField
 
@@ -75,6 +75,25 @@ class StepDetailsForm(forms.ModelForm):
 
     class Meta:
         model = Step
+
+
+class ChefPledgeForm(forms.ModelForm):
+    def __init__(self, user, lesson_req, *args, **kwargs):
+        self.user = user
+        self.lesson_req = lesson_req
+        return super(ChefPledgeForm, self).__init__(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        chefpledge = self.save(commit=False, *args, **kwargs)
+        chefpledge.user = self.user
+        chefpledge.request = self.lesson_req
+        chefpledge.save()
+        return chefpledge
+
+    class Meta:
+        model = ChefPledge
+        exclude = ('active',)
+
 
 
 class LessonRequestForm(forms.ModelForm):

@@ -4,42 +4,42 @@
 {% block content %}
 {% autoescape off %}
 <div class="bordered-row main bordered">
-    <div class="span6">
-      <div class="call-to-action">
-        {% editable page.home.call_to_action %}
-        <h3>{{page.home.call_to_action}}</h3>
-        {% endeditable %}
-      </div>
-      {% if not request.user.is_authenticated %}
-      <a class="btn btn-green signup-btn">Signup</a>
-      {% endif %}
+  <div class="span6">
+    <div class="call-to-action">
+      {% editable page.home.call_to_action %}
+      <h3>{{page.home.call_to_action}}</h3>
+      {% endeditable %}
     </div>
-    <div class="span6">
-      <div class="main-movie">
-        {% editable page.home.hero %}
-        <img class="main-movie-img" src="{{MEDIA_URL}}{{page.home.hero}}" />
-        {% endeditable %}
-      </div>
+    {% if not request.user.is_authenticated %}
+    <a class="btn btn-green signup-btn">Signup</a>
+    {% endif %}
+  </div>
+  <div class="span6">
+    <div class="main-movie">
+      {% editable page.home.hero %}
+      <img class="main-movie-img" src="{{MEDIA_URL}}{{page.home.hero}}" />
+      {% endeditable %}
     </div>
+  </div>
 </div>
 <div class="bordered-row bordered">
-    <div class="homeblocks">
-      {% with page.home.blocks.all as blocks %}
-      {% for b in blocks %}
-      {% editable b.header b.body b.link_copy b.link_target %}
+  <div class="homeblocks">
+    {% with page.home.blocks.all as blocks %}
+    {% for b in blocks %}
+    {% editable b.header b.body b.link_copy b.link_target %}
 
-      <div class="span4 homeblock">
-        <div class="block-header">
-          <h3>{{b.header}}</h3>
-        </div>
-        <div class="block-body">
-          {{b.body}}
-        </div>
+    <div class="span4 homeblock">
+      <div class="block-header">
+        <h3>{{b.header}}</h3>
       </div>
-      {% endeditable %}
-      {% endfor %}
+      <div class="block-body">
+        {{b.body}}
+      </div>
     </div>
-    <div style="clear:both;">
+    {% endeditable %}
+    {% endfor %}
+  </div>
+  <div style="clear:both;">
     <div class="homelinks">
       {% for b in blocks %}
       <div class="span4 block-link">
@@ -50,15 +50,15 @@
       {% endfor %}
 
     </div>
+  </div>
 </div>
-
 <!-- this should likely be moved somewhere else -->
 <div class="row no-display">
   <video class="main-movie-video no-margin" controls="controls">
 	<!-- sample videos until we have our actual intro video -->
-    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4">
-    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv">
-    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm">
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" />
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" />
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" />
     <!-- fallback  -->
     <p>Your browser does not support HTML5 video.</p>
   </video>
@@ -72,6 +72,6 @@ pagelogic = function(){
 </script>
 
 
-  {% endwith %}
-  {% endautoescape %}
-  {% endblock %}
+{% endwith %}
+{% endautoescape %}
+{% endblock %}

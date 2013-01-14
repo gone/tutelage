@@ -26,7 +26,13 @@ logger = logging.getLogger(__name__)
 
 from .models import (Lesson, LessonIngredient, Tool, Step, Video,
                      LessonRating, FeaturedChef, LessonRequest)
-from .forms import ProfileForm, LessonDetailsForm, IngredentsDetailsForm, StepDetailsForm, LessonRequestForm
+
+from .forms import (ProfileForm,
+                    LessonDetailsForm,
+                    IngredentsDetailsForm,
+                    StepDetailsForm,
+                    ChefPledgeForm,
+                    LessonRequestForm)
 
 from account.forms import PasswordChangeForm
 
@@ -198,6 +204,19 @@ def purchase(request, lesson_id):
 
 def cheflist(request):
     pass
+
+@login_required
+def chef_pledge(request, slug):
+    lesson_request = get_object_or_404(LessonRequest, slug=slug, active=True)
+    if request.method == "POST":
+        form = ChefPledgeForm(request.user, lesson_request, request.POST)
+        if form.is_valid():
+            pledge = form.save()
+            return HttpResponseRedirect("%s?slug=%s" % (reverse('ask'), lesson_request.slug))
+    else:
+        form = LessonRequestForm(request)
+    return direct_to_template(request, "chef_pledge_standalone.html", {"pledge_form": form, "slug":slug})
+
 
 @login_required
 def ask_form(request):

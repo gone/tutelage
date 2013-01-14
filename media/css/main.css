@@ -8195,7 +8195,9 @@ body .ui-tooltip {
 }
 
 .lesson-wrapper-overlay {
-  background-color: rgba(255, 255, 255, 0.7);
+  /* background-color: rgba(255, 255, 255, 0.7); */
+  padding-left: 2px;
+  padding-bottom: 5px;
 }
 
 .lesson-picture {
@@ -8404,7 +8406,7 @@ body .ui-tooltip {
   bottom: 0;
   left: 0;
   margin: 0px 0px -2px -6px;
-  padding: 28px 5px !important;
+  padding: 28px 10px !important;
 }
 
 .lesson-nav-btn-top-right {
@@ -8426,7 +8428,8 @@ body .ui-tooltip {
 
 #lesson-timeline-images {
   display: inline-block;
-  width: 875px;
+  width: 900px;
+  height: 80px;
 }
 
 .lesson-timeline-picture {
