@@ -28,7 +28,7 @@
 
 {% block content %}
 <div id="lesson-wrapper" class="bordered-row">
-  <div id="lessons" class="carousel slide no-margin">
+  <div id="lessons" class="carousel slide no-margin" data-interval="false">
     <div class="carousel-inner">
       {% for step in lesson.steps.all %}
       <div class="{% if forloop.first %}active{% endif %} item">
