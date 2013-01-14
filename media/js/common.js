@@ -44,6 +44,6 @@ requirejs.config({
             deps: ['jquery']
         }
     },
-    waitSeconds: 10,
+    waitSeconds: 30,
     urlArgs: "bust=" +  (new Date()).getTime(),
 })
