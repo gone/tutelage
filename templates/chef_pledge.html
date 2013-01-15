@@ -1,8 +1,8 @@
-<div class="span6" id="requestform">
-  <form class="chef-pledge-form" action="{% url chef_pledge_form slug %}" method="post">
+<div class="span6 chef-pledge">
+  <form class="chef-pledge-form" action="{% url chef_pledge slug %}" method="post">
     {% csrf_token %}
     <div class="row">
-      <div class="span6">
+      <div class="span4">
         <h4 class="no-margin">Create this lesson</h4>
       </div>
     </div>
@@ -10,17 +10,17 @@
     <hr class="request-hr" />
 
     <div class="row">
-      <div class="span3 request-form-field">
-        {{pledge_form.amount.label_tag}}
-		<input name="{{pledge_form.amount.html_name}}"
+      <div class="span4 request-form-field">
+        {{pledge_form.amount_required.label}}
+		<input name="{{pledge_form.amount_required.html_name}}"
                class="request-input"
                type="text"
                placeholder=""
-               value="{{pledge_form.amount.value|default:""}}"
+               value="{{pledge_form.amount_required.value|default:""}}"
                data-validation-engine="validate[required]"
                data-errormessage-value-missing="Amount is required!"
                />
-        {{request_form.title.errors}}
+        {{pledge_form.amount_required.errors}}
       </div>
     </div>
     <div class="row">

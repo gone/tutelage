@@ -95,7 +95,9 @@ require(['./common',], function(){
     require(['cs!main', 'cs!colorboxcommon', 'liveValidation', 'handlebars'], function(main, cc){
         source = $("#featured-request-templ").html();
         template = Handlebars.compile(source);
-
+        $(".btn-createlesson").click(function(e){
+            cc.setupColorbox($(this).parent().find('.chef-pledge'))
+        })
         function switchDisplay(slug){
             data = lesson_data[slug]
             dest = $("#featuredrequest")
@@ -189,7 +191,10 @@ $()
           {% if req.chef_attatched %}
           by <a href="{% url miniprofile req.chef_attatched.id %}" class="miniprofile-btn green">{{req.chef_attatched}}</strong></a>
           {% elif user.get_profile.professional_chef %}
-            <div class="btn btn-green">Create lesson</div>
+            <div class="btn btn-green btn-createlesson">Create lesson</div>
+            <div class="row no-display">
+              {% include "chef_pledge.html" with pledge_form=pledge_form slug=req.slug%}
+            </div>
           {% else %}
           <a href="#" class="green">No Chef yet!</strong></a>
           {% endif %}
@@ -211,6 +216,6 @@ $()
 {% include "pager.html" with pager=lesson_requests %}
 
 <div class="row no-display">
-  {% include "lesson_request.html" with request_form=form %}
+  {% include "lesson_request.html" with request_form=request_form %}
 </div>
 {% endblock %}

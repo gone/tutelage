@@ -78,13 +78,16 @@ class StepDetailsForm(forms.ModelForm):
 
 
 class ChefPledgeForm(forms.ModelForm):
-    def __init__(self, user, lesson_req, *args, **kwargs):
+
+    def __init__(self, user=None, lesson_req=None, *args, **kwargs):
         self.user = user
         self.lesson_req = lesson_req
-        return super(ChefPledgeForm, self).__init__(*args, **kwargs)
+        super(ChefPledgeForm, self).__init__(*args, **kwargs)
+        self.fields['amount_required'].label = "How much do you need to make this lesson?"
 
     def save(self, *args, **kwargs):
-        chefpledge = self.save(commit=False, *args, **kwargs)
+        kwargs.pop('commit', None)
+        chefpledge = super(ChefPledgeForm, self).save(commit=False, *args, **kwargs)
         chefpledge.user = self.user
         chefpledge.request = self.lesson_req
         chefpledge.save()
@@ -92,7 +95,7 @@ class ChefPledgeForm(forms.ModelForm):
 
     class Meta:
         model = ChefPledge
-        exclude = ('active',)
+        exclude = ('active','request', 'user')
 
 
 

@@ -214,7 +214,7 @@ def chef_pledge(request, slug):
             pledge = form.save()
             return HttpResponseRedirect("%s?slug=%s" % (reverse('ask'), lesson_request.slug))
     else:
-        form = LessonRequestForm(request)
+        form = ChefPledgeForm(request.user, lesson_request)
     return direct_to_template(request, "chef_pledge_standalone.html", {"pledge_form": form, "slug":slug})
 
 
@@ -255,12 +255,12 @@ def ask(request):
 
     lesson_json = json.dumps({x.slug:x.to_dict() for x in lesson_requests.object_list})
 
-    form = LessonRequestForm(request)
-
+    request_form = LessonRequestForm(request)
+    pledge_form = ChefPledgeForm(request.user, request)
     if not slug:
         slug = lesson_requests.object_list[0].slug
 
-    return direct_to_template(request, "ask.html", {"lesson_requests": lesson_requests, 'slug': slug, 'lesson_json':lesson_json, 'form':form})
+    return direct_to_template(request, "ask.html", {"lesson_requests": lesson_requests, 'slug': slug, 'lesson_json':lesson_json, 'pledge_form':pledge_form, 'request_form':request_form})
 
 
 def lesson(request, lesson_id):
