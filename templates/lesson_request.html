@@ -72,7 +72,10 @@
             </div>
             <div class="span3 request-form-field">
                 {{request_form.initial.label_tag}}
-                {{request_form.initial}}
+                <div class="input-prepend">
+                     <span class="add-on">$</span>
+                     {{request_form.initial}}
+                </div>
                 {{request_form.initial.errors}}
             </div>
         </div>
