@@ -1,0 +1,20 @@
+
+<div class="request-contribute pull-right">
+  <span class="">Contribute</strong>
+<div class="request-contribute-input input-prepend">
+  <span class="add-on">$</span>
+  <input class="span1 no-margin
+                request-contribute-price"
+         name="{{contribute_form.amount.html_name}}"
+         type="number"
+         min="1"
+         value="{{contribute_form.amount.value|default:""}}"
+         max="1000"
+         placeholder="Price">
+  {{contribute_form.amount.errors}}
+</div>
+
+            {{ contribute_form.email.label_tag }}: {{ contribute_form.email }}
+{{ contribute_form.email.errors }}
+<input type="submit" value="contribute" class="btn btn-green btn-request-contribute">
+</div>

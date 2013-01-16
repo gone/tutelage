@@ -32,6 +32,7 @@ from .forms import (ProfileForm,
                     IngredentsDetailsForm,
                     StepDetailsForm,
                     ChefPledgeForm,
+                    ContributionForm,
                     LessonRequestForm)
 
 from account.forms import PasswordChangeForm
@@ -217,6 +218,16 @@ def chef_pledge(request, slug):
         form = ChefPledgeForm(request.user, lesson_request)
     return direct_to_template(request, "chef_pledge_standalone.html", {"pledge_form": form, "slug":slug})
 
+@login_required
+def contribute(request):
+    if request.method == "POST":
+        form = ContributionForm(request.user, request.POST)
+        if form.is_valid():
+            contribution = form.save()
+            return HttpResponseRedirect("%s?slug=%s" % (reverse('ask'), contribution.request.slug))
+    else:
+        form = ContributionForm(request.user)
+    return direct_to_template(request, "contribute_standalone.html", {"contribute_form": form})
 
 @login_required
 def ask_form(request):
@@ -256,11 +267,13 @@ def ask(request):
     lesson_json = json.dumps({x.slug:x.to_dict() for x in lesson_requests.object_list})
 
     request_form = LessonRequestForm(request)
-    pledge_form = ChefPledgeForm(request.user, request)
+    pledge_form = ChefPledgeForm(request.user)
+    contribute_form = ContributionForm(request.user)
+
     if not slug:
         slug = lesson_requests.object_list[0].slug
 
-    return direct_to_template(request, "ask.html", {"lesson_requests": lesson_requests, 'slug': slug, 'lesson_json':lesson_json, 'pledge_form':pledge_form, 'request_form':request_form})
+    return direct_to_template(request, "ask.html", {"contribute_form":contribute_form, "lesson_requests": lesson_requests, 'slug': slug, 'lesson_json':lesson_json, 'pledge_form':pledge_form, 'request_form':request_form})
 
 
 def lesson(request, lesson_id):

@@ -97,6 +97,36 @@ class ChefPledgeForm(forms.ModelForm):
         model = ChefPledge
         exclude = ('active','request', 'user')
 
+class ContributionForm(forms.ModelForm):
+    request_slug = forms.CharField()
+
+    def __init__(self, user=None, *args, **kwargs):
+        self.user = user
+        return super(ContributionForm, self).__init__(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        kwargs.pop('commit', None)
+        try:
+            contribute = LessonPledge.objects.get(user=self.user, request=self.req)
+            contribute.amount = self.cleaned_data['amount']
+        except LessonPledge.DoesNotExist:
+            contribute = super(ContributionForm, self).save(commit=False, *args, **kwargs)
+            contribute.user = self.user
+            contribute.request = self.req
+        contribute.save()
+        return contribute
+
+    def clean_request_slug(self):
+        slug = self.cleaned_data['request_slug']
+        try:
+            self.req = LessonRequest.objects.get(slug=slug)
+        except LessonRequest.DoesNotExist:
+            raise ValidationError()
+        return self.cleaned_data['request_slug']
+
+    class Meta:
+        model = LessonPledge
+        fields = ('amount', 'email')
 
 
 class LessonRequestForm(forms.ModelForm):

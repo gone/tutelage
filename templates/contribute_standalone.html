@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="contribute-form" action="{% url contribute  %}" method="post">
+  {% csrf_token %}
+
+<div class="bordered-row main bordered">
+  <div class="span8 offset2">
+  {% include "contribute_form.html" with contribute_form=contribute_form %}
+  <input type="hidden" name="{{contribute_form.request_slug.name}}" value="{{contribute_form.request_slug.value}}">
+  </div>
+</div>
+
+{% endblock %}
