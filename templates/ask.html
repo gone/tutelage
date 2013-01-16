@@ -31,7 +31,7 @@
 	  <div class="span6 featured-request-span">
         <a href="" >{{req.chef_attatched}}</strong></a>
         {{# if chef }}
-		   <div class="request-details-chef"><strong>by <a href="{{chef_profile_url}}" class="miniprofile-btn green">{{chef.user_name}}</strong></a></div>
+		   <div class="request-details-chef"><strong>by <a href="{{chef_profile_url}}" class="miniprofile-btn green">{{chef.full_name}}</strong></a></div>
         {{ else }}
            <div class="request-details-chef"><strong>by <a href="#" class="green">No Chef Yet!</strong></a></div>
         {{/ if }}
@@ -185,7 +185,7 @@ $()
 
           <div class="attatchedchef pull-right"><strong>
           {% if req.chef_attatched %}
-          by <a href="{% url miniprofile req.chef_attatched.id %}" class="miniprofile-btn green">{{req.chef_attatched}}</strong></a>
+          by <a href="{% url miniprofile req.chef_attatched.id %}" class="miniprofile-btn green">{{req.chef_attatched.full_name}}</strong></a>
           {% elif user.get_profile.professional_chef %}
             <div class="btn btn-green btn-createlesson">Create lesson</div>
             <div class="row no-display">

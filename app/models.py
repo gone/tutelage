@@ -437,6 +437,7 @@ class LessonRequest(CreatedMixin):
     def chef_attatched(self):
         try:
             return self.chefs.filter(active=True)[0]
+
         except IndexError:
             return None
 
@@ -476,11 +477,13 @@ class ChefPledge(CreatedMixin):
     request = models.ForeignKey(LessonRequest, related_name="chefs")
     active = models.BooleanField(default=True)
 
+    def full_name(self):
+        return self.user.get_full_name()
 
     def to_dict(self):
         return {
             "user_id": self.user.id,
-            "user_name": self.user.get_full_name(),
+            "full_name": self.full_name(),
             "amount_required": int(self.amount_required),
             "active": self.active,
             }
