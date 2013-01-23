@@ -3,27 +3,96 @@
 
 {% block media %}
 <script type="text/javascript">
-        require(['./common',], function(){
-            require(["jquery", "colorbox"], function($){
-                $(".tech").colorbox({
-                    inline:true,
-                    width:"50%",
-                    href:function(){
-                        return $(this).siblings('.video-row').children('.chef-movie-video');
-                    }
-                })
-                $('#myModal').on('show', function (e) {
-                    if (!data) return e.preventDefault() // stops modal from being shown
-                })
-                $('.carousel').on('slid', function (e) {
-                    idx = $('.carousel').find('.active').index()
-                    $('#lesson-timeline-images').children().removeClass('lesson-timeline-picture-active')
-                    to_activate = $('#lesson-timeline-images').children()[idx]
-                    $(to_activate).addClass('lesson-timeline-picture-active')
-                });
-            });
+
+
+shift_timeline_left = function(){
+    active_class ='lesson-timeline-picture-active'
+    timeline_photos = $('.lesson-timeline-picture').filter(':not(.no-display)')
+
+    currently_active = timeline_photos.filter("." + active_class)
+    currently_active_index = timeline_photos.index(currently_active)
+    if (currently_active.is($('.lesson-timeline-picture').last())){
+        return
+    }
+
+    if (currently_active_index+1 == timeline_photos.length){
+        next_photo = timeline_photos.last().next()
+        next_photo.removeClass('no-display')
+        timeline_photos.add(next_photo)
+        timeline_photos.animate({
+            left: '-=125px',
+        }, 500 );
+
+        timeline_photos.first().addClass('no-display')
+        if (currently_active.is($('.lesson-timeline-picture').last())){
+            $('.lesson-nav-btn-next').addClass('disabled')
+        } else {
+            $('.lesson-nav-btn-next').removeClass('disabled')
+        }
+
+    }
+    currently_active.removeClass(active_class)
+    currently_active.next().addClass(active_class)
+}
+
+shift_timeline_right = function(){
+    active_class ='lesson-timeline-picture-active'
+    timeline_photos = $('.lesson-timeline-picture').filter(':not(.no-display)')
+
+    currently_active = timeline_photos.filter("." + active_class)
+    currently_active_index = timeline_photos.index(currently_active)
+    if (currently_active.is($('.lesson-timeline-picture').first())){
+        return
+    }
+
+    if (currently_active_index == 0){
+        next_photo = timeline_photos.first().prev()
+        next_photo.removeClass('no-display')
+        timeline_photos.add(next_photo)
+        timeline_photos.animate({
+            right: '-=125px',
+        }, 500 );
+
+        timeline_photos.last().addClass('no-display')
+        if (currently_active.is($('.lesson-timeline-picture').first())){
+            $('.lesson-nav-btn-prev').addClass('disabled')
+        } else {
+            $('.lesson-nav-btn-prev').removeClass('disabled')
+        }
+
+    }
+    currently_active.removeClass(active_class)
+    currently_active.prev().addClass(active_class)
+}
+
+
+require(['./common',], function(){
+    require(["jquery", "colorbox"], function($){
+
+        $(".tech").colorbox({
+            inline:true,
+            width:"50%",
+            href:function(){
+                return $(this).siblings('.video-row').children('.chef-movie-video');
+            }
+        })
+        $('#myModal').on('show', function (e) {
+            if (!data) return e.preventDefault() // stops modal from being shown
+        })
+        $('.lesson-timeline-picture').slice(0,6).removeClass('no-display')
+        $('.lesson-nav-btn-next').on('click', shift_timeline_left)
+        $('.lesson-nav-btn-prev').on('click', shift_timeline_right)
+
+
+        $('.carousel').on('slid', function (e) {
+            idx = $('.carousel').find('.active').index()
+            $('#lesson-timeline-images').children().removeClass('lesson-timeline-picture-active')
+            to_activate = $('#lesson-timeline-images').children()[idx]
+            $(to_activate).addClass('lesson-timeline-picture-active')
         });
-                </script>
+    });
+});
+</script>
 {% endblock %}
 
 {% block content %}
@@ -107,13 +176,13 @@
   </div>
 </div>
 
-<div id="lesson-timeline" class="row no-display">
-  <a class="lesson-nav-btn" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
-  <a class="lesson-nav-btn pull-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>
+<div id="lesson-timeline" class="row">
+  <a class="lesson-nav-btn lesson-nav-btn-next pull-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>
+  <a class="lesson-nav-btn lesson-nav-btn-prev pull-left" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
   <div id="lesson-timeline-images">
-	{% for step in lesson.steps.all %}
-	<img class="lesson-timeline-picture{% if forloop.first %} lesson-timeline-picture-active {% endif %}" src="{{MEDIA_URL}}{{step.picture}}"/>
-	{% endfor %}
+	  {% for step in lesson.steps.all %}
+	  <img class="lesson-timeline-picture{% if forloop.first %} lesson-timeline-picture-active {% endif %} no-display" src="{{MEDIA_URL}}{{step.picture}}"/>
+	  {% endfor %}
   </div>
 </div>
 

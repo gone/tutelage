@@ -5819,6 +5819,10 @@ textarea {
   content: url(images/star_off.png);
 }
 
+.pull-left {
+  float: left;
+}
+
 /* jQuery UI - v1.9.2 - 2012-12-17
 * http://jqueryui.com
 * Includes: jquery.ui.core.css, jquery.ui.resizable.css, jquery.ui.selectable.css, jquery.ui.accordion.css, jquery.ui.autocomplete.css, jquery.ui.button.css, jquery.ui.datepicker.css, jquery.ui.dialog.css, jquery.ui.menu.css, jquery.ui.progressbar.css, jquery.ui.slider.css, jquery.ui.spinner.css, jquery.ui.tabs.css, jquery.ui.tooltip.css
@@ -8393,6 +8397,7 @@ body .ui-tooltip {
 #lesson-timeline {
   height: 84px;
   width: 962px;
+  overflow: hidden;
 }
 
 .lesson-nav-btn {

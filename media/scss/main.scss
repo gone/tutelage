@@ -204,6 +204,10 @@ textarea {
     content:url(images/star_off.png);
 }
 
+.pull-left {
+    float: left;
+}
+
 @import "jquery-ui";
 @import "colorbox";
 @import "local_navbar";
