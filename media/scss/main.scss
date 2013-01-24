@@ -1,10 +1,10 @@
 @import "bootstrap";
 
 $black					:				  #333333;
-$green                  :                 #01a64f;
-$green-active           :                 #028e44;
-$blue					:				  #4ba5ff;
-$blue-active			:				  #21a1c9;
+$green                  :                 #57264f;
+$green-active           :                 #57264f;
+$blue					:				  #60C4AF;
+$blue-active			:				  #C4C8EB;
 $gray					:				  #e4e4e4;
 $lightgray				:				  #cacaca;
 $darkgray				:				  #666666;
@@ -49,6 +49,7 @@ body {
 .green:hover {
     color: $green-active !important;
 	text-decoration: none;
+    opacity: 0.6 !important;
 }
 
 .blue {
@@ -77,7 +78,7 @@ body {
 }
 
 .btn-clearblue {
-    @include colored-button($white,$blue,$blue)
+    @include colored-button($white,$blue-active,$blue-active)
  }
 
 .btn-clearblue:hover{
