@@ -1,10 +1,16 @@
 @import "bootstrap";
 
 $black					:				  #333333;
-$green                  :                 #57264f;
-$green-active           :                 #57264f;
-$blue					:				  #60C4AF;
-$blue-active			:				  #C4C8EB;
+$primary                :                 #57264f;
+$primary-active         :                 rgba(87,38,79,0.6);
+$secondary				:				  #60C4AF;
+$secondary-active		:				  #C4C8EB;
+
+$green                  :                 #01a64f;
+$green-active           :                 #028e44;
+$blue					:				  #4ba5ff;
+$blue-active			:				  #21a1c9;
+
 $gray					:				  #e4e4e4;
 $lightgray				:				  #cacaca;
 $darkgray				:				  #666666;
@@ -36,10 +42,53 @@ body {
     -webkit-font-smoothing: antialiased;
     border-radius: 0px !important;
     font-weight: bold;
+    background-position: 0% 0%;
 }
 
 .no-display {
 	 display: none;
+}
+
+.primary {
+    color: $primary;
+}
+
+.primary:hover {
+    color: $primary-active !important;
+	text-decoration: none;
+}
+
+.secondary {
+    color: $secondary !important;
+}
+
+.secondary:hover {
+    color: $secondary-active !important;
+    text-decoration: none;
+}
+
+.btn-primary {
+    @include colored-button($primary)
+}
+
+.btn-primary:hover{
+	@include colored-button($primary-active,$primary-active,$white)
+}
+
+.btn-secondary {
+    @include colored-button($secondary)
+}
+
+.btn-secondary:hover{
+	@include colored-button($secondary-active,$secondary-active,$white)
+}
+
+.btn-clearsecondary {
+    @include colored-button($white,$secondary-active,$secondary-active)
+ }
+
+.btn-clearsecondary:hover{
+	@include colored-button($secondary,$secondary,$white)
 }
 
 .green {
@@ -49,7 +98,6 @@ body {
 .green:hover {
     color: $green-active !important;
 	text-decoration: none;
-    opacity: 0.6 !important;
 }
 
 .blue {

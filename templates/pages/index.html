@@ -11,7 +11,7 @@
       {% endeditable %}
     </div>
     {% if not request.user.is_authenticated %}
-    <a class="btn btn-green signup-btn">Signup</a>
+    <a class="btn btn-primary signup-btn">Signup</a>
     {% endif %}
   </div>
   <div class="span6">
@@ -43,7 +43,7 @@
     <div class="homelinks">
       {% for b in blocks %}
       <div class="span4 block-link">
-        <a class="btn btn-green" href="{{b.link_target}}">
+        <a class="btn btn-primary" href="{{b.link_target}}">
           {{b.link_copy}}
         </a>
       </div>

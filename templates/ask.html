@@ -7,7 +7,7 @@
 
 	<div class="row">
 	  <div class="span4 lesson-title featured-request-span">
-		<a class="green reqtitle"><h3 class="no-margin">{{title}}</h3></a>
+		<a class="primary reqtitle"><h3 class="no-margin">{{title}}</h3></a>
 	  </div>
 
 	  <div class="span2">
@@ -31,11 +31,11 @@
 	  <div class="span6 featured-request-span">
         <a href="" >{{req.chef_attatched}}</strong></a>
         {{# if chef }}
-		   <div class="request-details-chef"><strong>by <a href="{{chef_profile_url}}" class="miniprofile-btn green">{{chef.full_name}}</strong></a></div>
+		   <div class="request-details-chef"><strong>by <a href="{{chef_profile_url}}" class="miniprofile-btn primary">{{chef.full_name}}</strong></a></div>
         {{ else }}
-           <div class="request-details-chef"><strong>by <a href="#" class="green">No Chef Yet!</strong></a></div>
+           <div class="request-details-chef"><strong>by <a href="#" class="primary">No Chef Yet!</strong></a></div>
         {{/ if }}
-		<a href="#" class="btn btn-blue btn-request-contribute">answer</a>
+		<a href="#" class="btn btn-secondary btn-request-contribute">answer</a>
           {% endverbatim %}
           <form class="contribute-form" action="{% url contribute  %}" method="post">
           {% csrf_token %}
@@ -70,16 +70,16 @@
 	<div class="row">
 	  <div class="span6 featured-request-span">
         {{#each primary_ingredients}}
-		<a class="btn btn-clearblue btn-tags">{{this}}</a>
+		<a class="btn btn-clearsecondary btn-tags">{{this}}</a>
         {{/each}}
         {{#each restrictions}}
-		<a class="btn btn-clearblue btn-tags">{{this}}</a>
+		<a class="btn btn-clearsecondary btn-tags">{{this}}</a>
         {{/each}}
         {{#each course}}
-		<a class="btn btn-clearblue btn-tags">{{this}}</a>
+		<a class="btn btn-clearsecondary btn-tags">{{this}}</a>
         {{/each}}
         {{#each cuisine}}
-		<a class="btn btn-clearblue btn-tags">{{this}}</a>
+		<a class="btn btn-clearsecondary btn-tags">{{this}}</a>
         {{/each}}
 	  </div>
     </div>
@@ -134,9 +134,9 @@ $()
       <div class="span6 request-links">
         Still looking?
         {% if request.user.is_authenticated %}
-        <a href="#" id="requestform-btn" class="btn btn-green">create a request</a>
+        <a href="#" id="requestform-btn" class="btn btn-primary">create a request</a>
         {% endif %}
-        <a href="{% url lessons %}" class="btn btn-blue"> view lessons</a>
+        <a href="{% url lessons %}" class="btn btn-secondary"> view lessons</a>
       </div>
     </div>
   </div>
@@ -165,7 +165,7 @@ $()
 	{% endif %}
  	  <div class="row">
 		  <div class="span4 lesson-title request-title">
-			<a class="green reqtitle"><h3 class="no-margin">{{req.title}}</h3></a>
+			<a class="primary reqtitle"><h3 class="no-margin">{{req.title}}</h3></a>
 		  </div>
 
 		  <div class="span2">
@@ -185,14 +185,14 @@ $()
 
           <div class="attatchedchef pull-right"><strong>
           {% if req.chef_attatched %}
-          by <a href="{% url miniprofile req.chef_attatched.id %}" class="miniprofile-btn green">{{req.chef_attatched.full_name}}</strong></a>
+          by <a href="{% url miniprofile req.chef_attatched.id %}" class="miniprofile-btn primary">{{req.chef_attatched.full_name}}</strong></a>
           {% elif user.get_profile.professional_chef %}
-            <div class="btn btn-green btn-createlesson">Create lesson</div>
+            <div class="btn btn-primary btn-createlesson">Create lesson</div>
             <div class="row no-display">
               {% include "chef_pledge.html" with pledge_form=pledge_form slug=req.slug%}
             </div>
           {% else %}
-          <a href="#" class="green">No Chef yet!</strong></a>
+          <a href="#" class="primary">No Chef yet!</strong></a>
           {% endif %}
           </div>
 		</div>

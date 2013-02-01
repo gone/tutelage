@@ -16,7 +16,7 @@
 }
 
 .lesson-title a:hover {
-    color: $green-active !important;
+    color: $primary-active !important;
 }
 
 .lesson:first-child {
@@ -28,7 +28,7 @@
 }
 
 .lesson-author a:hover {
-	color: $green-active !important;
+	color: $primary-active !important;
 	text-decoration: none;
 }
 
@@ -189,7 +189,7 @@
 	border-radius: 50%;
 	height:36px;
 	width: 36px;
-	background-color: #02A64F;
+	background-color: $primary;
 }
 
 .lesson-icon-circle-ingredients {
@@ -393,7 +393,7 @@
 
 .item-buy-button {
     cursor: pointer;
-	background-color: #4BA5FF;
+	background-color: $secondary;
 	display: inline-block;
 	width: 100px;
 	padding: 5px 5px;
@@ -404,7 +404,7 @@
 
 .item-buy-button:hover, .item-buy-button:active, .item-ad-buy-button:hover, .item-ad-buy-button:active {
 	cursor: pointer;
-    background-color: #21a1c9 !important;
+    background-color: $secondary-active !important;
 	color: white !important;
 	text-decoration:none !important;
 }

@@ -85,7 +85,7 @@
 		  <div class="span6 chef-specialities">
 			<h4>Specialties</h4>
             {% for tag in u.profile.tags %}
-			   <a class="btn btn-clearblue btn-tags">{{tag}}</a>
+			   <a class="btn btn-clearsecondary btn-tags">{{tag}}</a>
             {% endfor %}
 		  </div>
 		</div>
@@ -103,7 +103,7 @@
 
                 <p class="testimonial-source">
 				  Chef
-				  <a class="green" href="{{u.profile.testimonial1_link}}" target="_blank">
+				  <a class="primary" href="{{u.profile.testimonial1_link}}" target="_blank">
 				    <strong>{{u.profile.testimonial1_src}}</strong>
 				  </a>
 				</p>
@@ -116,7 +116,7 @@
 
                 <p class="testimonial-source pull-right">
 				  Chef
-				  <a class="green testimonial-source-right pull-right" href="{{u.profile.testimonial2_link}}" target="_blank">
+				  <a class="primary testimonial-source-right pull-right" href="{{u.profile.testimonial2_link}}" target="_blank">
 				    <strong>{{u.profile.testimonial2_src}}</strong>
 				  </a>
 				</p>
@@ -129,7 +129,7 @@
 
                 <p class="testimonial-source">
 				  Chef
-				  <a class="green" href="{{u.profile.testimonial3_link}}" target="_blank">
+				  <a class="primary" href="{{u.profile.testimonial3_link}}" target="_blank">
 				    <strong>{{u.profile.testimonial3_src}}</strong>
 				  </a>
 				</p>

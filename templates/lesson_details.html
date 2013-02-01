@@ -5,7 +5,7 @@
     <div class="span7">
  	  <div class="row">
 		  <div class="span5 lesson-title">
-			<a class="green" href="{% url lesson lesson.id %}"><h3>{{lesson.title}}</h3></a>
+			<a class="primary" href="{% url lesson lesson.id %}"><h3>{{lesson.title}}</h3></a>
 		  </div>
 		  <div class="span1">
 			<h3 class="pull-right">${{lesson.price|default:"0"}}</h3>
@@ -57,7 +57,7 @@
         <div class="row">
           <div class="span6">
           {% for tag in lesson.tags %}
-          <a class="btn btn-clearblue btn-tags">{{tag|title}}</a>
+          <a class="btn btn-clearsecondary btn-tags">{{tag|title}}</a>
           {% endfor %}
 		  </div>
         </div>
@@ -66,7 +66,7 @@
 
     <div class="span5">
 	  <div class="row">
-		<h3 class="right-padding pull-right">by Chef&#160;<a class="green miniprofile-btn" href="{% url miniprofile lesson.teacher.id %}">{{lesson.teacher.get_full_name|title}}</a></h3>
+		<h3 class="right-padding pull-right">by Chef&#160;<a class="primary miniprofile-btn" href="{% url miniprofile lesson.teacher.id %}">{{lesson.teacher.get_full_name|title}}</a></h3>
 
 		<div id="lesson-photo" class="span5">
 		  <img src={{MEDIA_URL}}{{lesson.image}} />
@@ -83,7 +83,7 @@
 		</div>
 
 		<div class="span2 right-padding pull-right">
-	      <a class="btn btn-green pull-right" href="{% url lesson lesson.id %}">View Lesson</a>
+	      <a class="btn btn-primary pull-right" href="{% url lesson lesson.id %}">View Lesson</a>
 	    </div>
 	  </div>
     </div>
