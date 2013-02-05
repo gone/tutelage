@@ -114,7 +114,7 @@ require(['./common',], function(){
 
 		  <div class="step-technique span5">
 			{% for tech in step.technique.all %}
-			<a class="technique-{{forloop.parentloop.counter0}} step-technique-text step-title blue pull-right">Watch
+			<a class="technique-{{forloop.parentloop.counter0}} step-technique-text step-title secondary pull-right">Watch
 			  <img class="technique-play-icon" src="{{STATIC_URL}}img/play-button-blue.png" />
 			  {{tech.title}}</a>
 			<!-- this should likely be moved somewhere else -->

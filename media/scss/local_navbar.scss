@@ -49,7 +49,7 @@ $nav-padding: 5px;
 }
 
 .box:hover {
-    background-color: $green;
+    background-color: $primary;
     h5 {color:	white;}
 }
 
@@ -88,7 +88,7 @@ $nav-padding: 5px;
 
 .navbar {
     border: 1px $border-color solid;
-    margin: 10px 0px 10px -2px !important;
+    margin: 10px 0px 40px -2px !important;
     color: black !important;
     height: 100%;
 	background-color: white;
@@ -123,13 +123,14 @@ $nav-padding: 5px;
 }
 
 .navbar .brand {
+    position: absolute;
 	padding: 0px;
-	margin: 7px 0px 7px -13px;
+	margin: -1px 0px 7px 20px !important;
 }
 
 .navbar-logo {
-	height: 50px;
-	width: 150px;
+	height: 108px;
+    width: 72px;
 }
 
 

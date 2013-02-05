@@ -34,7 +34,7 @@
 			  </div>
 
 		      <div class="span2 profile-btn">
-		        <a href="{% url profile u.id %}" class="btn btn-green full-profile-link pull-right">
+		        <a href="{% url profile u.id %}" class="btn btn-primary full-profile-link pull-right">
 			        See full profile
 		        </a>
 	          </div>
@@ -78,7 +78,7 @@
           <div class="span5">
                {% endif %}
 	          <div class="profile-btn">
-	              <a href="{% url lesson_detail lesson.id %}" class="btn btn-blue btn-profile-link">
+	              <a href="{% url lesson_detail lesson.id %}" class="btn btn-secondary btn-profile-link">
 		              {{lesson.title}}
 		          </a>
 		      </div>
