@@ -83,6 +83,12 @@
         {{/each}}
 	  </div>
     </div>
+    <div class="span2">
+      <div addthis:url="http://culination.com/ask?slug={{slug}}" class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        <a class="addthis_button_pinterest_pinit"></a>
+      </div>
+    </div>
 </script>
 {% endverbatim %}
 
@@ -100,6 +106,7 @@ require(['./common',], function(){
             dest.html(template(data))
             url = "?slug=" + slug
             window.history.replaceState({}, document.title, url)
+           addthis.toolbox(".addthis_toolbox")
         }
 
 

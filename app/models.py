@@ -455,6 +455,10 @@ class LessonRequest(CreatedMixin):
     class Meta:
         ordering = ('need_by','id')
 
+    def get_absolute_url(self):
+        return reverse("ask")  + "?slug=" + self.slug
+
+
 
 class LessonPledge(CreatedMixin):
     user = models.ForeignKey(User)

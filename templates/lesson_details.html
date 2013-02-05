@@ -86,6 +86,21 @@
 	      <a class="btn btn-primary pull-right" href="{% url lesson lesson.id %}">View Lesson</a>
 	    </div>
 	  </div>
+      <br>
+  {% url lesson_detail lesson.id as url %}
+  {% include "share.html" with url=url %}
+
+<br>
+<br>
+<br>
+
+  {% url account:register as url %}
+  {% include "share.html" with url=url %}
+
+
+
+
+
     </div>
 
 
