@@ -1,7 +1,7 @@
 import decimal
 
 from django import forms
-from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge, Step, ChefPledge
+from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge, Step, ChefPledge, Tool
 from .constants import SKILL_LEVELS
 #from ajax_select.fields import AutoCompleteSelectMultipleField
 
@@ -60,7 +60,14 @@ class IngredentsDetailsForm(forms.ModelForm):
 
     class Meta:
         model = LessonIngredient
-        fields =  ("number","ingredient", "number", "measurement", "prep")
+        fields =  ("ingredient", "measurement")
+
+class ToolsDetailsForm(forms.ModelForm):
+
+    class Meta:
+        model = Tool
+        fields =  ("name", )
+
 
 class StepDetailsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):

@@ -30,6 +30,7 @@ from .models import (Lesson, LessonIngredient, Tool, Step, Video,
 from .forms import (ProfileForm,
                     LessonDetailsForm,
                     IngredentsDetailsForm,
+                    ToolsDetailsForm,
                     StepDetailsForm,
                     ChefPledgeForm,
                     ContributionForm,
@@ -146,7 +147,7 @@ def lesson_ingredients(request, lesson_id=None):
         raise PermissionDenied
 
     IngredientsDetailsFormset = inlineformset_factory(Lesson, LessonIngredient, form=IngredentsDetailsForm, extra=1, )
-    ToolFormset = modelformset_factory(Tool, extra=1)
+    ToolFormset = modelformset_factory(Tool, extra=1, form=ToolsDetailsForm)
     if request.method == "POST":
         ingredient_formset = IngredientsDetailsFormset(request.POST, instance=lesson, prefix="ingredients")
         tool_formset = ToolFormset(request.POST, prefix="tools", queryset=lesson.tools.all())
