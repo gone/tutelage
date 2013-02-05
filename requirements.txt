@@ -27,9 +27,9 @@ https://packages.elmcitylabs.com/ecl_tools-0.3.7.tar.gz#ecl_tools
 # ecl-twitter==1.2.0
 
 # Search
-# django-haystack==1.2.6
+django-haystack==1.2.7
 # pysolr==2.1.0-beta
-# whoosh==2.3.2
+whoosh==2.4.1
 
 # Misc
 PIL

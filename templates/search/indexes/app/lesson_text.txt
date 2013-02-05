@@ -1,0 +1,9 @@
+{{object.teacher}}
+{{object.flavor_text}}
+{{object.course}}
+{{object.cuisine}}
+{{object.restrictions}}
+{{object.title}}
+{{object.url}}
+{{object.keywords}}
+{{object.description}}

@@ -250,6 +250,7 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     #"mezzanine.accounts",
     #"mezzanine.mobile",
+    'haystack',
     'app',
     'account',
     'avatar',
@@ -508,3 +509,8 @@ LOGIN_URL = "/account/login/"
 #     from local_settings import *
 # except:
 #     pass
+
+
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH =  os.path.join(PROJECT_ROOT, 'whoosh_index')
+HAYSTACK_SITECONF = 'app.search_sites'

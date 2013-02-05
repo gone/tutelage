@@ -18,6 +18,7 @@ urlpatterns = patterns("",
     ("^admin/", include(admin.site.urls)),
     ("^account/", include("account.urls", "account", "account")),
     ("^avatar/", include("avatar.urls", "avatar", "avatar")),
+    (r'^search/', include('haystack.urls')),
     ("", include("app.urls")),
 
 

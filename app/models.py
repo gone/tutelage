@@ -326,6 +326,9 @@ class Lesson(CreatedMixin, Displayable):
         return int(max(self.cooking_time.total_seconds() / 60, 1))
 
 
+    def get_absolute_url(self):
+        return reverse("lesson_detail", kwargs={'lesson_id':self.id})
+
     def __unicode__(self):
         return self.title
 
