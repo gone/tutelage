@@ -65,6 +65,12 @@ shift_timeline_right = function(){
     currently_active.prev().addClass(active_class)
 }
 
+handle_timeline_click = function(){
+    var index = $("#lesson-timeline-images").children().index(this)
+    $('.carousel').carousel(index)
+
+}
+
 
 require(['./common',], function(){
     require(["jquery", "colorbox"], function($){
@@ -83,7 +89,7 @@ require(['./common',], function(){
         $('.lesson-nav-btn-next').on('click', shift_timeline_left)
         $('.lesson-nav-btn-prev').on('click', shift_timeline_right)
 
-
+        $('#lesson-timeline-images').children().click(handle_timeline_click)
         $('.carousel').on('slid', function (e) {
             idx = $('.carousel').find('.active').index()
             $('#lesson-timeline-images').children().removeClass('lesson-timeline-picture-active')
