@@ -427,6 +427,7 @@ class LessonRequest(CreatedMixin):
             "chef": self.chef_attatched.to_dict() if self.chef_attatched else None,
             "chef_profile_url": reverse('miniprofile', args=[self.chef_attatched.id]) if self.chef_attatched else "#",
             "inpot": int(self.in_pot),
+            "percent":  (float(self.in_pot) / float(self.chef_attatched.amount_required))*100 if self.chef_attatched else 0,
             "pledges":[pledge.to_dict() for pledge in self.pledges.all()[:10]],
             }
 
