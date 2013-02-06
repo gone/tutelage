@@ -1,7 +1,7 @@
 import decimal
 
 from django import forms
-from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge, Step, ChefPledge, Tool
+from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge, Step, ChefPledge, Tool, Customer
 from .constants import SKILL_LEVELS
 #from ajax_select.fields import AutoCompleteSelectMultipleField
 
@@ -128,8 +128,15 @@ class ContributionForm(forms.ModelForm):
         try:
             self.req = LessonRequest.objects.get(slug=slug)
         except LessonRequest.DoesNotExist:
-            raise ValidationError()
+            raise forms.ValidationError()
         return self.cleaned_data['request_slug']
+
+    def clean(self):
+        try:
+            self.user.customer
+            return super(ContributionForm, self).clean()
+        except Customer.DoesNotExist:
+            raise forms.ValidationError("We need a credit card to bill you")
 
     class Meta:
         model = LessonPledge

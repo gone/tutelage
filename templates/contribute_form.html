@@ -1,4 +1,3 @@
-
 <div class="request-contribute pull-right">
   <span class="">Contribute</strong>
 <div class="request-contribute-input input-prepend">
@@ -14,7 +13,12 @@
   {{contribute_form.amount.errors}}
 </div>
 
-            {{ contribute_form.email.label_tag }}: {{ contribute_form.email }}
+{{ contribute_form.email.label_tag }}: {{ contribute_form.email }}
 {{ contribute_form.email.errors }}
+{% if contribute_form.non_field_errors %}
+<ul>
+    {{ contribute_form.non_field_errors.as_ul }}
+</ul>
+{% endif %}
 <input type="submit" value="contribute" class="btn btn-green btn-request-contribute">
 </div>

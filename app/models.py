@@ -222,21 +222,27 @@ class Profile(CreatedMixin):
         return unicode(self.user)
 
 
-class CreditCard(CreatedMixin):
-    user = models.ForeignKey(User)
-    name = models.CharField(max_length=128)
-    type = models.CharField(max_length=32, null=True, blank=True)
-    exp_month = models.CharField(max_length=2, null=True, blank=True)
-    exp_year = models.CharField(max_length=4, null=True, blank=True)
-    last_4 = models.CharField(max_length=4, null=True, blank=True)
-    zip = models.CharField(max_length=5, null=True, blank=True)
-    address_1 = models.CharField(max_length=128, null=True, blank=True)
-    address_2 = models.CharField(max_length=128, null=True, blank=True)
-    state = models.CharField(max_length=2, null=True, blank=True)
-    country = models.CharField(max_length=32, null=True, blank=True)
 
-    stripe_customer_id = models.CharField(max_length=32, null=True, blank=True)
 
+# class CreditCard(CreatedMixin):
+#     user = models.ForeignKey(User)
+#     name = models.CharField(max_length=128)
+#     type = models.CharField(max_length=32, null=True, blank=True)
+#     exp_month = models.CharField(max_length=2, null=True, blank=True)
+#     exp_year = models.CharField(max_length=4, null=True, blank=True)
+#     last_4 = models.CharField(max_length=4, null=True, blank=True)
+#     zip = models.CharField(max_length=5, null=True, blank=True)
+#     address_1 = models.CharField(max_length=128, null=True, blank=True)
+#     address_2 = models.CharField(max_length=128, null=True, blank=True)
+#     state = models.CharField(max_length=2, null=True, blank=True)
+#     country = models.CharField(max_length=32, null=True, blank=True)
+
+#     stripe_customer_id = models.CharField(max_length=32, null=True, blank=True)
+
+
+class Customer(CreatedMixin):
+    user = models.OneToOneField(User)
+    customer_id = models.CharField(max_length=128)
 
 class Video(CreatedMixin):
     video = models.FileField(upload_to=file_url("lessonvideos"))

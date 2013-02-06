@@ -13,6 +13,8 @@ from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext
 from django.core import serializers
+from django.db import transaction
+
 
 from django.forms.models import inlineformset_factory, modelformset_factory
 
@@ -25,7 +27,7 @@ from django.contrib.formtools.wizard.views import SessionWizardView
 logger = logging.getLogger(__name__)
 
 from .models import (Lesson, LessonIngredient, Tool, Step, Video,
-                     LessonRating, FeaturedChef, LessonRequest)
+                     LessonRating, FeaturedChef, LessonRequest, Customer)
 
 from .forms import (ProfileForm,
                     LessonDetailsForm,
@@ -35,6 +37,8 @@ from .forms import (ProfileForm,
                     ChefPledgeForm,
                     ContributionForm,
                     LessonRequestForm)
+
+from .internal_stripe import create_customer
 
 from account.forms import PasswordChangeForm
 
@@ -218,9 +222,13 @@ def chef_pledge(request, slug):
         form = ChefPledgeForm(request.user, lesson_request)
     return direct_to_template(request, "chef_pledge_standalone.html", {"pledge_form": form, "slug":slug})
 
+
 @login_required
 def contribute(request):
     if request.method == "POST":
+        if 'stripe-id' in request.POST:
+            customer = create_customer(request.user, request.POST['stripe-id'])
+            Customer.objects.create(customer_id=customer.id, user=request.user)
         form = ContributionForm(request.user, request.POST)
         if form.is_valid():
             contribution = form.save()

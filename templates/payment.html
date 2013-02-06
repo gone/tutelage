@@ -1,0 +1,53 @@
+<div id="payment">
+  <div class="row">
+	<div class="span4">
+
+      <form action="" method="POST" id="payment-form">
+        <div class="row">
+          <label>
+            <span>Card Number</span>
+            <input type="text" size="20" autocomplete="off" class="card-number"/>
+          </label>
+        </div>
+
+        <div class="row">
+          <label>
+            <span>CVC</span>
+            <input type="text" size="4" autocomplete="off" class="card-cvc"/>
+          </label>
+        </div>
+
+        <div class="row">
+          <label>
+            <span>Expiration (MM/YYYY)</span>
+            <input type="text" size="2" class="card-expiry-month"/>
+          </label>
+          <span> / </span>
+          <input type="text" size="4" class="card-expiry-year"/>
+        </div>
+
+        <button type="submit" class="payment-asubmit-button">Submit Payment</button>
+      </form>
+    </div>
+
+  </div>
+
+</div>
+<script type="text/javascript">
+$(function() {
+  $('#payment-form').submit(function(event) {
+    // Disable the submit button to prevent repeated clicks
+    $('.payment-submit-button').prop('disabled', true);
+
+    Stripe.createToken({
+      number: $('.card-number').val(),
+      cvc: $('.card-cvc').val(),
+      exp_month: $('.card-expiry-month').val(),
+      exp_year: $('.card-expiry-year').val()
+    }, stripeResponseHandler);
+
+    // Prevent the form from submitting with the default action
+    return false;
+  });
+});
+</script>
