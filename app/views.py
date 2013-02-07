@@ -2,7 +2,7 @@ import json
 import logging
 from itertools import chain
 from datetime import datetime
-from datetime.datetime
+from datetime import datetime
 from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.simple import direct_to_template

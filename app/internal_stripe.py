@@ -16,7 +16,7 @@ def bill_pledge(pledge):
     customer_id = pledge.user.customer.customer_id
     amount = int(pledge.amount) * 100 #convert to cents
     stripe.Charge.create(
-        amount=amount
+        amount=amount,
         currency="usd",
-        customer=customer_id
+        customer=customer_id,
     )
