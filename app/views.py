@@ -1,7 +1,8 @@
 import json
 import logging
 from itertools import chain
-
+from datetime import datetime
+from datetime.datetime
 from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.simple import direct_to_template
@@ -38,7 +39,7 @@ from .forms import (ProfileForm,
                     ContributionForm,
                     LessonRequestForm)
 
-from .internal_stripe import create_customer
+from .internal_stripe import create_customer, bill_pledge
 
 from account.forms import PasswordChangeForm
 
@@ -302,3 +303,21 @@ def rate_lesson(request, lesson_id, rating):
 def featured_chefs(request):
     chef = FeaturedChef.objects.published().order_by('-id').select_related('chef')[0]
     return profile(request, user_id=chef.id)
+
+
+def handle_requests():
+    for r in LessonRequest.objects.filter(active=True, need_by__lt=datetime.today()):
+        r.active=False
+        if r.chef_attatched and r.in_pot > r.amount_needed:
+            r.successfully_funded = True
+            for pledge in r.pledges.all():
+                try:
+                    bill_pledge(pledge)
+                    pledge.successfully_billed = True
+                except:
+                    pledge.successfully_billed = False
+            pledge.save()
+
+        else:
+            r.successfully_funded = False
+        r.save()
