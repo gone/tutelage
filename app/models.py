@@ -222,21 +222,27 @@ class Profile(CreatedMixin):
         return unicode(self.user)
 
 
-class CreditCard(CreatedMixin):
-    user = models.ForeignKey(User)
-    name = models.CharField(max_length=128)
-    type = models.CharField(max_length=32, null=True, blank=True)
-    exp_month = models.CharField(max_length=2, null=True, blank=True)
-    exp_year = models.CharField(max_length=4, null=True, blank=True)
-    last_4 = models.CharField(max_length=4, null=True, blank=True)
-    zip = models.CharField(max_length=5, null=True, blank=True)
-    address_1 = models.CharField(max_length=128, null=True, blank=True)
-    address_2 = models.CharField(max_length=128, null=True, blank=True)
-    state = models.CharField(max_length=2, null=True, blank=True)
-    country = models.CharField(max_length=32, null=True, blank=True)
 
-    stripe_customer_id = models.CharField(max_length=32, null=True, blank=True)
 
+# class CreditCard(CreatedMixin):
+#     user = models.ForeignKey(User)
+#     name = models.CharField(max_length=128)
+#     type = models.CharField(max_length=32, null=True, blank=True)
+#     exp_month = models.CharField(max_length=2, null=True, blank=True)
+#     exp_year = models.CharField(max_length=4, null=True, blank=True)
+#     last_4 = models.CharField(max_length=4, null=True, blank=True)
+#     zip = models.CharField(max_length=5, null=True, blank=True)
+#     address_1 = models.CharField(max_length=128, null=True, blank=True)
+#     address_2 = models.CharField(max_length=128, null=True, blank=True)
+#     state = models.CharField(max_length=2, null=True, blank=True)
+#     country = models.CharField(max_length=32, null=True, blank=True)
+
+#     stripe_customer_id = models.CharField(max_length=32, null=True, blank=True)
+
+
+class Customer(CreatedMixin):
+    user = models.OneToOneField(User)
+    customer_id = models.CharField(max_length=128)
 
 class Video(CreatedMixin):
     video = models.FileField(upload_to=file_url("lessonvideos"))
@@ -406,6 +412,7 @@ class LessonRequest(CreatedMixin):
 
 
     slug = models.SlugField()
+    successfully_funded = models.NullBooleanField(default=None)
     course = models.ManyToManyField('Course', related_name="requests", blank=True)
     cuisine = models.ManyToManyField('Cuisine', related_name="requests", blank=True)
     restrictions = models.ManyToManyField("DietaryRestrictions", related_name="requests", blank=True)
@@ -427,7 +434,7 @@ class LessonRequest(CreatedMixin):
             "chef": self.chef_attatched.to_dict() if self.chef_attatched else None,
             "chef_profile_url": reverse('miniprofile', args=[self.chef_attatched.id]) if self.chef_attatched else "#",
             "inpot": int(self.in_pot),
-            "percent":  (float(self.in_pot) / float(self.chef_attatched.amount_required))*100 if self.chef_attatched else 0,
+            "percent":  (float(self.in_pot) / float(self.amount_needed))*100 if self.chef_attatched else 0,
             "pledges":[pledge.to_dict() for pledge in self.pledges.all()[:10]],
             }
 
@@ -436,6 +443,7 @@ class LessonRequest(CreatedMixin):
             # replace self.name with your prepopulate_from field
             self.slug = SlugifyUniquely(self.title, self.__class__)
         super(self.__class__, self).save()
+
 
     @cached_property
     def chef_attatched(self):
@@ -448,6 +456,10 @@ class LessonRequest(CreatedMixin):
     @cached_property
     def in_pot(self):
         return self.pledges.all().aggregate(Sum('amount'))['amount__sum'] or 0
+
+    @cached_property
+    def amount_needed(self):
+        self.chef_attatched.amount_required or None
 
 
     def __unicode__(self):
@@ -468,6 +480,8 @@ class LessonPledge(CreatedMixin):
     request = models.ForeignKey(LessonRequest, related_name="pledges")
     date_pledged =models.DateField(auto_now_add=True)
 
+    successfully_billed = models.NullBooleanField(default=None)
+    billed_at = models.DateTimeField(null=True)
     def to_dict(self):
         return {
             "user_id": self.user.id,

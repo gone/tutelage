@@ -108,6 +108,18 @@
 {% endverbatim %}
 
 <script type="text/javascript">
+has_stripe = {% if request.user.customer %}true{%else%}false{%endif%}
+function stripeResponseHandler(status, response){
+    if (status == 200){
+        has_stripe = true
+        stripe_input = $("<input type='hidden' name='stripe-id'>")
+        stripe_input.attr('value', response.id)
+
+        $('.contribute-form').append(stripe_input)
+        $('.contribute-form').submit()
+    }
+
+}
 require(['./common',], function(){
     require(['cs!main', 'cs!colorboxcommon', 'liveValidation', 'handlebars'], function(main, cc){
         source = $("#featured-request-templ").html();
@@ -121,7 +133,16 @@ require(['./common',], function(){
             dest.html(template(data))
             url = "?slug=" + slug
             window.history.replaceState({}, document.title, url)
-           addthis.toolbox(".addthis_toolbox")
+            addthis.toolbox(".addthis_toolbox")
+            $('.contribute-form').submit(function(e){
+                if (has_stripe){
+                    return true
+                }
+                else {
+                    cc.setupColorbox('#payment')
+                    return false
+                }
+            })
         }
 
 
@@ -236,4 +257,9 @@ $()
 <div class="row no-display">
   {% include "lesson_request.html" with request_form=request_form %}
 </div>
+
+<div class="row no-display">
+  {% include "payment.html" %}
+</div>
+
 {% endblock %}

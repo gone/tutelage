@@ -11,4 +11,34 @@
   </div>
 </div>
 
+<script type="text/javascript">
+has_stripe = {% if request.user.creditcard_set.all %}true{%else%}false{%endif%}
+
+function stripeResponseHandler(status, response){
+    if (status == 200){
+        has_stripe = true
+        stripe_input = $("<input type='hidden' name='stripe-data'>")
+        stripe_input.attr('value', JSON.stringify(response))
+
+        $('.contribute-form').append(stripe_input)
+        $('.contribute-form').submit()
+    }
+
+}
+$(document).ready(function(){
+        $('.contribute-form').submit(function(e){
+                if (has_stripe){
+                    return true
+                }
+                else {
+                    $.colorbox({href:'#payment',inline: true})
+                    return false
+                }
+            })
+})
+</script>
+<div class="row no-display">
+  {% include "payment.html" %}
+</div>
+
 {% endblock %}

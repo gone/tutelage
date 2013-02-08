@@ -1,5 +1,7 @@
 require ["jquery", "liveValidation"], ($) ->
     is_valid = (form) ->
+        if form.length == 0
+            return true
         form.data('jqv')['showPrompt'] = false
         isValid = form.validationEngine('validate')
         if isValid == null

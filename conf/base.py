@@ -514,3 +514,6 @@ LOGIN_URL = "/account/login/"
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH =  os.path.join(PROJECT_ROOT, 'whoosh_index')
 HAYSTACK_SITECONF = 'app.search_sites'
+
+
+STRIPE_API = "fYNnSezc4SWDZce9XexC6iP2bLhS6Lan"

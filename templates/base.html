@@ -35,6 +35,10 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+    <script src="https://js.stripe.com/v1/"></script>
+    <script type="text/javascript">
+            Stripe.setPublishableKey('pk_ql6Y3hAzG1yNZRTgdy5I6O7wMzbES');
+    </script>
 
     <script data-main="{{STATIC_URL}}js/{% block jsmain %}main{%endblock%}" src="{{STATIC_URL}}js/require/require-jquery.js"></script>
 
