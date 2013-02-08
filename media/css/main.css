@@ -9137,6 +9137,20 @@ btn-avatar {
   width: 445px;
 }
 
+.request-progress {
+  border: 3px solid #e4e4e4;
+  width: 90%;
+}
+
+.request-bar {
+  background-color: #57264f !important;
+  background-image: -moz-linear-gradient(top, #57264f, #57264f) !important;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#57264f), to(#57264f)) !important;
+  background-image: -webkit-linear-gradient(top, #57264f, #57264f) !important;
+  background-image: -o-linear-gradient(top, #57264f, #57264f) !important;
+  background-image: linear-gradient(to bottom, #57264f, #57264f) !important;
+}
+
 .request-form-field label {
   display: block;
   font-size: 14px;

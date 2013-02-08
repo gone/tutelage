@@ -6,7 +6,6 @@
       <li>
         <a href="/chefs/">
           <div class="box">
-
             <div class="nav-icon sprite-icons-tutor">
             </div>
             <h5>chefs</h5>
@@ -65,23 +64,23 @@
       {% else %}
 
       <li class="logout-btn">
-        <div class="box box-logout">
-          <a href="{% url account:logout %}?next={{request.get_full_path }}">
-          <div class="nav-icon sprite-icons-logout">
+        <a href="{% url account:logout %}?next={{request.get_full_path }}">
+          <div class="box box-logout">
+            <div class="nav-icon sprite-icons-logout">
+            </div>
+            <h5>log out</h5>
           </div>
-          <h5>log out</h5>
-          </a>
-        </div>
+        </a>
       </li>
 
       <li class="my-btn">
-        <div class="box box-my">
-          <a href="{% url mylessons request.user.id %}">
-          <div class="nav-icon sprite-icons-my">
+        <a href="{% url mylessons request.user.id %}">
+          <div class="box box-my">
+            <div class="nav-icon sprite-icons-my">
+            </div>
+            <h5>culination</h5>
           </div>
-          <h5>culination</h5>
-          </a>
-        </div>
+        </a>
       </li>
       {% endif %}
 

@@ -87,6 +87,20 @@
 	width: 445px;
 }
 
+.request-progress {
+    border: 3px solid $gray;
+    width: 90%;
+}
+
+.request-bar {
+    background-color: $primary !important;
+    background-image: -moz-linear-gradient(top, $primary, $primary) !important;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($primary), to($primary)) !important;
+    background-image: -webkit-linear-gradient(top, $primary, $primary) !important;
+    background-image: -o-linear-gradient(top, $primary, $primary) !important;
+    background-image: linear-gradient(to bottom, $primary, $primary) !important;
+}
+
 .request-form-field label {
 	display: block;
 	font-size: 14px;
