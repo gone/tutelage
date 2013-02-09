@@ -34,14 +34,24 @@
 
       <li>
         <a href="/about/">
-        <div class="box">
+        <div class="box box-about">
           <div class="nav-icon sprite-icons-about">
           </div>
           <h5>about</h5>
         </div>
         </a>
       </li>
-
+    
+      <li>
+      <form action="{% url search %}" method="GET">
+        <div class="nav-search">
+          <div class='input-prepend'>
+            <span class="add-on"><i class="icon-search"></i></span>
+            <input name="q" type="text" placeholder="What sounds good?" />
+          </div>
+        </div>
+      </form>
+      </li>
 	  <!--
 	  comment out signup/login or logout/my as needed
 	  -->

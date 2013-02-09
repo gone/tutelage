@@ -5430,7 +5430,7 @@ a.label:hover, a.badge:hover {
 }
 
 body {
-  background-color: #fefefe !important;
+  background-color: #ececec !important;
   line-height: 115% !important;
 }
 
@@ -7923,6 +7923,7 @@ body .ui-tooltip {
 .box-login {
   padding-top: 12px;
   height: 48px;
+  border-right: 1px lightgrey solid;
 }
 
 .box-logout {
@@ -7934,6 +7935,7 @@ body .ui-tooltip {
   padding-top: 12px;
   height: 48px;
   width: 90px;
+  border-right: 1px lightgrey solid;
 }
 
 .box-ask {
@@ -7942,8 +7944,12 @@ body .ui-tooltip {
   width: 65px;
 }
 
+.box-about {
+  border-right: 1px lightgrey solid;
+}
+
 .box:hover {
-  background-color: #57264f;
+  background-color: #c85838;
 }
 .box:hover h5 {
   color: white;
@@ -7954,12 +7960,16 @@ body .ui-tooltip {
   width: 100%;
   font-weight: bold;
   text-align: center;
-  color: #333333;
+  color: white;
 }
 
 .nav-icon {
   margin-left: auto;
   margin-right: auto;
+}
+
+.nav-search {
+  margin: 17px;
 }
 
 /*  overwriting some of the base bootstrap */
@@ -7981,45 +7991,66 @@ body .ui-tooltip {
 }
 
 .navbar {
-  border: 1px lightgrey solid;
-  margin: 10px 0px 40px -2px !important;
-  color: black !important;
+  margin: 0px 0px 43px -2px !important;
+  color: white !important;
   height: 100%;
-  background-color: white;
+  background-color: #333333;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
-  background-image: -moz-linear-gradient(top, white, white);
-  background-image: -ms-linear-gradient(top, white, white);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
-  background-image: -webkit-linear-gradient(top, white, white);
-  background-image: -o-linear-gradient(top, white, white);
-  background-image: linear-gradient(#ffffff, #ffffff);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#333333));
+  background-image: -moz-linear-gradient(top, #333333, #333333);
+  background-image: -ms-linear-gradient(top, #333333, #333333);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #333333));
+  background-image: -webkit-linear-gradient(top, #333333, #333333);
+  background-image: -o-linear-gradient(top, #333333, #333333);
+  background-image: linear-gradient(#333333, #333333);
 }
 
 .navbar-inner {
   height: 100%;
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0.065) !important;
   border-radius: 0px !important;
   border: 0px !important;
-  background-color: white;
+  background-color: #333333;
   /* for hover of login */
   padding-right: 0px !important;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
-  background-image: -moz-linear-gradient(top, white, white);
-  background-image: -ms-linear-gradient(top, white, white);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
-  background-image: -webkit-linear-gradient(top, white, white);
-  background-image: -o-linear-gradient(top, white, white);
-  background-image: linear-gradient(#ffffff, #ffffff);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#333333));
+  background-image: -moz-linear-gradient(top, #333333, #333333);
+  background-image: -ms-linear-gradient(top, #333333, #333333);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #333333));
+  background-image: -webkit-linear-gradient(top, #333333, #333333);
+  background-image: -o-linear-gradient(top, #333333, #333333);
+  background-image: linear-gradient(#333333, #333333);
   filter: none;
   -ms-filter: none;
 }
 
+/*
+.navbar-inner {
+    height: 100%;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.065) !important;
+    border-radius: 0px !important;
+    border: 0px !important;
+    background-color: white;
+    padding-right: 0px !important;
+    background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
+    background-image: -moz-linear-gradient(top, white, white);
+    background-image: -ms-linear-gradient(top, white, white);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
+    background-image: -webkit-linear-gradient(top, white, white);
+    background-image: -o-linear-gradient(top, white, white);
+    background-image: linear-gradient(white, white);
+    filter: none;
+    -ms-filter: none;
+}
+*/
 .navbar .brand {
   position: absolute;
   padding: 0px;
-  margin: -1px 0px 7px 20px !important;
+  margin: 0px 0px 7px 20px !important;
 }
 
 .navbar-logo {
@@ -8028,12 +8059,33 @@ body .ui-tooltip {
 }
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 40px;
-  width: 960px;
+  margin: 20px 0px 0px 0px;
+  color: white !important;
+  background-color: #333333;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
+  -webkit-font-smoothing: antialiased;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#333333));
+  background-image: -moz-linear-gradient(top, #333333, #333333);
+  background-image: -ms-linear-gradient(top, #333333, #333333);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #333333));
+  background-image: -webkit-linear-gradient(top, #333333, #333333);
+  background-image: -o-linear-gradient(top, #333333, #333333);
+  background-image: linear-gradient(#333333, #333333);
+}
+
+.footer-left {
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .footer-text {
   font-size: 16px !important;
+  padding-top: 3px;
 }
 
 .footer-links {
