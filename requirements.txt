@@ -57,3 +57,4 @@ django-durationfield
 ipython
 django-shortcuts
 django-extensions
+stripe

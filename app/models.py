@@ -434,7 +434,7 @@ class LessonRequest(CreatedMixin):
             "chef": self.chef_attatched.to_dict() if self.chef_attatched else None,
             "chef_profile_url": reverse('miniprofile', args=[self.chef_attatched.id]) if self.chef_attatched else "#",
             "inpot": int(self.in_pot),
-            "percent":  (float(self.in_pot) / float(self.amount_needed))*100 if self.chef_attatched else 0,
+            "percent":  self.percent,
             "pledges":[pledge.to_dict() for pledge in self.pledges.all()[:10]],
             }
 
@@ -444,6 +444,12 @@ class LessonRequest(CreatedMixin):
             self.slug = SlugifyUniquely(self.title, self.__class__)
         super(self.__class__, self).save()
 
+    @property
+    def percent(self):
+        if self.chef_attatched:
+            return (float(self.in_pot) / float(self.amount_needed))*100
+        else:
+            return 0
 
     @cached_property
     def chef_attatched(self):
@@ -459,7 +465,7 @@ class LessonRequest(CreatedMixin):
 
     @cached_property
     def amount_needed(self):
-        self.chef_attatched.amount_required or None
+        return self.chef_attatched.amount_required or None
 
 
     def __unicode__(self):
