@@ -84,7 +84,7 @@ body {
 }
 
 .btn-clearsecondary {
-    @include colored-button($white,$secondary-active,$secondary-active)
+    @include colored-button($white,$secondary,$secondary)
  }
 
 .btn-clearsecondary:hover{

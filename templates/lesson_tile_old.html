@@ -1,15 +1,19 @@
 <div class="span6 lesson">
  	  <div class="row">
-		  <div class="span4 lesson-title">
+		  <div class="span5 lesson-title">
 			<a class="primary" href="{%url lesson_detail lesson.id %}"><h3 class="no-margin">{{lesson.title|title}}</h3></a>
 		  </div>
-		  <div class="span2 lesson-author">
-			by <a class="miniprofile-btn primary" href="{% url miniprofile lesson.teacher.id %}"><strong>{{lesson.teacher.get_full_name|title}}</strong></a>
+		  <div class="span1">
+			<h3 class="no-margin pull-right">${{lesson.price|default:"0"}}</h3>
 		  </div>
       </div>
 
       <div class="row">
-		<div class="span3">
+		<div class="span2 offset4 lesson-author">by <a class="miniprofile-btn primary" href="{% url miniprofile lesson.teacher.id %}"><strong>{{lesson.teacher.get_full_name|title}}</strong></a></div>
+      </div>
+      <hr/>
+      <div class="row">
+		<div class="span3 lesson-tile-left">
             {% include "rating.html" with lesson=lesson%}
 		</div>
         <div class="span3">
@@ -23,29 +27,21 @@
       </div>
       <hr/>
 	  <div class="row">
-        <div class="span6 lesson-tile-image">
-            <img src="{{MEDIA_URL}}{{lesson.image}}"/>
+        <div class="span3">
+            <img class="lesson-tile-image" src="{{MEDIA_URL}}{{lesson.image}}"/>
         </div>
-      </div>
-
-      <div class="row">
-	    <div class="span6">
+		<div class="span3 lesson-tile-right">
 			<div class="lesson-tile-description">
 			  <small>{{lesson.flavor_text}}</small>
 			</div>
-        </div>
-	  </div>
-      
-      <div class="row">
-        <div class="span6">
-          <ul class="lesson-tile-info">
-            <li>Serves: {{lesson.serving_size}}</li>
-            <li>Prep Time: {{lesson.prep_in_min}} minute{{lesson.prep_in_min|pluralize}}</li>
-            <li>Cooking Time: {{lesson.cook_in_min}} minute{{lesson.cook_in_min|pluralize}}</li>
-          </ul>
-        </div>
-	  </div>
-      
+			<ul class="lesson-tile-info">
+              <li>Serves: {{lesson.serving_size}}</li>
+			  <li>Prep Time: {{lesson.prep_in_min}} minute{{lesson.prep_in_min|pluralize}}</li>
+			  <li>Cooking Time: {{lesson.cook_in_min}} minute{{lesson.cook_in_min|pluralize}}</li>
+            </ul>
+		</div>
+      </div>
+
 	  <div class="row">
 	    <br />
 	  </div>

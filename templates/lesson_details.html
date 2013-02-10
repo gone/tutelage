@@ -120,7 +120,10 @@
  	  <h5>Ingredients</h5>
  	  <ul class="lesson-list">
         {% for i in lesson.lessoningredient_set.all.distinct %}
- 	    <li><img src="../../static/img/lesson-details-icon.png" /><em>{{i.measurement}} </em>{{i.ingredient.name}}<em> {{i.prep}}</em></li>
+ 	    <li>
+          <div class="lesson-icon-circle"></div>
+          <p><em>{{i.measurement}} </em>{{i.ingredient.name}}<em> {{i.prep}}</em></p>
+        </li>
         {% endfor %}
  	  </ul>
     </div>
