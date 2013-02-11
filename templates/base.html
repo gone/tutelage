@@ -51,21 +51,23 @@ var addthis_config = {"data_track_addressbar":true, services_overlay:'facebook,t
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-511088d74ba42a22"></script>
 
 
-    <div class='container'>
+    
       <header class="row">
         {% include "nav.html" %}
-        {% include "searchbar.html" %}
         {% block header %} {% endblock %}
       </header>
+    
+    <div class='container'>
       <div class="content" >
         {% block content %}  {% endblock %}
       </div>
+    </div>
+    
       <footer class="row">
         {% include "footer.html" %}
         {% block footer %} {% endblock %}
       </footer>
-
-    </div>
+    
     <div class="row no-display">
       {% if not request.user.is_authenticated %}
 
