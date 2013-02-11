@@ -40,6 +40,39 @@ class ProfileForm(forms.Form):
 class LessonDetailsForm(forms.ModelForm):
     # video
 
+    cooking_time = forms.CharField()
+    prep_time = forms.CharField()
+    def clean_prep_time(self):
+        prep_time = self.cleaned_data['prep_time']
+        if not ":" in prep_time:
+            prep_time = "00:%s:00" % prep_time
+        return prep_time
+    def clean_cooking_time(self):
+        cooking_time = self.cleaned_data['cooking_time']
+        if not ":" in cooking_time:
+            cooking_time = "00:%s:00" % cooking_time
+        return cooking_time
+
+    def clean_title(self):
+        title = self.cleaned_data['title']
+        try:
+            old_lesson = Lesson.objects.get(title=title, teacher_id=self.teacher.id)
+            if old_lesson.id == getattr(self.instance, 'id', False):
+                return title
+            raise forms.ValidationError("You already have a lesson with that name")
+        except Lesson.DoesNotExist:
+            return title
+
+    def save(self, *args, **kwargs):
+        instance = super(LessonDetailsForm, self).save(*args, **kwargs)
+        instance.teacher = self.teacher
+        instance.save()
+        return instance
+
+    def __init__(self, *args, **kwargs):
+        self.teacher = kwargs.pop('teacher')
+        return super(LessonDetailsForm, self).__init__(*args, **kwargs)
+
     class Meta:
         model = Lesson
         fields = ('description', 'title', 'image', 'price', 'serving_size',

@@ -122,14 +122,12 @@ def add_lesson(request, lesson_id=None):
     else:
         lesson = None
     if request.method == "POST":
-        form = LessonDetailsForm(request.POST, request.FILES, instance=lesson)
+        form = LessonDetailsForm(request.POST, request.FILES, teacher=request.user, instance=lesson)
         if form.is_valid():
             lesson = form.save(False)
-            lesson.teacher = request.user
-            lesson.save()
             return redirect("lesson_ingredients", lesson_id=lesson.id)
     else:
-        form = LessonDetailsForm(instance=lesson)
+        form = LessonDetailsForm(teacher=request.user, instance=lesson)
     return direct_to_template(request, "lesson_details_form.html", {"form": form, "lesson_id":lesson_id})
 
 
