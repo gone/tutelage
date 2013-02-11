@@ -189,8 +189,6 @@ def lesson_steps(request, lesson_id=None):
     if request.method == "POST":
         step_formset = StepFormset(request.POST, request.FILES, queryset=lesson.steps.all(), instance=lesson, initial=[{'lesson': lesson}])
 
-
-
         if step_formset.is_valid():
             steps = step_formset.save()
             for step in steps:

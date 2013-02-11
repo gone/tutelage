@@ -107,15 +107,14 @@ class StepDetailsForm(forms.ModelForm):
         rv = super(StepDetailsForm, self).__init__(*args, **kwargs)
         try:
             self.fields['tools'].queryset = self.instance.lesson.tools.all()
-            self.fields['ingredients'].queryset = self.instance.lesson.ingredients.all()
+            self.fields['ingredients'].queryset = self.instance.lesson.lessoningredient_set.all()
         except:
             self.fields['tools'].queryset = self.initial['lesson'].tools.all()
-            self.fields['ingredients'].queryset = self.initial['lesson'].ingredients.all()
+            self.fields['ingredients'].queryset = self.initial['lesson'].lessoningredient_set.all()
         return rv
 
     class Meta:
         model = Step
-
 
 class ChefPledgeForm(forms.ModelForm):
 

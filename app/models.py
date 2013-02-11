@@ -127,7 +127,7 @@ class LessonIngredient(CreatedMixin):
     prep = models.CharField(max_length=32, blank=True)
 
     def __unicode__(self):
-        return "%s %s %s" % (self.number, self.measurement, self.ingredient)
+        return "%s, %s" % (self.ingredient, self.measurement)
 
 
 class Tool(CreatedMixin):
