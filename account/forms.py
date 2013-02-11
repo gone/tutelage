@@ -72,6 +72,7 @@ class RegistrationForm(forms.Form):
 
 class LoginForm(AuthenticationForm):
     next = forms.CharField(widget=forms.HiddenInput)
+
     def clean_username(self):
         try:
             User.objects.get(email=self.cleaned_data['username'])
