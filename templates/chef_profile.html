@@ -39,7 +39,7 @@
 		<h4>More About Chef {{u.get_full_name|title}}</h4>
 
 		<div class="row">
-		  <div class="span3 chef-links">
+		  <div class="span2 chef-links">
               {% if u.profile.website1_url %}
 			  <a href="{{u.profile.website1_url}}" target="_blank">{{u.profile.website1}}</a>
               {% endif %}
@@ -51,28 +51,28 @@
               {% endif %}
 		  </div>
 
-		  <div class="span3">
+		  <div class="span4">
 	        <div class="social-media-icons">
                 {% if u.profile.facebook %}
-			    <a href="{{u.profile.facebook}}" target="_blank"><img src="{{STATIC_URL}}img/social-facebook.png" /> </a>
+			    <a href="{{u.profile.facebook}}" target="_blank"><div class="social-media-icon sprite-icons-facebook"></div></a>
                 {% endif %}
                 {% if u.profile.twitter %}
-			    <a href="{{u.profile.twitter}}" target="_blank"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
+			    <a href="{{u.profile.twitter}}" target="_blank"><div class="social-media-icon sprite-icons-twitter"></div></a>
                 {% endif %}
                 {% if u.profile.linkedin %}
-			    <a href="{{u.profile.linkedin}}" target="_blank"><img src="{{STATIC_URL}}img/social-linkedin.png" />  </a>
+			    <a href="{{u.profile.linkedin}}" target="_blank"><div class="social-media-icon sprite-icons-linkedin"></div></a>
                 {% endif %}
                 {% if u.profile.pinterest %}
-			    <a href="{{u.profile.pinterest}}" target="_blank"><img src="{{STATIC_URL}}img/social-pinterest.png"/>  </a>
+			    <a href="{{u.profile.pinterest}}" target="_blank"><div class="social-media-icon sprite-icons-pinterest"></div></a>
                 {% endif %}
                 {% if u.profile.youtube %}
-			    <a href="{{u.profile.youtube}}" target="_blank"><img src="{{STATIC_URL}}img/social-youtube.png" />  </a>
+			    <a href="{{u.profile.youtube}}" target="_blank"><div class="social-media-icon sprite-icons-youtube"></div></a>
                 {% endif %}
 			    {% if u.profile.googleplus %}
-                <a href="{{u.profile.googleplus}}" target="_blank"><img src="{{STATIC_URL}}img/social-google-plus.png"/></a>
+                <a href="{{u.profile.googleplus}}" target="_blank"><div class="social-media-icon sprite-icons-google-plus"></div></a>
                 {% endif %}
                 {% if u.profile.tumblr %}
-			    <a href="{{u.profile.tumblr}}" target="_blank"><img src="{{STATIC_URL}}img/social-tumblr.png" /></a>
+			    <a href="{{u.profile.tumblr}}" target="_blank"><div class="social-media-icon sprite-icons-tumblr"></div></a>
                 {% endif %}
 			</div>
 		  </div>

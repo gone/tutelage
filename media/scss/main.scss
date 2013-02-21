@@ -1,5 +1,17 @@
 @import "bootstrap";
 
+@font-face {
+    font-family: 'MuseoSans500';
+    src: url('../fonts/MuseoSans_500-webfont.eot');
+    src: url('../fonts/MuseoSans_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/MuseoSans_500-webfont.woff') format('woff'),
+         url('../fonts/MuseoSans_500-webfont.ttf') format('truetype'),
+         url('../fonts/MuseoSans_500-webfont.svg#museo_sans_500regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 $black					:				  #333333;
 $primary                :                 #57264f;
 $primary-active         :                 rgba(87,38,79,0.6);
@@ -21,6 +33,7 @@ $border-color           :                 lightGray;
 body {
   background-color: $background !important;
   line-height: 115% !important;
+  font-family: 'MuseoSans500', Fallback, sans-serif;
 }
 
 @mixin colored-button($color,$border-color:$color,$text-color:white){

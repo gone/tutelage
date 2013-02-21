@@ -73,9 +73,17 @@ $nav-padding: 5px;
 }
 
 .nav-search {
-    margin: 17px;
+    margin: 13px;
 }
 
+.nav-search > div {
+    display: inline-block;
+}
+
+.nav-search-submit {
+    margin: 3px 0px 0px 10px !important;
+    vertical-align: top;
+}
 
 /*  overwriting some of the base bootstrap */
 .fixed-top {
@@ -93,6 +101,10 @@ $nav-padding: 5px;
 
 .nav  {
     height: $nav-height + $nav-padding * 2 !important;
+}
+
+.nav.pull-right {
+    margin-right: 10px !important;
 }
 
 .navbar {
@@ -126,7 +138,7 @@ $nav-padding: 5px;
     border: 0px !important;
     background-color: $black;
     /* for hover of login */
-    padding-right: 0px !important;
+    padding: 0px !important;
     background-image: -khtml-gradient(linear, left top, left bottom, from($black), to($black));
     background-image: -moz-linear-gradient(top, $black, $black);
     background-image: -ms-linear-gradient(top, $black, $black);
@@ -138,30 +150,10 @@ $nav-padding: 5px;
     -ms-filter: none;
 }
 
-/*
-.navbar-inner {
-    height: 100%;
-    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.065) !important;
-    border-radius: 0px !important;
-    border: 0px !important;
-    background-color: white;
-    padding-right: 0px !important;
-    background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
-    background-image: -moz-linear-gradient(top, white, white);
-    background-image: -ms-linear-gradient(top, white, white);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
-    background-image: -webkit-linear-gradient(top, white, white);
-    background-image: -o-linear-gradient(top, white, white);
-    background-image: linear-gradient(white, white);
-    filter: none;
-    -ms-filter: none;
-}
-*/
-
 .navbar .brand {
     position: absolute;
 	padding: 0px;
-	margin: 0px 0px 7px 20px !important;
+	margin: 0px 0px 7px 0px !important;
 }
 
 .navbar-logo {
