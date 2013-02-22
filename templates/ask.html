@@ -3,6 +3,7 @@
 {% block media %}
 
 {% verbatim %}
+
 <script id="featured-request-templ" type="text/x-handlebars-template">
 
 	<div class="row">
@@ -34,8 +35,10 @@
 		   <div class="request-details-chef"><strong>by <a href="{{chef_profile_url}}" class="miniprofile-btn primary">{{chef.full_name}}</strong></a></div>
         {{ else }}
            <div class="request-details-chef"><strong>by <a href="#" class="primary">No Chef Yet!</strong></a></div>
+           {{#if userIsChef}}
+		   <a href="#" class="btn btn-secondary btn-request-contribute">answer</a>
+           {{/if}}
         {{/ if }}
-		<a href="#" class="btn btn-secondary btn-request-contribute">answer</a>
           {% endverbatim %}
           <form class="contribute-form" action="{% url contribute  %}" method="post">
           {% csrf_token %}
@@ -122,12 +125,28 @@ function stripeResponseHandler(status, response){
 }
 require(['./common',], function(){
     require(['cs!main', 'cs!colorboxcommon', 'liveValidation', 'handlebars'], function(main, cc){
+        {% if request.user.get_profile.professional_chef %}
+          is_chef = true
+        {% else %}
+          is_chef = false
+        {% endif %}
+        Handlebars.registerHelper('userIsChef', function(block) {
+            return is_chef
+        });
+
+
         source = $("#featured-request-templ").html();
         template = Handlebars.compile(source);
         $(".btn-createlesson").click(function(e){
             cc.setupColorbox($(this).parent().find('.chef-pledge'))
         })
+        target = null
+        $("body").on('click','.btn-request-contribute', function(e){
+            cc.setupColorbox(target)
+        })
+
         function switchDisplay(slug){
+            target = $("[data-slug=" + slug + "]").find('.chef-pledge')
             data = lesson_data[slug]
             dest = $("#featuredrequest")
             dest.html(template(data))

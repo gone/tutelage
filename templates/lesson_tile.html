@@ -22,7 +22,9 @@
             {% else %}
 		    <a class="btn btn-secondary" href="{%url lesson_detail lesson.id %}">More details</a>
             {% endif %}
+            {% if request.user.is_authenticated %}
 		  <a class="btn btn-primary pull-right" href="{% url purchase lesson.id %}">Watch</a>
+          {% endif %}
 		</div>
       </div>
       <hr/>
