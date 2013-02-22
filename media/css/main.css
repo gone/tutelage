@@ -5443,6 +5443,10 @@ body {
   font-family: 'MuseoSans500', Fallback, sans-serif;
 }
 
+.container, .content {
+  width: 1000px;
+}
+
 .no-display {
   display: none;
 }
@@ -5462,6 +5466,15 @@ body {
 
 .secondary:hover {
   color: #c4c8eb !important;
+  text-decoration: none;
+}
+
+.tertiary {
+  color: #c85838;
+}
+
+.tertiary:hover {
+  color: #ff9d40;
   text-decoration: none;
 }
 
@@ -5507,6 +5520,10 @@ body {
   border-radius: 0px !important;
   font-weight: bold;
   background-position: 0% 0%;
+}
+
+.btn-primary.pull-right {
+  margin-right: 20px;
 }
 
 .btn-secondary {
@@ -8473,11 +8490,14 @@ body .ui-tooltip {
 }
 
 .lesson {
-  margin-left: 10px !important;
-  padding: 5px 8px 15px 0px;
+  background-color: #fff;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+  margin-left: 0px !important;
+  padding-left: 20px;
 }
 .lesson hr {
-  margin: 5px 0px;
+  margin: 10px 20px 10px 0px;
 }
 
 .lesson-title {
@@ -8493,28 +8513,43 @@ body .ui-tooltip {
   color: rgba(87, 38, 79, 0.6) !important;
 }
 
-.lesson:first-child {
-  border-right: 1px solid lightgrey;
-}
-
 .lesson-author {
-  margin-top: 12px;
+  margin: 12px 0px 0px 0px;
   text-align: right;
 }
 
 .lesson-author a:hover {
-  color: rgba(87, 38, 79, 0.6) !important;
+  color: #ff9d40 !important;
   text-decoration: none;
 }
 
+.ratingblock {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.starcontainer {
+  height: 30px;
+  width: 23px;
+  display: inline-block;
+  overflow: auto;
+}
+
+.rating-count {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.lesson-tile-image {
+  margin-top: 10px;
+}
+
 .lesson-tile-image img {
-  width: 460px;
-  	/*max-width: 100%;
-      max-height: 259px;*/
+  width: 440px;
 }
 
 .lesson-tile-description {
-  margin: 10px 0px;
+  margin: 10px 20px 10px 0px;
   height: 34px;
 }
 
@@ -8527,6 +8562,7 @@ body .ui-tooltip {
 }
 
 .lesson-tile-tags {
+  width: 440px;
   max-height: 70px;
   overflow: hidden;
 }
@@ -8819,13 +8855,6 @@ body .ui-tooltip {
 .lesson-timeline-picture:hover, .lesson-timeline-picture-active {
   cursor: pointer;
   opacity: 1.0;
-}
-
-.starcontainer {
-  height: 35px;
-  width: 30px;
-  display: inline-block;
-  overflow: auto;
 }
 
 .product-lightbox {

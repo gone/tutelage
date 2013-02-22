@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include "lesson_base.html" with lessons=lessons %}
+<script type="text/javascript" src="http://masonry.desandro.com/jquery.masonry.min.js"></script>
+<script type="text/javascript">
+    var $content = $('.content');
+    $content.imagesLoaded(function(){
+      $content.masonry({
+        itemSelector : '.lesson',
+        columnWidth : 500
+      });
+    });
+</script>
 {% endblock %}

@@ -17,6 +17,9 @@ $primary                :                 #57264f;
 $primary-active         :                 rgba(87,38,79,0.6);
 $secondary				:				  #60C4AF;
 $secondary-active		:				  #C4C8EB;
+$tertiary               :                 #C85838;
+$tertiary-active        :                 #FF9D40;
+
 
 $green                  :                 #01a64f;
 $green-active           :                 #028e44;
@@ -34,6 +37,10 @@ body {
   background-color: $background !important;
   line-height: 115% !important;
   font-family: 'MuseoSans500', Fallback, sans-serif;
+}
+
+.container, .content {
+    width: 1000px;
 }
 
 @mixin colored-button($color,$border-color:$color,$text-color:white){
@@ -80,12 +87,25 @@ body {
     text-decoration: none;
 }
 
+.tertiary {
+    color: $tertiary;
+}
+
+.tertiary:hover {
+    color: $tertiary-active;
+    text-decoration: none;
+}
+
 .btn-primary {
     @include colored-button($primary)
 }
 
 .btn-primary:hover{
 	@include colored-button($primary-active,$primary-active,$white)
+}
+
+.btn-primary.pull-right {
+    margin-right: 20px;
 }
 
 .btn-secondary {

@@ -1,13 +1,17 @@
 {% for lesson in lessons %}
+<!--
 {% cycle "True" "" as newrow silent %}
 {% if newrow %}
 <div class="bordered-row bordered">
 {% endif %}
+-->
 {% include "lesson_tile.html" with lesson=lesson %}
 
+<!--
 {% if not newrow or forloop.last %}
 </div>
 {% endif %}
 {% endfor %}
+-->
 
-{% include "pager.html" with lessons=pager %}
+<!--{% include "pager.html" with lessons=pager %}-->

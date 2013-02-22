@@ -4,25 +4,29 @@
 			<a class="primary" href="{%url lesson_detail lesson.id %}"><h3 class="no-margin">{{lesson.title|title}}</h3></a>
 		  </div>
 		  <div class="span2 lesson-author">
-			by <a class="miniprofile-btn primary" href="{% url miniprofile lesson.teacher.id %}"><strong>{{lesson.teacher.get_full_name|title}}</strong></a>
+			by <a class="miniprofile-btn tertiary" href="{% url miniprofile lesson.teacher.id %}"><strong>{{lesson.teacher.get_full_name|title}}</strong></a>
 		  </div>
       </div>
-
+      
+      <hr/>
+      
       <div class="row">
 		<div class="span3">
             {% include "rating.html" with lesson=lesson%}
 		</div>
         <div class="span3">
             {% if request.user == lesson.teacher %}
-            <a class="btn btn-secondary" href="{%url edit-lesson lesson.id %}">Edit Lesson</a>
+            <a class="btn btn-secondary" href="{%url edit-lesson lesson.id %}">edit lesson</a>
             {% else %}
-		    <a class="btn btn-secondary" href="{%url lesson_detail lesson.id %}">More details</a>
+		    <a class="btn btn-secondary" href="{%url lesson_detail lesson.id %}">more details</a>
             {% endif %}
-		  <a class="btn btn-primary pull-right" href="{% url purchase lesson.id %}">Watch</a>
+		  <a class="btn btn-primary pull-right" href="{% url purchase lesson.id %}">view</a>
 		</div>
       </div>
+      
       <hr/>
-	  <div class="row">
+	  
+      <div class="row">
         <div class="span6 lesson-tile-image">
             <a href="{%url lesson_detail lesson.id %}"><img src="{{MEDIA_URL}}{{lesson.image}}"/></a>
         </div>
@@ -46,9 +50,7 @@
         </div>
 	  </div>
       
-	  <div class="row">
-	    <br />
-	  </div>
+	  <hr/>
 
 	  <div class="row">
 		  <div class="span6 lesson-tile-tags">
