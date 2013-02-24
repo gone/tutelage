@@ -1,12 +1,5 @@
-.main{
-    padding: 20px 0px;
-    h3 {
-        line-height: 25px;
-    }
-}
-
-.main .hero-unit{
-    background-color: #fff !important;
+.homelinks > div:nth-child(2) {
+    margin-left: 40px;
 }
 
 .block-link {
@@ -30,7 +23,7 @@
 }
 
 .main-movie-img {
-	width: 95%;
+	width: 99%;
     height: auto;
 	border: solid 3px transparent;
 }
@@ -48,9 +41,12 @@
     text-decoration: none;
 }
 
+.home-hr {
+    margin: 20px 0px 0px 0px;
+}
+
 .block-image {
     width: 95%;
-    margin: 20px 0px 0px 0px
 }    
 
 .block-image-text {

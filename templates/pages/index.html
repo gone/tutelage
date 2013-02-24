@@ -3,7 +3,7 @@
 
 {% block content %}
 {% autoescape off %}
-<div class="bordered-row main bordered">
+<div class="row main">
   <div class="span4">
     <div class="call-to-action">
       {% editable page.home.call_to_action %}
@@ -21,8 +21,13 @@
       {% endeditable %}
     </div>
   </div>
+  
+  <div class="span12">
+    <hr class="home-hr" />
+  </div>  
 </div>
-<div class="bordered-row bordered">
+
+<div class="row main">
   <div style="clear:both;">
     <div class="homelinks">
       {% with page.home.blocks.all as blocks %}

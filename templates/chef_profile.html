@@ -3,7 +3,9 @@
 
 {% block content %}
 {% autoescape off %}
-<div class="bordered-row main bordered">
+<div class="row main">
+    <div class="span12">
+    <div class="row">
     <div class="span6">
 	  <div class="row">
         <div class="span4 colored_header">
@@ -15,97 +17,93 @@
         </div>
 	  </div>
 
-	  <div class="user-photo">
-      {% avatar u %}
-	  </div>
+      <hr/>
+	  
+      <div class="row">
+		  <div class="span6 chef-links">
+              {% if u.profile.website1_url %}
+			  <a class="primary" href="{{u.profile.website1_url}}" target="_blank">{{u.profile.website1}}</a>
+              {% endif %}
+              {% if u.profile.website1_url and u.profile.website2_url %}
+            
+              {% endif %}
+              {% if u.profile.website2_url %}
+			  <a class="primary" href="{{u.profile.website2_url}}" target="_blank">{{u.profile.website2}}</a>
+              {% endif %}
 
-	  <br />
-
-	  <div class="user-bio">{{u.profile.about}}</div>
-
-	  <br />
-	</div>
-
-	<div class="span6">
+	        <div class="social-media-icons pull-right">
+                {% if u.profile.facebook %}
+			    <a href="{{u.profile.facebook}}" target="_blank"><div class="social-media-icon sprite-icons-facebook" title="facebook"></div></a>
+                {% endif %}
+                {% if u.profile.twitter %}
+			    <a href="{{u.profile.twitter}}" target="_blank"><div class="social-media-icon sprite-icons-twitter" title="twitter"></div></a>
+                {% endif %}
+                {% if u.profile.linkedin %}
+			    <a href="{{u.profile.linkedin}}" target="_blank"><div class="social-media-icon sprite-icons-linkedin" title="linkedin"></div></a>
+                {% endif %}
+                {% if u.profile.pinterest %}
+			    <a href="{{u.profile.pinterest}}" target="_blank"><div class="social-media-icon sprite-icons-pinterest" title="pinterest"></div></a>
+                {% endif %}
+                {% if u.profile.youtube %}
+			    <a href="{{u.profile.youtube}}" target="_blank"><div class="social-media-icon sprite-icons-youtube" title="youtube"></div></a>
+                {% endif %}
+			    {% if u.profile.googleplus %}
+                <a href="{{u.profile.googleplus}}" target="_blank"><div class="social-media-icon sprite-icons-google-plus" title="google plus"></div></a>
+                {% endif %}
+                {% if u.profile.tumblr %}
+			    <a href="{{u.profile.tumblr}}" target="_blank"><div class="social-media-icon sprite-icons-tumblr" title="tumblr"></div></a>
+                {% endif %}
+			</div>
+		  </div>
+      </div>
+      
+      <hr/>
+      
+      <div class="row">
+        <div class="span2 user-photo">
+        {% avatar u %}
+	    </div>
+        
+        <div class="social-media">
+        {% url featured_chefs as url %}
+        {% include "share.html" with url=url %}
+        </div>
+        
+	    <div class="user-bio">{{u.profile.about}}</div>
+      </div>
+      
+    </div> 
+    <div class="span6">
       <div class="colored_header">
         <div class="chef-movie">
           <img class="main-movie-img" src={{MEDIA_URL}}{{u.profile.personal_video_image}} />
         </div>
       </div>
     </div>
-
-	<div class="span6">
-	  <div class="social-media">
-		<h4>More About Chef {{u.get_full_name|title}}</h4>
-
-		<div class="row">
-		  <div class="span2 chef-links">
-              {% if u.profile.website1_url %}
-			  <a href="{{u.profile.website1_url}}" target="_blank">{{u.profile.website1}}</a>
-              {% endif %}
-              {% if u.profile.website1_url and u.profile.website2_url %}
-              |
-              {% endif %}
-              {% if u.profile.website2_url %}
-			  <a href="{{u.profile.website2_url}}" target="_blank">{{u.profile.website2}}</a>
-              {% endif %}
-		  </div>
-
-		  <div class="span4">
-	        <div class="social-media-icons">
-                {% if u.profile.facebook %}
-			    <a href="{{u.profile.facebook}}" target="_blank"><div class="social-media-icon sprite-icons-facebook"></div></a>
-                {% endif %}
-                {% if u.profile.twitter %}
-			    <a href="{{u.profile.twitter}}" target="_blank"><div class="social-media-icon sprite-icons-twitter"></div></a>
-                {% endif %}
-                {% if u.profile.linkedin %}
-			    <a href="{{u.profile.linkedin}}" target="_blank"><div class="social-media-icon sprite-icons-linkedin"></div></a>
-                {% endif %}
-                {% if u.profile.pinterest %}
-			    <a href="{{u.profile.pinterest}}" target="_blank"><div class="social-media-icon sprite-icons-pinterest"></div></a>
-                {% endif %}
-                {% if u.profile.youtube %}
-			    <a href="{{u.profile.youtube}}" target="_blank"><div class="social-media-icon sprite-icons-youtube"></div></a>
-                {% endif %}
-			    {% if u.profile.googleplus %}
-                <a href="{{u.profile.googleplus}}" target="_blank"><div class="social-media-icon sprite-icons-google-plus"></div></a>
-                {% endif %}
-                {% if u.profile.tumblr %}
-			    <a href="{{u.profile.tumblr}}" target="_blank"><div class="social-media-icon sprite-icons-tumblr"></div></a>
-                {% endif %}
-			</div>
-		  </div>
-		</div>
-  {% url featured_chefs as url %}
-  {% include "share.html" with url=url %}
-
-	  </div>
-
-        <br />
-
-        <div class="row">
-		  <div class="span6 chef-specialities">
+    </div>
+    </div>
+    
+    <div class="span12">
+      <hr />
+    </div>
+     
+    <div class="span12">
+    <div class="row chef-specialities-feedback">
+    <div class="span6">
 			<h4>Specialties</h4>
             {% for tag in u.profile.tags %}
 			   <a class="btn btn-clearsecondary btn-tags">{{tag}}</a>
             {% endfor %}
 		  </div>
-		</div>
-    </div>
-
-
-
-	<div class="span6">
-		<div class="row">
-		  <div class="span6">
-
+    <div class="span6">  
+            <h4>Feedback</h4>
+            <div class="row">
             {% if u.profile.testimonial1_text %}
-			<div class="testimonial testimonial-left">
-                <p class="testimonial-text"><strong>{{u.profile.testimonial1_text}}</strong></p>
+			<div class="span3 testimonial">
+                <p class="testimonial-text">{{u.profile.testimonial1_text}}</p>
 
-                <p class="testimonial-source">
-				  Chef
+                <p class="testimonial-source pull-right">
+				  <strong>- Chef</strong>
 				  <a class="primary" href="{{u.profile.testimonial1_link}}" target="_blank">
 				    <strong>{{u.profile.testimonial1_src}}</strong>
 				  </a>
@@ -114,81 +112,45 @@
             {% endif %}
 
             {% if u.profile.testimonial2_text %}
-			<div class="testimonial testimonial-right pull-right">
-                <p class="testimonial-text"><strong>{{u.profile.testimonial2_text}}</strong></p>
+			<div class="span3 testimonial">
+                <p class="testimonial-text">{{u.profile.testimonial2_text}}</p>
 
                 <p class="testimonial-source pull-right">
-				  Chef
-				  <a class="primary testimonial-source-right pull-right" href="{{u.profile.testimonial2_link}}" target="_blank">
+				  <strong>- Chef</strong>
+				  <a class="primary" href="{{u.profile.testimonial2_link}}" target="_blank">
 				    <strong>{{u.profile.testimonial2_src}}</strong>
 				  </a>
 				</p>
 			</div>
-            {% endif %}
+            {% elif u.profile.testimonial3_text %}
+            <div class="span3 testimonial">
+                <p class="testimonial-text">{{u.profile.testimonial3_text}}</p>
 
-            {% if u.profile.testimonial3_text %}
-			<div class="testimonial testimonial-left">
-                <p class="testimonial-text"><strong>{{u.profile.testimonial3_text}}</strong></p>
-
-                <p class="testimonial-source">
-				  Chef
+                <p class="testimonial-source pull-right">
+				  <strong>- Chef</strong>
 				  <a class="primary" href="{{u.profile.testimonial3_link}}" target="_blank">
 				    <strong>{{u.profile.testimonial3_src}}</strong>
 				  </a>
 				</p>
 			</div>
             {% endif %}
-		  </div>
-
-		</div>
-      </div>
-    </div>
-</div>
-
-<div class="bordered-row bordered">
-    <div class="span6">
-
-      <div class="btn-group chef-lesson-btn-group">
-		<a class="chef-lesson-nav-icon vertical-align" href="#lessons" data-slide="prev">
-		  <img class="lesson-nav-icon-left" src="{{STATIC_URL}}img/carousel-left.png" />
-		</a>
-		<a class="chef-lesson-nav-icon pull-right" href="#lessons" data-slide="next">
-		  <img class="lesson-nav-icon-right" src="{{STATIC_URL}}img/carousel-right.png" />
-		</a>
-		<h4 class="chef-profile-lessons-title">Chef {{u.get_full_name|title}}'s Lessons</h4>
-	  </div>
-	</div>
-
-	<div class="span6">
-        <div class="colored_header">
-          <h4>Active Requests</h4>
-        </div>
-    </div>
-</div>
-
-<div class="bordered-row bordered">
-    <div class="span6">
-      <div class="row">
-        <div id="lessons" class="carousel slide">
-            <div class="carousel-inner">
-                {% for lesson in u.teaching.all %}
-                {% if forloop.first %}
-                <div class="active item">
-                {% else %}
-                <div class="item">
-                {% endif %}
-
-                {% include "lesson_tile.html" with lesson=lesson %}
-                </div>
-                {% endfor %}
             </div>
-        </div>
       </div>
     </div>
-
-
+    </div>
 </div>
 
+<div class="row main chef-lessons-title">
+    <div class="span6">
+      <h3>Chef {{u.get_full_name|title}}'s Lessons</h3>
+	</div>
+</div>
+
+<div class="row chef-lessons">
+    {% for lesson in u.teaching.all %}
+    {% include "lesson_tile.html" with lesson=lesson %}
+    {% endfor %}
+</div>
 
 <!-- this should likely be moved somewhere else -->
 <div class="row no-display">
@@ -202,13 +164,20 @@
   </video>
 </div>
 
+<script type="text/javascript" src="http://masonry.desandro.com/jquery.masonry.min.js"></script>
 <script type="text/javascript">
 pagelogic = function(){
         $(".main-movie-img").colorbox({inline:true, width:"50%", href:".main-movie-video"});
         $('.carousel').carousel({interval: 20000});
+        var $content = $('.chef-lessons');
+        $content.imagesLoaded(function(){
+          $content.masonry({
+            itemSelector : '.lesson',
+            columnWidth : 500
+          });
+        });
 };
 </script>
-
 
 {% endautoescape %}
 {% endblock %}

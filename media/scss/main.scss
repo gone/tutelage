@@ -1,5 +1,7 @@
 @import "bootstrap";
 
+/* Main Culination Styling */
+
 @font-face {
     font-family: 'MuseoSans500';
     src: url('../fonts/MuseoSans_500-webfont.eot');
@@ -37,10 +39,22 @@ body {
   background-color: $background !important;
   line-height: 115% !important;
   font-family: 'MuseoSans500', Fallback, sans-serif;
+  hr {
+    margin: 10px 0;
+  }
 }
 
 .container, .content {
     width: 1000px;
+}
+
+.main{
+    padding-top: 20px;
+    width: 980px;
+    background-color: #fff;
+    h3 {
+        line-height: 25px;
+    }
 }
 
 @mixin colored-button($color,$border-color:$color,$text-color:white){
@@ -288,6 +302,21 @@ textarea {
 
 .pull-left {
     float: left;
+}
+
+.social-media-icons {
+    display: inline-block;
+    margin-top: -10px;
+}
+
+.social-media-icons a:hover {
+	text-decoration: none;
+}
+
+.social-media-icon {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
 }
 
 @import "jquery-ui";
