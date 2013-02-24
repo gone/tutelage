@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-{% include "lesson_base.html" with lessons=lessons %}
+{% for lesson in lessons %}
+{% include "lesson_tile.html" with lesson=lesson %}
+{% endfor %}
 <script type="text/javascript" src="http://masonry.desandro.com/jquery.masonry.min.js"></script>
 <script type="text/javascript">
     var $content = $('.content');

@@ -1,26 +1,180 @@
 {% extends 'base.html' %}
+{% load avatar_tags %}
+{% block media %}
+<script type="text/javascript">
+  pagelogic = function(){
 
+      var group   = $('#skills')
+      var form    = group.parents('form').eq(0);
+      var name    = group.attr('data-toggle-name');
+      var hidden  = $('input[name="' + name + '"]', form);
+      $('button', group).each(function(){
+          var button = $(this);
+          button.live('click', function(){
+              hidden.val($(this).val());
+              $('button', group).each(function(){
+                  var button = $(this);
+                  if(button.val() == hidden.val()) {
+                      button.removeClass("btn-clearsecondary")
+                      button.addClass('btn-secondary');
+                  } else {
+                      button.addClass("btn-clearsecondary")
+                      button.removeClass('btn-secondary');
+
+                  }
+              })
+         });
+      });
+  };
+
+</script>
+{% endblock %}
 {% block content %}
-<div class="bordered-row main bordered">
+<div class="row main">
+  <form class="profile-form" action="" method="post">
+    {% csrf_token %}
 
-    <div class="span12">
-	  <div class="profile-btn">
-	    <a class="btn btn-green btn-profile" href="{%url profile u.id%}">
-		  profile
-		</a>
-		<a class="btn btn-darkgray btn-profile pull-right">
-		  my lessons
-		</a>
+  <div class="span12">
+    {% if not form.is_valid %}
+	<div class="row">
+	  <div class="span12">
+        {{form.non_form_errors}}
 	  </div>
 	</div>
+    {% endif %}
 
-	<div class="span12">
-	  <div class="row">
-	    <hr class="profile-hr"/>
+	<div class="row">
+	  <div class="span4">
+		<h3 class="colored-header">{{u.get_full_name}}{%if u.get_full_name%}'s{% endif %} Profile</h3>
 	  </div>
-	  <div class="row">
+
+	  <div class="span2 offset4 pull-right">
+		<input type="submit" class="btn btn-primary btn-save pull-right" value="save">
+	  </div>
+
+	</div>
+
+    <hr />
+
+	<div class="row">
+	  <div class="span2">
+		<div class="user-photo">
+		  {% avatar u %}
+          {% if form %}
+          <a class="tertiary" href="{% url avatar:avatar_change %}">Change avatar</a>
+          {% endif %}
+		</div>
+      </div>
+
+      <div class="span1">
+		<div id="profile-user-type">
+		  <h5>Account</h5>
+		  <a class="btn btn-clearsecondary">
+		      {% if u.get_profile.professional_chef %}
+              Expert
+              {% else %}
+              Home chef
+              {% endif %}
+		  </a>
+		</div>
+      </div>
+      
+      <div class="span3" id="skills" data-toggle-name="skill_level">
+      {% if form %}
+	    <div class="profile-user-skill">
+		  <h5>Skill Level</h5>
+		  <button type="button" value="0" class="btn btn-clearsecondary btn-user-skill">
+		  Commis
+		  </button>
+		  <button type="button" value="1" class="btn btn-clearsecondary btn-user-skill">
+		  Partie
+		  </button>
+		</div>
+
+		<div class="profile-user-skill">
+		  <button type="button" value="2" class="btn btn-clearsecondary btn-user-skill">
+		  Sous
+		  </button>
+		  <button type="button" value="3" class="btn btn-clearsecondary btn-user-skill">
+		  Executive
+		  </button>
+          <script type="text/javascript">
+            var button = $('button[value="{{form.skill_level.value}}"]');
+            button.removeClass("btn-clearsecondary");
+            button.addClass('btn-secondary');
+          </script>
+		</div>
+        {{form.skill_level.errors}}
+        <input type="hidden" name="skill_level" id="skill_level" value={{form.skill_level.value}}>
+      </div>
+      {% else %}
+      <a class="btn btn-secondary">
+        {{u.get_profile.get_skill_level_display}}
+      </a>
+      {% endif %}
+      
+      <div class="span6">
+		<div id="aboutme">
+          {% if form %}
+		  <h5>About Me (300 characters or less)</h5>
+		  <textarea name="about" class="profile-input profile-input-desc">{{form.about.value|default:""}}</textarea>
+          {{form.about.errors}}
+          {% else %}
+          <p>{{u.get_profile.about}}</p>
+          {% endif %}
+		</div>
+      </div>
+    </div>
+    
+    
+    
+    {% if form %}
+    <div class="row">
+      <div class="span6">
+		<div id="firstname">
+		  <h5>First Name</h5>
+		  <input name="first_name" class="profile-input" type="text" placeholder="" value="{{form.first_name.value|default:""}}">
+          {{form.first_name.errors}}
+		</div>
+      </div>
+
+      <div class="span6">
+		<div id="email">
+		  <h5>Email</h5>
+		  <input name="email" class="profile-input" type="text" placeholder="" value="{{form.email.value|default:""}}">
+          {{form.email.errors}}
+		</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span6">
+		<div id="lastname">
+		  <h5>Last Name</h5>
+		  <input name="last_name" class="profile-input" type="text" placeholder="" value="{{form.last_name.value|default:""}}">
+          {{form.last_name.errors}}
+		</div>
+	  </div>
+
+	  <div class="span6">
+		<div id="profile-password-change">
+		  <h5>Password</h5>
+		  <a class="btn btn-secondary changepass-btn">
+		  change
+		  </a>
+		</div>
+      </div>
+	</div>
+
+    {% endif %}
+  </div>
+  </form>
+</div>
+
+
+	  <div class="row profile-lessons-title">
 		<div class="span6">
-		  <div class="mylessons-title">
+		  <div>
             {% if u == user %}
             <h4>Lessons I'm Learning</h4>
             {% else %}
@@ -30,28 +184,45 @@
 	    </div>
 
 		{% if u.get_profile.professional_chef %}
-	    <div class="span3">
+	    <div class="span6">
 		  <div class="mylessons-title">
             {% if u == user %}
             <h4>Lessons I'm Tutoring</h4>
             {% else %}
-			<h4>Lessons {{u.get_full_name}} is Tutoring</h4>
+			<h4>Lessons {{u.get_full_name}} is Teaching</h4>
             {% endif %}
+            <a class="btn btn-primary btn-save pull-right" href="{% url add-lesson %}">
+		    create new lesson
+		    </a>
 		  </div>
-	    </div>
-
-	    <div class="span3 my-lessons-create-lesson">
-		  <a class="btn btn-green btn-save pull-right" href="{% url add-lesson %}">
-		  create new lesson
-		  </a>
 	    </div>
         {% endif %}
 
 	  </div>
-	</div>
 
+<div class="row profile-lessons">
+  <div class="span6">
+    <div class="row">
+  {% for lesson in lessons %}
+  {% if lesson.teacher.username != u.username %}
+  {% include "lesson_tile.html" with lesson=lesson %}
+  {% endif %}
+  {% endfor %}
+    </div>
+  </div>
+  
+  <div class="span6">
+  {% for lesson in lessons %}
+  {% if lesson.teacher.username = u.username %}
+  {% include "lesson_tile.html" with lesson=lesson %}
+  {% endif %}
+  {% endfor %}
+  </div>
 </div>
 
-{% include "lesson_base.html" with lessons=lessons %}
-
+{% if form %}
+<div class="no-display">
+{% include "cpassword.html" %}
+</div>
+{% endif %}
 {% endblock %}

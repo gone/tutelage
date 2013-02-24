@@ -104,8 +104,23 @@ def mylessons(request, user_id):
         # If page is out of range (e.g. 9999), deliver last page of results.
         lessons = lesson_paginator.page(lesson_paginator.num_pages)
 
-    return direct_to_template(request, "mylessons.html", {"lessons": lessons, "u":user})
+    if request.user.is_authenticated() and user_id in [None, str(request.user.id)]:
+        profile = request.user.get_profile()
 
+        if request.method == "POST":
+            form = ProfileForm(request.POST, profile=profile)
+            if form.is_valid():
+                profile = form.save()
+                form = ProfileForm(profile=profile)
+        else:
+            form = ProfileForm(profile=profile)
+        cpass_form = PasswordChangeForm(request.user)
+        return direct_to_template(request, "mylessons.html", {"lessons": lessons, "u":user, "form": form, "cpass_form":cpass_form})
+    elif request.user.is_anonymous() and user_id is None:
+        return HttpResponseRedirect(reverse("account:auth_login"))
+    else:
+        user = get_object_or_404(User, pk=user_id, profile__professional_chef=True)
+        return direct_to_template(request, "chef_profile.html", {"lessons": lessons, "u":user})
 
 
 TEMPLATES = { 'lesson_details': "lesson_details_form.html",

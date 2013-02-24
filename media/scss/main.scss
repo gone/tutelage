@@ -15,6 +15,7 @@
 }
 
 $black					:				  #333333;
+$white                  :                 #fff;
 $primary                :                 #57264f;
 $primary-active         :                 rgba(87,38,79,0.6);
 $secondary				:				  #60C4AF;
@@ -51,7 +52,7 @@ body {
 .main{
     padding-top: 20px;
     width: 980px;
-    background-color: #fff;
+    background-color: $white;
     h3 {
         line-height: 25px;
     }
@@ -219,7 +220,7 @@ body {
 
 .btn-save {
 	margin-right:	20px;
-	margin-top:		15px;
+	margin-top:		5px;
 }
 
 .bordered{

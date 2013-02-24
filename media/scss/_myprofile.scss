@@ -20,7 +20,7 @@
 }
 
 .btn-user-skill {
-	width:			125px;
+	width:			95px;
 	margin:			0px 10px 10px 0px;
 }
 
@@ -32,6 +32,15 @@ btn-avatar {
 	margin-right: 20px;
 }
 
+.profile-lessons-title > div {
+	background-color: $white;
+    padding: 10px 0px 10px 20px;
+}
+
+.profile-lessons-title div:nth-child(1) {
+    margin-left: 0px;
+}
+
 .mylessons-title h4 {
-	padding-top: 10px;
+    display: inline-block;
 }

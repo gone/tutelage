@@ -31,7 +31,7 @@
 {% endblock %}
 {% block content %}
 
-<div class="bordered-row main bordered">
+<div class="row main">
   <form class="profile-form" action="" method="post">
     {% csrf_token %}
     <div class="span12">
@@ -39,7 +39,7 @@
 	    <a class="btn btn-darkgray btn-profile">
 		  profile
 		</a>
-		<a class="btn btn-green btn-profile pull-right" href="{% url mylessons u.id %}">
+		<a class="btn btn-primary btn-profile pull-right" href="{% url mylessons u.id %}">
 		  my lessons
 		</a>
 	  </div>
@@ -94,7 +94,7 @@
 	  </div>
 
 	  <div class="span2 offset4 pull-right">
-		<input type="submit" class="btn btn-green btn-save pull-right" value="Save">
+		<input type="submit" class="btn btn-primary btn-save pull-right" value="save">
 	  </div>
 
 	</div>
