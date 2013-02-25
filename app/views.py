@@ -47,6 +47,19 @@ from django.contrib.auth.models import User
 
 
 def profile(request, user_id=None):
+    user = get_object_or_404(User, pk=user_id)
+    all_lessons = user.lessons.all()
+    lesson_paginator = Paginator(all_lessons, 16)
+    lesson_page = request.GET.get('page')
+    try:
+        lessons = lesson_paginator.page(lesson_page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        lessons = lesson_paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        lessons = lesson_paginator.page(lesson_paginator.num_pages)
+
     if request.user.is_authenticated() and user_id in [None, str(request.user.id)]:
         profile = request.user.get_profile()
 
@@ -58,12 +71,12 @@ def profile(request, user_id=None):
         else:
             form = ProfileForm(profile=profile)
         cpass_form = PasswordChangeForm(request.user)
-        return direct_to_template(request, "profile.html", {"u":request.user, "form": form, "cpass_form":cpass_form})
+        return direct_to_template(request, "profile.html", {"lessons": lessons, "u":user, "form": form, "cpass_form":cpass_form})
     elif request.user.is_anonymous() and user_id is None:
         return HttpResponseRedirect(reverse("account:auth_login"))
     else:
         user = get_object_or_404(User, pk=user_id, profile__professional_chef=True)
-        return direct_to_template(request, "chef_profile.html", {"u":user})
+        return direct_to_template(request, "chef_profile.html", {"lessons": lessons, "u":user})
 
 def miniprofile(request, user_id):
     """The mini profile for user profile's in light boxes"""
@@ -104,8 +117,23 @@ def mylessons(request, user_id):
         # If page is out of range (e.g. 9999), deliver last page of results.
         lessons = lesson_paginator.page(lesson_paginator.num_pages)
 
-    return direct_to_template(request, "mylessons.html", {"lessons": lessons, "u":user})
+    if request.user.is_authenticated() and user_id in [None, str(request.user.id)]:
+        profile = request.user.get_profile()
 
+        if request.method == "POST":
+            form = ProfileForm(request.POST, profile=profile)
+            if form.is_valid():
+                profile = form.save()
+                form = ProfileForm(profile=profile)
+        else:
+            form = ProfileForm(profile=profile)
+        cpass_form = PasswordChangeForm(request.user)
+        return direct_to_template(request, "mylessons.html", {"lessons": lessons, "u":user, "form": form, "cpass_form":cpass_form})
+    elif request.user.is_anonymous() and user_id is None:
+        return HttpResponseRedirect(reverse("account:auth_login"))
+    else:
+        user = get_object_or_404(User, pk=user_id, profile__professional_chef=True)
+        return direct_to_template(request, "chef_profile.html", {"lessons": lessons, "u":user})
 
 
 TEMPLATES = { 'lesson_details': "lesson_details_form.html",
@@ -193,7 +221,7 @@ def lesson_steps(request, lesson_id=None):
             steps = step_formset.save()
             for step in steps:
                 lesson.steps.add(step)
-            return HttpResponseRedirect(reverse("mylessons", args=[request.user.id]))
+            return HttpResponseRedirect(reverse("profile", args=[request.user.id]))
     else:
         step_formset = StepFormset(queryset=lesson.steps.all(), instance=lesson, initial=[{'lesson': lesson}])
     return direct_to_template(request, "step_details_form.html", {"form": step_formset, "lesson": lesson,})

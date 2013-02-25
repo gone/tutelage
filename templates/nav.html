@@ -8,7 +8,7 @@
           <div class="box">
             <div class="nav-icon sprite-icons-tutor">
             </div>
-            <h5>chefs</h5>
+            <h5>experts</h5>
           </div>
         </a>
 
@@ -49,6 +49,7 @@
             <span class="add-on"><i class="icon-search"></i></span>
             <input name="q" type="text" placeholder="What sounds good?" />
           </div>
+          <input class="nav-search-submit btn btn-secondary" type="submit" value="search" />
         </div>
       </form>
       </li>
@@ -84,7 +85,7 @@
       </li>
 
       <li class="my-btn">
-        <a href="{% url mylessons request.user.id %}">
+        <a href="{% url profile request.user.id %}">
           <div class="box box-my">
             <div class="nav-icon sprite-icons-my">
             </div>

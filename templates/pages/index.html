@@ -3,8 +3,8 @@
 
 {% block content %}
 {% autoescape off %}
-<div class="bordered-row main bordered">
-  <div class="span6">
+<div class="row main">
+  <div class="span4">
     <div class="call-to-action">
       {% editable page.home.call_to_action %}
       <h3>{{page.home.call_to_action}}</h3>
@@ -14,39 +14,41 @@
     <a class="btn btn-primary signup-btn">Signup</a>
     {% endif %}
   </div>
-  <div class="span6">
+  <div class="span8">
     <div class="main-movie">
       {% editable page.home.hero %}
       <img class="addthis_shareable main-movie-img" src="{{MEDIA_URL}}{{page.home.hero}}" />
       {% endeditable %}
     </div>
   </div>
+  
+  <div class="span12">
+    <hr class="home-hr" />
+  </div>  
 </div>
-<div class="bordered-row bordered">
-  <div class="homeblocks">
-    {% with page.home.blocks.all as blocks %}
-    {% for b in blocks %}
-    {% editable b.header b.body b.link_copy b.link_target %}
 
-    <div class="span4 homeblock">
-      <div class="block-header">
-        <h3>{{b.header}}</h3>
-      </div>
-      <div class="block-body">
-        {{b.body}}
-      </div>
-    </div>
-    {% endeditable %}
-    {% endfor %}
-  </div>
+<div class="row main">
   <div style="clear:both;">
     <div class="homelinks">
+      {% with page.home.blocks.all as blocks %}
       {% for b in blocks %}
-      <div class="span4 block-link">
-        <a class="btn btn-primary" href="{{b.link_target}}">
-          {{b.link_copy}}
+      {% editable b.header b.body b.link_copy b.link_target %}
+      <div class="span6 block-body">
+        <a class="" href="{{b.link_target}}">
+          <div class="block-link">
+          {% if forloop.first %}
+          <img class="block-image" src="{{STATIC_URL}}img/hero-lessons.png" />
+          {% else %}
+          <img class="block-image" src="{{STATIC_URL}}img/hero-taste-experts.png" />
+          {% endif %}
+          <span class="block-image-text">{{b.link_copy}}</span>
+          </div>
         </a>
+        <div class="block-text">
+        {{b.body}}
+        </div>
       </div>
+      {% endeditable %}
       {% endfor %}
 
     </div>
@@ -54,7 +56,7 @@
 </div>
 <!-- this should likely be moved somewhere else -->
 <div class="row no-display">
-  <video class="main-movie-video no-margin" controls="controls">
+  <video class="main-movie-video no-margin" controls="controls" preload="auto">
 	<!-- sample videos until we have our actual intro video -->
     <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" />
     <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" />
@@ -67,7 +69,12 @@
 
 <script type="text/javascript">
 pagelogic = function(){
-        $(".main-movie-img").colorbox({inline:true, width:"50%", href:".main-movie-video"});
+        $(".main-movie-img").click(function() {
+            $(".main-movie-img").hide();
+            $(".main-movie-video").appendTo(".main-movie");
+            $(".main-movie-video").get(0).play();
+        });
+        //$(".main-movie-img").colorbox({inline:true, width:"50%", href:".main-movie-video"});
 };
 </script>
 

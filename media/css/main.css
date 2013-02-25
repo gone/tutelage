@@ -5429,9 +5429,35 @@ a.label:hover, a.badge:hover {
   box-sizing: border-box;
 }
 
+/* Main Culination Styling */
+@font-face {
+  font-family: 'MuseoSans500';
+  src: url("../fonts/MuseoSans_500-webfont.eot");
+  src: url("../fonts/MuseoSans_500-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans_500-webfont.woff") format("woff"), url("../fonts/MuseoSans_500-webfont.ttf") format("truetype"), url("../fonts/MuseoSans_500-webfont.svg#museo_sans_500regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background-color: #ececec !important;
   line-height: 115% !important;
+  font-family: 'MuseoSans500', Fallback, sans-serif;
+}
+body hr {
+  margin: 10px 0;
+}
+
+.container, .content {
+  width: 1000px;
+}
+
+.main {
+  padding-top: 20px;
+  width: 980px;
+  background-color: white;
+}
+.main h3 {
+  line-height: 25px;
 }
 
 .no-display {
@@ -5453,6 +5479,15 @@ body {
 
 .secondary:hover {
   color: #c4c8eb !important;
+  text-decoration: none;
+}
+
+.tertiary {
+  color: #c85838;
+}
+
+.tertiary:hover {
+  color: #ff9d40;
   text-decoration: none;
 }
 
@@ -5498,6 +5533,10 @@ body {
   border-radius: 0px !important;
   font-weight: bold;
   background-position: 0% 0%;
+}
+
+.btn-primary.pull-right {
+  margin-right: 20px;
 }
 
 .btn-secondary {
@@ -5557,8 +5596,8 @@ body {
   background-image: -webkit-linear-gradient(top, white, white);
   background-image: -o-linear-gradient(top, white, white);
   background-image: linear-gradient(#ffffff, #ffffff);
-  border: 1px solid #c4c8eb !important;
-  color: #c4c8eb !important;
+  border: 1px solid #60c4af !important;
+  color: #60c4af !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
   border-radius: 0px !important;
@@ -5903,7 +5942,7 @@ body {
 
 .btn-save {
   margin-right: 20px;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .bordered {
@@ -5984,6 +6023,21 @@ textarea {
 
 .pull-left {
   float: left;
+}
+
+.social-media-icons {
+  display: inline-block;
+  margin-top: -10px;
+}
+
+.social-media-icons a:hover {
+  text-decoration: none;
+}
+
+.social-media-icon {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
 }
 
 /* jQuery UI - v1.9.2 - 2012-12-17
@@ -7969,7 +8023,16 @@ body .ui-tooltip {
 }
 
 .nav-search {
-  margin: 17px;
+  margin: 13px;
+}
+
+.nav-search > div {
+  display: inline-block;
+}
+
+.nav-search-submit {
+  margin: 3px 0px 0px 10px !important;
+  vertical-align: top;
 }
 
 /*  overwriting some of the base bootstrap */
@@ -7990,10 +8053,18 @@ body .ui-tooltip {
   height: 65px !important;
 }
 
+.nav.pull-right {
+  margin-right: 10px !important;
+}
+
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
   margin: 0px 0px 43px -2px !important;
   color: white !important;
-  height: 100%;
   background-color: #333333;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
@@ -8004,6 +8075,7 @@ body .ui-tooltip {
   background-image: -webkit-linear-gradient(top, #333333, #333333);
   background-image: -o-linear-gradient(top, #333333, #333333);
   background-image: linear-gradient(#333333, #333333);
+  z-index: 1;
 }
 
 .navbar-inner {
@@ -8016,7 +8088,7 @@ body .ui-tooltip {
   border: 0px !important;
   background-color: #333333;
   /* for hover of login */
-  padding-right: 0px !important;
+  padding: 0px !important;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#333333));
   background-image: -moz-linear-gradient(top, #333333, #333333);
   background-image: -ms-linear-gradient(top, #333333, #333333);
@@ -8028,34 +8100,20 @@ body .ui-tooltip {
   -ms-filter: none;
 }
 
-/*
-.navbar-inner {
-    height: 100%;
-    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.065) !important;
-    border-radius: 0px !important;
-    border: 0px !important;
-    background-color: white;
-    padding-right: 0px !important;
-    background-image: -khtml-gradient(linear, left top, left bottom, from(white), to(white));
-    background-image: -moz-linear-gradient(top, white, white);
-    background-image: -ms-linear-gradient(top, white, white);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white));
-    background-image: -webkit-linear-gradient(top, white, white);
-    background-image: -o-linear-gradient(top, white, white);
-    background-image: linear-gradient(white, white);
-    filter: none;
-    -ms-filter: none;
-}
-*/
 .navbar .brand {
   position: absolute;
   padding: 0px;
-  margin: 0px 0px 7px 20px !important;
+  margin: 0px 0px 7px 0px !important;
 }
 
 .navbar-logo {
   height: 108px;
   width: 72px;
+}
+
+.container {
+  margin-top: 108px;
+  margin-bottom: 60px;
 }
 
 .footer {
@@ -8080,7 +8138,7 @@ body .ui-tooltip {
 
 .footer-left {
   display: inline-block;
-  margin-top: 10px;
+  margin: 10px 0px 10px 0px;
 }
 
 .footer-text {
@@ -8098,6 +8156,13 @@ body .ui-tooltip {
 
 .sprite-icons-login,
 .sprite-icons-my,
+.sprite-icons-youtube,
+.sprite-icons-twitter,
+.sprite-icons-tumblr,
+.sprite-icons-pinterest,
+.sprite-icons-linkedin,
+.sprite-icons-google-plus,
+.sprite-icons-facebook,
 .sprite-icons-tutor,
 .sprite-icons-learn,
 .sprite-icons-signup,
@@ -8144,136 +8209,220 @@ body .ui-tooltip {
   height: 18px;
 }
 
-.sprite-icons-tutor:hover {
+.sprite-icons-youtube:hover {
   background-position: -76px 0px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-youtube {
+  background-position: 0px -56px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-twitter:hover {
+  background-position: -30px -56px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-twitter {
+  background-position: -60px -56px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-tumblr:hover {
+  background-position: -106px 0px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-tumblr {
+  background-position: -106px -30px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-pinterest:hover {
+  background-position: 0px -86px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-pinterest {
+  background-position: -30px -86px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-linkedin:hover {
+  background-position: -60px -86px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-linkedin {
+  background-position: -90px -86px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-google-plus:hover {
+  background-position: -136px 0px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-google-plus {
+  background-position: -136px -30px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-facebook:hover {
+  background-position: -136px -60px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-facebook {
+  background-position: 0px -116px;
+  width: 30px;
+  height: 30px;
+}
+
+.sprite-icons-tutor:hover {
+  background-position: -30px -116px;
   width: 29px;
   height: 27px;
 }
 
 .sprite-icons-tutor:active {
-  background-position: -76px -27px;
+  background-position: -59px -116px;
   width: 29px;
   height: 27px;
 }
 
 .sprite-icons-tutor {
-  background-position: 0px -56px;
+  background-position: -88px -116px;
   width: 29px;
   height: 27px;
 }
 
 .sprite-icons-learn:hover {
-  background-position: -29px -56px;
+  background-position: -90px -56px;
   width: 15px;
   height: 27px;
 }
 
 .sprite-icons-learn:active {
-  background-position: -44px -56px;
+  background-position: -120px -86px;
   width: 15px;
   height: 27px;
 }
 
 .sprite-icons-learn {
-  background-position: -59px -56px;
+  background-position: -117px -116px;
   width: 16px;
   height: 27px;
 }
 
 .sprite-icons-signup:hover {
-  background-position: -75px -56px;
+  background-position: -136px -90px;
   width: 26px;
   height: 26px;
 }
 
 .sprite-icons-signup:active {
-  background-position: -105px 0px;
+  background-position: -106px -60px;
   width: 26px;
   height: 26px;
 }
 
 .sprite-icons-signup {
-  background-position: -105px -26px;
+  background-position: -76px -30px;
   width: 26px;
   height: 26px;
 }
 
 .sprite-icons-ask:hover {
-  background-position: -105px -52px;
+  background-position: -133px -116px;
   width: 26px;
   height: 23px;
 }
 
 .sprite-icons-ask:active {
-  background-position: 0px -83px;
+  background-position: -166px 0px;
   width: 26px;
   height: 23px;
 }
 
 .sprite-icons-ask {
-  background-position: -26px -83px;
+  background-position: -166px -23px;
   width: 26px;
   height: 23px;
 }
 
 .sprite-icons-about:hover {
-  background-position: -131px 0px;
+  background-position: -166px -46px;
   width: 26px;
   height: 26px;
 }
 
 .sprite-icons-about:active {
-  background-position: -131px -26px;
+  background-position: -166px -72px;
   width: 26px;
   height: 26px;
 }
 
 .sprite-icons-about {
-  background-position: -131px -52px;
+  background-position: -166px -98px;
   width: 26px;
   height: 26px;
 }
 
 .sprite-icons-logout:hover {
-  background-position: -131px -78px;
+  background-position: 0px -146px;
   width: 22px;
   height: 24px;
 }
 
 .sprite-icons-logout:active {
-  background-position: 0px -106px;
+  background-position: -22px -146px;
   width: 22px;
   height: 24px;
 }
 
 .sprite-icons-logout {
-  background-position: -22px -106px;
+  background-position: -44px -146px;
   width: 22px;
   height: 24px;
 }
 
 .box:hover .sprite-icons-tutor {
-  background-position: -76px 0px;
+  background-position: -30px -116px;
   width: 29px;
   height: 27px;
 }
 .box:hover .sprite-icons-learn {
-  background-position: -29px -56px;
+  background-position: -90px -56px;
   width: 15px;
   height: 27px;
 }
 .box:hover .sprite-icons-ask {
-  background-position: -105px -52px;
+  background-position: -133px -116px;
   width: 26px;
   height: 23px;
 }
 .box:hover .sprite-icons-about {
-  background-position: -131px 0px;
+  background-position: -166px -46px;
   width: 26px;
   height: 26px;
 }
 .box:hover .sprite-icons-signup {
-  background-position: -75px -56px;
+  background-position: -106px -60px;
   width: 26px;
   height: 26px;
 }
@@ -8283,7 +8432,7 @@ body .ui-tooltip {
   height: 19px;
 }
 .box:hover .sprite-icons-logout {
-  background-position: -131px -78px;
+  background-position: 0px -146px;
   width: 22px;
   height: 24px;
 }
@@ -8293,21 +8442,19 @@ body .ui-tooltip {
   height: 18px;
 }
 
-.main {
-  padding: 20px 0px;
-}
-.main h3 {
-  line-height: 25px;
+.homelinks > div:nth-child(2) {
+  margin-left: 40px;
 }
 
-.main .hero-unit {
-  background-color: #fff !important;
+.block-link {
+  position: relative;
+  width: 100%;
 }
 
 .block-link a {
-  margin-top: 10px;
+  /*margin-top: 10px;
   margin-bottom: 20px;
-  width: 85%;
+  width: 85%;*/
 }
 
 .hr-main {
@@ -8320,8 +8467,8 @@ body .ui-tooltip {
 }
 
 .main-movie-img {
-  width: 440px !important;
-  height: 250px !important;
+  width: 99%;
+  height: auto;
   border: solid 3px transparent;
 }
 
@@ -8331,16 +8478,50 @@ body .ui-tooltip {
 }
 
 .main-movie-video {
-  width: 100%;
-  height: 265px;
+  width: 95%;
+}
+
+.block-body* a:hover {
+  text-decoration: none;
+}
+
+.home-hr {
+  margin: 20px 0px 0px 0px;
+}
+
+.block-image {
+  width: 95%;
+}
+
+.block-image-text {
+  font-family: 'MuseoSans500', Fallback, serif;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 93%;
+  font-size: 30px;
+  line-height: 36px !important;
+  padding: 5px 0px 5px 10px;
+  margin-top: -46px;
+}
+
+.block-body p {
+  padding-top: 10px;
+  width: 95%;
 }
 
 .lesson {
-  margin-left: 10px !important;
-  padding: 5px 8px 15px 0px;
+  background-color: #fff;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+  margin-left: 0px !important;
+  padding-left: 20px;
 }
 .lesson hr {
-  margin: 5px 0px;
+  margin: 10px 20px 10px 0px;
 }
 
 .lesson-title {
@@ -8356,21 +8537,44 @@ body .ui-tooltip {
   color: rgba(87, 38, 79, 0.6) !important;
 }
 
-.lesson:first-child {
-  border-right: 1px solid lightgrey;
-}
-
 .lesson-author {
+  margin: 12px 0px 0px 0px;
   text-align: right;
 }
 
 .lesson-author a:hover {
-  color: rgba(87, 38, 79, 0.6) !important;
+  color: #ff9d40 !important;
   text-decoration: none;
 }
 
+.ratingblock {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.starcontainer {
+  height: 30px;
+  width: 23px;
+  display: inline-block;
+  overflow: auto;
+}
+
+.rating-count {
+  display: inline-block;
+  margin-left: 10px;
+}
+
 .lesson-tile-image {
-  max-height: 125px;
+  margin-top: 10px;
+}
+
+.lesson-tile-image img {
+  width: 440px;
+}
+
+.lesson-tile-description {
+  margin: 10px 20px 10px 0px;
+  height: 34px;
 }
 
 .lesson-tile-info {
@@ -8382,6 +8586,7 @@ body .ui-tooltip {
 }
 
 .lesson-tile-tags {
+  width: 440px;
   max-height: 70px;
   overflow: hidden;
 }
@@ -8400,9 +8605,20 @@ body .ui-tooltip {
   padding-bottom: 10px;
 }
 
+.lesson-list li div {
+  display: inline-block;
+  margin-right: 10px;
+}
+
 .lesson-list li img {
   list-style-type: none !important;
   padding-right: 10px;
+}
+
+.lesson-list li p {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 8px;
 }
 
 #lesson-list-items {
@@ -8665,13 +8881,6 @@ body .ui-tooltip {
   opacity: 1.0;
 }
 
-.starcontainer {
-  height: 35px;
-  width: 30px;
-  display: inline-block;
-  overflow: auto;
-}
-
 .product-lightbox {
   width: 460px;
   padding: 0px;
@@ -8730,7 +8939,7 @@ body .ui-tooltip {
 .item-ad-buy-button {
   display: inline-block;
   width: 90px;
-  background-color: #4BA5FF;
+  background-color: #c4c8eb;
   padding: 5px 5px;
   color: white;
   text-align: center;
@@ -8790,6 +8999,10 @@ body .ui-tooltip {
   margin-top: 5px;
 }
 
+.chef-mini-profile-features .social-media-icons {
+  padding-top: 10px;
+}
+
 .btn-profile-link {
   width: 300px;
   margin-bottom: 10px;
@@ -8823,7 +9036,7 @@ body .ui-tooltip {
 }
 
 .btn-user-skill {
-  width: 125px;
+  width: 95px;
   margin: 0px 10px 10px 0px;
 }
 
@@ -8835,8 +9048,17 @@ btn-avatar {
   margin-right: 20px;
 }
 
+.profile-lessons-title > div {
+  background-color: white;
+  padding: 10px 0px 10px 20px;
+}
+
+.profile-lessons-title div:nth-child(1) {
+  margin-left: 0px;
+}
+
 .mylessons-title h4 {
-  padding-top: 10px;
+  display: inline-block;
 }
 
 .create-lesson-title h2 {
@@ -9024,60 +9246,57 @@ btn-avatar {
   content: counter(inc_steps);
 }
 
+/* Chef Profile */
 .chef-profile-location, .chef-links {
   padding-top: 5px;
 }
 
-.social-media-icons a:hover {
-  text-decoration: none;
+.chef-links > a:first-child {
+  padding-right: 20px;
 }
 
-.chef-specialities {
-  height: 175px;
+.user-photo {
+  margin-right: 20px;
+}
+
+.user-photo img {
+  width: 100%;
+}
+
+.social-media {
+  display: inline-block;
+}
+
+.user-bio {
+  font-size: 16px;
+}
+
+.chef-specialities-feedback {
+  padding-bottom: 20px;
+}
+.chef-specialities-feedback > div {
+  height: 190px;
   overflow: hidden;
 }
 
 .testimonial {
+  background-color: #cacaca;
   background-repeat: no-repeat;
   display: inline-block;
-  width: 380px;
-  height: 75px;
-  margin-top: 10px;
-}
-.testimonial p {
-  width: 355px;
-  height: 50px;
-}
-
-.testimonial-left {
-  background-image: url("../img/testimonial_left.png");
-}
-
-.testimonial-right {
-  background-image: url("../img/testimonial_right.png");
-  margin-right: 20px;
-  text-align: right;
+  height: 130px;
+  padding: 10px 0px;
 }
 
 .testimonial-text {
-  padding: 3px 0px 10px 10px !important;
+  padding: 0px 10px;
+  margin: 0px;
+  height: 115px;
+  overflow: hidden;
 }
 
 .testimonial-source {
-  margin-top: -10px;
-}
-
-.testimonial-source-right {
-  padding-left: 5px;
-}
-
-.chef-lesson-btn-group a:nth-child(2) {
-  -webkit-border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
-  border-bottom-right-radius: 4px;
+  margin: 0px;
+  padding-right: 10px;
 }
 
 .chef-lesson-nav-icon {
@@ -9094,10 +9313,12 @@ btn-avatar {
   margin-top: -1px;
 }
 
-.chef-profile-lessons-title {
-  display: inline-block;
-  width: 310px;
-  text-align: center;
+.chef-lessons-title, .chef-lessons, .profile-lessons-title, .profile-lessons {
+  margin-top: 20px;
+}
+
+.chef-lessons-title, .profile-lessons-title {
+  padding-top: 0px;
 }
 
 .request-message {

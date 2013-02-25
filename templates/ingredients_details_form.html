@@ -5,7 +5,7 @@
 pagelogic = function(){
     add_ingredient = "<div class='row'>" +
         "				  <div class='span1 pull-left'>" +
-        "					<a class='btn btn-green btn-save btn-add pull-left'>" +
+        "					<a class='btn btn-primary btn-save btn-add pull-left'>" +
         "					<strong>&#43;</strong>" +
         "					</a>" +
         "				  </div>" +
@@ -17,7 +17,7 @@ pagelogic = function(){
 
     add_tool = "<div class='row'>" +
         "				  <div class='span1 pull-left'>" +
-        "					<a class='btn btn-green btn-save btn-add pull-left'>" +
+        "					<a class='btn btn-primary btn-save btn-add pull-left'>" +
         "					<strong>&#43;</strong>" +
         "					</a>" +
         "				  </div>" +
@@ -92,7 +92,7 @@ pagelogic = function(){
 	  </div>
 
 	  <div class="span4 pull-right">
-		<a href="#" class="create-lesson-help-btn pull-right">Need help?</a>
+		<a href="#" class="tertiary create-lesson-help-btn pull-right">Need help?</a>
 	  </div>
 	</div>
 
@@ -205,10 +205,10 @@ pagelogic = function(){
       <div class="span1 pull-right">
       </div>
 	  <div class="span1  pull-right">
-		  <input type="submit" value="next" class="btn btn-green btn-save">
+		  <input type="submit" value="next" class="btn btn-primary btn-save">
 	  </div>
 	  <div class="span1 pull-right">
-		<a class="btn btn-green btn-save" href="{% url edit-lesson lesson_id=lesson.id %}">
+		<a class="btn btn-primary btn-save" href="{% url edit-lesson lesson_id=lesson.id %}">
 		  back
 		</a>
 	  </div>
@@ -247,7 +247,7 @@ pagelogic = function(){
 				</div>
 
 				<div class="span2">
-				    <a class="btn btn-green btn-login pull-right">
+				    <a class="btn btn-primary btn-login pull-right">
 					  send
 					</a>
 			    </div>

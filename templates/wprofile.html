@@ -4,38 +4,38 @@
     <div class="span10">
       <div id="window-profile">
 		<div class="row">
-			<h4 class="span5"><strong>{{u.get_full_name}}</strong>'s appetizer profile</h4>
+			<h4 class="span4"><strong>{{u.get_full_name}}</strong>'s appetizer profile</h4>
 			{% if u.get_profile.professional_chef %}
 			<div class="row chef-mini-profile-features">
-			  <div class="span3">
+			  <div class="span4">
 				<div class="social-media-icons">
-					{% if u.get_profile.facebook %}
-					<a href="{{u.profile.facebook}}" target="_blank"><img src="{{STATIC_URL}}img/social-facebook.png" /> </a>
-					{% endif %}
-					{% if u.get_profile.twitter %}
-					<a href="{{u.profile.twitter}}" target="_blank"><img src="{{STATIC_URL}}img/social-twitter.png" />  </a>
-					{% endif %}
-					{% if u.get_profile.linkedin %}
-					<a href="{{u.profile.linkedin}}" target="_blank"><img src="{{STATIC_URL}}img/social-linkedin.png" />  </a>
-					{% endif %}
-					{% if u.get_profile.pinterest %}
-					<a href="{{u.profile.pinterest}}" target="_blank"><img src="{{STATIC_URL}}img/social-pinterest.png"/>  </a>
-					{% endif %}
-					{% if u.get_profile.youtube %}
-					<a href="{{u.profile.youtube}}" target="_blank"><img src="{{STATIC_URL}}img/social-youtube.png" />  </a>
-					{% endif %}
-					{% if u.get_profile.googleplus %}
-					<a href="{{u.profile.googleplus}}" target="_blank"><img src="{{STATIC_URL}}img/social-google-plus.png"/></a>
-					{% endif %}
-					{% if u.get_profile.tumblr %}
-					<a href="{{u.profile.tumblr}}" target="_blank"><img src="{{STATIC_URL}}img/social-tumblr.png" /></a>
+                {% if u.get_profile.facebook %}
+                <a href="{{u.profile.facebook}}" target="_blank"><div class="social-media-icon sprite-icons-facebook"></div></a>
+                {% endif %}
+                {% if u.profile.twitter %}
+			    <a href="{{u.profile.twitter}}" target="_blank"><div class="social-media-icon sprite-icons-twitter"></div></a>
+                {% endif %}
+                {% if u.profile.linkedin %}
+			    <a href="{{u.profile.linkedin}}" target="_blank"><div class="social-media-icon sprite-icons-linkedin"></div></a>
+                {% endif %}
+                {% if u.profile.pinterest %}
+			    <a href="{{u.profile.pinterest}}" target="_blank"><div class="social-media-icon sprite-icons-pinterest"></div></a>
+                {% endif %}
+                {% if u.profile.youtube %}
+			    <a href="{{u.profile.youtube}}" target="_blank"><div class="social-media-icon sprite-icons-youtube"></div></a>
+                {% endif %}
+			    {% if u.profile.googleplus %}
+                <a href="{{u.profile.googleplus}}" target="_blank"><div class="social-media-icon sprite-icons-google-plus"></div></a>
+                {% endif %}
+                {% if u.profile.tumblr %}
+			    <a href="{{u.profile.tumblr}}" target="_blank"><div class="social-media-icon sprite-icons-tumblr"></div></a>
 					{% endif %}
 				</div>
 			  </div>
 
 		      <div class="span2 profile-btn">
 		        <a href="{% url profile u.id %}" class="btn btn-primary full-profile-link pull-right">
-			        See full profile
+			        full profile
 		        </a>
 	          </div>
 			</div>

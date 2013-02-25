@@ -1,6 +1,6 @@
 {% load rating %}
 {% with followers=lesson.followers.all %}
-<span class="ratingblock">
+<div class="ratingblock">
 {% for rate in lesson.rating|times %}
 <div class="starcontainer">
 <img {% if request.user in followers %}class="ratingstar" data-lessonid={{lesson.id}} {%endif%} src="{{STATIC_URL}}img/star_on.png"/>
@@ -11,6 +11,14 @@
 <img {% if request.user in followers %}class="ratingstar" data-lessonid={{lesson.id}} {%endif%} src="{{STATIC_URL}}img/star_off.png"/>
 </div>
 {% endfor %}
-</span>
+</div>
+
+{% if lesson.ratings.count = 1 %}
+<div class="rating-count">({{lesson.ratings.count}} rating)</div>
+{% elif lesson.ratings.count != 0 %}
+<div class="rating-count">({{lesson.ratings.count}} ratings)</div>
+{% else %}
+<div class="rating-count">(no ratings)</div>
+{% endif %}
 
 {% endwith %}

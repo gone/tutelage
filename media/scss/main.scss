@@ -1,10 +1,28 @@
 @import "bootstrap";
 
+/* Main Culination Styling */
+
+@font-face {
+    font-family: 'MuseoSans500';
+    src: url('../fonts/MuseoSans_500-webfont.eot');
+    src: url('../fonts/MuseoSans_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/MuseoSans_500-webfont.woff') format('woff'),
+         url('../fonts/MuseoSans_500-webfont.ttf') format('truetype'),
+         url('../fonts/MuseoSans_500-webfont.svg#museo_sans_500regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 $black					:				  #333333;
+$white                  :                 #fff;
 $primary                :                 #57264f;
 $primary-active         :                 rgba(87,38,79,0.6);
 $secondary				:				  #60C4AF;
 $secondary-active		:				  #C4C8EB;
+$tertiary               :                 #C85838;
+$tertiary-active        :                 #FF9D40;
+
 
 $green                  :                 #01a64f;
 $green-active           :                 #028e44;
@@ -21,6 +39,23 @@ $border-color           :                 lightGray;
 body {
   background-color: $background !important;
   line-height: 115% !important;
+  font-family: 'MuseoSans500', Fallback, sans-serif;
+  hr {
+    margin: 10px 0;
+  }
+}
+
+.container, .content {
+    width: 1000px;
+}
+
+.main{
+    padding-top: 20px;
+    width: 980px;
+    background-color: $white;
+    h3 {
+        line-height: 25px;
+    }
 }
 
 @mixin colored-button($color,$border-color:$color,$text-color:white){
@@ -67,12 +102,25 @@ body {
     text-decoration: none;
 }
 
+.tertiary {
+    color: $tertiary;
+}
+
+.tertiary:hover {
+    color: $tertiary-active;
+    text-decoration: none;
+}
+
 .btn-primary {
     @include colored-button($primary)
 }
 
 .btn-primary:hover{
 	@include colored-button($primary-active,$primary-active,$white)
+}
+
+.btn-primary.pull-right {
+    margin-right: 20px;
 }
 
 .btn-secondary {
@@ -84,7 +132,7 @@ body {
 }
 
 .btn-clearsecondary {
-    @include colored-button($white,$secondary-active,$secondary-active)
+    @include colored-button($white,$secondary,$secondary)
  }
 
 .btn-clearsecondary:hover{
@@ -172,7 +220,7 @@ body {
 
 .btn-save {
 	margin-right:	20px;
-	margin-top:		15px;
+	margin-top:		5px;
 }
 
 .bordered{
@@ -255,6 +303,21 @@ textarea {
 
 .pull-left {
     float: left;
+}
+
+.social-media-icons {
+    display: inline-block;
+    margin-top: -10px;
+}
+
+.social-media-icons a:hover {
+	text-decoration: none;
+}
+
+.social-media-icon {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
 }
 
 @import "jquery-ui";

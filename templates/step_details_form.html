@@ -4,7 +4,7 @@
 require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload", "lib/jquery.formset"], function($){
     add_step = "<div class='row'>" +
         "				  <div class='span1 pull-left'>" +
-        "					<a class='btn btn-green btn-save btn-add pull-left'>" +
+        "					<a class='btn btn-primary btn-save btn-add pull-left'>" +
         "					<strong>&#43;</strong>" +
         "					</a>" +
         "				  </div>" +
@@ -92,7 +92,7 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload", "lib/
 	  </div>
 
 	  <div class="span4 pull-right">
-		<a href="#lesson-help" class="create-lesson-help-btn pull-right">Need help?</a>
+		<a href="#lesson-help" class="tertiary create-lesson-help-btn pull-right">Need help?</a>
 	  </div>
 	</div>
 
@@ -192,12 +192,12 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload", "lib/
 
 	  <div class="row">
 	    <div class="span10">
-		  <a class="btn btn-green btn-save pull-right" href="{% url lesson_ingredients lesson_id=lesson.id %}">
+		  <a class="btn btn-primary btn-save pull-right" href="{% url lesson_ingredients lesson_id=lesson.id %}">
 		    back
 		  </a>
 	    </div>
 	    <div class="span1 pull-right">
-		  <input type="submit" value="preview" class="btn btn-green
+		  <input type="submit" value="preview" class="btn btn-primary
                                                       btn-save">
 
 	</form>
@@ -233,7 +233,7 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload", "lib/
 				</div>
 
 				<div class="span2">
-				    <a class="btn btn-green btn-login pull-right">
+				    <a class="btn btn-primary btn-login pull-right">
 					  send
 					</a>
 			    </div>

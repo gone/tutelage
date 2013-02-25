@@ -1,52 +1,56 @@
 <div class="span6 lesson">
  	  <div class="row">
-		  <div class="span5 lesson-title">
+		  <div class="span4 lesson-title">
 			<a class="primary" href="{%url lesson_detail lesson.id %}"><h3 class="no-margin">{{lesson.title|title}}</h3></a>
 		  </div>
-		  <div class="span1">
-			<h3 class="no-margin pull-right">${{lesson.price|default:"0"}}</h3>
+		  <div class="span2 lesson-author">
+			by <a class="miniprofile-btn tertiary" href="{% url miniprofile lesson.teacher.id %}"><strong>{{lesson.teacher.get_full_name|title}}</strong></a>
 		  </div>
       </div>
 
-      <div class="row">
-		<div class="span2 offset4 lesson-author">by <a class="miniprofile-btn primary" href="{% url miniprofile lesson.teacher.id %}"><strong>{{lesson.teacher.get_full_name|title}}</strong></a></div>
-      </div>
       <hr/>
+
       <div class="row">
-		<div class="span3 lesson-tile-left">
+		<div class="span3">
             {% include "rating.html" with lesson=lesson%}
 		</div>
         <div class="span3">
             {% if request.user == lesson.teacher %}
-            <a class="btn btn-secondary" href="{%url edit-lesson lesson.id %}">Edit Lesson</a>
+            <a class="btn btn-secondary" href="{%url edit-lesson lesson.id %}">edit lesson</a>
             {% else %}
-		    <a class="btn btn-secondary" href="{%url lesson_detail lesson.id %}">More details</a>
+		    <a class="btn btn-secondary" href="{%url lesson_detail lesson.id %}">more details</a>
             {% endif %}
-            {% if request.user.is_authenticated %}
-		  <a class="btn btn-primary pull-right" href="{% url purchase lesson.id %}">Watch</a>
-          {% endif %}
-		</div>
-      </div>
-      <hr/>
-	  <div class="row">
-        <div class="span3">
-            <img class="lesson-tile-image" src="{{MEDIA_URL}}{{lesson.image}}"/>
-        </div>
-		<div class="span3 lesson-tile-right">
-			<div class="lesson-tile-description">
-			  <small>{{lesson.flavor_text}}</small>
-			</div>
-			<ul class="lesson-tile-info">
-              <li>Serves: {{lesson.serving_size}}</li>
-			  <li>Prep Time: {{lesson.prep_in_min}} minute{{lesson.prep_in_min|pluralize}}</li>
-			  <li>Cooking Time: {{lesson.cook_in_min}} minute{{lesson.cook_in_min|pluralize}}</li>
-            </ul>
+		  <a class="btn btn-primary pull-right" href="{% url purchase lesson.id %}">view</a>
 		</div>
       </div>
 
-	  <div class="row">
-	    <br />
+      <hr/>
+
+      <div class="row">
+        <div class="span6 lesson-tile-image">
+            <a href="{%url lesson_detail lesson.id %}"><img src="{{MEDIA_URL}}{{lesson.image}}"/></a>
+        </div>
+      </div>
+
+      <div class="row">
+	    <div class="span6">
+			<div class="lesson-tile-description">
+			  <small>{{lesson.flavor_text}}</small>
+			</div>
+        </div>
 	  </div>
+
+      <div class="row">
+        <div class="span6">
+          <ul class="lesson-tile-info">
+            <li>Serves: {{lesson.serving_size}}</li>
+            <li>Prep Time: {{lesson.prep_in_min}} minute{{lesson.prep_in_min|pluralize}}</li>
+            <li>Cooking Time: {{lesson.cook_in_min}} minute{{lesson.cook_in_min|pluralize}}</li>
+          </ul>
+        </div>
+	  </div>
+
+	  <hr/>
 
 	  <div class="row">
 		  <div class="span6 lesson-tile-tags">

@@ -1,9 +1,12 @@
 .lesson {
-    margin-left: 10px !important;
-    padding: 5px 8px 15px 0px;
+    background-color: #fff;
+    padding: 20px 0px;
     hr {
-        margin: 5px 0px;
+        margin: 10px 20px 10px 0px;
     }
+    margin-bottom: 20px;
+    margin-left: 0px !important;
+    padding-left: 20px;
 }
 
 .lesson-title {
@@ -19,25 +22,44 @@
     color: $primary-active !important;
 }
 
-.lesson:first-child {
-    border-right: 1px solid $border-color;
-}
-
 .lesson-author {
-    text-align:right
+    margin: 12px 0px 0px 0px;
+    text-align: right;
 }
 
 .lesson-author a:hover {
-	color: $primary-active !important;
+	color: $tertiary-active !important;
 	text-decoration: none;
 }
 
+.ratingblock {
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.starcontainer {
+    height: 30px;
+    width: 23px;
+    display: inline-block;
+    overflow: auto;
+}
+
+.rating-count {
+    display: inline-block;
+    margin-left: 10px;
+}
+
 .lesson-tile-image {
-	max-height: 125px;
+    margin-top: 10px;
+}
+
+.lesson-tile-image img {
+    width: 440px;
 }
 
 .lesson-tile-description {
-
+    margin: 10px 20px 10px 0px;
+    height: 34px;
 }
 
 .lesson-tile-description small {
@@ -53,6 +75,7 @@
 }
 
 .lesson-tile-tags {
+    width: 440px;
 	max-height: 70px;
 	overflow: hidden;
 }
@@ -71,9 +94,20 @@
 	padding-bottom: 10px;
 }
 
+.lesson-list li div {
+	display: inline-block;
+	margin-right: 10px;
+}
+
 .lesson-list li img {
 	list-style-type: none !important;
 	padding-right: 10px;
+}
+
+.lesson-list li p {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 8px;
 }
 
 #lesson-list-items {
@@ -354,13 +388,6 @@
 	opacity: 1.0;
 }
 
-.starcontainer {
-    height: 35px;
-    width: 30px;
-    display: inline-block;
-    overflow: auto;
-}
-
 .product-lightbox {
     width: 460px;
     padding: 0px;
@@ -419,7 +446,7 @@
 .item-ad-buy-button {
 	display: inline-block;
 	width: 90px;
-	background-color: #4BA5FF;
+	background-color: $secondary-active;
 	padding: 5px 5px;
 	color: white;
 	text-align: center;
