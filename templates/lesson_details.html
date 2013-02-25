@@ -119,10 +119,10 @@
     <div class="span3">
  	  <h5>Ingredients</h5>
  	  <ul class="lesson-list">
-        {% for i in lesson.lessoningredient_set.all.distinct %}
+        {% for i in lesson.ingredients.all.distinct %}
  	    <li>
           <div class="lesson-icon-circle"></div>
-          <p><em>{{i.measurement}} </em>{{i.ingredient.name}}<em> {{i.prep}}</em></p>
+          <p>{{i.name}}</p>
         </li>
         {% endfor %}
  	  </ul>
