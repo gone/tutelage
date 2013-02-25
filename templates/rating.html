@@ -13,10 +13,10 @@
 {% endfor %}
 </div>
 
-{% if followers.count = 1 %}
-<div class="rating-count">({{followers.count}} rating)</div>
-{% elif followers.count != 0 %}
-<div class="rating-count">({{followers.count}} ratings)</div>
+{% if lesson.ratings.count = 1 %}
+<div class="rating-count">({{lesson.ratings.count}} rating)</div>
+{% elif lesson.ratings.count != 0 %}
+<div class="rating-count">({{lesson.ratings.count}} ratings)</div>
 {% else %}
 <div class="rating-count">(no ratings)</div>
 {% endif %}
