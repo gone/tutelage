@@ -123,7 +123,7 @@ class LessonIngredient(CreatedMixin):
     ingredient = models.ForeignKey(Ingredient)
     lesson = models.ForeignKey("Lesson")
     number = models.IntegerField(null=False, blank=False, default="0")
-    measurement = models.CharField(max_length=32, null=False)
+    measurement = models.CharField(max_length=32, null=False, blank=True)
     prep = models.CharField(max_length=32, blank=True)
 
     def __unicode__(self):
