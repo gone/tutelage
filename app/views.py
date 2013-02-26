@@ -45,7 +45,7 @@ from account.forms import PasswordChangeForm
 
 from django.contrib.auth.models import User
 
-
+@login_required(redirect_field_name='')
 def profile(request, user_id=None):
     user = get_object_or_404(User, pk=user_id)
     all_lessons = user.lessons.all()
@@ -77,12 +77,13 @@ def profile(request, user_id=None):
     else:
         user = get_object_or_404(User, pk=user_id, profile__professional_chef=True)
         return direct_to_template(request, "chef_profile.html", {"lessons": lessons, "u":user})
-
+        
 def miniprofile(request, user_id):
     """The mini profile for user profile's in light boxes"""
     user = get_object_or_404(User, pk=user_id)
     return direct_to_template(request, "wprofile.html", {"u":user})
 
+@login_required(redirect_field_name='')
 def lessons(request):
     all_lessons = Lesson.objects.all()
     paginator = Paginator(all_lessons, 16)
@@ -102,46 +103,24 @@ def lesson_detail(request, lesson_id):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
     return direct_to_template(request, "lesson_details.html", {"lesson": lesson})
 
-
-def mylessons(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
-    all_lessons = user.lessons.all()
-    lesson_paginator = Paginator(all_lessons, 16)
-    lesson_page = request.GET.get('page')
-    try:
-        lessons = lesson_paginator.page(lesson_page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        lessons = lesson_paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        lessons = lesson_paginator.page(lesson_paginator.num_pages)
-
-    if request.user.is_authenticated() and user_id in [None, str(request.user.id)]:
-        profile = request.user.get_profile()
-
-        if request.method == "POST":
-            form = ProfileForm(request.POST, profile=profile)
-            if form.is_valid():
-                profile = form.save()
-                form = ProfileForm(profile=profile)
-        else:
-            form = ProfileForm(profile=profile)
-        cpass_form = PasswordChangeForm(request.user)
-        return direct_to_template(request, "mylessons.html", {"lessons": lessons, "u":user, "form": form, "cpass_form":cpass_form})
-    elif request.user.is_anonymous() and user_id is None:
-        return HttpResponseRedirect(reverse("account:auth_login"))
+def welcome(request):
+    if request.user.is_authenticated():
+        return redirect('/home/')
     else:
-        user = get_object_or_404(User, pk=user_id, profile__professional_chef=True)
-        return direct_to_template(request, "chef_profile.html", {"lessons": lessons, "u":user})
+        return direct_to_template(request, "welcome.html")
 
+def privatelogin(request):
+    if request.user.is_authenticated():
+        return redirect('/')
+    else:
+        return direct_to_template(request, "private-login.html")
 
 TEMPLATES = { 'lesson_details': "lesson_details_form.html",
               'ingredents_details': "ingredents_details_form.html",
               'step_details': "step_details_form.html",
               }
 
-@login_required
+@login_required(redirect_field_name='')
 def add_lesson(request, lesson_id=None):
     if lesson_id:
         lesson = get_object_or_404(Lesson, pk=lesson_id)
@@ -273,7 +252,7 @@ def ask_form(request):
         form = LessonRequestForm(request)
     return direct_to_template(request, "lesson_request_standalone.html", {"request_form": form})
 
-
+@login_required(redirect_field_name='')
 def ask(request):
     all_lesson_requests = LessonRequest.objects.filter(active=True)
 
@@ -308,7 +287,7 @@ def ask(request):
 
     return direct_to_template(request, "ask.html", {"contribute_form":contribute_form, "lesson_requests": lesson_requests, 'slug': slug, 'lesson_json':lesson_json, 'pledge_form':pledge_form, 'request_form':request_form})
 
-
+@login_required(redirect_field_name='')
 def lesson(request, lesson_id):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
     return direct_to_template(request, "lesson.html", {"lesson": lesson})

@@ -1,0 +1,89 @@
+{% load mezzanine_tags %}
+<!doctype html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
+  <head>
+    <title>Culination - Taste Your Potential</title>
+    <link rel='stylesheet' href='{{ STATIC_URL }}css/main.css' />
+    <link rel='stylesheet' href='{{ STATIC_URL }}css/splash.css' />
+    <link rel='shortcut icon' href='/favicon.ico' />
+    <link rel='apple-touch-icon' href="">
+
+    <meta name='title' content='' />
+    <meta name='description' content='' />
+
+    <!-- Google Site Verification -->
+    <meta name='google-site-verification' content="" />
+
+    <!-- Facebook Open Graph -->
+    <meta property="fb:admins" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+    <meta property="fb:page_id" content="" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['_trackPageLoadTime']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script src="https://js.stripe.com/v1/"></script>
+    <script type="text/javascript">
+            Stripe.setPublishableKey('pk_ql6Y3hAzG1yNZRTgdy5I6O7wMzbES');
+    </script>
+
+    <script data-main="{{STATIC_URL}}js/{% block jsmain %}main{%endblock%}" src="{{STATIC_URL}}js/require/require-jquery.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.container').css({
+            position:'absolute',
+            left: ($(window).width() - $('.container').outerWidth())/2,
+            top: ($(window).height() - $('.container').outerHeight())/4
+        });
+    });
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var addthis_config = {"data_track_addressbar":true, services_overlay:'facebook,tumblr,more'};
+    </script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-511088d74ba42a22"></script>
+    
+    <div class="container">
+      <div class="row">
+        <div class="span6 logo-slogan">
+          <img class="logo" src="{{ STATIC_URL }}img/culination-logo.png" />
+          <div class="tagline">TASTE YOUR POTENTIAL</div>
+          <h1 class="slogan">Learn everything you need to know about cooking, while you cook.</h1>
+        </div>
+        <div class="span6 splash-image">
+          <img src="{{ STATIC_URL }}img/hero-lessons.png" />
+        </div>
+      </div>
+      
+      <hr />
+      
+      <div class="row">
+        <div class="span6 splash-signup">
+          <h3 class="span6">Learn more about Culination.</h3>
+          <input class="span4 splash-signup-email" name="splash-signup" type="email" placeholder="email">
+          <input class="btn splash-btn" type="submit" value="sign up">
+        </div>
+        <div class="span6 splash-login">
+          <h3 class="span6">Already have an invitation?</h3>
+          <a class="btn splash-btn" href="./private-login">login</a>
+        </div>
+      </div>
+    
+  </body>
+</html>

@@ -22,4 +22,6 @@ urlpatterns = patterns('app.views',
     url(r'^add-lesson/$', "add_lesson", name="add-lesson"),
     url(r'^lesson/(?P<lesson_id>\d+)/$', "lesson", name="lesson"),
     url(r'^purchase/(?P<lesson_id>\d+)/$', "purchase", name="purchase"),
+    url(r'^$', "welcome", name="welcome"),
+    url(r'^private-login/$', "privatelogin", name="privatelogin"),
 )

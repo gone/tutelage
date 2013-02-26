@@ -181,6 +181,9 @@
 	width: 100%;
 }
 
+.main {
+  counter-reset: inc_steps;
+}
 
 .step_counter {
   counter-increment: inc_steps;

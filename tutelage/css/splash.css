@@ -1,0 +1,122 @@
+/* Splash Page */
+
+@font-face {
+    font-family: 'MuseoSans500';
+    src: url('../fonts/MuseoSans_500-webfont.eot');
+    src: url('../fonts/MuseoSans_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/MuseoSans_500-webfont.woff') format('woff'),
+         url('../fonts/MuseoSans_500-webfont.ttf') format('truetype'),
+         url('../fonts/MuseoSans_500-webfont.svg#museo_sans_500regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  background-color: #ececec;
+  line-height: 115%;
+  font-family: 'MuseoSans500', Fallback, sans-serif;
+}
+
+h1 {
+  line-height: 50px;
+}
+
+hr {
+  margin: 10px 0;
+}
+
+.container {
+  background-color: #fff;
+  padding-bottom: 10px;
+}
+
+.logo, .slogan, .splash-signup h3, .splash-signup-email  {
+    margin-left: 20px !important;
+}
+
+.splash-signup:nth-child(3) {
+    margin-left: 30px !important;
+}
+
+.tagline {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.splash-image {
+    margin-top: 20px;
+}
+
+.splash-image img {
+    width: 96%;
+}
+
+.splash-login h3, .splash-login a {
+    margin-left: 0px !important;
+}
+
+.splash-btn {
+    vertical-align: top;
+    margin-left: 20px;
+    background-color: #57264f !important;
+    background-repeat: repeat-x;
+    -ms-filter: none;
+    filter: none;
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#57264f), to(#57264f));
+    background-image: -moz-linear-gradient(top, #57264f, #57264f);
+    background-image: -ms-linear-gradient(top, #57264f, #57264f);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #57264f), color-stop(100%, #57264f));
+    background-image: -webkit-linear-gradient(top, #57264f, #57264f);
+    background-image: -o-linear-gradient(top, #57264f, #57264f);
+    background-image: linear-gradient(#57264f, #57264f);
+    border: 1px solid #57264f !important;
+    color: white !important;
+    text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
+    -webkit-font-smoothing: antialiased;
+    border-radius: 0px !important;
+    font-weight: bold;
+    background-position: 0% 0%;
+}
+
+.splash-btn:hover {
+    vertical-align: top;
+    background-color: rgba(87, 38, 79, 0.6) !important;
+    background-repeat: repeat-x;
+    -ms-filter: none;
+    filter: none;
+    background-image: -khtml-gradient(linear, left top, left bottom, from(rgba(87, 38, 79, 0.6)), to(rgba(87, 38, 79, 0.6)));
+    background-image: -moz-linear-gradient(top, rgba(87, 38, 79, 0.6), rgba(87, 38, 79, 0.6));
+    background-image: -ms-linear-gradient(top, rgba(87, 38, 79, 0.6), rgba(87, 38, 79, 0.6));
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(87, 38, 79, 0.6)), color-stop(100%, rgba(87, 38, 79, 0.6)));
+    background-image: -webkit-linear-gradient(top, rgba(87, 38, 79, 0.6), rgba(87, 38, 79, 0.6));
+    background-image: -o-linear-gradient(top, rgba(87, 38, 79, 0.6), rgba(87, 38, 79, 0.6));
+    background-image: linear-gradient(rgba(87, 38, 79, 0.6), rgba(87, 38, 79, 0.6));
+    border: 1px solid rgba(87, 38, 79, 0.6) !important;
+    color: white !important;
+    text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
+    -webkit-font-smoothing: antialiased;
+    border-radius: 0px !important;
+    font-weight: bold;
+    background-position: 0% 0%;
+}
+
+/* Private Login */
+.private-login-background-image {
+    background: url(../img/login-background.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/login-background.png', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/login-background.png', sizingMethod='scale')";
+}
+
+.private-login-form {
+    padding: 20px;
+}
+
+.private-login-btn {
+    margin-top: 10px;
+    margin-left: 0px;
+}

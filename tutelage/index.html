@@ -1,111 +1,52 @@
 <!doctype html>
-<!--
-  Baseplayer:
-  http://jsfiddle.net/popcornjs/qQ672/
-  http://popcornjs.org/popcorn-docs/players/
-
-  Slider:
-  http://flowplayer.org/tools/rangeinput/
--->
 <html>
   <head>
-    <title>Tutelage - Quick and Easy Chicken Pot Pie</title>
+    <title>Culination - Taste Your Potential</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link rel="stylesheet" type="text/css" href="css/lesson-demo.css"/>
-    <link rel="stylesheet" type="text/css" href="css/timeline-widget.css"/>
-	<link rel="stylesheet" type="text/css" href="css/colorbox.css"/>
-    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<script type="text/javascript" src="http://cdn.jquerytools.org/1.2.6/form/jquery.tools.min.js"></script>
-    <script type="text/javascript" src="http://popcornjs.org/code/dist/popcorn-complete.js"></script> -->
-    <script type="text/javascript" src="./js/jquery.min.js"></script>
-	<script type="text/javascript" src="./js/jquery.tools.min.js"></script>
-    <script type="text/javascript" src="./js/popcorn-complete.js"></script>
-	<script type="text/javascript" src="./js/jquery.colorbox-min.js"></script>
-    <script type="text/javascript" src="./js/timeline-widget.js"></script>
-    <script type="text/javascript" src="./js/my-lesson-timing.js"></script>
-    <script type="text/javascript" src="./js/lesson-demo.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$(".inline").colorbox({inline:true, width:"50%", href:"#links"});
-			$(".lb_it").colorbox({inline:true, width:"50%", href:"#tool_ing_details"});
-		});
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/splash.css"/>
+    <script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.container').css({
+            position:'absolute',
+            left: ($(window).width() - $('.container').outerWidth())/2,
+            top: ($(window).height() - $('.container').outerHeight())/4
+        });
+    });
+    </script>
 
-	</script>
   </head>
 
   <body>
-    <div id="baseplayer"></div>
-    <video id="video" preload="auto">
-      <source src="../videos/tutelage_chicken_pot_pie.mp4">
-      <source src="../videos/tutelage_chicken_pot_pie.ogv">
-      <source src="../videos/tutelage_chicken_pot_pie.webm">
-      <!-- fallback -->
-      <p>Your browser does not support HTML5 video.</p>
-    </video>
-
-    <div id="wrapper">
-
-      <div id="page_header">
-        <!--<div id="tutelage_logo">&nbsp;</div>-->
+    <div class="container">
+      <div class="row">
+        <div class="span6 logo-slogan">
+          <img class="logo" src="./img/culination-logo.png" />
+          <div class="tagline">TASTE YOUR POTENTIAL</div>
+          <h1 class="slogan">Learn everything you need to know about cooking, while you cook.</h1>
+        </div>
+        <div class="span6 splash-image">
+          <img src="./img/launchimg.png" />
+        </div>
       </div>
-
-      <div id="page_body">
-
-	  <div id="left_panel">
-
-		  <div id="text">
-            <div id="directions"></div>
-          </div>
-
-		  <!--<div id ="ing_tools">-->
-			<div id="ingredients"></div>
-			<div id="tools"></div>
-			<div style="display:none;">
-				<div id="tool_ing_details">Test Details</div>
-			</div>
-	  </div>
-
-        <div id="central_panel">
+      
+      <hr />
+      
+      <div class="row">
+        <div class="span6 splash-signup">
+          <h3 class="span6">Learn more about Culination.</h3>
+          <input class="span4 splash-signup-email" name="splash-signup" type="email" placeholder="email">
+          <input class="btn splash-btn" type="submit" value="sign up">
         </div>
-
-        <div id="right_panel">
-		<div style="display:none;">
-          <div id="links"></div>
-		</div>
-        </div>
-
-        <br /> <br />
-
-        <div id="bottom_panel">
-          <div id="timeline">
-			<div class="timeline_buttons">
-				<img id="lp_toggle" class="img_swap" src="./img/icon_info_on.png" alt="" />
-				<img id="rp_toggle" class="img_swap" src="./img/icon_tech_on.png" alt="" />
-				<img id="vol_toggle" class="img_swap" src="./img/icon_volume_on.png" alt="" />
-			</div>
-			<div class="technique_steps">
-				<div class="inline cboxElement" style="width:29px;"><img id="vtech1" class="tech_img" src="./img/icon_tech_on.png" alt="" /></div>
-				<div class="inline cboxElement" style="width:22px;"><img id="vtech2" class="tech_img" src="./img/icon_tech_on.png" alt="" /></div>
-			</div>
-			<div class="timeline_steps">
-				<div id="intro" class="step" style="width:22px;">I</div>
-				<div id="step1" class="step" style="width:15px;">1</div>
-				<div id="step2" class="step" style="width:43px;">2</div>
-				<div id="step3" class="step" style="width:19px;">3</div>
-				<div id="step4" class="step" style="width:59px;">4</div>
-				<div id="step5" class="step" style="width:59px;">5</div>
-				<div id="step6" class="step" style="width:112px;">6</div>
-				<div id="step7" class="step" style="width:158px;">7</div>
-				<div id="step8" class="step" style="width:87px;">8</div>
-				<div id="step9" class="step" style="width:22px;">9</div>
-				<div id="step10" class="step" style="width:32px;">10</div>
-				<div id="bonus" class="step" style="width:138px;">B</div>
-			</div>
-
-		  </div>
+        <div class="span6 splash-login">
+          <h3 class="span6">Already have an invitation?</h3>
+          <a class="btn splash-btn" href="./private-login.html">login</a>
         </div>
       </div>
     </div>

@@ -1,0 +1,113 @@
+{% load mezzanine_tags %}
+<!doctype html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
+  <head>
+    <title>Culination - Taste Your Potential</title>
+    <link rel='stylesheet' href='{{ STATIC_URL }}css/main.css' />
+    <link rel='stylesheet' href='{{ STATIC_URL }}css/splash.css' />
+    <link rel='shortcut icon' href='/favicon.ico' />
+    <link rel='apple-touch-icon' href="">
+
+    <meta name='title' content='' />
+    <meta name='description' content='' />
+
+    <!-- Google Site Verification -->
+    <meta name='google-site-verification' content="" />
+
+    <!-- Facebook Open Graph -->
+    <meta property="fb:admins" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+    <meta property="fb:page_id" content="" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['_trackPageLoadTime']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script src="https://js.stripe.com/v1/"></script>
+    <script type="text/javascript">
+            Stripe.setPublishableKey('pk_ql6Y3hAzG1yNZRTgdy5I6O7wMzbES');
+    </script>
+
+    <script data-main="{{STATIC_URL}}js/{% block jsmain %}main{%endblock%}" src="{{STATIC_URL}}js/require/require-jquery.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.container').css({
+            position:'absolute',
+            left: ($(window).width() - $('.container').outerWidth())/2,
+            top: ($(window).height() - $('.container').outerHeight())/4
+        });
+        $('.email-input').focus();
+    });
+    </script>
+  </head>
+  <body class="private-login-background-image">
+    <script type="text/javascript">
+    var addthis_config = {"data_track_addressbar":true, services_overlay:'facebook,tumblr,more'};
+    </script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-511088d74ba42a22"></script>
+
+    <div class="container private-login-form login_info">
+      <div class="row">
+	    <div class="span3">
+	      <h4>Step into <em>Culination</em></h4>
+	    </div>
+	  </div>
+      
+      <hr />
+      
+      <div class="row">
+        <div class="span3">
+		<form id="login-form" class="login-form" action="{% url account:auth_login %}" method="post">
+		  {% csrf_token %}
+		  <div id="email">
+			<h5>Email</h5>
+			<input name="username"
+                   type="email"
+                   class="login-input email-input"
+                   placeholder=""
+                   value="{{login_form.username.value|default:""}}"
+                   data-validation-engine="validate[required,custom[email]]"
+                   data-errormessage-value-missing="Email is required!"
+                   data-errormessage-custom-error="Email must be in the format 'user@domain.com'"
+                   />
+            {{login_form.username.errors}}
+		  </div>
+		  <div id="password">
+			<h5>Password</h5>
+			<input name="password"
+                   class="login-input"
+                   type="password"
+                   placeholder=""
+                   data-validation-engine="validate[required]"
+                   data-errormessage-value-missing="Password is required!"
+                   />
+            {{login_form.non_field_errors }}
+            {{login_form.password.errors}}
+		  </div>
+
+		  <div class="row login-text login-actions">
+			<div class="span1">
+              <input type="submit" class="btn splash-btn private-login-btn" value="login">
+            </div>
+		  </div>
+          <input type="hidden" name="next" value="{{login_form.next.value|default:request.get_full_path}}" >
+        </form>
+	    </div>
+      </div>
+    </div>
+  </body>
+</html>

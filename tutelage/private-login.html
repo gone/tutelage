@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Culination - Taste Your Potential</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/splash.css"/>
+    <script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.container').css({
+            position:'absolute',
+            left: ($(window).width() - $('.container').outerWidth())/2,
+            top: ($(window).height() - $('.container').outerHeight())/4
+        });
+    });
+    </script>
+
+  </head>
+
+  <body class="private-login-background-image">
+    <div class="container span3 private-login-form">
+      <div class="row">
+	    <div class="span3">
+	      <h4>Step into <em>Culination</em></h4>
+	    </div>
+	  </div>
+      
+      <hr />
+      
+      <div class="row">
+        <div class="span3">
+		<form id="login-form" class="login-form" action="" method="post">
+		  <div id="email">
+			<h5>Email</h5>
+			<input name="username"
+                   class="login-input"
+                   type="text"
+                   placeholder=""
+                   />
+		  </div>
+		  <div id="password">
+			<h5>Password</h5>
+			<input name="password"
+                   class="login-input"
+                   type="password"
+                   placeholder=""
+                   />
+		  </div>
+
+		  <div class="row login-text login-actions">
+			<div class="span1">
+              <input type="submit" class="btn splash-btn private-login-btn" value="login">
+            </div>
+		  </div>
+        </form>
+	    </div>
+      </div>
+    </div>
+  </body>
+</html>
