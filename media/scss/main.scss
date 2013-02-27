@@ -11,7 +11,28 @@
          url('../fonts/MuseoSans_500-webfont.svg#museo_sans_500regular') format('svg');
     font-weight: normal;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'MuseoSans700';
+    src: url('../fonts/museosans-700-webfont.eot');
+    src: url('../fonts/museosans-700-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/museosans-700-webfont.woff') format('woff'),
+         url('../fonts/museosans-700-webfont.ttf') format('truetype'),
+         url('../fonts/museosans-700-webfont.svg#museo_sans700') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LubalinGraphDemi';
+    src: url('../fonts/lubalingraphitctot-demcon-webfont.eot');
+    src: url('../fonts/lubalingraphitctot-demcon-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lubalingraphitctot-demcon-webfont.woff') format('woff'),
+         url('../fonts/lubalingraphitctot-demcon-webfont.ttf') format('truetype'),
+         url('../fonts/lubalingraphitctot-demcon-webfont.svg#lubalin_graph_itc_t_otdemiCn') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 $black					:				  #333333;

@@ -72,6 +72,11 @@
 	border-right:10px solid $border-color; 
 }
 
+.request-progress-text {
+    display: inline;
+    vertical-align: middle;
+}
+
 .featured-request-span {
 	margin: 5px 0px 0px 10px !important;	
 }
@@ -127,13 +132,33 @@
 	text-align: right;
 }
 
-.request-form-field {
-	padding-bottom: 5px;
+.request-email-updates {
+    padding-top: 10px;
+}
+
+.request-email-updates input {
+    vertical-align: bottom;
+}
+
+.request-email-updates label {
+    display: inline-block !important;
+    margin-bottom: -4px;
+    vertical-align: bottom;
+    font-weight: normal !important;
+}
+
+.request-form-field, .request-pledge-input {
+	margin-top: 10px;
+    padding-bottom: 5px;
+}
+
+.request-pledge-price {
+    width: 46px;
 }
 
 .request-form-description textarea {
 	height: 70px;
-	width: 445px;
+	width: 428px;
 }
 
 .request-progress {
@@ -154,12 +179,7 @@
 .request-form-field label {
 	display: block;
 	font-size: 14px;
-	line-height: 20px;
 	font-weight: bold;
-}
-
-.request-input {
-	width: 200px;
 }
 
 .request-form-field ul {
@@ -170,6 +190,37 @@
 .request-form-field ul li {
 	display: inline-block;
 	list-style-type: none !important;
+}
+
+.request-form-field ul li label {
+	display: inline-block;
+	font-size: 14px;
+	font-weight: normal;
+    width: 90px;
+}
+
+.request-form-field ul li label input {
+	margin-top: 0px;
+}
+
+.request-input {
+	width: 188px;
+}
+
+.request-form-field .chzn-container .chzn-choices .search-field input {
+    width: 188px !important;
+}
+
+.request-form-field select {
+    width: 202px;
+}
+
+.create-request-prepend-input {
+    width: 160px;
+}
+
+.request-input-calendar {
+    margin-top: 1px;
 }
 
 .request-form-buttons {

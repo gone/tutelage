@@ -204,6 +204,8 @@ class LessonRequestForm(forms.ModelForm):
         rv =  super(LessonRequestForm, self).__init__(*args, **kwargs)
         self.fields['kind'].label = "Type"
         self.fields['title'].label = "Name"
+        self.fields['time_in_min'].label = "Time Required"
+        self.fields['serving_size'].label = "Serving Size"
         return rv
 
     def save(self, *args, **kwargs):

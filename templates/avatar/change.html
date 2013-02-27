@@ -10,7 +10,7 @@
 		<h3 class="colored-header">Manage Avatars</h3>
 	  </div>
 	  <div class="span3">	
-		<a class="btn btn-green btn-save pull-right" href="{% url self_profile %}" >
+		<a class="btn btn-primary btn-save pull-right" href="{% url profile request.user.id %}" >
 		Back to profile
 		</a>
 	  </div>	
@@ -36,10 +36,8 @@
     {% endif %}
     <form enctype="multipart/form-data" method="POST" action="">
             {% csrf_token%}
-        <input type="file" name="avatar" value="Avatar Image" />
-        <a class="btn btn-blue btn-avatar pull-right">
-		Upload New Image
-        </a>
+        <input type="file" name="avatar" value="avatar-image" />
+        <input type="submit" class="btn btn-secondary btn-avatar pull-right" value="upload new image">
     </form>
     
     <hr />

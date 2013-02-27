@@ -4,29 +4,44 @@
 
       <form action="" method="POST" id="payment-form">
         <div class="row">
-          <label>
-            <span>Card Number</span>
-            <input type="text" size="20" autocomplete="off" class="card-number"/>
+          <div class="span4">
+            <div><strong>You're off the hook! Just use the testing information and click submit.</strong></div>
+          </div>
+        </div>
+        
+        <hr />
+        
+        <div class="row">
+          <label class="span4">
+            <div>Card Number</div>
+            <input type="text" size="20" value="4242424242424242" autocomplete="off" class="card-number span4"/>
           </label>
         </div>
 
         <div class="row">
-          <label>
-            <span>CVC</span>
-            <input type="text" size="4" autocomplete="off" class="card-cvc"/>
-          </label>
+          
         </div>
 
         <div class="row">
-          <label>
-            <span>Expiration (MM/YYYY)</span>
-            <input type="text" size="2" class="card-expiry-month"/>
+          <label class="span1">
+            <div>CVC</div>
+            <input type="text" size="4" value="725" autocomplete="off" class="card-cvc span1"/>
           </label>
-          <span> / </span>
-          <input type="text" size="4" class="card-expiry-year"/>
         </div>
-
-        <button type="submit" class="payment-asubmit-button">Submit Payment</button>
+        
+        <div class="row">
+          <label class="span3">
+            <div>Expiration (MM/YYYY)</div>
+            <input type="text" size="2" value="11" class="card-expiry-month span1"/>
+            <span> / </span>
+            <input type="text" size="4" value="2017" class="card-expiry-year span2"/>
+          </label>
+        </div>
+        
+        <hr />
+        
+        <a href="{% url ask %}" class="btn btn-white">return to requests</a>
+        <button type="submit" class="btn btn-primary payment-submit-button">submit payment</button>
       </form>
     </div>
 

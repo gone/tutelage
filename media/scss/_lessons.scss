@@ -9,7 +9,9 @@
     padding-left: 20px;
 }
 
-.lesson-title {
+.lesson-title * {
+    font-family: 'LubalinGraphDemi';
+    font-weight: normal;
     white-space: nowrap;
 }
 
