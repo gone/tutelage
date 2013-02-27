@@ -1,7 +1,7 @@
 import json
 import logging
 from itertools import chain
-from datetime import datetime
+from datetime import datetime, timedelta
 from datetime import datetime
 from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -255,9 +255,11 @@ def ask_form(request):
 @login_required(redirect_field_name='')
 def ask(request):
     all_lesson_requests = LessonRequest.objects.filter(active=True)
-
+    active_requests = LessonRequest.objects.filter(active=True, need_by__gt=datetime.today())
+    alert_date = datetime.now() + timedelta(days=1)
+    
     per_page = 6
-    req_paginator = Paginator(all_lesson_requests, per_page)
+    req_paginator = Paginator(active_requests, per_page)
 
     slug = request.GET.get('slug')
     if slug:
@@ -285,7 +287,7 @@ def ask(request):
     if not slug:
         slug = lesson_requests.object_list[0].slug
 
-    return direct_to_template(request, "ask.html", {"contribute_form":contribute_form, "lesson_requests": lesson_requests, 'slug': slug, 'lesson_json':lesson_json, 'pledge_form':pledge_form, 'request_form':request_form})
+    return direct_to_template(request, "ask.html", {"contribute_form":contribute_form, "lesson_requests": lesson_requests, 'slug': slug, 'lesson_json':lesson_json, 'pledge_form':pledge_form, 'request_form':request_form, 'alert_date':alert_date})
 
 @login_required(redirect_field_name='')
 def lesson(request, lesson_id):

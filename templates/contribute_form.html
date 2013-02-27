@@ -1,24 +1,27 @@
-<div class="request-contribute pull-right">
-  <span class="">Contribute</strong>
-<div class="request-contribute-input input-prepend">
-  <span class="add-on">$</span>
-  <input class="span1 no-margin
-                request-contribute-price"
-         name="{{contribute_form.amount.html_name}}"
-         type="number"
-         min="1"
-         value="{{contribute_form.amount.value|default:""}}"
-         max="1000"
-         placeholder="Price">
-  {{contribute_form.amount.errors}}
-</div>
+<div class="span4 featured-request-span request-contribute pull-right">
+    <span class="">Contribute</strong>
+    <div class="request-contribute-input input-prepend">
+      <span class="add-on">$</span>
+      <input class="span1 no-margin
+                    request-contribute-price"
+             name="{{contribute_form.amount.html_name}}"
+             type="number"
+             min="1"
+             value="{{contribute_form.amount.value|default:1}}"
+             max="1000"
+             placeholder="">
+      {{contribute_form.amount.errors}}
+    </div>
 
-{{ contribute_form.email.label_tag }}: {{ contribute_form.email }}
-{{ contribute_form.email.errors }}
-{% if contribute_form.non_field_errors %}
-<ul>
-    {{ contribute_form.non_field_errors.as_ul }}
-</ul>
-{% endif %}
-<input type="submit" value="contribute" class="btn btn-primary btn-request-contribute">
+    {% if contribute_form.non_field_errors %}
+    <ul>
+        {{ contribute_form.non_field_errors.as_ul }}
+    </ul>
+    {% endif %}
+    <input type="submit" value="contribute" class="btn btn-tertiary btn-request-contribute">
+    <div class="request-email-updates">
+      {{ contribute_form.email }}
+      <label>Email updates for this request</label>
+      {{ contribute_form.email.errors }}
+    </div>
 </div>

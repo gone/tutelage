@@ -58,6 +58,12 @@ body {
     }
 }
 
+.bordered{
+    background-color: $white;
+    border: 1px solid $border-color;
+    width: 980px;
+}
+
 @mixin colored-button($color,$border-color:$color,$text-color:white){
     background-color: $color !important;
     background-repeat: repeat-x;
@@ -129,6 +135,14 @@ body {
 
 .btn-secondary:hover{
 	@include colored-button($secondary-active,$secondary-active,$white)
+}
+
+.btn-tertiary {
+    @include colored-button($tertiary)
+}
+
+.btn-tertiary:hover{
+	@include colored-button($tertiary-active,$tertiary-active,$white)
 }
 
 .btn-clearsecondary {
@@ -221,11 +235,6 @@ body {
 .btn-save {
 	margin-right:	20px;
 	margin-top:		5px;
-}
-
-.bordered{
-    background-color: #fff;
-    border: 1px solid $border-color;
 }
 
 .green {

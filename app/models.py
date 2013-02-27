@@ -477,8 +477,6 @@ class LessonRequest(CreatedMixin):
     def get_absolute_url(self):
         return reverse("ask")  + "?slug=" + self.slug
 
-
-
 class LessonPledge(CreatedMixin):
     user = models.ForeignKey(User)
     amount = CurrencyField(max_digits=7, decimal_places=2)

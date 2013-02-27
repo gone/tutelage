@@ -1,13 +1,27 @@
 .request-message {
 	font-size: 18px;
 	padding: 12px 0px;
-	margin-left: 10px;
 }
 
 #featuredrequest {
 	border-right: 1px solid $border-color;
 	margin-left: 19px !important;
-	height: 300px;
+    padding-left: 10px;
+	min-height: 740px;
+}
+
+.featured-request-signup {
+    margin: 10px 0px 0px 10px !important;
+}
+
+.featured-request-signup-text {
+    display: inline-block;
+    margin-top: 8px;
+}
+
+.btn-featured-request-signup {
+    display: inline;
+    margin-left: 10px;
 }
 
 .request-hr {
@@ -20,11 +34,20 @@
 	padding: 5px 0px;
 }
 
+.request-links div {
+    display: inline-block;
+	margin: 8px 10px 0px 0px;
+}
+
+.lessonrequest-active div {
+    background-color: $border-color;
+}
+    
 .request {
 	height: 100px;
 	overflow: hidden;
 	margin-left: 10px !important;
-	padding: 5px 10px 10px 0px;
+	padding: 5px 10px 10px 10px;
 	/*border-top: 1px solid $border-color;
 	border-bottom: 1px solid $border-color;*/
 }
@@ -34,7 +57,19 @@
 }
 
 .request-last {
-	border-bottom: 1px solid $border-color;
+	/*border-bottom: 1px solid $border-color;*/
+}
+
+.arrow-left {
+    position: absolute;
+    margin-top: 50px;
+    margin-left: -31px;
+    background-color: $white !important;
+	width: 0; 
+	height: 0; 
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent; 	
+	border-right:10px solid $border-color; 
 }
 
 .featured-request-span {
@@ -45,21 +80,35 @@
 	padding-top: 5px;
 }
 
+.request-tile-description {
+    margin: 0px 20px 10px 0px;
+    height: 60px;
+    overflow: hidden;
+}
+
+.btn-requestsignup:hover {
+    cursor: pointer;
+}
+
 .request-margin {
 	margin-left: -20px;
+    padding-left: 10px;
 	height: 10px;
 	width: 480px;
 	background-color: $border-color;
 }
 
 .ask-pot, .attatchedchef {
-	padding-top: 12px;
 	text-align: right;
+	padding-top: 32px;
+}
+
+.timetoraise-today {
+    color: $pink;
 }
 
 .request-details-chef {
 	display: inline-block;
-	padding-top: 5px;
 	max-width: 155px;
 }
 
@@ -89,7 +138,8 @@
 
 .request-progress {
     border: 3px solid $gray;
-    width: 90%;
+    margin: 5px 0px 0px 9px;
+    width: 95%;
 }
 
 .request-bar {

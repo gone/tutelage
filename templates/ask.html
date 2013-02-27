@@ -7,57 +7,58 @@
 <script id="featured-request-templ" type="text/x-handlebars-template">
 
 	<div class="row">
-	  <div class="span4 lesson-title featured-request-span">
+	  <div class="span6 lesson-title featured-request-span">
 		<a class="primary reqtitle"><h3 class="no-margin">{{title}}</h3></a>
-	  </div>
-
-	  <div class="span2">
-		<h4 class="featured-request-text pull-right">${{inpot}} in pot</h4>
 	  </div>
     </div>
 
 	<div class="row">
-	  <div class="span4 funding-progress featured-request-span">
-
+	  <div class="span3 featured-request-span">
+		<div class="no-margin featured-timetoraise"><h4>{{need_by}} left</h4></div>
 	  </div>
-
-	  <div class="span2">
-		<strong class="ask-pot no-margin pull-right">{{need_by}} left</strong>
-	  </div>
-    </div>
-
-    <hr class="request-hr" />
-
-    <div class="row">
-	  <div class="span6 featured-request-span">
-        <a href="" >{{req.chef_attatched}}</strong></a>
-        {{# if chef }}
-		   <div class="request-details-chef"><strong>by <a href="{{chef_profile_url}}" class="miniprofile-btn primary">{{chef.full_name}}</strong></a></div>
+      
+      
+      {{# if chef }}
+	  <div class="span3 featured-request-span">	
+           <div class="pull-right"><h4>by <a href="{{chef_profile_url}}" class="miniprofile-btn tertiary">{{chef.full_name}}</a></h4></div>
+      {{ else }}
+        {{# if userIsChef }}
+      <div class="span3 featured-request-signup">
+        <div class="featured-request-signup-text">Become taste expert!</div>
+        <div class="btn-featured-request-signup"><a href="#" class="btn btn-secondary btn-request-contribute pull-right">signup</a></div>
         {{ else }}
-           <div class="request-details-chef"><strong>by <a href="#" class="primary">No Chef Yet!</strong></a></div>
-           {{#if userIsChef}}
-		   <a href="#" class="btn btn-secondary btn-request-contribute">answer</a>
-           {{/if}}
+      <div class="span3 featured-request-span">
+        <div class="pull-right"><h4>No taste expert yet!</h4></div>
         {{/ if }}
-          {% endverbatim %}
-          <form class="contribute-form" action="{% url contribute  %}" method="post">
+      {{/ if }}
+	  </div>
+
+    </div>
+    
+    <hr class="request-hr" />
+    
+    <div class="row">
+      <div class="span2 featured-request-span">
+        <h4 class="featured-request-text no-margin">${{inpot}} in Pot</h4> 
+	  </div>
+
+{% endverbatim %}
+
+      <form class="contribute-form" action="{% url contribute  %}" method="post">
           {% csrf_token %}
           {% include "contribute_form.html" with contribute_form=contribute_form %}
-          <input type="hidden" name='{{contribute_form.request_slug.name}}'  {% verbatim %} value="{{slug}}">
-          </form>
-	  </div>
+          <input type="hidden" name='{{contribute_form.request_slug.name}}' value="{{slug}}">
+      </form>
     </div>
 
+{% verbatim %}
+    
     <hr class="request-hr" />
 
     <div class="row">
-	  <div class="span3 featured-request-span">
-	    <strong class="">serving {{serving_size}}</strong>
-	  </div>
-
-	  <div class="span3">
-		<strong class="featured-request-text pull-right">taking {{time_in_min}} minutes</strong>
-	  </div>
+      <div class="progress request-progress">
+        <div class="bar request-bar" style="width: {{percent}}%;"></div>
+      </div>
     </div>
 
     <hr class="request-hr" />
@@ -67,11 +68,18 @@
       {{description}}
       </div>
     </div>
-
-    <div class="progress request-progress">
-      <div class="bar request-bar" style="width: {{percent}}%;"></div>
+    
+{% endverbatim %}
+    <div class="row">
+      {% if request.user.is_authenticated %}
+      <div class="span6 featured-request-span request-links">
+        <div>Didn't find what you wanted?</div>
+        <a href="#" id="requestform-btn" class="btn btn-primary">create your own request</a>
+      </div>
+      {% endif %}
     </div>
 
+{% verbatim %}
 
     <hr class="request-hr" />
 
@@ -91,22 +99,34 @@
         {{/each}}
 	  </div>
     </div>
+    
+    <hr class="request-hr" />
+    
     <div class="row">
-      <div class="span2">
+      <div class="span6 featured-request-span">
         <div addthis:url="http://culination.com/ask?slug={{slug}}" class="addthis_toolbox addthis_default_style addthis_32x32_style">
           <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
           <a class="addthis_button_pinterest_pinit"></a>
+          <a class="addthis_button_tweet"></a> 
         </div>
       </div>
     </div>
+    
+    <hr class="request-hr" />
+    
     <div class="row">
-      <div class="span6">
-        {{pledges.length}} contributors date amount pledged
-        {{#each pledges}}
-        {{user_name}} {{date_pledged}} ${{amount}}
-        {{/each}}
-      </div>
+      <div class="span2 featured-request-span"><strong>{{pledges.length}} Contributors</strong></div>
+      <div class="span2 featured-request-span"><strong>Date</strong></div>
+      <div class="span2 featured-request-span"><strong>Amount Pledged</strong></div>
     </div>
+    
+    {{#each pledges}}
+    <div class="row">
+	  <div class="span2 featured-request-span">{{user_name}}</div>
+      <div class="span2 featured-request-span">{{date_pledged}}</div>
+      <div class="span2 featured-request-span">${{amount}}</div>
+    </div>
+    {{/each}}    
 </script>
 {% endverbatim %}
 
@@ -137,7 +157,7 @@ require(['./common',], function(){
 
         source = $("#featured-request-templ").html();
         template = Handlebars.compile(source);
-        $(".btn-createlesson").click(function(e){
+        $(".btn-requestsignup").click(function(e){
             cc.setupColorbox($(this).parent().find('.chef-pledge'))
         })
         target = null
@@ -162,11 +182,21 @@ require(['./common',], function(){
                     return false
                 }
             })
+            active_request = $('.lessonrequest-active').find('.timetoraise');
+            if (active_request.hasClass('timetoraise-today')) {
+                $('.featured-timetoraise').addClass('timetoraise-today');
+            }
         }
 
 
         $('.lessonrequest').click(function(){
             t = $(this)
+            
+            $('.arrow-left').remove();
+            $('.lessonrequest').removeClass('lessonrequest-active');
+            t.addClass('lessonrequest-active');
+            $('.lessonrequest-active').prepend('<div class="arrow-left"></div>');
+            
             slug = t.data('slug')
             switchDisplay(slug)
         })
@@ -192,14 +222,6 @@ $()
       <div class="span6 request-message">
         Click on a request for more details
       </div>
-
-      <div class="span6 request-links">
-        Still looking?
-        {% if request.user.is_authenticated %}
-        <a href="#" id="requestform-btn" class="btn btn-primary">create a request</a>
-        {% endif %}
-        <a href="{% url lessons %}" class="btn btn-secondary"> view lessons</a>
-      </div>
     </div>
   </div>
 </div>
@@ -216,46 +238,56 @@ $()
   </div>
   <div id="requests-list" class="span6">
    {% for req in lesson_requests %}
+   {% if forloop.first %}
+   <span class="lessonrequest lessonrequest-active" data-slug="{{req.slug}}">
+   <div class="arrow-left"></div>
+   <div class="row">	
+    <div class="span6 request request-first">
+   {% elif forloop.last %}
    <span class="lessonrequest" data-slug="{{req.slug}}">
-   <div class="row">
-	{% if forloop.first %}
-	<div class="span6 request request-first">
-	{% elif forloop.last %}
-	<div class="span6 request request-last">
-	{% else %}
+   <div class="row">		
+    <div class="span6 request request-last">
+   {% else %}
+   <span class="lessonrequest" data-slug="{{req.slug}}">
+   <div class="row">		
 	<div class="span6 request">
-	{% endif %}
+   {% endif %}
  	  <div class="row">
 		  <div class="span4 lesson-title request-title">
-			<a class="primary reqtitle"><h3 class="no-margin">{{req.title}}</h3></a>
+			<a class="primary reqtitle"><h4>{{req.title}}</h4></a>
 		  </div>
 
 		  <div class="span2">
-			<h4 class="ask-pot no-margin pull-right">${{req.in_pot|default:"0"|floatformat}} in pot</h4>
+			<h4 class="pull-right">${{req.in_pot|default:"0"|floatformat}}</h4>
 		  </div>
       </div>
 
 	  <div class="row">
 		<div class="span4">
-		  <div class="lesson-tile-description">
+		  <div class="request-tile-description">
 		    <small>{{req.description}}</small>
 		  </div>
         </div>
 
         <div class="span2">
-		  <div class="timetoraise pull-right"><strong>{{req.need_by|timeuntil}} left</strong></div>
-
-          <div class="attatchedchef pull-right"><strong>
-          {% if req.chef_attatched %}
-          by <a href="{% url miniprofile req.chef_attatched.id %}" class="miniprofile-btn primary">{{req.chef_attatched.full_name}}</strong></a>
-          {% elif user.get_profile.professional_chef %}
-            <div class="btn btn-primary btn-createlesson">Create lesson</div>
+          {% if req.need_by|date:"N j, Y" = alert_date|date:"N j, Y" %}
+          <div class="timetoraise timetoraise-today pull-right"><strong><small>{{req.need_by|timeuntil}} left</strong></small></div>
+          {% else %}
+          <div class="timetoraise pull-right"><strong><small>{{req.need_by|timeuntil}} left</strong></small></div>
+          {% endif %}  
+          <div class="attatchedchef pull-right">
+            {% if req.chef_attatched %}
+            <strong><small> 
+              by <a href="{% url miniprofile req.chef_attatched.id %}" class="miniprofile-btn tertiary">{{req.chef_attatched.full_name}}</a>
+            </small></strong>
+            {% elif user.get_profile.professional_chef %}
+            <div class="btn-requestsignup tertiary"><strong><small>Become Taste Expert!</small></strong></div>
             <div class="row no-display">
               {% include "chef_pledge.html" with pledge_form=pledge_form slug=req.slug%}
             </div>
-          {% else %}
-          <a href="#" class="primary">No Chef yet!</strong></a>
-          {% endif %}
+            {% else %}
+            <strong><small>No Chef yet!</small></strong>
+            {% endif %}
           </div>
 		</div>
       </div>
