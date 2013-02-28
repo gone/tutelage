@@ -64,12 +64,14 @@
         {% avatar u %}
 	    </div>
         
+        <div class="span4">
         <div class="social-media">
         {% url featured_chefs as url %}
         {% include "share.html" with url=url %}
         </div>
         
 	    <div class="user-bio">{{u.profile.about}}</div>
+        </div>
       </div>
       
     </div> 

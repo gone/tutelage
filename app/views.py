@@ -28,7 +28,7 @@ from django.contrib.formtools.wizard.views import SessionWizardView
 logger = logging.getLogger(__name__)
 
 from .models import (Lesson, LessonIngredient, Tool, Step, Video,
-                     LessonRating, FeaturedChef, LessonRequest, Customer)
+                     LessonRating, FeaturedChef, LessonRequest, Customer, Profile)
 
 from .forms import (ProfileForm,
                     LessonDetailsForm,
@@ -211,9 +211,6 @@ def purchase(request, lesson_id):
     lesson.followers.add(request.user)
     return HttpResponseRedirect(reverse("lesson", kwargs={'lesson_id':lesson.id}))
 
-def cheflist(request):
-    pass
-
 @login_required
 def chef_pledge(request, slug):
     lesson_request = get_object_or_404(LessonRequest, slug=slug, active=True)
@@ -261,7 +258,7 @@ def ask(request):
     per_page = 6
     req_paginator = Paginator(active_requests, per_page)
 
-    slug = request.GET.get('slug')
+    slug = request.GET.get('request')
     if slug:
         lesson_request = get_object_or_404(LessonRequest, slug=slug, active=True)
         count = LessonRequest.objects.filter(active=True, need_by__lte=lesson_request.need_by, id__lt=lesson_request.id).count()
@@ -308,6 +305,11 @@ def rate_lesson(request, lesson_id, rating):
 def featured_chefs(request):
     chef = FeaturedChef.objects.published().order_by('-id').select_related('chef')[0]
     return profile(request, user_id=chef.id)
+
+def cheflist(request):
+    chefs_featured = FeaturedChef.objects.all()
+    chefs_all = Profile.objects.filter(professional_chef=True)
+    return direct_to_template(request, "featured_chef.html", {"chefs_featured": chefs_featured, "chefs": chefs_all})
 
 
 def handle_requests():

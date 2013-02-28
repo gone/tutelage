@@ -2,31 +2,70 @@
 {% load avatar_tags %}
 {% block content %}
 {% autoescape off %}
-<div class="bordered-row main bordered">
-    <div class="span6">
-      <div class="colored_header">
-        <h3>Our Chefs</h3>
-        <div class="main-movie">
-          <img src={{MEDIA_URL}}{{chef.introvideo}} />
-        </div>
-
-        <hr />
-
-        <h4>Bringing Passion and Expertise</h4>
-        <p>{{chef.intro_text}}</p>
-      </div>
+<div class="row main">
+  <div class="span12">
+    <div class="row">
+      <div class="featured-chefs-title span6"><h3>Meet Our Featured Chefs</h3></div>
     </div>
-    <div class="span6">
-	  <h3>Meet Chef {{chef.chef.get_full_name|title}}</h3>
-          {% avatar chef.chef %}
-
-      <hr/>
-
-      <h3>{{chef.chef.get_full_name|title}}'s Lessons</h3>
-      {% for lesson in chef.featured_lessons.all %}
-      {% include "lesson_tile.html" with lesson=lesson %}
+    
+    <div class="row">
+      {% for fchef in chefs_featured %}
+      {% if forloop.first %}
+      <div class="span3 bordered featured-chef-box featured-chef-box-active">
+      {% else %}
+      <div class="span3 bordered featured-chef-box">
+      {% endif %}
+        <div class="featured-profile-pic">
+          <img class="loadedavatar" height="80" width="80" src="{% avatar_url fchef.chef %}">
+        </div>    
+        <div class="featured-chef-box-title">
+          <div class="row span2">Chef</div>
+          <div class="row span2">{{fchef.chef.first_name|title}}</div>
+          <div class="row span2">{{fchef.chef.last_name|title}}</div>
+        </div>
+      </div> 
       {% endfor %}
     </div>
+    
+    <div class="row">
+      <div class="featured-chefs-title span2"><h3>Our Chefs</h3></div>
+    </div>
+    
+    <div class="row">
+      {% for chef in chefs %}
+      <div class="span6 bordered featured-chef-box">
+        <div class="featured-profile-pic">
+          <img class="loadedavatar" height="80" width="80" src="{% avatar_url chef.user %}">
+        </div>  
+        <div class="chef-box-title">  
+          <div>Chef {{chef.user.get_full_name|title}}</div>
+        </div>
+        <div class="chef-box-location pull-right">  
+          <div>{{chef.location}}</div>
+        </div>
+        <div class="chef-box-location pull-right">  
+          <div>
+            {% for tag in chef.tags %}
+            <a class="btn btn-clearsecondary btn-tags">{{tag}}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div> 
+      {% endfor %}
+    </div>
+  </div>
 </div>
-  {% endautoescape %}
+{% endautoescape %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.featured-chef-box').hover(
+          function() {
+            $(this).find('a').removeClass('btn-clearsecondary').addClass('btn-tertiary');
+          },
+          function() {
+            $(this).find('a').removeClass('btn-tertiary').addClass('btn-clearsecondary');
+          }
+        );
+    });
+</script>
   {% endblock %}

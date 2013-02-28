@@ -8,10 +8,6 @@
     padding-right: 20px;
 }
 
-.user-photo {
-    margin-right: 20px;
-}
-
 .user-photo img {
     width: 100%;
 }
@@ -72,4 +68,52 @@
 
 .chef-lessons-title, .profile-lessons-title {
     padding-top: 0px;
+}
+
+/*Featured Chefs Profile*/
+
+.featured-chef-box {
+    margin: 0px 0px 17px 17px;
+    padding: 10px 0px;
+}
+
+.featured-chef-box:hover {
+    background-color: $tertiary;
+    border-color: $tertiary;
+    color: $white;
+    cursor: pointer;
+}
+
+.featured-chef-box-active {
+    background-color: $tertiary;
+    border-color: $tertiary;
+    color: $white;
+}
+
+.featured-profile-pic {
+    display: inline-block;
+}
+
+.featured-profile-pic img {
+    vertical-align: bottom;
+    padding-left: 10px;
+}
+
+.featured-chef-box-title {
+    display: inline-block;
+    max-width: 120px;
+    font-family: 'LubalinGraphDemi';
+    font-size: 22px;
+}
+
+.featured-chef-box-title div {
+    margin-top: 10px;
+} 
+
+.chef-box-title {
+    display: inline-block;
+    font-family: 'LubalinGraphDemi';
+    font-size: 22px;
+    vertical-align: top;
+    padding-top: 5px;
 }

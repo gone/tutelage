@@ -43,7 +43,7 @@ $secondary				:				  #60C4AF;
 $secondary-active		:				  #C4C8EB;
 $tertiary               :                 #C85838;
 $tertiary-active        :                 #FF9D40;
-
+$request                :                 #95CFAD;
 
 $green                  :                 #01a64f;
 $green-active           :                 #028e44;
@@ -55,7 +55,7 @@ $lightgray				:				  #cacaca;
 $darkgray				:				  #666666;
 $pink					:				  #ff7474;
 $background             :                 #ececec;
-$border-color           :                 lightGray;
+$border-color           :                 $lightgray;
 
 body {
   background-color: $background !important;
@@ -67,12 +67,13 @@ body {
 }
 
 .container, .content {
-    width: 1000px;
+    width: 980px;
 }
 
 .main{
+    width: 970px;
+    margin-left: 5px;
     padding-top: 20px;
-    width: 980px;
     background-color: $white;
     h3 {
         line-height: 25px;
@@ -82,7 +83,12 @@ body {
 .bordered{
     background-color: $white;
     border: 1px solid $border-color;
-    width: 980px;
+}
+
+.bordered-row {
+    @extend .row;
+    margin-left: -22px;
+    margin-bottom: -1px;
 }
 
 @mixin colored-button($color,$border-color:$color,$text-color:white){
@@ -241,7 +247,7 @@ body {
  }
 
 .btn-white:hover {
-    @include colored-button($pink,$pink,$white)
+    @include colored-button($tertiary-active,$tertiary-active,$white)
  }
 
 .btn-tags {
@@ -265,12 +271,6 @@ body {
 a.green:hover {
 	color: $green-active !important;
 	text-decoration: none !important;
-}
-
-.bordered-row {
-    @extend .row;
-    margin-left: -22px;
-    margin-bottom: -1px;
 }
 
 .colored_header {

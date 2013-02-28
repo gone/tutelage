@@ -5464,12 +5464,13 @@ body hr {
 }
 
 .container, .content {
-  width: 1000px;
+  width: 980px;
 }
 
 .main {
+  width: 970px;
+  margin-left: 5px;
   padding-top: 20px;
-  width: 980px;
   background-color: white;
 }
 .main h3 {
@@ -5478,8 +5479,12 @@ body hr {
 
 .bordered {
   background-color: white;
-  border: 1px solid lightgrey;
-  width: 980px;
+  border: 1px solid #cacaca;
+}
+
+.bordered-row {
+  margin-left: -22px;
+  margin-bottom: -1px;
 }
 
 .no-display {
@@ -5976,19 +5981,19 @@ body hr {
 }
 
 .btn-white:hover {
-  background-color: #ff7474 !important;
+  background-color: #ff9d40 !important;
   background-repeat: repeat-x;
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color', endColorstr='$color');*/
   -ms-filter: none;
   filter: none;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#ff7474), to(#ff7474));
-  background-image: -moz-linear-gradient(top, #ff7474, #ff7474);
-  background-image: -ms-linear-gradient(top, #ff7474, #ff7474);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff7474), color-stop(100%, #ff7474));
-  background-image: -webkit-linear-gradient(top, #ff7474, #ff7474);
-  background-image: -o-linear-gradient(top, #ff7474, #ff7474);
-  background-image: linear-gradient(#ff7474, #ff7474);
-  border: 1px solid #ff7474 !important;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ff9d40), to(#ff9d40));
+  background-image: -moz-linear-gradient(top, #ff9d40, #ff9d40);
+  background-image: -ms-linear-gradient(top, #ff9d40, #ff9d40);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff9d40), color-stop(100%, #ff9d40));
+  background-image: -webkit-linear-gradient(top, #ff9d40, #ff9d40);
+  background-image: -o-linear-gradient(top, #ff9d40, #ff9d40);
+  background-image: linear-gradient(#ff9d40, #ff9d40);
+  border: 1px solid #ff9d40 !important;
   color: white !important;
   text-shadow: 0 0px 0 rgba(0, 0, 0, 0) !important;
   -webkit-font-smoothing: antialiased;
@@ -6018,11 +6023,6 @@ body hr {
 a.green:hover {
   color: #028e44 !important;
   text-decoration: none !important;
-}
-
-.bordered-row {
-  margin-left: -22px;
-  margin-bottom: -1px;
 }
 
 .colored_header h3, .colored_header h4 {
@@ -8022,7 +8022,7 @@ body .ui-tooltip {
   height: 55px;
   width: 55px;
   padding: 5px;
-  border-left: 1px lightgrey solid;
+  border-left: 1px #cacaca solid;
   margin-left: 0px !important;
   cursor: pointer;
 }
@@ -8035,10 +8035,14 @@ body .ui-tooltip {
   color: white !important;
 }
 
+.box-experts, .box-about {
+  border-right: 1px #cacaca solid;
+}
+
 .box-login {
   padding-top: 12px;
   height: 48px;
-  border-right: 1px lightgrey solid;
+  border-right: 1px #cacaca solid;
 }
 
 .box-logout {
@@ -8050,17 +8054,14 @@ body .ui-tooltip {
   padding-top: 12px;
   height: 48px;
   width: 90px;
-  border-right: 1px lightgrey solid;
+  border-right: 1px #cacaca solid;
 }
 
 .box-ask {
   padding-top: 8px;
   height: 52px;
   width: 65px;
-}
-
-.box-about {
-  border-right: 1px lightgrey solid;
+  border-right: 1px #cacaca solid;
 }
 
 .box:hover {
@@ -8115,7 +8116,7 @@ body .ui-tooltip {
 }
 
 .nav.pull-right {
-  margin-right: 10px !important;
+  margin-right: 0px !important;
 }
 
 .navbar {
@@ -8141,7 +8142,7 @@ body .ui-tooltip {
 
 .navbar-inner {
   height: 100%;
-  width: 960px;
+  width: 980px;
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0.065) !important;
@@ -8164,12 +8165,25 @@ body .ui-tooltip {
 .navbar .brand {
   position: absolute;
   padding: 0px;
-  margin: 0px 0px 7px 0px !important;
+  margin: 0px 0px 7px 5px !important;
 }
 
 .navbar-logo {
   height: 108px;
   width: 72px;
+}
+
+.navbar-logo-chevron-container {
+  width: 945px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar-logo-chevron {
+  position: absolute;
+  top: 66px;
+  height: 43px;
+  width: 73px;
 }
 
 .container {
@@ -8508,7 +8522,7 @@ body .ui-tooltip {
   height: 18px;
 }
 
-.homelinks > div:nth-child(2) {
+.block-body-right {
   margin-left: 40px;
 }
 
@@ -8582,8 +8596,8 @@ body .ui-tooltip {
 .lesson {
   background-color: #fff;
   padding: 20px 0px;
-  margin-bottom: 20px;
-  margin-left: 0px !important;
+  margin-bottom: 10px;
+  margin-left: 5px !important;
   padding-left: 20px;
 }
 .lesson hr {
@@ -9327,10 +9341,6 @@ btn-avatar {
   padding-right: 20px;
 }
 
-.user-photo {
-  margin-right: 20px;
-}
-
 .user-photo img {
   width: 100%;
 }
@@ -9393,13 +9403,60 @@ btn-avatar {
   padding-top: 0px;
 }
 
+/*Featured Chefs Profile*/
+.featured-chef-box {
+  margin: 0px 0px 17px 17px;
+  padding: 10px 0px;
+}
+
+.featured-chef-box:hover {
+  background-color: #c85838;
+  border-color: #c85838;
+  color: white;
+  cursor: pointer;
+}
+
+.featured-chef-box-active {
+  background-color: #c85838;
+  border-color: #c85838;
+  color: white;
+}
+
+.featured-profile-pic {
+  display: inline-block;
+}
+
+.featured-profile-pic img {
+  vertical-align: bottom;
+  padding-left: 10px;
+}
+
+.featured-chef-box-title {
+  display: inline-block;
+  max-width: 120px;
+  font-family: 'LubalinGraphDemi';
+  font-size: 22px;
+}
+
+.featured-chef-box-title div {
+  margin-top: 10px;
+}
+
+.chef-box-title {
+  display: inline-block;
+  font-family: 'LubalinGraphDemi';
+  font-size: 22px;
+  vertical-align: top;
+  padding-top: 5px;
+}
+
 .request-message {
   font-size: 18px;
   padding: 12px 0px;
 }
 
 #featuredrequest {
-  border-right: 1px solid lightgrey;
+  border-right: 1px solid #cacaca;
   margin-left: 19px !important;
   padding-left: 10px;
   min-height: 740px;
@@ -9435,7 +9492,7 @@ btn-avatar {
 }
 
 .lessonrequest-active div {
-  background-color: lightgrey;
+  background-color: #e4e4e4;
 }
 
 .request {
@@ -9445,6 +9502,10 @@ btn-avatar {
   padding: 5px 10px 10px 10px;
   /*border-top: 1px solid $border-color;
   border-bottom: 1px solid $border-color;*/
+}
+
+.request:hover {
+  cursor: pointer;
 }
 
 .request-first {
@@ -9464,7 +9525,7 @@ btn-avatar {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid lightgrey;
+  border-right: 10px solid #e4e4e4;
 }
 
 .request-progress-text {
@@ -9495,12 +9556,16 @@ btn-avatar {
   padding-left: 10px;
   height: 10px;
   width: 480px;
-  background-color: lightgrey;
+  background-color: #cacaca;
 }
 
 .ask-pot, .attatchedchef {
   text-align: right;
   padding-top: 32px;
+}
+
+.timetoraise {
+  max-height: 15px;
 }
 
 .timetoraise-today {
@@ -9563,12 +9628,12 @@ btn-avatar {
 }
 
 .request-bar {
-  background-color: #57264f !important;
-  background-image: -moz-linear-gradient(top, #57264f, #57264f) !important;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#57264f), to(#57264f)) !important;
-  background-image: -webkit-linear-gradient(top, #57264f, #57264f) !important;
-  background-image: -o-linear-gradient(top, #57264f, #57264f) !important;
-  background-image: linear-gradient(to bottom, #57264f, #57264f) !important;
+  background-color: #95cfad !important;
+  background-image: -moz-linear-gradient(top, #95cfad, #95cfad) !important;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#95cfad), to(#95cfad)) !important;
+  background-image: -webkit-linear-gradient(top, #95cfad, #95cfad) !important;
+  background-image: -o-linear-gradient(top, #95cfad, #95cfad) !important;
+  background-image: linear-gradient(to bottom, #95cfad, #95cfad) !important;
 }
 
 .request-form-field label {

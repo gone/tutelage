@@ -36,7 +36,6 @@ class ProfileForm(forms.Form):
         self.profile.save()
         return self.profile
 
-
 class LessonDetailsForm(forms.ModelForm):
     # video
 

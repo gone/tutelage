@@ -34,7 +34,7 @@
             <input type="submit" value="Choose new Default" />
         </form>
     {% endif %}
-    <form enctype="multipart/form-data" method="POST" action="">
+    <form enctype="multipart/form-data" method="POST" action="{% url avatar:avatar_add %}">
             {% csrf_token%}
         <input type="file" name="avatar" value="avatar-image" />
         <input type="submit" class="btn btn-secondary btn-avatar pull-right" value="upload new image">

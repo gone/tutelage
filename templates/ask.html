@@ -20,11 +20,11 @@
       
       {{# if chef }}
 	  <div class="span3 featured-request-span">	
-           <div class="pull-right"><h4>by <a href="{{chef_profile_url}}" class="miniprofile-btn tertiary">{{chef.full_name}}</a></h4></div>
+           <div class="pull-right"><h4>by <a class="featured-miniprofile-btn miniprofile-btn tertiary">{{chef.full_name}}</a></h4></div>
       {{ else }}
         {{# if userIsChef }}
       <div class="span3 featured-request-signup">
-        <div class="featured-request-signup-text">Become taste expert!</div>
+        <div class="featured-request-signup-text">Become taste expert</div>
         <div class="btn-featured-request-signup"><a href="#" class="btn btn-secondary btn-request-contribute pull-right">signup</a></div>
         {{ else }}
       <div class="span3 featured-request-span">
@@ -159,7 +159,6 @@ require(['./common',], function(){
             return is_chef
         });
 
-
         source = $("#featured-request-templ").html();
         template = Handlebars.compile(source);
         $(".btn-requestsignup").click(function(e){
@@ -175,7 +174,7 @@ require(['./common',], function(){
             data = lesson_data[slug]
             dest = $("#featuredrequest")
             dest.html(template(data))
-            url = "?slug=" + slug
+            url = "?request=" + slug
             window.history.replaceState({}, document.title, url)
             addthis.toolbox(".addthis_toolbox")
             $('.contribute-form').submit(function(e){
@@ -191,9 +190,13 @@ require(['./common',], function(){
             if (active_request.hasClass('timetoraise-today')) {
                 $('.featured-timetoraise').addClass('timetoraise-today');
             }
+            active_chef_link = $('.lessonrequest-active').find('.miniprofile-btn').attr('href');
+            if (active_chef_link) {
+                $('.featured-miniprofile-btn').attr('href', active_chef_link);
+            }
         }
 
-
+        
         $('.lessonrequest').click(function(){
             t = $(this)
             
@@ -245,7 +248,7 @@ $()
   </div>
   <div id="requests-list" class="span6">
    {% for req in lesson_requests %}
-   {% if forloop.first %}
+   {% if slug == req.slug %}
    <span class="lessonrequest lessonrequest-active" data-slug="{{req.slug}}">
    <div class="arrow-left"></div>
    <div class="row">	
@@ -288,7 +291,7 @@ $()
           <div class="attatchedchef pull-right">
             {% if req.chef_attatched %}
             <strong><small> 
-              by <a href="{% url miniprofile req.chef_attatched.id %}" class="miniprofile-btn tertiary">{{req.chef_attatched.full_name}}</a>
+              by <a href="{% url miniprofile req.chef_attatched.user.id %}" class="miniprofile-btn tertiary">{{req.chef_attatched.full_name}}</a>
             </small></strong>
             {% elif user.get_profile.professional_chef %}
             <div class="btn-requestsignup tertiary"><strong><small>Become Taste Expert!</small></strong></div>

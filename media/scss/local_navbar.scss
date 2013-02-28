@@ -26,6 +26,11 @@ $nav-padding: 5px;
 	a {color: $white !important;}
 }
 
+.box-experts, .box-about {
+    border-right: 1px $border-color solid;
+}
+
+
 .box-login {
 	padding-top: 12px;
 	height: 48px;
@@ -48,11 +53,9 @@ $nav-padding: 5px;
 	padding-top: 8px;
 	height: 52px;
 	width: 65px;
-}
-
-.box-about {
     border-right: 1px $border-color solid;
 }
+
 
 .box:hover {
     background-color: $tertiary;
@@ -104,7 +107,7 @@ $nav-padding: 5px;
 }
 
 .nav.pull-right {
-    margin-right: 10px !important;
+    margin-right: 0px !important;
 }
 
 .navbar {
@@ -130,7 +133,7 @@ $nav-padding: 5px;
 
 .navbar-inner {
     height: 100%;
-    width: 960px;
+    width: 980px;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.065) !important;
@@ -153,12 +156,25 @@ $nav-padding: 5px;
 .navbar .brand {
     position: absolute;
 	padding: 0px;
-	margin: 0px 0px 7px 0px !important;
+	margin: 0px 0px 7px 5px !important;
 }
 
 .navbar-logo {
 	height: 108px;
     width: 72px;
+}
+
+.navbar-logo-chevron-container {
+    width: 945px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar-logo-chevron {
+	position: absolute;
+    top: 66px;
+    height: 43px;
+    width: 73px;
 }
 
 .container {

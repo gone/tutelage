@@ -33,7 +33,12 @@
       {% with page.home.blocks.all as blocks %}
       {% for b in blocks %}
       {% editable b.header b.body b.link_copy b.link_target %}
+      
+      {% if forloop.counter = 2 %}
+      <div class="span6 block-body block-body-right">
+      {% else %}
       <div class="span6 block-body">
+      {% endif %}
         <a class="" href="{{b.link_target}}">
           <div class="block-link">
           {% if forloop.first %}

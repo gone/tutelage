@@ -40,7 +40,7 @@
 }
 
 .lessonrequest-active div {
-    background-color: $border-color;
+    background-color: $gray;
 }
     
 .request {
@@ -50,6 +50,10 @@
 	padding: 5px 10px 10px 10px;
 	/*border-top: 1px solid $border-color;
 	border-bottom: 1px solid $border-color;*/
+}
+
+.request:hover {
+    cursor: pointer;
 }
 
 .request-first {
@@ -69,7 +73,7 @@
 	height: 0; 
 	border-top: 10px solid transparent;
 	border-bottom: 10px solid transparent; 	
-	border-right:10px solid $border-color; 
+	border-right:10px solid $gray; 
 }
 
 .request-progress-text {
@@ -106,6 +110,10 @@
 .ask-pot, .attatchedchef {
 	text-align: right;
 	padding-top: 32px;
+}
+
+.timetoraise {
+    max-height: 15px;
 }
 
 .timetoraise-today {
@@ -168,12 +176,12 @@
 }
 
 .request-bar {
-    background-color: $primary !important;
-    background-image: -moz-linear-gradient(top, $primary, $primary) !important;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($primary), to($primary)) !important;
-    background-image: -webkit-linear-gradient(top, $primary, $primary) !important;
-    background-image: -o-linear-gradient(top, $primary, $primary) !important;
-    background-image: linear-gradient(to bottom, $primary, $primary) !important;
+    background-color: $request !important;
+    background-image: -moz-linear-gradient(top, $request, $request) !important;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($request), to($request)) !important;
+    background-image: -webkit-linear-gradient(top, $request, $request) !important;
+    background-image: -o-linear-gradient(top, $request, $request) !important;
+    background-image: linear-gradient(to bottom, $request, $request) !important;
 }
 
 .request-form-field label {
