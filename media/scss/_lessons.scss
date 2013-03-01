@@ -82,9 +82,20 @@
 	overflow: hidden;
 }
 
-#lesson-photo img {
-	max-width: 360px;
+.lesson-photo {
+    position: relative;
+    width: 460px;
 }
+
+.lesson-photo img {
+	width: 100%;
+}
+
+.lesson-photo span {
+    padding: 5px 20px 5px 12px;
+    text-align: right;
+}
+
 
 .lesson-list {
 	margin: 0px !important;
@@ -122,7 +133,7 @@
 }
 
 .lesson-wrapper-overlay {
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(50, 50, 50, 0.6);
     padding-left: 2px;
     padding-bottom: 5px;
 }
@@ -136,11 +147,12 @@
 	position: absolute;
 	bottom: 0;
 	display: inline-block;
-	width: 952px;
+	width: 842px;
+    height: 46px;
 	max-height: 110px;
 	font-size: 1.0em !important;
-	color: $black !important;
-	padding: 5px !important;
+	color: $white !important;
+	padding: 10px 60px !important;
 }
 
 .step-title {
@@ -201,8 +213,8 @@
 	display: inline-block;
 	height: 22px;
 	max-width: 75%;
-	color: black !important;
-	background-color: rgba(255, 255, 255, 0.7);
+	color: white !important;
+	background-color: $primary-active;
 	white-space: nowrap;
 	overflow: hidden;
 }
@@ -336,31 +348,22 @@
 
 #lesson-timeline {
 	height: 84px;
-	width: 962px;
-    overflow: hidden
+	width: 882px;
+    overflow: hidden;
 }
 
 .lesson-nav-btn {
-	@extend .btn-gray;
-	display: inline-block;
-	margin: 10px 0px 0px -2px;
-	padding: 28px 5px !important;
-}
-
-.lesson-nav-btn-top-left {
-	position: absolute;
+    position: absolute;
 	bottom: 0;
-    left: 0;
-	margin: 0px 0px -2px -6px;
-	padding: 28px 10px !important;
+    padding: 12px 22px !important;
+    
+}
+.lesson-nav-btn-top-left {	
+    left: 0;	
 }
 
 .lesson-nav-btn-top-right {
-	position: absolute;
-	bottom: 0;
 	right: 0;
-	margin: 0px 0px -2px -6px;
-	padding: 28px 5px !important;
 }
 
 .technique-play-icon {

@@ -2,16 +2,19 @@
 
 {% block content %}
 <div class="bordered-row main bordered">
-    <div class="span7">
+    <div class="span6">
  	  <div class="row">
 		  <div class="span5 lesson-title">
 			<a class="primary" href="{% url lesson lesson.id %}"><h3>{{lesson.title}}</h3></a>
 		  </div>
-		  <div class="span1">
-			<h3 class="pull-right">${{lesson.price|default:"0"}}</h3>
-		  </div>
       </div>
 
+      <div class="row">
+	  <div class="span3">
+        {% include "rating.html" with lesson=lesson%}
+	  </div>
+	  </div>
+      
       <div class="row">
         <br />
       </div>
@@ -44,12 +47,6 @@
       </div>
 
 	  <div class="row">
-	  <div class="span3">
-        {% include "rating.html" with lesson=lesson%}
-	  </div>
-	  </div>
-
-	  <div class="row">
         <br />
       </div>
 
@@ -64,43 +61,26 @@
 
     </div>
 
-    <div class="span5">
+    <div class="span6">
 	  <div class="row">
-		<h3 class="right-padding pull-right">by Chef&#160;<a class="primary miniprofile-btn" href="{% url miniprofile lesson.teacher.id %}">{{lesson.teacher.get_full_name|title}}</a></h3>
-
-		<div id="lesson-photo" class="span5">
+		<h3 class="right-padding pull-right">by&#160;<a class="primary miniprofile-btn" href="{% url miniprofile lesson.teacher.id %}">{{lesson.teacher.get_full_name|title}}</a></h3>
+        
+        <a href="{% url purchase lesson.id %}">
+		<div class="lesson-photo" class="span5">
 		  <img src={{MEDIA_URL}}{{lesson.image}} />
+          <span class="block-image-text">View Lesson</span>
 		</div>
+        </a>
 	  </div>
-
-	  <div class="row">
-        <br />
-      </div>
-
-      <div class="row">
-        <div class="span2">
-   	      <a class="btn btn-white pull-left" href="{% url lessons %}"><small>back to lessons</small></a>
-		</div>
-
-		<div class="span2 right-padding pull-right">
-		  <a class="btn btn-primary pull-right" href="{% url purchase lesson.id %}">View Lesson</a>
-	    </div>
-	  </div>
-      <br>
+  
+  <!-- commenting out social media functionality for first phase
   {% url lesson_detail lesson.id as url %}
   {% include "share.html" with url=url %}
 
-<br>
-<br>
-<br>
-
   {% url account:register as url %}
   {% include "share.html" with url=url %}
-
-
-
-
-
+  -->
+  
     </div>
 
 
@@ -132,7 +112,10 @@
 	  <h5>Tools</h5>
  	  <ul class="lesson-list">
         {% for l in lesson.tools.all %}
- 	    <li><img src="../../static/img/lesson-details-icon.png" /><em>{{l.size}} </em>{{l.name}}<em> {{l.type}}</em></li>
+ 	    <li>
+          <div class="lesson-icon-circle"></div>
+          <p><em>{{l.size}} </em>{{l.name}}<em> {{l.type}}</em></p>
+        </li>
         {% endfor %}
  	  </ul>
     </div>
@@ -142,7 +125,10 @@
  	  <ul class="lesson-list">
         {% for step in lesson.steps.all %}
         {% for tech in step.technique.all %}
- 	    <li><img src="../../static/img/lesson-details-icon.png" />{{tech}}</li>
+        <li>
+          <div class="lesson-icon-circle"></div>
+          <p>{{tech}}</p>
+        </li>
         {% endfor %}
         {% endfor %}
  	  </ul>

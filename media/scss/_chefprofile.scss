@@ -72,19 +72,19 @@
 
 /*Featured Chefs Profile*/
 
-.featured-chef-box {
+.featured-chef-box, .chef-box {
     margin: 0px 0px 17px 17px;
     padding: 10px 0px;
 }
 
-.featured-chef-box:hover {
+.featured-chef-box:hover, .chef-box:hover {
     background-color: $tertiary;
     border-color: $tertiary;
     color: $white;
     cursor: pointer;
 }
 
-.featured-chef-box-active {
+.featured-chef-box-active, .chef-box:active {
     background-color: $tertiary;
     border-color: $tertiary;
     color: $white;
@@ -110,10 +110,54 @@
     margin-top: 10px;
 } 
 
+.featured-chef-lessons-title * {
+    margin: 0px 0px 10px 0px;
+}
+
+.featured-chef-lessons-list {
+    height: 150px;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+.btn-featured-chef-lesson-link {
+    width: 185px;
+    margin-bottom: 10px;
+}
+
+.chef-box a {
+    color: $black !important;
+}
+
+.chef-box a:hover {
+    color: $white !important;
+}
+
+.chef-box a span {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* background-image: url('empty.gif'); *** need empty gif to implement this IE7/8 fix */
+}
+
 .chef-box-title {
     display: inline-block;
     font-family: 'LubalinGraphDemi';
     font-size: 22px;
     vertical-align: top;
     padding-top: 5px;
+}
+
+.chef-box-location, .chef-box-specialties {
+    padding-right: 10px;
+}
+
+.chef-box-location * {
+    margin: 5px 0px;
+}
+
+.chef-box-specialties {
+    display: inline-block;
+    max-height: 30px;
+    overflow: hidden;
 }

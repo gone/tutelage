@@ -109,8 +109,8 @@ require(['./common',], function(){
       <div class="{% if forloop.first %}active{% endif %} item">
 		<img class="lesson-picture" src="{{MEDIA_URL}}{{step.picture}}" />
         <div class="step-text no-margin lesson-wrapper-overlay">
-		  <a class="lesson-nav-btn-top-left" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
-		  <a class="lesson-nav-btn-top-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>
+		  <a class="btn btn-primary lesson-nav-btn lesson-nav-btn-top-left" href="#lessons" data-slide="prev"><h1 class="no-margin">&lt;</h1></a>
+		  <a class="btn btn-primary lesson-nav-btn lesson-nav-btn-top-right" href="#lessons" data-slide="next"><h1 class="no-margin">&gt;</h1></a>
 
 		  {% if forloop.first %}
 		  <div class="step-title span6">{{step.title}}</div>
@@ -118,25 +118,27 @@ require(['./common',], function(){
 		  <div class="step-title span6">Step {{step.order}}: {{step.title}}</div>
 		  {% endif %}
 
-		  <div class="step-technique span5">
+		  <!-- commenting out until video implementation complete
+          <div class="step-technique span5">
 			{% for tech in step.technique.all %}
 			<a class="technique-{{forloop.parentloop.counter0}} step-technique-text step-title secondary pull-right">Watch
 			  <img class="technique-play-icon" src="{{STATIC_URL}}img/play-button-blue.png" />
 			  {{tech.title}}</a>
-			<!-- this should likely be moved somewhere else -->
+			<!-- this should likely be moved somewhere else 
 			<div class="row no-display video-row">
 			  <video class="chef-movie-video span6" controls="controls">
-				<!-- Sample videos until we have our actual intro video -->
+				<!-- Sample videos until we have our actual intro video 
 				<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" />
 				<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" />
 				<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" />
-				<!-- fallback  -->
+				<!-- fallback  
 
                 <p>Your browser does not support HTML5 video.</p>
 			  </video>
 			</div>
 			{% endfor %}
 		  </div>
+          -->
 
 		  <div class="step-description span12">{{step.text}}</div>
 		</div>
@@ -183,8 +185,6 @@ require(['./common',], function(){
 </div>
 
 <div id="lesson-timeline" class="row">
-  <a class="lesson-nav-btn lesson-nav-btn-next pull-right" href="#lessons" data-slide="next"><i class="icon-chevron-right"></i></a>
-  <a class="lesson-nav-btn lesson-nav-btn-prev pull-left" href="#lessons" data-slide="prev"><i class="icon-chevron-left"></i></a>
   <div id="lesson-timeline-images">
 	  {% for step in lesson.steps.all %}
 	  <img class="lesson-timeline-picture{% if forloop.first %} lesson-timeline-picture-active {% endif %} no-display" src="{{MEDIA_URL}}{{step.picture}}"/>

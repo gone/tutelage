@@ -5,21 +5,21 @@
 <div class="row main">
   <div class="span12">
     <div class="row">
-      <div class="featured-chefs-title span6"><h3>Meet Our Featured Chefs</h3></div>
+      <div class="featured-chefs-title span6"><h3>Meet Our Featured Taste Experts</h3></div>
     </div>
     
     <div class="row">
       {% for fchef in chefs_featured %}
       {% if forloop.first %}
-      <div class="span3 bordered featured-chef-box featured-chef-box-active">
+      <div id="featured-chef-box_{{forloop.counter}}" class="span3 bordered featured-chef-box featured-chef-box-active">
       {% else %}
-      <div class="span3 bordered featured-chef-box">
+      <div id="featured-chef-box_{{forloop.counter}}" class="span3 bordered featured-chef-box">
       {% endif %}
         <div class="featured-profile-pic">
           <img class="loadedavatar" height="80" width="80" src="{% avatar_url fchef.chef %}">
         </div>    
         <div class="featured-chef-box-title">
-          <div class="row span2">Chef</div>
+          <div class="row span2">Expert</div>
           <div class="row span2">{{fchef.chef.first_name|title}}</div>
           <div class="row span2">{{fchef.chef.last_name|title}}</div>
         </div>
@@ -28,42 +28,134 @@
     </div>
     
     <div class="row">
-      <div class="featured-chefs-title span2"><h3>Our Chefs</h3></div>
+    {% for fchef in chefs_featured %}
+    {% if forloop.first %}
+    <div id="featured-chef-content_{{forloop.counter}}" class="">
+    {% else %}
+    <div id="featured-chef-content_{{forloop.counter}}" class="no-display">
+    {% endif %}
+      <div class="span6">
+      <img src="{{MEDIA_URL}}{{fchef.chef.profile.personal_video_image}}" />
+      </div>
+      <div class="span3">
+        <div class="row">
+          <div class="span3">{{fchef.chef.profile.about}}</div>
+        </div>
+        <div class="row">
+          <div class="span3"><h5>Specialties</h5></div>
+        </div>
+        <div class="row">
+          <div class="span3">
+            {% for tag in fchef.chef.profile.tags %}
+            <div class="btn btn-clearsecondary btn-tags">{{tag}}</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="span3">
+        <div class="row">
+          <div class="span3 featured-chef-lessons-title"><h5>Lessons I'm Teaching</h5></div>
+        </div>
+        
+        <div class="featured-chef-lessons-list">
+        {% for lesson in fchef.chef.teaching.all %}
+        <div class="row">
+          <div class="span3">
+            <a href="{% url lesson_detail lesson.id %}" class="btn btn-secondary btn-featured-chef-lesson-link">
+            {{lesson.title}}
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+        
+        <div class="row">
+          <div class="span3">
+            <a href="{% url profile fchef.chef.id %}" class="btn btn-primary btn-featured-chef-lesson-link">
+            view my full profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+    
+    <div class="row">
+      <div class="featured-chefs-title span6"><h3>Our Taste Experts</h3></div>
     </div>
     
     <div class="row">
       {% for chef in chefs %}
-      <div class="span6 bordered featured-chef-box">
-        <div class="featured-profile-pic">
-          <img class="loadedavatar" height="80" width="80" src="{% avatar_url chef.user %}">
-        </div>  
-        <div class="chef-box-title">  
-          <div>Chef {{chef.user.get_full_name|title}}</div>
-        </div>
-        <div class="chef-box-location pull-right">  
-          <div>{{chef.location}}</div>
-        </div>
-        <div class="chef-box-location pull-right">  
-          <div>
-            {% for tag in chef.tags %}
-            <a class="btn btn-clearsecondary btn-tags">{{tag}}</a>
-            {% endfor %}
+      <div class="span6 bordered chef-box">
+      <a href="{% url miniprofile chef.user.id %}" class="miniprofile-btn">
+      <span>
+          
+        <div class="row">
+            
+          <div class="span1">
+            <div class="featured-profile-pic">
+              <img height="70" width="70" src="{% avatar_url chef.user %}" />
+            </div>
           </div>
+          
+          <div class="span5">  
+          
+            <div class="chef-box-title">  
+              <div>Expert {{chef.user.get_full_name|title}}</div>
+            </div>
+            
+            <div class="chef-box-location pull-right">  
+              <h5>{{chef.location}}<h5>
+            </div>
+            
+            <div class="chef-box-specialties pull-right">  
+                {% for tag in chef.tags %}
+                <div class="btn btn-clearsecondary btn-tags">{{tag}}</div>
+                {% endfor %}
+            </div>
+            
+          </div>
+          
         </div>
+        
+      </span>
+      </a>
       </div> 
       {% endfor %}
+      
     </div>
+    
   </div>
 </div>
 {% endautoescape %}
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.featured-chef-box').hover(
+        $('.featured-chef-box').click(
           function() {
-            $(this).find('a').removeClass('btn-clearsecondary').addClass('btn-tertiary');
+            switchFeaturedExpert($(this));
+            featuredExpertId = $(this).attr('id').match(/\d/g);
+            switchFeaturedContent(featuredExpertId);
+          }
+        );
+        
+        function switchFeaturedExpert(activeExpert) {
+          $(activeExpert).siblings().removeClass('featured-chef-box-active');
+          $(activeExpert).addClass('featured-chef-box-active');
+        }
+        
+        function switchFeaturedContent(featuredExpertId) {
+          featuredExpertContentId = "#featured-chef-content_" + featuredExpertId;
+          $(featuredExpertContentId).siblings().addClass('no-display');
+          $(featuredExpertContentId).removeClass('no-display');
+        }
+        
+        $('.chef-box').hover(
+          function() {
+            $(this).find('.btn-tags').removeClass('btn-clearsecondary').addClass('btn-tertiary');
           },
           function() {
-            $(this).find('a').removeClass('btn-tertiary').addClass('btn-clearsecondary');
+            $(this).find('.btn-tags').removeClass('btn-tertiary').addClass('btn-clearsecondary');
           }
         );
     });
