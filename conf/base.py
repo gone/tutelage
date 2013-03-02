@@ -511,6 +511,11 @@ LOGIN_URL = "/"
 # except:
 #     pass
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'team@tutelageinc.com'
+EMAIL_HOST_PASSWORD = 'turtles101'
+EMAIL_PORT = 587
 
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH =  os.path.join(PROJECT_ROOT, 'whoosh_index')
@@ -518,3 +523,5 @@ HAYSTACK_SITECONF = 'app.search_sites'
 
 
 STRIPE_API = "fYNnSezc4SWDZce9XexC6iP2bLhS6Lan"
+
+

@@ -15,6 +15,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext
 from django.core import serializers
 from django.db import transaction
+from django.core.mail import EmailMessage
 
 
 from django.forms.models import inlineformset_factory, modelformset_factory
@@ -104,6 +105,16 @@ def lesson_detail(request, lesson_id):
     return direct_to_template(request, "lesson_details.html", {"lesson": lesson})
 
 def welcome(request):
+    if request.method == 'POST':
+            signup_email = request.POST.get('splash-signup-email')
+            email_subject = "New Signup Request - " + signup_email + " wants to join Culination"
+            email_body = "Another Culinator would like to join the potluck! Let " + signup_email + " know when they can sign up on Culination."
+            email_message = EmailMessage(email_subject, email_body, to=['geoffrey@tutelageinc.com'])
+            email_message.send(fail_silently = False)
+            #request.user.message_set.create(message = "Email confirmation sent!")
+            #return HttpResponseRedirect(reverse("welcome",  kwargs={'signup_email':signup_email}))
+            return direct_to_template(request, "welcome.html", {'signup_email':signup_email})
+    
     if request.user.is_authenticated():
         return redirect('/home/')
     else:

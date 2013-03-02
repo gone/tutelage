@@ -5,7 +5,7 @@
     <title>Culination - Taste Your Potential</title>
     <link rel='stylesheet' href='{{ STATIC_URL }}css/main.css' />
     <link rel='stylesheet' href='{{ STATIC_URL }}css/splash.css' />
-    <link rel='shortcut icon' href='/favicon.ico' />
+    <link rel='shortcut icon' href='{{ STATIC_URL }}img/favicon.ico' />
     <link rel='apple-touch-icon' href="">
 
     <meta name='title' content='' />
@@ -62,9 +62,9 @@
     <div class="container">
       <div class="row">
         <div class="span6 logo-slogan">
-          <img class="logo" src="{{ STATIC_URL }}img/culination-logo.png" />
+          <img class="logo" src="{{ STATIC_URL }}img/culination-logo-full.png" />
           <div class="tagline">TASTE YOUR POTENTIAL</div>
-          <h1 class="slogan">Learn everything you need to know about cooking, while you cook.</h1>
+          <h2 class="slogan">Learn everything you need to know about cooking, while you cook.</h2>
         </div>
         <div class="span6 splash-image">
           <img src="{{ STATIC_URL }}img/hero-lessons.png" />
@@ -75,13 +75,49 @@
       
       <div class="row">
         <div class="span6 splash-signup">
+        {% if signup_email %}
+          <h3>We'll let you know when a table is ready for {{signup_email}}.</h3>
+        {% else %}
           <h3 class="span6">Learn more about Culination.</h3>
-          <input class="span4 splash-signup-email" name="splash-signup" type="email" placeholder="email">
-          <input class="btn splash-btn" type="submit" value="sign up">
+          <form id="splash-signup-form" class="splash-signup-form" action="" method="post">
+          {% csrf_token %}
+            <input class="span4 splash-signup-email" name="splash-signup-email" type="email" placeholder="email">
+            <input class="btn splash-btn" type="submit" value="sign up">
+          </form>
+        {% endif %}
         </div>
         <div class="span6 splash-login">
           <h3 class="span6">Already have an invitation?</h3>
-          <a class="btn splash-btn" href="./private-login">login</a>
+          
+          <form id="login-form" class="login-form" action="{% url account:auth_login %}" method="post">
+		  {% csrf_token %}
+		  <div class="private-login-input">
+			<input name="username"
+                   type="email"
+                   class="login-input email-input"
+                   placeholder="email"
+                   value="{{login_form.username.value|default:""}}"
+                   />
+                   <!--data-validation-engine="validate[required,custom[email]]"
+                   data-errormessage-value-missing="Email is required!"
+                   data-errormessage-custom-error="Email must be in the format 'user@domain.com'" commenting out error messages for private launch -->
+                   
+            {{login_form.username.errors}} 
+			<input name="password"
+                   class="login-input password-input"
+                   type="password"
+                   placeholder="password"
+                   />
+                   <!-- data-validation-engine="validate[required]"
+                   data-errormessage-value-missing="Password is required!" commenting out error messages for private launch -->
+                   
+            {{login_form.non_field_errors }} 
+            <input type="submit" class="btn splash-btn pull-right" value="login">
+            {{login_form.password.errors}}
+		  </div>
+          <input type="hidden" name="next" value="{{login_form.next.value|default:request.get_full_path}}" >
+        </form>
+          <!--<a class="btn splash-btn" href="./private-login">login</a>-->
         </div>
       </div>
     
