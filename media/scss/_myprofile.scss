@@ -32,6 +32,11 @@ btn-avatar {
 	margin-right: 20px;
 }
 
+.profile-lessons-title {
+    width: 970px;
+    margin-left: 5px;
+}
+
 .profile-lessons-title > div {
 	background-color: $white;
     padding: 10px 0px 10px 20px;
@@ -39,6 +44,10 @@ btn-avatar {
 
 .profile-lessons-title div:nth-child(1) {
     margin-left: 0px;
+}
+
+.profile-lessons-title div:nth-child(2), .profile-lessons div:nth-child(2) {
+    margin-left: 10px;
 }
 
 .mylessons-title h4 {

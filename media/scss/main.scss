@@ -40,9 +40,9 @@ $white                  :                 #fff;
 $primary                :                 #57264f;
 $primary-active         :                 rgba(87,38,79,0.6);
 $secondary				:				  #60C4AF;
-$secondary-active		:				  #C4C8EB;
+$secondary-active		:				  rgba(96,196,175,0.6);
 $tertiary               :                 #C85838;
-$tertiary-active        :                 #FF9D40;
+$tertiary-active        :                 rgba(200,88,56,0.6);
 $request                :                 #95CFAD;
 
 $green                  :                 #01a64f;
@@ -85,6 +85,15 @@ body {
     border: 1px solid $border-color;
 }
 
+.bordered-main {
+    background-color: $white;
+    border: 1px solid $border-color;
+    width: 968px;
+    margin-left: 5px;
+    h3 {
+        line-height: 25px;
+    }
+}
 .bordered-row {
     @extend .row;
     margin-left: -22px;
@@ -152,7 +161,7 @@ body {
 	@include colored-button($primary-active,$primary-active,$white)
 }
 
-.btn-primary.pull-right {
+.btn-primary.pull-right, .btn-tertiary.pull-right {
     margin-right: 20px;
 }
 

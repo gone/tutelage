@@ -36,6 +36,11 @@ hr {
     margin-left: 20px !important;
 }
 
+.signup-thanks {
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
 .slogan {
     margin-top: 20px;
 }
@@ -59,12 +64,24 @@ hr {
     width: 100%;
 }
 
+.splash-signup-text {
+    margin-top: 40px;
+}
+
 .splash-login {
     margin-left: 40px;
 }
 
 .splash-login h3, .splash-login a {
     margin-left: 0px !important;
+}
+
+.social-media-sharing div:first-child {
+    margin-right: 30px;
+}
+
+.addthis_button_pinterest_pinit {
+    width: 94px;
 }
 
 .splash-btn {

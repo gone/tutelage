@@ -78,15 +78,15 @@
 }
 
 .featured-chef-box:hover, .chef-box:hover {
-    background-color: $tertiary;
-    border-color: $tertiary;
+    background-color: $secondary;
+    border-color: $secondary;
     color: $white;
     cursor: pointer;
 }
 
 .featured-chef-box-active, .chef-box:active {
-    background-color: $tertiary;
-    border-color: $tertiary;
+    background-color: $request;
+    border-color: $request;
     color: $white;
 }
 

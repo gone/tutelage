@@ -172,35 +172,35 @@
 </div>
 
 
-	  <div class="row profile-lessons-title">
-		<div class="span6">
-		  <div>
-            {% if u == user %}
-            <h4>Lessons I'm Learning</h4>
-            {% else %}
-			<h4>Lessons {{u.get_full_name}} is Learning</h4>
-            {% endif %}
-		  </div>
-	    </div>
-
-		{% if u.get_profile.professional_chef %}
-	    <div class="span6">
-		  <div class="mylessons-title">
-            {% if u == user %}
-            <h4>Lessons I'm Teaching</h4>
-            {% else %}
-			<h4>Lessons {{u.get_full_name}} is Teaching</h4>
-            {% endif %}
-            <a class="btn btn-primary btn-save pull-right" href="{% url add-lesson %}">
-		    create new lesson
-		    </a>
-		  </div>
-	    </div>
+<div class="row profile-lessons-title">
+    <div class="span6">
+      <div>
+        {% if u == user %}
+        <h4>Lessons I'm Learning</h4>
+        {% else %}
+        <h4>Lessons {{u.get_full_name}} is Learning</h4>
         {% endif %}
+      </div>
+    </div>
 
-	  </div>
+    {% if u.get_profile.professional_chef %}
+    <div class="span6">
+      <div class="mylessons-title">
+        {% if u == user %}
+        <h4>Lessons I'm Teaching</h4>
+        {% else %}
+        <h4>Lessons {{u.get_full_name}} is Teaching</h4>
+        {% endif %}
+        <a class="btn btn-primary btn-save pull-right" href="{% url add-lesson %}">
+        create new lesson
+        </a>
+      </div>
+    </div>
+    {% endif %}
 
-<div class="row profile-lessons">
+</div>
+
+<div class="content profile-lessons">
   <div class="span6">
     <div class="row">
   {% for lesson in lessons %}

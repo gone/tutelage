@@ -1,5 +1,5 @@
 .lesson {
-    background-color: #fff;
+    background-color: $white;
     padding: 20px 0px;
     hr {
         margin: 10px 20px 10px 0px;
@@ -10,7 +10,7 @@
 }
 
 .lesson-title * {
-    font-family: 'LubalinGraphDemi';
+    font-family: 'Noticia Text', serif;
     font-weight: normal;
     white-space: nowrap;
 }

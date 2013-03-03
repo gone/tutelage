@@ -8,7 +8,7 @@
 
 	<div class="row">
 	  <div class="span6 lesson-title featured-request-span">
-		<a class="primary reqtitle"><h3 class="no-margin">{{title}}</h3></a>
+		<h3 class="no-margin">{{title}}</h3>
 	  </div>
     </div>
 
@@ -104,7 +104,9 @@
         {{/each}}
 	  </div>
     </div>
-    
+
+{% endverbatim %}    
+    <!-- removing social media for private alpha
     <hr class="request-hr" />
     
     <div class="row">
@@ -116,6 +118,8 @@
         </div>
       </div>
     </div>
+    -->
+{% verbatim %}
     
     <hr class="request-hr" />
     
@@ -226,7 +230,7 @@ $()
 
 {% block content %}
 
-<div class="bordered-row bordered">
+<div class="row bordered-main">
   <div class="span12">
 	<div class="row">
       <div class="span6 request-message">
@@ -237,15 +241,8 @@ $()
 </div>
 
 
-<div class="bordered-row bordered">
+<div class="row bordered-main">
 
-  <div id="featuredrequest" class="span6">
-    <div class="row">
-	  <div class="span6">
-        <img src="{{STATIC_URL}}img/loading.gif"/>
-      </div>
-    </div>
-  </div>
   <div id="requests-list" class="span6">
    {% for req in lesson_requests %}
    {% if slug == req.slug %}
@@ -264,7 +261,7 @@ $()
    {% endif %}
  	  <div class="row">
 		  <div class="span4 lesson-title request-title">
-			<a class="primary reqtitle"><h4>{{req.title}}</h4></a>
+			<h4>{{req.title}}</h4>
 		  </div>
 
 		  <div class="span2">
@@ -313,6 +310,14 @@ $()
 	<div class="span6 request-margin"></div>
    {% endif %}
    {% endfor %}
+  </div>
+  
+  <div id="featuredrequest" class="span6">
+    <div class="row">
+	  <div class="span6">
+        <img src="{{STATIC_URL}}img/loading.gif"/>
+      </div>
+    </div>
   </div>
 </div>
 

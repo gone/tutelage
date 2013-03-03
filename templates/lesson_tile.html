@@ -1,10 +1,10 @@
 <div class="span6 lesson">
  	  <div class="row">
 		  <div class="span4 lesson-title">
-			<a class="primary" href="{%url lesson_detail lesson.id %}"><h3 class="no-margin">{{lesson.title|title}}</h3></a>
+			<h3 class="no-margin">{{lesson.title|title}}</h3>
 		  </div>
 		  <div class="span2 lesson-author">
-			by <a class="miniprofile-btn tertiary" href="{% url miniprofile lesson.teacher.id %}"><strong>{{lesson.teacher.get_full_name|title}}</strong></a>
+			by <a class="miniprofile-btn primary" href="{% url miniprofile lesson.teacher.id %}"><strong>{{lesson.teacher.get_full_name|title}}</strong></a>
 		  </div>
       </div>
 
@@ -20,7 +20,7 @@
             {% else %}
 		    <a class="btn btn-secondary" href="{%url lesson_detail lesson.id %}">more details</a>
             {% endif %}
-		  <a class="btn btn-primary pull-right" href="{% url purchase lesson.id %}">view</a>
+		  <a class="btn btn-tertiary pull-right" href="{% url purchase lesson.id %}">view</a>
 		</div>
       </div>
 

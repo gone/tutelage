@@ -23,6 +23,7 @@
     <meta property="og:description" content="" />
     <meta property="og:image" content="" />
     <meta property="fb:page_id" content="" />
+    <meta property="og:image" content="{{ STATIC_URL }}img/culination-logo-full.png" />
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -62,12 +63,12 @@
     <div class="container">
       <div class="row">
         <div class="span6 logo-slogan">
-          <img class="logo" src="{{ STATIC_URL }}img/culination-logo-full.png" />
+          <img class="logo pinit" src="{{ STATIC_URL }}img/culination-logo-full.png" />
           <div class="tagline">TASTE YOUR POTENTIAL</div>
           <h2 class="slogan">Learn everything you need to know about cooking, while you cook.</h2>
         </div>
         <div class="span6 splash-image">
-          <img src="{{ STATIC_URL }}img/hero-lessons.png" />
+          <img class="pinit" src="{{ STATIC_URL }}img/hero-lessons.png" />
         </div>
       </div>
       
@@ -76,9 +77,9 @@
       <div class="row">
         <div class="span6 splash-signup">
         {% if signup_email %}
-          <h3>We'll let you know when a table is ready for {{signup_email}}.</h3>
+          <h3 class="signup-thanks">Thank you. We'll let you know when your table is ready :)</h3><h3>{{signup_email}}</h3>
         {% else %}
-          <h3 class="span6">Learn more about Culination.</h3>
+          <h3 class="span6 splash-signup-text">Learn more about Culination.</h3>
           <form id="splash-signup-form" class="splash-signup-form" action="" method="post">
           {% csrf_token %}
             <input class="span4 splash-signup-email" name="splash-signup-email" type="email" placeholder="email">
@@ -87,6 +88,9 @@
         {% endif %}
         </div>
         <div class="span6 splash-login">
+          <div class="row">
+            {% include "share.html" %}
+          </div>
           <h3 class="span6">Already have an invitation?</h3>
           
           <form id="login-form" class="login-form" action="{% url account:auth_login %}" method="post">
