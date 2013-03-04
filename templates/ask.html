@@ -159,6 +159,7 @@ function stripeResponseHandler(status, response){
     }
 
 }
+
 require(['./common',], function(){
     require(['cs!main', 'cs!colorboxcommon', 'liveValidation', 'handlebars'], function(main, cc){
         {% if request.user.get_profile.professional_chef %}
@@ -232,10 +233,13 @@ require(['./common',], function(){
         $("#requestform-btn").click(function(){
            cc.setupColorbox("#requestform")
         })
+        
+        $('.box-ask').addClass('box-active');
     })
 })
 lesson_data = {{lesson_json|safe}}
 $()
+
 </script>
 {% endblock %}
 

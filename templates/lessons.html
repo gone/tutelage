@@ -5,6 +5,7 @@
 {% endfor %}
 <script type="text/javascript" src="http://masonry.desandro.com/jquery.masonry.min.js"></script>
 <script type="text/javascript">
+pagelogic = function(){
     var $content = $('.content');
     $content.imagesLoaded(function(){
       $content.masonry({
@@ -12,5 +13,8 @@
         columnWidth : 490
       });
     });
+    
+    $('.box-lessons').addClass('box-active');
+};
 </script>
 {% endblock %}

@@ -93,13 +93,13 @@
           
         <div class="row">
             
-          <div class="span1">
+          <div class="span1 chef-box-span">
             <div class="featured-profile-pic">
               <img height="70" width="70" src="{% avatar_url chef.user %}" />
             </div>
           </div>
           
-          <div class="span5">  
+          <div class="span5 chef-box-span">  
           
             <div class="chef-box-title">  
               <div>Expert {{chef.user.get_full_name|title}}</div>
@@ -130,7 +130,7 @@
 </div>
 {% endautoescape %}
 <script type="text/javascript">
-    $(document).ready(function() {
+pagelogic = function(){
         $('.featured-chef-box').click(
           function() {
             switchFeaturedExpert($(this));
@@ -152,12 +152,14 @@
         
         $('.chef-box').hover(
           function() {
-            $(this).find('.btn-tags').removeClass('btn-clearsecondary').addClass('btn-tertiary');
+            $(this).find('.btn-tags').removeClass('btn-clearsecondary').addClass('btn-secondary');
           },
           function() {
-            $(this).find('.btn-tags').removeClass('btn-tertiary').addClass('btn-clearsecondary');
+            $(this).find('.btn-tags').removeClass('btn-secondary').addClass('btn-clearsecondary');
           }
         );
-    });
+        
+        $('.box-experts').addClass('box-active');
+    };
 </script>
   {% endblock %}

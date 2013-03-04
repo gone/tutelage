@@ -74,8 +74,12 @@
 
 .featured-chef-box, .chef-box {
     margin: 0px 0px 17px 17px;
+}
+
+.featured-chef-box {
     padding: 10px 0px;
 }
+
 
 .featured-chef-box:hover, .chef-box:hover {
     background-color: $secondary;
@@ -138,6 +142,11 @@
     height: 100%;
     z-index: 1;
     /* background-image: url('empty.gif'); *** need empty gif to implement this IE7/8 fix */
+}
+
+.chef-box-span {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .chef-box-title {

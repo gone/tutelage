@@ -3,10 +3,13 @@
 .sprite-icons-youtube,
 .sprite-icons-twitter,
 .sprite-icons-tumblr,
+.sprite-icons-request,
 .sprite-icons-pinterest,
 .sprite-icons-linkedin,
+.sprite-icons-lessons,
 .sprite-icons-google-plus,
 .sprite-icons-facebook,
+.sprite-icons-experts,
 .sprite-icons-tutor,
 .sprite-icons-learn,
 .sprite-icons-signup,
@@ -14,54 +17,63 @@
 .sprite-icons-about,
 .sprite-icons-logout{background-image:url('../img/icons.png');background-repeat:no-repeat}
 
-.sprite-icons-login:hover{background-position:0px 0px;width:38px;height:19px;}
-.sprite-icons-login:active{background-position:0px -19px;width:38px;height:19px;}
-.sprite-icons-login{background-position:-38px 0px;width:38px;height:19px;}
-.sprite-icons-my:hover{background-position:-38px -19px;width:34px;height:18px;}
+.sprite-icons-login:hover{background-position:0px 0px;width:36px;height:19px;}
+.sprite-icons-login:active{background-position:-36px 0px;width:36px;height:19px;}
+.sprite-icons-login{background-position:0px -19px;width:36px;height:19px;}
+.sprite-icons-my:hover{background-position:-36px -19px;width:34px;height:18px;}
 .sprite-icons-my:active{background-position:0px -38px;width:34px;height:18px;}
 .sprite-icons-my{background-position:-34px -38px;width:34px;height:18px;}
-.sprite-icons-youtube:hover{background-position:-76px 0px;width:30px;height:30px;}
+.sprite-icons-youtube:hover{background-position:-72px 0px;width:30px;height:30px;}
 .sprite-icons-youtube{background-position:0px -56px;width:30px;height:30px;}
 .sprite-icons-twitter:hover{background-position:-30px -56px;width:30px;height:30px;}
 .sprite-icons-twitter{background-position:-60px -56px;width:30px;height:30px;}
-.sprite-icons-tumblr:hover{background-position:-106px 0px;width:30px;height:30px;}
-.sprite-icons-tumblr{background-position:-106px -30px;width:30px;height:30px;}
-.sprite-icons-pinterest:hover{background-position:0px -86px;width:30px;height:30px;}
-.sprite-icons-pinterest{background-position:-30px -86px;width:30px;height:30px;}
-.sprite-icons-linkedin:hover{background-position:-60px -86px;width:30px;height:30px;}
-.sprite-icons-linkedin{background-position:-90px -86px;width:30px;height:30px;}
-.sprite-icons-google-plus:hover{background-position:-136px 0px;width:30px;height:30px;}
-.sprite-icons-google-plus{background-position:-136px -30px;width:30px;height:30px;}
-.sprite-icons-facebook:hover{background-position:-136px -60px;width:30px;height:30px;}
-.sprite-icons-facebook{background-position:0px -116px;width:30px;height:30px;}
-.sprite-icons-tutor:hover{background-position:-30px -116px;width:29px;height:27px;}
-.sprite-icons-tutor:active{background-position:-59px -116px;width:29px;height:27px;}
-.sprite-icons-tutor{background-position:-88px -116px;width:29px;height:27px;}
-.sprite-icons-learn:hover{background-position:-90px -56px;width:15px;height:27px;}
-.sprite-icons-learn:active{background-position:-120px -86px;width:15px;height:27px;}
-.sprite-icons-learn{background-position:-117px -116px;width:16px;height:27px;}
-.sprite-icons-signup:hover{background-position:-136px -90px;width:26px;height:26px;}
-.sprite-icons-signup:active{background-position:-106px -60px;width:26px;height:26px;}
-.sprite-icons-signup{background-position:-76px -30px;width:26px;height:26px;}
-.sprite-icons-ask:hover{background-position:-133px -116px;width:26px;height:23px;}
-.sprite-icons-ask:active{background-position:-166px 0px;width:26px;height:23px;}
-.sprite-icons-ask{background-position:-166px -23px;width:26px;height:23px;}
-.sprite-icons-about:hover{background-position:-166px -46px;width:26px;height:26px;}
-.sprite-icons-about:active{background-position:-166px -72px;width:26px;height:26px;}
-.sprite-icons-about{background-position:-166px -98px;width:26px;height:26px;}
-.sprite-icons-logout:hover{background-position:0px -146px;width:22px;height:24px;}
-.sprite-icons-logout:active{background-position:-22px -146px;width:22px;height:24px;}
-.sprite-icons-logout{background-position:-44px -146px;width:22px;height:24px;}
+.sprite-icons-tumblr:hover{background-position:-102px 0px;width:30px;height:30px;}
+.sprite-icons-tumblr{background-position:-102px -30px;width:30px;height:30px;}
+.sprite-icons-request:hover{background-position:0px -86px;width:26px;height:30px;}
+.sprite-icons-request:active{background-position:-26px -86px;width:26px;height:30px;}
+.sprite-icons-request{background-position:-52px -86px;width:26px;height:30px;}
+.sprite-icons-pinterest:hover{background-position:-78px -86px;width:30px;height:30px;}
+.sprite-icons-pinterest{background-position:-132px 0px;width:30px;height:30px;}
+.sprite-icons-linkedin:hover{background-position:-132px -30px;width:30px;height:30px;}
+.sprite-icons-linkedin{background-position:-132px -60px;width:30px;height:30px;}
+.sprite-icons-lessons:hover{background-position:0px -116px;width:28px;height:30px;}
+.sprite-icons-lessons:active{background-position:-28px -116px;width:28px;height:30px;}
+.sprite-icons-lessons{background-position:-56px -116px;width:28px;height:30px;}
+.sprite-icons-google-plus:hover{background-position:-84px -116px;width:30px;height:30px;}
+.sprite-icons-google-plus{background-position:-114px -116px;width:30px;height:30px;}
+.sprite-icons-facebook:hover{background-position:-162px 0px;width:30px;height:30px;}
+.sprite-icons-facebook{background-position:-162px -30px;width:30px;height:30px;}
+.sprite-icons-experts:hover{background-position:-162px -60px;width:16px;height:30px;}
+.sprite-icons-experts:active{background-position:-162px -90px;width:16px;height:30px;}
+.sprite-icons-experts{background-position:-108px -86px;width:16px;height:30px;}
+.sprite-icons-tutor:hover{background-position:0px -146px;width:29px;height:27px;}
+.sprite-icons-tutor:active{background-position:-29px -146px;width:29px;height:27px;}
+.sprite-icons-tutor{background-position:-58px -146px;width:29px;height:27px;}
+.sprite-icons-learn:hover{background-position:-144px -116px;width:15px;height:27px;}
+.sprite-icons-learn:active{background-position:-87px -146px;width:15px;height:27px;}
+.sprite-icons-learn{background-position:-102px -146px;width:16px;height:27px;}
+.sprite-icons-signup:hover{background-position:-162px -120px;width:26px;height:26px;}
+.sprite-icons-signup:active{background-position:-132px -90px;width:26px;height:26px;}
+.sprite-icons-signup{background-position:-102px -60px;width:26px;height:26px;}
+.sprite-icons-ask:hover{background-position:-72px -30px;width:26px;height:23px;}
+.sprite-icons-ask:active{background-position:-118px -146px;width:26px;height:23px;}
+.sprite-icons-ask{background-position:-144px -146px;width:26px;height:23px;}
+.sprite-icons-about:hover{background-position:-192px 0px;width:26px;height:26px;}
+.sprite-icons-about:active{background-position:-192px -26px;width:26px;height:26px;}
+.sprite-icons-about{background-position:-192px -52px;width:26px;height:26px;}
+.sprite-icons-logout:hover{background-position:-192px -78px;width:22px;height:24px;}
+.sprite-icons-logout:active{background-position:-192px -102px;width:22px;height:24px;}
+.sprite-icons-logout{background-position:-192px -126px;width:22px;height:24px;}
 
 .box:hover {
-  .sprite-icons-tutor{background-position:-30px -116px;width:29px;height:27px;}
-  .sprite-icons-learn{background-position:-90px -56px;width:15px;height:27px;}
-  .sprite-icons-ask{background-position:-133px -116px;width:26px;height:23px;}
-  .sprite-icons-about{background-position:-166px -46px;width:26px;height:26px;}
-  .sprite-icons-signup{background-position:-106px -60px;width:26px;height:26px;}
+  .sprite-icons-experts{background-position:-162px -60px;width:16px;height:30px;}
+  .sprite-icons-lessons{background-position:0px -116px;width:28px;height:30px;}
+  .sprite-icons-request{background-position:0px -86px;width:26px;height:30px;}
+  .sprite-icons-about{background-position:-192px 0px;width:26px;height:26px;}
+  .sprite-icons-signup{background-position:-162px -120px;width:26px;height:26px;}
   .sprite-icons-login{background-position:0px 0px;width:38px;height:19px;}
-  .sprite-icons-logout{background-position:0px -146px;width:22px;height:24px;}
-  .sprite-icons-my{background-position:-38px -19px;width:34px;height:18px;}
+  .sprite-icons-logout{background-position:-192px -78px;width:22px;height:24px;}
+  .sprite-icons-my{background-position:-36px -19px;width:34px;height:18px;}
 }
 
 

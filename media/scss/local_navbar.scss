@@ -46,18 +46,17 @@ $nav-padding: 5px;
 	padding-top: 12px;
 	height: 48px;
 	width: 90px;
-    border-right: 1px $border-color solid;
+  border-right: 1px $border-color solid;
 }
 
 .box-ask {
-	padding-top: 8px;
-	height: 52px;
+	padding-top: 5px;
+  height: 55px;
 	width: 65px;
-    border-right: 1px $border-color solid;
 }
 
 
-.box:hover {
+.box:hover, .box-active {
     background-color: $tertiary;
     h5 {color:	white;}
 }
