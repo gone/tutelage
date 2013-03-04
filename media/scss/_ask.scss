@@ -5,7 +5,7 @@
 }
 
 #featuredrequest {
-	margin-left: 19px !important;
+	margin-left: 25px !important;
     padding-left: 10px;
 }
 
@@ -42,7 +42,7 @@
 	margin: 8px 10px 0px 0px;
 }
 
-.lessonrequest-active div {
+.lessonrequest-active .request {
     background-color: $gray;
 }
     
@@ -81,7 +81,7 @@
 }
 
 .request-progress-text {
-    display: inline;
+    display: inline-block;
     vertical-align: middle;
 }
 
@@ -91,6 +91,14 @@
 
 .featured-request-text {
 	padding-top: 5px;
+}
+
+.request-progress-text-raised {
+    margin: 5px 0px 0px 0px;
+}
+
+.request-progress-text-goal {
+
 }
 
 .request-tile-description {
@@ -180,12 +188,17 @@
 }
 
 .request-bar {
+    max-width: 100%;
     background-color: $request !important;
     background-image: -moz-linear-gradient(top, $request, $request) !important;
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from($request), to($request)) !important;
     background-image: -webkit-linear-gradient(top, $request, $request) !important;
     background-image: -o-linear-gradient(top, $request, $request) !important;
     background-image: linear-gradient(to bottom, $request, $request) !important;
+}
+
+.request-bar-text {
+    margin: 0px 5px;
 }
 
 .request-form-field label {

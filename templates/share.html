@@ -1,12 +1,17 @@
 <div class="span6 social-media-sharing">
-<div addthis:url="http://culination.co{{url}}" class="addthis_toolbox addthis_default_style addthis_32x32_style">
-<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-<a class="addthis_button_tweet"></a>
-<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-<a class="addthis_button_pinterest_pinit" pi:pinit:url="http://culination.co{{url}}" pi:pinit:media="{{ STATIC_URL }}img/culination-logo-full.png" pi:pinit:layout="horizontal"></a>
+  <div class="social-media-sharing-text">
+    <h3>Share Culination</h3>
+  </div>
+  
+  <div addthis:url="http://culination.co{{url}}" class="social-media-sharing-icons addthis_toolbox addthis_default_style addthis_32x32_style">
+    <a class="addthis_button_facebook"><img src="{{ STATIC_URL }}img/icons/facebook.png" /></a>
+    <a class="addthis_button_twitter"><img src="{{ STATIC_URL }}img/icons/twitter.png" /></a>
+    <a class="addthis_button_google_plusone_share"><img src="{{ STATIC_URL }}img/icons/google-plus.png" /></a>
+    <a class="addthis_button_pinterest_share"><img src="{{ STATIC_URL }}img/icons/pinterest.png" /></a>
+  </div>
+
 </div>
-</div>
-<!-- use for live site
+<!-- use for live site Foodie friends? Let them know - Share the taste - Share Culination - Share the potential
 <div class="span6 social-media-sharing">
 <div addthis:url="http://culination.com{{url}}" class="addthis_toolbox addthis_default_style addthis_32x32_style">
 <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>

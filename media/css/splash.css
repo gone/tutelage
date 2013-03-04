@@ -76,12 +76,24 @@ hr {
     margin-left: 0px !important;
 }
 
-.social-media-sharing div:first-child {
+.social-media-sharing {
+    height: 29px;
+}
+
+.social-media-sharing div {
+    display: inline-block;
+}
+
+.social-media-sharing-text {
     margin-right: 30px;
 }
 
-.addthis_button_pinterest_pinit {
-    width: 94px;
+.social-media-sharing-text h3 {
+    margin-top: -5px;
+}
+
+.social-media-sharing-icons {
+    position: absolute;
 }
 
 .splash-btn {

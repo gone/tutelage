@@ -85,7 +85,7 @@ require(['./common',], function(){
         $('#myModal').on('show', function (e) {
             if (!data) return e.preventDefault() // stops modal from being shown
         })
-        $('.lesson-timeline-picture').slice(0,6).removeClass('no-display')
+        $('.lesson-timeline-picture').slice(0,4).removeClass('no-display')
         $('.lesson-nav-btn-next').on('click', shift_timeline_left)
         $('.lesson-nav-btn-prev').on('click', shift_timeline_right)
 
@@ -109,8 +109,8 @@ require(['./common',], function(){
       <div class="{% if forloop.first %}active{% endif %} item">
 		<img class="lesson-picture" src="{{MEDIA_URL}}{{step.picture}}" />
         <div class="step-text no-margin lesson-wrapper-overlay">
-		  <a class="btn btn-primary lesson-nav-btn lesson-nav-btn-top-left" href="#lessons" data-slide="prev"><h1 class="no-margin">&lt;</h1></a>
-		  <a class="btn btn-primary lesson-nav-btn lesson-nav-btn-top-right" href="#lessons" data-slide="next"><h1 class="no-margin">&gt;</h1></a>
+		  <a class="btn btn-primary lesson-nav-btn lesson-nav-btn-prev" href="#lessons" data-slide="prev"><h1 class="no-margin">&lt;</h1></a>
+		  <a class="btn btn-primary lesson-nav-btn lesson-nav-btn-next" href="#lessons" data-slide="next"><h1 class="no-margin">&gt;</h1></a>
 
 		  {% if forloop.first %}
 		  <div class="step-title span6">{{step.title}}</div>
@@ -153,6 +153,7 @@ require(['./common',], function(){
               </strong>
             </div>
             <div class='lesson-icon-circle lesson-icon-circle-ingredients'>
+              <div class="lesson-icon-circle-icon"><h2>+</h2></div>
               <!-- add icons once they've been added to the data model
                    <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{ingredient.name}}' />
                    -->
@@ -166,6 +167,7 @@ require(['./common',], function(){
             {% for tool in step.tools.all %}
             <div class='panel-item tool tool{{forloop.counter}} tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}'>
 			  <div class='lesson-icon-circle lesson-icon-circle-tools lesson-icon-circle-tool{{forloop.counter}}'>
+                <div class="lesson-icon-circle-icon"><h2>+</h2></div>
 			  </div>
               <div class='lesson-icon-text lesson-icon-tools-text'>
                 <strong>{{tool.size}} {{tool.type}} {{tool.name}}</strong>
@@ -345,29 +347,6 @@ require(['./common',], function(){
   {% endfor %}
 
   <div id="lesson-technique-videos">
-    <video id="technique-7" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/orange-zesting-screenshot.png" preload="auto" controls="controls">
-      <source src="{{STATIC_URL}}videos/orange-zesting-medium.mp4" />
-      <source src="{{STATIC_URL}}videos/orange-zesting-medium.ogv" />
-      <source src="{{STATIC_URL}}videos/orange-zesting-medium.webm" />
-      <!-- fallback  -->
-      <p>Your browser does not support HTML5 video.</p>
-    </video>
-
-    <video id="technique-9" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/apple-cutting-screenshot.png" preload="auto" controls="controls">
-      <source src="{{STATIC_URL}}videos/apple-cutting-medium.mp4" />
-      <source src="{{STATIC_URL}}videos/apple-cutting-medium.ogv" />
-      <source src="{{STATIC_URL}}videos/apple-cutting-medium.webm" />
-      <!-- fallback  -->
-      <p>Your browser does not support HTML5 video.</p>
-    </video>
-
-    <video id="technique-10" class="technique-video" width="100%" height="auto" poster="{{STATIC_URL}}videos/pomegranate-seeding-screenshot.png" preload="auto" controls="controls">
-      <source src="{{STATIC_URL}}videos/pomegranate-seeding-medium.mp4" />
-      <source src="{{STATIC_URL}}videos/pomegranate-seeding-medium.ogv" />
-      <source src="{{STATIC_URL}}videos/pomegranate-seeding-medium.webm" />
-      <!-- fallback  -->
-      <p>Your browser does not support HTML5 video.</p>
-    </video>
   </div>
 </div>
 
@@ -392,10 +371,10 @@ pagelogic = function(){
     $(document.documentElement).keyup(function (event) {
       // handle cursor keys
 	  if (event.keyCode == 37 || event.keyCode == 38) {
-        $('a.lesson-nav-btn-top-left').trigger('click');
+        $('a.lesson-nav-btn-prev').trigger('click');
       }
       else if (event.keyCode == 39 || event.keyCode == 40) {
-		$('a.lesson-nav-btn-top-right').trigger('click');
+		$('a.lesson-nav-btn-next').trigger('click');
       }
     });
 

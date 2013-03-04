@@ -42,7 +42,12 @@
 {% endverbatim %}
         <img src="{{ STATIC_URL }}img/moneybag.png" />
 {% verbatim %}
-        <h4 class="request-progress-text no-margin">${{inpot}} in Pot</h4> 
+        {{# if chef }}
+        <h4 class="request-progress-text request-progress-text-raised pull-right">${{inpot}} in Pot</h4>
+        <h4 class="request-progress-text request-progress-text-goal pull-right">/ ${{chef.amount_required}} Goal</h4>
+        {{ else }}
+        <h4 class="request-progress-text request-progress-text-raised pull-right">${{inpot}} in Pot</h4>
+        {{/ if }} 
 	  </div>
 
 {% endverbatim %}
@@ -61,7 +66,9 @@
 
     <div class="row">
       <div class="progress request-progress">
-        <div class="bar request-bar" style="width: {{percent}}%;"></div>
+        <div class="bar request-bar" style="width: {{percent}}%;">
+          <div class="request-bar-text pull-right">{{round percent}}%</div>
+        </div>
       </div>
     </div>
     {{/ if }}
@@ -161,6 +168,10 @@ require(['./common',], function(){
         {% endif %}
         Handlebars.registerHelper('userIsChef', function(block) {
             return is_chef
+        });
+        Handlebars.registerHelper('round', function(number) {
+          rounded_number = Math.floor(number);
+          return rounded_number;
         });
 
         source = $("#featured-request-templ").html();

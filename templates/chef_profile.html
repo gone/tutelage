@@ -5,84 +5,86 @@
 {% autoescape off %}
 <div class="row main">
     <div class="span12">
-    <div class="row">
-    <div class="span6">
-	  <div class="row">
-        <div class="span4 colored_header">
-          <h3>Chef {{u.get_full_name|title}}</h3>
-       	</div>
-
-	    <div class="span2">
-		  <h5 class="chef-profile-location pull-right">{{u.profile.location}}</h5>
-        </div>
-	  </div>
-
-      <hr/>
-	  
       <div class="row">
-		  <div class="span6 chef-links">
-              {% if u.profile.website1_url %}
-			  <a class="primary" href="{{u.profile.website1_url}}" target="_blank">{{u.profile.website1}}</a>
-              {% endif %}
-              {% if u.profile.website1_url and u.profile.website2_url %}
+        <div class="span6">
+          <div class="row">
+            <div class="span4 colored_header">
+              <h3>Chef {{u.get_full_name|title}}</h3>
+            </div>
+
+            <div class="span2">
+              <h5 class="chef-profile-location pull-right">{{u.profile.location}}</h5>
+            </div>
+          </div>
+
+          <hr/>
+          
+          <div class="row">
+              <div class="span6 chef-links">
+                  {% if u.profile.website1_url %}
+                  <a class="primary" href="{{u.profile.website1_url}}" target="_blank">{{u.profile.website1}}</a>
+                  {% endif %}
+                  {% if u.profile.website1_url and u.profile.website2_url %}
+                
+                  {% endif %}
+                  {% if u.profile.website2_url %}
+                  <a class="primary" href="{{u.profile.website2_url}}" target="_blank">{{u.profile.website2}}</a>
+                  {% endif %}
+
+                <div class="social-media-icons pull-right">
+                    {% if u.profile.facebook %}
+                    <a href="{{u.profile.facebook}}" target="_blank"><div class="social-media-icon sprite-icons-facebook" title="facebook"></div></a>
+                    {% endif %}
+                    {% if u.profile.twitter %}
+                    <a href="{{u.profile.twitter}}" target="_blank"><div class="social-media-icon sprite-icons-twitter" title="twitter"></div></a>
+                    {% endif %}
+                    {% if u.profile.linkedin %}
+                    <a href="{{u.profile.linkedin}}" target="_blank"><div class="social-media-icon sprite-icons-linkedin" title="linkedin"></div></a>
+                    {% endif %}
+                    {% if u.profile.pinterest %}
+                    <a href="{{u.profile.pinterest}}" target="_blank"><div class="social-media-icon sprite-icons-pinterest" title="pinterest"></div></a>
+                    {% endif %}
+                    {% if u.profile.youtube %}
+                    <a href="{{u.profile.youtube}}" target="_blank"><div class="social-media-icon sprite-icons-youtube" title="youtube"></div></a>
+                    {% endif %}
+                    {% if u.profile.googleplus %}
+                    <a href="{{u.profile.googleplus}}" target="_blank"><div class="social-media-icon sprite-icons-google-plus" title="google plus"></div></a>
+                    {% endif %}
+                    {% if u.profile.tumblr %}
+                    <a href="{{u.profile.tumblr}}" target="_blank"><div class="social-media-icon sprite-icons-tumblr" title="tumblr"></div></a>
+                    {% endif %}
+                </div>
+              </div>
+          </div>
+          
+          <hr/>
+          
+          <div class="row">
+            <div class="span2 user-photo">
+            {% avatar u %}
+            </div>
             
-              {% endif %}
-              {% if u.profile.website2_url %}
-			  <a class="primary" href="{{u.profile.website2_url}}" target="_blank">{{u.profile.website2}}</a>
-              {% endif %}
-
-	        <div class="social-media-icons pull-right">
-                {% if u.profile.facebook %}
-			    <a href="{{u.profile.facebook}}" target="_blank"><div class="social-media-icon sprite-icons-facebook" title="facebook"></div></a>
-                {% endif %}
-                {% if u.profile.twitter %}
-			    <a href="{{u.profile.twitter}}" target="_blank"><div class="social-media-icon sprite-icons-twitter" title="twitter"></div></a>
-                {% endif %}
-                {% if u.profile.linkedin %}
-			    <a href="{{u.profile.linkedin}}" target="_blank"><div class="social-media-icon sprite-icons-linkedin" title="linkedin"></div></a>
-                {% endif %}
-                {% if u.profile.pinterest %}
-			    <a href="{{u.profile.pinterest}}" target="_blank"><div class="social-media-icon sprite-icons-pinterest" title="pinterest"></div></a>
-                {% endif %}
-                {% if u.profile.youtube %}
-			    <a href="{{u.profile.youtube}}" target="_blank"><div class="social-media-icon sprite-icons-youtube" title="youtube"></div></a>
-                {% endif %}
-			    {% if u.profile.googleplus %}
-                <a href="{{u.profile.googleplus}}" target="_blank"><div class="social-media-icon sprite-icons-google-plus" title="google plus"></div></a>
-                {% endif %}
-                {% if u.profile.tumblr %}
-			    <a href="{{u.profile.tumblr}}" target="_blank"><div class="social-media-icon sprite-icons-tumblr" title="tumblr"></div></a>
-                {% endif %}
-			</div>
-		  </div>
-      </div>
-      
-      <hr/>
-      
-      <div class="row">
-        <div class="span2 user-photo">
-        {% avatar u %}
-	    </div>
-        
-        <div class="span4">
-        <div class="social-media">
-        {% url featured_chefs as url %}
-        {% include "share.html" with url=url %}
+            <div class="span4">
+            <div class="social-media">
+            {% url featured_chefs as url %}
+            
+            <!-- removing social media for private alpha
+            {% include "share.html" with url=url %}
+            <!---->
+            </div>
+            
+            <div class="user-bio">{{u.profile.about}}</div>
+            </div>
+          </div>
+          
+        </div> 
+        <div class="span6">
+          <div class="chef-movie pull-right">
+            <img class="main-movie-img" src={{MEDIA_URL}}{{u.profile.personal_video_image}} />
+          </div>
         </div>
-        
-	    <div class="user-bio">{{u.profile.about}}</div>
-        </div>
+    
       </div>
-      
-    </div> 
-    <div class="span6">
-      <div class="colored_header">
-        <div class="chef-movie">
-          <img class="main-movie-img" src={{MEDIA_URL}}{{u.profile.personal_video_image}} />
-        </div>
-      </div>
-    </div>
-    </div>
     </div>
     
     <div class="span12">
@@ -148,7 +150,7 @@
 	</div>
 </div>
 
-<div class="row chef-lessons">
+<div class="content chef-lessons">
     {% for lesson in u.teaching.all %}
     {% include "lesson_tile.html" with lesson=lesson %}
     {% endfor %}
@@ -156,26 +158,26 @@
 
 <!-- this should likely be moved somewhere else -->
 <div class="row no-display">
-  <video class="main-movie-video span6 no-margin" controls="controls">
-	<!-- sample videos until we have our actual intro video -->
-    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4">
-    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv">
-    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm">
-    <!-- fallback  -->
-    <p>Your browser does not support HTML5 video.</p>
-  </video>
+  <div class="main-movie-video" controls="controls" preload="auto">
+	<iframe class="" width="456" height="261" src="" frameborder="0" allowfullscreen></iframe>
+  </div>
 </div>
 
 <script type="text/javascript" src="http://masonry.desandro.com/jquery.masonry.min.js"></script>
 <script type="text/javascript">
 pagelogic = function(){
-        $(".main-movie-img").colorbox({inline:true, width:"50%", href:".main-movie-video"});
-        $('.carousel').carousel({interval: 20000});
+        $(".main-movie-img").click(function() {
+            $(".main-movie-img").hide();
+            $(".main-movie-video").appendTo(".chef-movie");
+            $(".main-movie-video iframe").attr('src','http://www.youtube.com/embed/jdB7pXLCFaQ?autoplay=1');
+        });
+        //$(".main-movie-img").colorbox({inline:true, width:"50%", href:".main-movie-video"});
+        
         var $content = $('.chef-lessons');
         $content.imagesLoaded(function(){
           $content.masonry({
             itemSelector : '.lesson',
-            columnWidth : 500
+            columnWidth : 490
           });
         });
 };

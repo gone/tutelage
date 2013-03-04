@@ -128,8 +128,9 @@
 }
 
 #lesson-wrapper {
-    top: 			88px;
-    width: 			962px;
+    top: 88px;
+    width: 970px;
+    margin-left: 5px;
 }
 
 .lesson-wrapper-overlay {
@@ -139,7 +140,7 @@
 }
 
 .lesson-picture {
-	width: 			962px;
+	width: 			970px;
     height: 		541px;
 }
 
@@ -147,7 +148,7 @@
 	position: absolute;
 	bottom: 0;
 	display: inline-block;
-	width: 842px;
+	width: 850px;
     height: 46px;
 	max-height: 110px;
 	font-size: 1.0em !important;
@@ -211,6 +212,7 @@
 
 .lesson-icon-text {
 	display: inline-block;
+    border: 3px solid $white;
 	height: 22px;
 	max-width: 75%;
 	color: white !important;
@@ -235,9 +237,15 @@
 
 .lesson-icon-circle {
 	border-radius: 50%;
+    border: 3px solid $white;
 	height:36px;
 	width: 36px;
 	background-color: $primary;
+    color: $white;
+}
+
+.lesson-icon-circle-icon * {
+    margin: -3px 0px 0px 7px;
 }
 
 .lesson-icon-circle-ingredients {
@@ -347,9 +355,10 @@
 }
 
 #lesson-timeline {
-	height: 84px;
-	width: 882px;
+	height: 136px;
+    width: 970px;
     overflow: hidden;
+    margin-left: 5px;
 }
 
 .lesson-nav-btn {
@@ -358,11 +367,11 @@
     padding: 12px 22px !important;
     
 }
-.lesson-nav-btn-top-left {	
+.lesson-nav-btn-prev {	
     left: 0;	
 }
 
-.lesson-nav-btn-top-right {
+.lesson-nav-btn-next {
 	right: 0;
 }
 
@@ -377,15 +386,15 @@
 
 #lesson-timeline-images {
 	display: inline-block;
-	width: 900px;
-    height: 80px;
+    width: 970px;
+    max-height: 137px;
 }
 
 .lesson-timeline-picture {
-	height: 70px;
-	width: 125px;
-	padding: 0px 5px;
+	height: 137px;
+	width: 243px;
 	opacity: 0.7;
+    margin-right: -4px;
 }
 
 .lesson-timeline-picture:hover, .lesson-timeline-picture-active {
