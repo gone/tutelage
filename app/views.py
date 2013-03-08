@@ -28,7 +28,7 @@ from django.contrib.formtools.wizard.views import SessionWizardView
 
 logger = logging.getLogger(__name__)
 
-from .models import (Lesson, LessonIngredient, Tool, Step, Video,
+from .models import (Lesson, LessonIngredient, LessonTool, Step, Video,
                      LessonRating, FeaturedChef, LessonRequest, Customer, Profile)
 
 from .forms import (ProfileForm,
@@ -114,7 +114,7 @@ def welcome(request):
             #request.user.message_set.create(message = "Email confirmation sent!")
             #return HttpResponseRedirect(reverse("welcome",  kwargs={'signup_email':signup_email}))
             return direct_to_template(request, "welcome.html", {'signup_email':signup_email})
-    
+        
     if request.user.is_authenticated():
         return redirect('/home/')
     else:
@@ -168,22 +168,20 @@ def lesson_ingredients(request, lesson_id=None):
         raise PermissionDenied
 
     IngredientsDetailsFormset = inlineformset_factory(Lesson, LessonIngredient, form=IngredentsDetailsForm, extra=1, )
-    ToolFormset = modelformset_factory(Tool, extra=1, form=ToolsDetailsForm)
+    ToolFormset = inlineformset_factory(Lesson, LessonTool, form=ToolsDetailsForm, extra=1, )
     if request.method == "POST":
         ingredient_formset = IngredientsDetailsFormset(request.POST, instance=lesson, prefix="ingredients")
-        tool_formset = ToolFormset(request.POST, prefix="tools", queryset=lesson.tools.all())
+        tool_formset = ToolFormset(request.POST, instance=lesson, prefix="tools")
         if ingredient_formset.is_valid() and tool_formset.is_valid():
             ingredients = ingredient_formset.save()
             tools = tool_formset.save()
-            for tool in tools:
-                lesson.tools.add(tool)
         if lesson.kind == 1:
             return HttpResponseRedirect(reverse("lesson_video",  kwargs={'lesson_id':lesson.id}))
         else:
             return HttpResponseRedirect(reverse("lesson_steps",  kwargs={'lesson_id':lesson.id}))
     else:
         ingredient_formset = IngredientsDetailsFormset(instance=lesson, prefix="ingredients")
-        tool_formset = ToolFormset(prefix="tools", queryset=lesson.tools.all())
+        tool_formset = ToolFormset(instance=lesson, prefix="tools")
     return direct_to_template(request, "ingredients_details_form.html",
                               {"ingredient_formset": ingredient_formset,
                                "tool_formset": tool_formset,
@@ -312,11 +310,12 @@ def rate_lesson(request, lesson_id, rating):
         r.save()
     return HttpResponse('OK')
 
-
+@login_required
 def featured_chefs(request):
     chef = FeaturedChef.objects.published().order_by('-id').select_related('chef')[0]
     return profile(request, user_id=chef.id)
 
+@login_required
 def cheflist(request):
     chefs_featured = FeaturedChef.objects.all()
     chefs_all = Profile.objects.filter(professional_chef=True)

@@ -32,17 +32,26 @@ hr {
   margin-bottom: 0px;
 }
 
+.logo {
+    height: 110px;
+}
+
 .logo, .slogan, .splash-signup h3, .splash-signup-email  {
     margin-left: 20px !important;
 }
 
 .signup-thanks {
-    margin-top: -5px;
+    margin-top: 20px;
     margin-bottom: -5px;
 }
 
 .slogan {
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+.slogan h2 {
+    margin: 0px;
+    font-size: 28px;
 }
 
 .splash-signup:nth-child(3) {
@@ -56,8 +65,7 @@ hr {
 }
 
 .splash-image {
-    margin-top: 20px;
-    margin-left: 40px;
+    margin: 20px 0px 10px 40px;
 }
 
 .splash-image img {
@@ -65,7 +73,11 @@ hr {
 }
 
 .splash-signup-text {
-    margin-top: 40px;
+    margin-top: 10px;
+}
+
+.splash-signup-form {
+    margin: 0px;
 }
 
 .splash-login {
@@ -77,23 +89,18 @@ hr {
 }
 
 .social-media-sharing {
-    height: 29px;
-}
-
-.social-media-sharing div {
-    display: inline-block;
+    margin-top: 24px;
+    height: 56px;
 }
 
 .social-media-sharing-text {
-    margin-right: 30px;
-}
-
-.social-media-sharing-text h3 {
-    margin-top: -5px;
+    margin: 5px 30px 0px 0px;
+    font-size: 16px;
 }
 
 .social-media-sharing-icons {
     position: absolute;
+    margin-top: 5px;
 }
 
 .splash-btn {

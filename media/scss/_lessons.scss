@@ -129,8 +129,8 @@
 
 #lesson-wrapper {
     top: 88px;
-    width: 970px;
-    margin-left: 5px;
+    width: 980px;
+    margin-left: 0px;
 }
 
 .lesson-wrapper-overlay {
@@ -140,15 +140,15 @@
 }
 
 .lesson-picture {
-	width: 			970px;
-    height: 		541px;
+	width: 			980px;
+    height: 		551px;
 }
 
 .step-text {
 	position: absolute;
 	bottom: 0;
 	display: inline-block;
-	width: 850px;
+	width: 860px;
     height: 46px;
 	max-height: 110px;
 	font-size: 1.0em !important;
@@ -355,10 +355,10 @@
 }
 
 #lesson-timeline {
-	height: 136px;
-    width: 970px;
+    height: 138px;
+    width: 980px;
     overflow: hidden;
-    margin-left: 5px;
+    margin-left: 0px;
 }
 
 .lesson-nav-btn {
@@ -386,13 +386,13 @@
 
 #lesson-timeline-images {
 	display: inline-block;
-    width: 970px;
-    max-height: 137px;
+    width: 980px;
+    max-height: 138px;
 }
 
 .lesson-timeline-picture {
-	height: 137px;
-	width: 243px;
+	height: 138px;
+	width: 245px;
 	opacity: 0.7;
     margin-right: -4px;
 }

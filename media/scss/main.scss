@@ -35,27 +35,27 @@
     font-style: normal;
 }
 
-$black					:				  #333333;
-$white                  :                 #fff;
-$primary                :                 #57264f;
-$primary-active         :                 rgba(87,38,79,0.6);
-$secondary				:				  #60C4AF;
-$secondary-active		:				  rgba(96,196,175,0.6);
-$tertiary               :                 #C85838;
-$tertiary-active        :                 rgba(200,88,56,0.6);
-$request                :                 #95CFAD;
+$black					        :				  #333333;
+$white                  :         #fff;
+$primary                :         #57264f;
+$primary-active         :         rgba(87,38,79,0.6);
+$secondary				      :				  #60C4AF;
+$secondary-active		    :				  rgba(96,196,175,0.6);
+$tertiary               :         #C85838;
+$tertiary-active        :         rgba(200,88,56,0.6);
+$request                :         #95CFAD;
 
-$green                  :                 #01a64f;
-$green-active           :                 #028e44;
-$blue					:				  #4ba5ff;
-$blue-active			:				  #21a1c9;
+$green                  :         #01a64f;
+$green-active           :         #028e44;
+$blue					          :				  #4ba5ff;
+$blue-active			      :				  #21a1c9;
 
-$gray					:				  #e4e4e4;
-$lightgray				:				  #cacaca;
-$darkgray				:				  #666666;
-$pink					:				  #ff7474;
-$background             :                 #ececec;
-$border-color           :                 $lightgray;
+$gray					          :				  #e4e4e4;
+$lightgray				      :				  #cacaca;
+$darkgray				        :				  #666666;
+$pink					          :				  #ff7474;
+$background             :         #ececec;
+$border-color           :         $lightgray;
 
 body {
   background-color: $background !important;

@@ -77,7 +77,7 @@ class LoginForm(AuthenticationForm):
         try:
             User.objects.get(email=self.cleaned_data['username'])
         except User.DoesNotExist:
-            raise forms.ValidationError("There is no user registered with that email address? are you sure you don't need to signup?")
+            raise forms.ValidationError("There is no user registered with that email address? Are you sure you don't need to signup?")
         return self.cleaned_data['username']
 
 

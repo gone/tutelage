@@ -7,7 +7,7 @@
 	<hr />
 	<div class="row">
 	  <div class="span4">
-		<form id="login-form" class="login-form" action="{% url account:auth_login %}" method="post">
+		<form id="login-form" class="login-form" action="" method="post">
           {% csrf_token %}
 		  <div id="email">
 			<h5>Email</h5>
@@ -40,10 +40,11 @@
 			  <a href="#" class="tertiary login-btn-text vertical-align forgot-pass-btn pull-left">Forgot password?</a>
 			</div>
 			<div class="span2">
-			  <input type="submit" class="btn btn-primary btn-login pull-right disabled" value="login">
+			  <!--<input type="submit" class="btn btn-primary btn-login pull-right disabled" value="login">-->
 			</div>
 		  </div>
-
+      
+      <!-- removing ability to signup for private alpha
 		  <hr />
 
 		  <div class="row">
@@ -51,11 +52,12 @@
 			  <span class="login-text"><p class="login-btn-text">Not part of <em>Culination</em>?</p></span>
 			</div>
 			<div class="span2">
-			  <a class="btn btn-primary btn-login signup-btn pull-right">
+			  <a class="btn btn-primary btn-login signup-btn pull-right disabled">
 				signup
 			  </a>
 			</div>
 		  </div>
+      -->
           <input type="hidden" name="next" value="{{login_form.next.value|default:request.get_full_path}}" >
 		</form>
 	  </div>

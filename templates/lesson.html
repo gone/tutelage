@@ -113,9 +113,9 @@ require(['./common',], function(){
 		  <a class="btn btn-primary lesson-nav-btn lesson-nav-btn-next" href="#lessons" data-slide="next"><h1 class="no-margin">&gt;</h1></a>
 
 		  {% if forloop.first %}
-		  <div class="step-title span6">{{step.title}}</div>
+		  <div class="step-title span12">{{step.title}}</div>
 		  {% else %}
-		  <div class="step-title span6">Step {{step.order}}: {{step.title}}</div>
+		  <div class="step-title span12">Step {{step.order}}: {{step.title}}</div>
 		  {% endif %}
 
 		  <!-- commenting out until video implementation complete

@@ -8,8 +8,8 @@
     <link rel='shortcut icon' href='{{ STATIC_URL }}img/favicon.ico' />
     <link rel='apple-touch-icon' href="">
 
-    <meta name='title' content='' />
-    <meta name='description' content='' />
+    <meta name='title' content="Culination - Taste Your Potential" />
+    <meta name='description' content="I want to make my kitchen a place for inspiration, not intimidation. That's why I want to join Culination." />
 
     <!-- Google Site Verification -->
     <meta name='google-site-verification' content="" />
@@ -17,11 +17,11 @@
     <!-- Facebook Open Graph -->
     <meta property="fb:admins" content="" />
     <meta property="og:site_name" content="" />
-    <meta property="og:title" content="" />
-    <meta property="og:url" content="" />
+    <meta property="og:title" content="Culination - Taste Your Potential" />
+    <meta property="og:url" content="http://culination.co" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="" />
-    <meta property="og:image" content="" />
+    <meta property="og:description" content="I want to make my kitchen a place for inspiration, not intimidation. That's why I want to join Culination." />
+    <meta property="og:image" content="http://wellganic-tutelage.dotcloud.com/static/img/culination-logo-full.png" />
     <meta property="fb:page_id" content="" />
 
     <script type="text/javascript">
@@ -64,7 +64,11 @@
         <div class="span6 logo-slogan">
           <img class="logo pinit" src="{{ STATIC_URL }}img/culination-logo-full.png" />
           <div class="tagline">TASTE YOUR POTENTIAL</div>
-          <h2 class="slogan">Learn everything you need to know about cooking, while you cook.</h2>
+          <div class="slogan">
+            <h2>Learn to cook while you cook</h2>
+            <h2>and reward yourself for doing it.</h2>
+          </div>
+          {% include "share.html" %}
         </div>
         <div class="span6 splash-image">
           <img class="pinit" src="{{ STATIC_URL }}img/hero-lessons.png" />
@@ -87,9 +91,6 @@
         {% endif %}
         </div>
         <div class="span6 splash-login">
-          <div class="row">
-            {% include "share.html" %}
-          </div>
           <h3 class="span6">Already have an invitation?</h3>
           
           <form id="login-form" class="login-form" action="{% url account:auth_login %}" method="post">
