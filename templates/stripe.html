@@ -1,0 +1,30 @@
+<script type="text/javascript">
+has_stripe = {% if user.creditcard_set.all %}true{%else%}false{%endif%}
+current_form = null
+function stripeResponseHandler(status, response){
+    if (status == 200){
+        has_stripe = true
+        stripe_input = $("<input type='hidden' name='stripe-data'>")
+        stripe_input.attr('value', JSON.stringify(response))
+
+        current_form.append(stripe_input)
+        current_form.submit()
+    }
+
+}
+$(document).ready(function(){
+        $('{{form_class}}').submit(function(e){
+                if (has_stripe){
+                    return true
+                }
+                else {
+                    $.colorbox({href:'#payment',inline: true})
+                    current_form = $(this)
+                    return false
+                }
+            })
+})
+</script>
+<div class="row no-display">
+  {% include "payment.html" %}
+</div>

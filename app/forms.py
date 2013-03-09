@@ -217,3 +217,21 @@ class LessonRequestForm(forms.ModelForm):
                                     request=lesson_request
                                     )
         return lesson_request
+
+
+class LessonPurchaseForm(forms.Form):
+
+    def __init__(self, user, lesson, *args, **kwargs):
+        self.user = user
+        self.lesson = lesson
+        return super(LessonPurchaseForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        try:
+            self.user.customer
+            return super(LessonPurchaseForm, self).clean()
+        except Customer.DoesNotExist:
+            raise forms.ValidationError("We need a credit card to bill you")
+
+    def save(self, *args, **kwargs):
+        self.lesson.followers.add(self.user)

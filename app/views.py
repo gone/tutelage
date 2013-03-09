@@ -38,7 +38,8 @@ from .forms import (ProfileForm,
                     StepDetailsForm,
                     ChefPledgeForm,
                     ContributionForm,
-                    LessonRequestForm)
+                    LessonRequestForm,
+                    LessonPurchaseForm)
 
 from .internal_stripe import create_customer, bill_pledge
 
@@ -78,7 +79,7 @@ def profile(request, user_id=None):
     else:
         user = get_object_or_404(User, pk=user_id, profile__professional_chef=True)
         return direct_to_template(request, "chef_profile.html", {"lessons": lessons, "u":user})
-        
+
 def miniprofile(request, user_id):
     """The mini profile for user profile's in light boxes"""
     user = get_object_or_404(User, pk=user_id)
@@ -114,7 +115,7 @@ def welcome(request):
             #request.user.message_set.create(message = "Email confirmation sent!")
             #return HttpResponseRedirect(reverse("welcome",  kwargs={'signup_email':signup_email}))
             return direct_to_template(request, "welcome.html", {'signup_email':signup_email})
-    
+
     if request.user.is_authenticated():
         return redirect('/home/')
     else:
@@ -219,8 +220,18 @@ def lesson_steps(request, lesson_id=None):
 @login_required
 def purchase(request, lesson_id):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
-    lesson.followers.add(request.user)
-    return HttpResponseRedirect(reverse("lesson", kwargs={'lesson_id':lesson.id}))
+    if request.method == "POST":
+        form = LessonPurchaseForm(request.user, lesson, request.POST)
+        if 'stripe-id' in request.POST:
+            customer = create_customer(request.user, request.POST['stripe-id'])
+            Customer.objects.create(customer_id=customer.id, user=request.user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse("lesson", kwargs={'lesson_id':lesson.id}))
+    else:
+        form = LessonPurchaseForm(request.user, lesson, request.POST)
+    return direct_to_template(request, "lesson_purchase_standalone.html", {"purchase_form": form, "lesson":lesson})
+
 
 @login_required
 def chef_pledge(request, slug):
@@ -265,7 +276,7 @@ def ask(request):
     all_lesson_requests = LessonRequest.objects.filter(active=True)
     active_requests = LessonRequest.objects.filter(active=True, need_by__gt=datetime.today())
     alert_date = datetime.now() + timedelta(days=1)
-    
+
     per_page = 6
     req_paginator = Paginator(active_requests, per_page)
 

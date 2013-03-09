@@ -13,8 +13,9 @@ pagelogic = function(){
         columnWidth : 490
       });
     });
-    
+
     $('.box-lessons').addClass('box-active');
 };
 </script>
+{% include "stripe.html" with form_class=".purchase" %}
 {% endblock %}

@@ -16,11 +16,18 @@
 		</div>
         <div class="span3">
             {% if request.user == lesson.teacher %}
-            <a class="btn btn-secondary" href="{%url edit-lesson lesson.id %}">edit lesson</a>
+                <a class="btn btn-secondary" href="{%url edit-lesson lesson.id %}">edit lesson</a>
             {% else %}
-		    <a class="btn btn-secondary" href="{%url lesson_detail lesson.id %}">more details</a>
+		        <a class="btn btn-secondary" href="{%url lesson_detail lesson.id %}">more details</a>
             {% endif %}
-		  <a class="btn btn-tertiary pull-right" href="{% url purchase lesson.id %}">view</a>
+            {% if user in lesson.followers.all %}
+		        <a class="btn btn-tertiary pull-right" href="{% url lesson lesson.id %}">view lesson</a>
+            {% else %}
+                <a class="btn btn-tertiary pull-right" href="" onclick="$.colorbox({href:'#purchase-{{lesson.id}}',inline: true}); return false">Purchase lesson</a>
+                <div class="row no-display">
+                  {% include "lesson_purchase.html" with lesson=lesson %}
+                </div>
+            {% endif %}
 		</div>
       </div>
 

@@ -272,6 +272,7 @@ class Video(CreatedMixin):
 
 
 class Lesson(CreatedMixin, Displayable):
+    #TODO: this model should probably have a slug
     #title included thanks to displayable
     teacher = models.ForeignKey(User, related_name='teaching')
     image = models.FileField(upload_to=file_url("lessonimage"))

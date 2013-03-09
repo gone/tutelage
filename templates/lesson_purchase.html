@@ -1,0 +1,9 @@
+<div class="span4 featured-request-span request-contribute pull-right" id="purchase-{{lesson.id}}">
+  <form action="{% url purchase lesson.id %}" method="post" class="purchase">
+    {% csrf_token %}
+    <div class="span4  pull-right">
+      <strong>Purchase {{lesson.title}} for ${{lesson.price}}</strong>
+      <input type="submit" value="Purchase Lesson" class="btn btn-tertiary">
+    </div>
+  </form>
+</div>
