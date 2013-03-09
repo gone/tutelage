@@ -38,17 +38,12 @@
 $black					        :				  #333333;
 $white                  :         #fff;
 $primary                :         #57264f;
-$primary-active         :         rgba(87,38,79,0.6);
+$primary-active         :         #3c1a37;
 $secondary				      :				  #60C4AF;
-$secondary-active		    :				  rgba(96,196,175,0.6);
-$tertiary               :         #C85838;
-$tertiary-active        :         rgba(200,88,56,0.6);
+$secondary-active		    :				  #428979;
+$tertiary               :         #f96530;
+$tertiary-active        :         #ad4621;
 $request                :         #95CFAD;
-
-$green                  :         #01a64f;
-$green-active           :         #028e44;
-$blue					          :				  #4ba5ff;
-$blue-active			      :				  #21a1c9;
 
 $gray					          :				  #e4e4e4;
 $lightgray				      :				  #cacaca;
@@ -126,6 +121,10 @@ body {
 	 display: none;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 .primary {
     color: $primary;
 }
@@ -181,54 +180,20 @@ body {
 	@include colored-button($tertiary-active,$tertiary-active,$white)
 }
 
+.btn-clearprimary {
+    @include colored-button($white,$primary,$primary)
+}
+
+.btn-clearprimary:hover {
+    @include colored-button($primary,$primary, $white)
+}
+
 .btn-clearsecondary {
     @include colored-button($white,$secondary,$secondary)
  }
 
 .btn-clearsecondary:hover{
 	@include colored-button($secondary,$secondary,$white)
-}
-
-.green {
-    color: $green;
-}
-
-.green:hover {
-    color: $green-active !important;
-	text-decoration: none;
-}
-
-.blue {
-    color: $blue !important;
-}
-
-.blue:hover {
-    color: $blue-active !important;
-    text-decoration: none;
-}
-
-.btn-green {
-    @include colored-button($green)
-}
-
-.btn-green:hover{
-	@include colored-button($green-active,$green-active,$white)
-}
-
-.btn-blue {
-    @include colored-button($blue)
- }
-
-.btn-blue:hover{
-	@include colored-button($blue-active,$blue-active,$white)
-}
-
-.btn-clearblue {
-    @include colored-button($white,$blue-active,$blue-active)
- }
-
-.btn-clearblue:hover{
-	@include colored-button($blue,$blue,$white)
 }
 
 .btn-gray {
@@ -241,10 +206,6 @@ body {
 
 .btn-lightgray {
 	@include colored-button($lightgray,$lightgray,$white)
-}
-
-.btn-lightgray:hover {
-	@include colored-button($darkgray,$darkgray,$white)
 }
 
 .btn-darkgray {
@@ -271,15 +232,6 @@ body {
 .btn-save {
 	margin-right:	20px;
 	margin-top:		5px;
-}
-
-.green {
-    color: $green;
-}
-
-a.green:hover {
-	color: $green-active !important;
-	text-decoration: none !important;
 }
 
 .colored_header {

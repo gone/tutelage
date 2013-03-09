@@ -49,7 +49,7 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload", "lib/
 
 {% block content %}
 {% autoescape off %}
-<div class="bordered-row main bordered">
+<div class="row main create-lesson-main">
 
   <div class="span6">
 	<div class="create-lesson-title">
@@ -90,10 +90,12 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload", "lib/
 	  <div class="span8 create-lesson-title-step1">
 		<h3 class="colored-header">3. Steps &amp; Techniques</h3>
 	  </div>
-
+    
+    <!-- commenting out until functionality is added
 	  <div class="span4 pull-right">
 		<a href="#lesson-help" class="tertiary create-lesson-help-btn pull-right">Need help?</a>
 	  </div>
+    -->
 	</div>
 
 
@@ -137,21 +139,23 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload", "lib/
 			<div id="create-lesson-form-3-right">
 
 			  <div class="row">
-				<div class="span3">
-				  <div id="createlessontitle">
-					<h5>Step Image</h5>
-			        {{step.picture}}
-				  </div>
-                  {{step.picture.errors}}
-				</div>
+          <div class="span3">
+            <div id="createlessontitle">
+            <h5>Step Image</h5>
+                {{step.picture}}
+            </div>
+                    {{step.picture.errors}}
+          </div>
 
-				<div class="span3">
-				  <div id="lessonmealtype" class="">
-					<h5>Technique Used</h5>
-                    {{step.technique}}
-				  </div>
-                  {{step.technique.errors}}
-				</div>
+          <div class="span3">
+            <!-- commenting out until technique videos implemented
+            <div id="lessonmealtype" class="">
+            <h5>Technique Used</h5>
+                      {{step.technique}}
+            </div>
+                    {{step.technique.errors}}
+            -->
+          </div>
 			  </div>
 
 			  <div class="row">
@@ -196,9 +200,8 @@ require(["jquery", "lib/jquery.iframe-transport", "lib/jquery.fileupload", "lib/
 		    back
 		  </a>
 	    </div>
-	    <div class="span1 pull-right">
-		  <input type="submit" value="preview" class="btn btn-primary
-                                                      btn-save">
+	    <div class="span2 pull-right">
+		  <input type="submit" value="preview" class="btn btn-primary btn-save pull-right">
 
 	</form>
 

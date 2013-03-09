@@ -20,18 +20,9 @@
     text-decoration: none;
 }
 
-.lesson-title a:hover {
-    color: $primary-active !important;
-}
-
 .lesson-author {
     margin: 12px 0px 0px 0px;
     text-align: right;
-}
-
-.lesson-author a:hover {
-	color: $tertiary-active !important;
-	text-decoration: none;
 }
 
 .ratingblock {
@@ -102,7 +93,6 @@
 }
 
 .lesson-list li {
-	cursor: pointer;
 	list-style-type: none !important;
 	padding-bottom: 10px;
 }
@@ -199,7 +189,6 @@
 	 display: block;
 	 height:28px;
 	 min-width: 100px;
-     cursor: pointer;
 }
 
 .ingredient {

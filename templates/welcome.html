@@ -26,7 +26,7 @@
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', '']);
+      _gaq.push(['_setAccount', 'UA-29575526-1']);
       _gaq.push(['_trackPageview']);
       _gaq.push(['_trackPageLoadTime']);
 
@@ -106,7 +106,7 @@
                    data-errormessage-value-missing="Email is required!"
                    data-errormessage-custom-error="Email must be in the format 'user@domain.com'" commenting out error messages for private launch -->
                    
-            {{login_form.username.errors}} 
+             
 			<input name="password"
                    class="login-input password-input"
                    type="password"
@@ -114,11 +114,20 @@
                    />
                    <!-- data-validation-engine="validate[required]"
                    data-errormessage-value-missing="Password is required!" commenting out error messages for private launch -->
-                   
-            {{login_form.non_field_errors }} 
-            <input type="submit" class="btn splash-btn pull-right" value="login">
-            {{login_form.password.errors}}
+    
+      <input type="submit" class="btn splash-btn no-margin pull-right" value="login">
 		  </div>
+      <div class="private-login-errors">
+        <div class="private-login-username-errors">
+          {{login_form.username.errors}}
+        </div>
+        <div class="private-login-password-errors">
+          {{login_form.password.errors}}
+        </div>
+        <div class="private-login-other-errors">
+          {{login_form.non_field_errors }} 
+        </div>  
+      </div>
           <input type="hidden" name="next" value="{{login_form.next.value|default:request.get_full_path}}" >
         </form>
           <!--<a class="btn splash-btn" href="./private-login">login</a>-->

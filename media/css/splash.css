@@ -27,7 +27,6 @@ hr {
 
 .container {
   background-color: #fff;
-  padding-bottom: 10px;
   margin-top: 0px;
   margin-bottom: 0px;
 }
@@ -73,7 +72,7 @@ hr {
 }
 
 .splash-signup-text {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .splash-signup-form {
@@ -81,6 +80,7 @@ hr {
 }
 
 .splash-login {
+    margin-top: 10px;
     margin-left: 40px;
 }
 
@@ -148,6 +148,42 @@ hr {
     background-position: 0% 0%;
 }
 
+.private-login-input .email-input {
+    width: 190px;
+}
+
+.private-login-input .password-input {
+    width: 133px;
+    margin-left: 20px;
+}
+
+.private-login-username-errors {
+    display: inline-block;
+    width: 204px;
+}
+
+.private-login-username-errors ul {
+    padding-left: 7px;
+    padding-right: 7px;
+    width: 188px;
+}
+
+.private-login-password-errors {
+    display: inline-block;
+    width: 125px;
+    margin-left: 20px;
+}
+
+.private-login-password-errors ul {
+    width: 128px;
+    padding-right: 10px;
+    padding-left: 7px;
+}
+
+.private-login-other-errors ul {
+    width: 324px;
+}
+
 /* Private Login */
 .private-login-background-image {
     background: url(../img/login-background.png) no-repeat center center fixed; 
@@ -163,14 +199,7 @@ hr {
     margin: 0px;
 }
 
-.private-login-input .email-input {
-    width: 190px;
-}
 
-.private-login-input .password-input {
-    width: 125px;
-    margin-left: 20px;
-}
 
 .private-login-form {
     padding: 20px;

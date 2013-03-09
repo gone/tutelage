@@ -29,7 +29,6 @@ def password_change(request):
     ##TODO: flash a message here that you've changed your password
     return rv
 
-#@login_required(redirect_field_name='')
 def login(request):
     next = request.POST.get("next", '')
     if 'next=' in next:

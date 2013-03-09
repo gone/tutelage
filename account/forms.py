@@ -72,12 +72,14 @@ class RegistrationForm(forms.Form):
 
 class LoginForm(AuthenticationForm):
     next = forms.CharField(widget=forms.HiddenInput)
+    username = forms.CharField(error_messages={'required': 'Email required.'})
+    password = forms.CharField(error_messages={'required': 'Password required.'})
 
     def clean_username(self):
         try:
             User.objects.get(email=self.cleaned_data['username'])
         except User.DoesNotExist:
-            raise forms.ValidationError("There is no user registered with that email address? Are you sure you don't need to signup?")
+            raise forms.ValidationError("That email address does not have an invitation. Please signup and we'll let you know when we have a table for you!")
         return self.cleaned_data['username']
 
 

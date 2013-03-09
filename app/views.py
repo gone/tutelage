@@ -78,7 +78,8 @@ def profile(request, user_id=None):
     else:
         user = get_object_or_404(User, pk=user_id, profile__professional_chef=True)
         return direct_to_template(request, "chef_profile.html", {"lessons": lessons, "u":user})
-        
+
+@login_required(redirect_field_name='')        
 def miniprofile(request, user_id):
     """The mini profile for user profile's in light boxes"""
     user = get_object_or_404(User, pk=user_id)
@@ -100,6 +101,7 @@ def lessons(request):
 
     return direct_to_template(request, "lessons.html", {"lessons": lessons})
 
+@login_required(redirect_field_name='')
 def lesson_detail(request, lesson_id):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
     return direct_to_template(request, "lesson_details.html", {"lesson": lesson})
@@ -119,12 +121,6 @@ def welcome(request):
         return redirect('/home/')
     else:
         return direct_to_template(request, "welcome.html")
-
-def privatelogin(request):
-    if request.user.is_authenticated():
-        return redirect('/')
-    else:
-        return direct_to_template(request, "private-login.html")
 
 TEMPLATES = { 'lesson_details': "lesson_details_form.html",
               'ingredents_details': "ingredents_details_form.html",

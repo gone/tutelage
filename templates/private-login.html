@@ -5,11 +5,11 @@
     <title>Culination - Taste Your Potential</title>
     <link rel='stylesheet' href='{{ STATIC_URL }}css/main.css' />
     <link rel='stylesheet' href='{{ STATIC_URL }}css/splash.css' />
-    <link rel='shortcut icon' href='/favicon.ico' />
+    <link rel='shortcut icon' href='{{ STATIC_URL }}img/favicon.ico' />
     <link rel='apple-touch-icon' href="">
 
-    <meta name='title' content='' />
-    <meta name='description' content='' />
+    <meta name='title' content="Culination - Taste Your Potential" />
+    <meta name='description' content="I want to make my kitchen a place for inspiration, not intimidation. That's why I want to join Culination." />
 
     <!-- Google Site Verification -->
     <meta name='google-site-verification' content="" />
@@ -17,16 +17,16 @@
     <!-- Facebook Open Graph -->
     <meta property="fb:admins" content="" />
     <meta property="og:site_name" content="" />
-    <meta property="og:title" content="" />
-    <meta property="og:url" content="" />
+    <meta property="og:title" content="Culination - Taste Your Potential" />
+    <meta property="og:url" content="http://culination.co" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="" />
-    <meta property="og:image" content="" />
+    <meta property="og:description" content="I want to make my kitchen a place for inspiration, not intimidation. That's why I want to join Culination." />
+    <meta property="og:image" content="http://wellganic-tutelage.dotcloud.com/static/img/culination-logo-full.png" />
     <meta property="fb:page_id" content="" />
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', '']);
+      _gaq.push(['_setAccount', 'UA-29575526-1']);
       _gaq.push(['_trackPageview']);
       _gaq.push(['_trackPageLoadTime']);
 
@@ -50,64 +50,88 @@
             left: ($(window).width() - $('.container').outerWidth())/2,
             top: ($(window).height() - $('.container').outerHeight())/4
         });
-        $('.email-input').focus();
     });
     </script>
   </head>
-  <body class="private-login-background-image">
+  <body>
     <script type="text/javascript">
     var addthis_config = {"data_track_addressbar":true, services_overlay:'facebook,tumblr,more'};
     </script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-511088d74ba42a22"></script>
-
-    <div class="container private-login-form login_info">
+    
+    <div class="container">
       <div class="row">
-	    <div class="span3">
-	      <h4>Step into <em>Culination</em></h4>
-	    </div>
-	  </div>
+        <div class="span6 logo-slogan">
+          <img class="logo pinit" src="{{ STATIC_URL }}img/culination-logo-full.png" />
+          <div class="tagline">TASTE YOUR POTENTIAL</div>
+          <div class="slogan">
+            <h2>Learn to cook while you cook</h2>
+            <h2>and reward yourself for doing it.</h2>
+          </div>
+          {% include "share.html" %}
+        </div>
+        <div class="span6 splash-image">
+          <img class="pinit" src="{{ STATIC_URL }}img/hero-lessons.png" />
+        </div>
+      </div>
       
       <hr />
       
       <div class="row">
-        <div class="span3">
-		<form id="login-form" class="login-form" action="{% url account:auth_login %}" method="post">
+        <div class="span6 splash-signup">
+        {% if signup_email %}
+          <h3 class="signup-thanks">Thank you. We'll let you know when your table is ready :)</h3><h3>{{signup_email}}</h3>
+        {% else %}
+          <h3 class="span6 splash-signup-text">Need an invitation?</h3>
+          <form id="splash-signup-form" class="splash-signup-form" action="" method="post">
+          {% csrf_token %}
+            <a href="/" class="btn splash-btn">yes, please!</a>
+          </form>
+        {% endif %}
+        </div>
+        <div class="span6 splash-login">
+          <h3 class="span6">Already have an invitation?</h3>
+          
+          <form id="login-form" class="login-form" action="{% url account:auth_login %}" method="post">
 		  {% csrf_token %}
-		  <div id="email">
-			<h5>Email</h5>
+		  <div class="private-login-input">
 			<input name="username"
                    type="email"
                    class="login-input email-input"
-                   placeholder=""
+                   placeholder="email"
                    value="{{login_form.username.value|default:""}}"
-                   data-validation-engine="validate[required,custom[email]]"
+                   />
+                   <!--data-validation-engine="validate[required,custom[email]]"
                    data-errormessage-value-missing="Email is required!"
-                   data-errormessage-custom-error="Email must be in the format 'user@domain.com'"
-                   />
-            {{login_form.username.errors}}
-		  </div>
-		  <div id="password">
-			<h5>Password</h5>
+                   data-errormessage-custom-error="Email must be in the format 'user@domain.com'" commenting out error messages for private launch -->
+                   
+             
 			<input name="password"
-                   class="login-input"
+                   class="login-input password-input"
                    type="password"
-                   placeholder=""
-                   data-validation-engine="validate[required]"
-                   data-errormessage-value-missing="Password is required!"
+                   placeholder="password"
                    />
-            {{login_form.non_field_errors }}
-            {{login_form.password.errors}}
+                   <!-- data-validation-engine="validate[required]"
+                   data-errormessage-value-missing="Password is required!" commenting out error messages for private launch -->
+    
+      <input type="submit" class="btn splash-btn no-margin pull-right" value="login">
 		  </div>
-
-		  <div class="row login-text login-actions">
-			<div class="span1">
-              <input type="submit" class="btn splash-btn private-login-btn" value="login">
-            </div>
-		  </div>
+      <div class="private-login-errors">
+        <div class="private-login-username-errors">
+          {{login_form.username.errors}}
+        </div>
+        <div class="private-login-password-errors">
+          {{login_form.password.errors}}
+        </div>
+        <div class="private-login-other-errors">
+          {{login_form.non_field_errors }} 
+        </div>  
+      </div>
           <input type="hidden" name="next" value="{{login_form.next.value|default:request.get_full_path}}" >
         </form>
-	    </div>
+          <!--<a class="btn splash-btn" href="./private-login">login</a>-->
+        </div>
       </div>
-    </div>
+    
   </body>
 </html>

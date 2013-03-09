@@ -22,7 +22,7 @@
           <div class="row">
               <div class="span6 chef-links">
                   {% if u.profile.website1_url %}
-                  <a class="primary" href="{{u.profile.website1_url}}" target="_blank">{{u.profile.website1}}</a>
+                  <a class="secondary" href="{{u.profile.website1_url}}" target="_blank">{{u.profile.website1}}</a>
                   {% endif %}
                   {% if u.profile.website1_url and u.profile.website2_url %}
                 
@@ -96,7 +96,7 @@
     <div class="span6">
 			<h4>Specialties</h4>
             {% for tag in u.profile.tags %}
-			   <a class="btn btn-clearsecondary btn-tags">{{tag}}</a>
+			   <a class="btn btn-clearprimary btn-tags">{{tag}}</a>
             {% endfor %}
 		  </div>
     <div class="span6">  
