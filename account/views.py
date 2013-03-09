@@ -9,6 +9,9 @@ from .forms import LoginForm as login_form
 
 from django.http import HttpResponseRedirect
 
+from django.contrib.auth.decorators import login_required
+
+@login_required(redirect_field_name='')
 def password_reset(request):
     redirect_to = request.POST.get("next", None)
     rv = django_password_reset(request,
@@ -17,7 +20,7 @@ def password_reset(request):
     ##TODO: flash a message here that you've reset your password
     return rv
 
-
+@login_required(redirect_field_name='')
 def password_change(request):
     redirect_to = request.POST.get("next", None)
     rv = django_password_change(request,

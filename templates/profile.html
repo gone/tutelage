@@ -49,7 +49,7 @@
 	  </div>
 
 	  <div class="span2 offset4 pull-right">
-		<input type="submit" class="btn btn-primary btn-save pull-right" value="save">
+		<input type="submit" class="btn btn-secondary btn-save pull-right" value="save">
 	  </div>
 
 	</div>
@@ -69,7 +69,7 @@
       <div class="span1">
 		<div id="profile-user-type">
 		  <h5>Account</h5>
-		  <a class="btn btn-clearsecondary">
+		  <a class="btn btn-clearprimary">
 		      {% if u.get_profile.professional_chef %}
               Expert
               {% else %}
@@ -79,6 +79,7 @@
 		</div>
       </div>
       
+      <!--
       <div class="span3" id="skills" data-toggle-name="skill_level">
       {% if form %}
 	    <div class="profile-user-skill">
@@ -112,8 +113,9 @@
         {{u.get_profile.get_skill_level_display}}
       </a>
       {% endif %}
+      -->
       
-      <div class="span6">
+      <div class="span6 offset3">
 		<div id="aboutme">
           {% if form %}
 		  <h5>About Me (300 characters or less)</h5>
@@ -159,7 +161,7 @@
 	  <div class="span6">
 		<div id="profile-password-change">
 		  <h5>Password</h5>
-		  <a class="btn btn-secondary changepass-btn">
+		  <a class="btn btn-primary changepass-btn">
 		  change
 		  </a>
 		</div>
@@ -191,7 +193,7 @@
         {% else %}
         <h4>Lessons {{u.get_full_name}} is Teaching</h4>
         {% endif %}
-        <a class="btn btn-primary btn-save pull-right" href="{% url add-lesson %}">
+        <a class="btn btn-tertiary btn-save pull-right" href="{% url add-lesson %}">
         create new lesson
         </a>
       </div>

@@ -27,9 +27,12 @@ hr {
 
 .container {
   background-color: #fff;
-  padding-bottom: 10px;
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.logo {
+    height: 110px;
 }
 
 .logo, .slogan, .splash-signup h3, .splash-signup-email  {
@@ -37,12 +40,17 @@ hr {
 }
 
 .signup-thanks {
-    margin-top: -5px;
+    margin-top: 20px;
     margin-bottom: -5px;
 }
 
 .slogan {
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+.slogan h2 {
+    margin: 0px;
+    font-size: 28px;
 }
 
 .splash-signup:nth-child(3) {
@@ -56,8 +64,7 @@ hr {
 }
 
 .splash-image {
-    margin-top: 20px;
-    margin-left: 40px;
+    margin: 20px 0px 10px 40px;
 }
 
 .splash-image img {
@@ -65,10 +72,15 @@ hr {
 }
 
 .splash-signup-text {
-    margin-top: 40px;
+    margin-top: 20px;
+}
+
+.splash-signup-form {
+    margin: 0px;
 }
 
 .splash-login {
+    margin-top: 10px;
     margin-left: 40px;
 }
 
@@ -77,23 +89,18 @@ hr {
 }
 
 .social-media-sharing {
-    height: 29px;
-}
-
-.social-media-sharing div {
-    display: inline-block;
+    margin-top: 24px;
+    height: 56px;
 }
 
 .social-media-sharing-text {
-    margin-right: 30px;
-}
-
-.social-media-sharing-text h3 {
-    margin-top: -5px;
+    margin: 5px 30px 0px 0px;
+    font-size: 16px;
 }
 
 .social-media-sharing-icons {
     position: absolute;
+    margin-top: 5px;
 }
 
 .splash-btn {
@@ -141,6 +148,42 @@ hr {
     background-position: 0% 0%;
 }
 
+.private-login-input .email-input {
+    width: 190px;
+}
+
+.private-login-input .password-input {
+    width: 133px;
+    margin-left: 20px;
+}
+
+.private-login-username-errors {
+    display: inline-block;
+    width: 204px;
+}
+
+.private-login-username-errors ul {
+    padding-left: 7px;
+    padding-right: 7px;
+    width: 188px;
+}
+
+.private-login-password-errors {
+    display: inline-block;
+    width: 125px;
+    margin-left: 20px;
+}
+
+.private-login-password-errors ul {
+    width: 128px;
+    padding-right: 10px;
+    padding-left: 7px;
+}
+
+.private-login-other-errors ul {
+    width: 324px;
+}
+
 /* Private Login */
 .private-login-background-image {
     background: url(../img/login-background.png) no-repeat center center fixed; 
@@ -156,14 +199,7 @@ hr {
     margin: 0px;
 }
 
-.private-login-input .email-input {
-    width: 190px;
-}
 
-.private-login-input .password-input {
-    width: 125px;
-    margin-left: 20px;
-}
 
 .private-login-form {
     padding: 20px;

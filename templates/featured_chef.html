@@ -47,7 +47,7 @@
         <div class="row">
           <div class="span3">
             {% for tag in fchef.chef.profile.tags %}
-            <div class="btn btn-clearsecondary btn-tags">{{tag}}</div>
+            <div class="btn btn-clearprimary btn-tags">{{tag}}</div>
             {% endfor %}
           </div>
         </div>
@@ -71,7 +71,7 @@
         
         <div class="row">
           <div class="span3">
-            <a href="{% url profile fchef.chef.id %}" class="btn btn-primary btn-featured-chef-lesson-link">
+            <a href="{% url profile fchef.chef.id %}" class="btn btn-tertiary btn-featured-chef-lesson-link">
             view my full profile
             </a>
           </div>

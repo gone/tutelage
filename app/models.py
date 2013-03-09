@@ -88,7 +88,7 @@ class About(Page):
     hero = models.ImageField(upload_to=file_url("about_hero"))
 
 
-class FeaturedChef(Displayable):
+class FeaturedChef(CreatedMixin,Displayable):
     chef = models.OneToOneField(User, related_name="featured_chef")
     # featured_lessons = models.ManyToManyField("Lesson")
     # intro_video = models.ImageField(upload_to=file_url("featured_chef_intro"))
@@ -120,14 +120,16 @@ class Ingredient(CreatedMixin):
         return self.name
 
 class LessonIngredient(CreatedMixin):
-    ingredient = models.ForeignKey(Ingredient)
+    name = models.CharField(max_length=32, null=False)
+    ingredient = models.ForeignKey(Ingredient, blank=True, null=True, on_delete=models.SET_NULL)
     lesson = models.ForeignKey("Lesson")
     number = models.IntegerField(null=False, blank=False, default="0")
     measurement = models.CharField(max_length=32, null=False, blank=True)
     prep = models.CharField(max_length=32, blank=True)
 
     def __unicode__(self):
-        return "%s, %s" % (self.ingredient, self.measurement)
+        return self.name
+        #return "%s, %s" % (self.ingredient, self.measurement)
 
 
 class Tool(CreatedMixin):
@@ -144,6 +146,13 @@ class Tool(CreatedMixin):
     def __unicode__(self):
         return self.name
 
+class LessonTool(CreatedMixin):
+    name = models.CharField(max_length=32, null=False)
+    tool = models.ForeignKey(Tool, blank=True, null=True, on_delete=models.SET_NULL)
+    lesson = models.ForeignKey("Lesson")
+
+    def __unicode__(self):
+        return self.name
 
 class Category(CreatedMixin):
     name = models.CharField(max_length=128, unique=True)
@@ -169,7 +178,7 @@ class Profile(CreatedMixin):
 
     ingredients = models.ManyToManyField(Ingredient, related_name='profiles', blank=True)
     tools = models.ManyToManyField(Tool, related_name='profiles', blank=True)
-    skill_level = models.IntegerField(choices=SKILL_LEVELS, default=0)
+    #skill_level = models.IntegerField(choices=SKILL_LEVELS, default=0)
 
     professional_chef = models.BooleanField(default=False)
 
@@ -300,7 +309,7 @@ class Lesson(CreatedMixin, Displayable):
                                              (1, "Technique")), default=0)
 
     ingredients = models.ManyToManyField(Ingredient, through="LessonIngredient", related_name="lessons")
-    tools = models.ManyToManyField(Tool, related_name="lessons", blank=True)
+    tools = models.ManyToManyField(Tool, through="LessonTool", related_name="lessons", blank=True)
 
     class Meta():
         unique_together = ('teacher', 'title')
@@ -357,7 +366,7 @@ class Step(CreatedMixin):
     order = models.PositiveSmallIntegerField(default=0)
     technique = models.ManyToManyField(Lesson, related_name="technique_steps", blank=True)
     ingredients = models.ManyToManyField(LessonIngredient, related_name="steps", blank=True)
-    tools = models.ManyToManyField(Tool, related_name="steps", blank=True)
+    tools = models.ManyToManyField(LessonTool, related_name="steps", blank=True)
 
     picture = models.ImageField(upload_to=file_url(""))
 

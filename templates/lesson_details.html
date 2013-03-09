@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="bordered-row main bordered">
+<div class="row main">
     <div class="span6">
  	  <div class="row">
 		  <div class="span5 lesson-title">
@@ -86,7 +86,7 @@
 
 </div>
 
-<div class="bordered-row bordered">
+<div class="row main">
     <div class="span12">
         <div class="colored_header">
           <h4>Get&#160;<abbr title='"Everything in Place"'>Mise en Place</abbr> - and get cooking!</h4>
@@ -94,33 +94,50 @@
     </div>
 </div>
 
-<div id="lesson-list-items" class="bordered-row bordered">
+<div id="lesson-list-items" class="row main">
 
-    <div class="span3">
+    <div class="span4">
  	  <h5>Ingredients</h5>
  	  <ul class="lesson-list">
-        {% for i in lesson.ingredients.all.distinct %}
- 	    <li>
-          <div class="lesson-icon-circle"></div>
-          <p>{{i.name}}</p>
+      {% for ingredient in lesson.lessoningredient_set.all.distinct %}
+        {% if ingredient.measurement and ingredient.measurement.strip %}
+        <li class="ingredient-{{forloop.counter}}">
+          {% if ingredient.ingredient %}
+          <div class="lesson-icon-circle pointer">
+            <div class="lesson-icon-circle-icon"><h2>+</h2></div>
+          {% else %}
+          <div class="lesson-icon-circle">
+          {% endif %}
+          </div>
+          <p>{{ingredient.measurement}} {{ingredient.name}}</p>
         </li>
-        {% endfor %}
+        {% endif %}
+      {% endfor %}
  	  </ul>
     </div>
 
-    <div class="span3">
-	  <h5>Tools</h5>
- 	  <ul class="lesson-list">
-        {% for l in lesson.tools.all %}
- 	    <li>
-          <div class="lesson-icon-circle"></div>
-          <p><em>{{l.size}} </em>{{l.name}}<em> {{l.type}}</em></p>
-        </li>
+    <div class="span4 offset2">
+      <div class="row">
+        <h5>Tools</h5>
+        <ul class="lesson-list">
+        {% for tool in lesson.lessontool_set.all.distinct %}
+          <li class="tool-{{forloop.counter}}">
+            {% if tool.tool %}
+            <div class="lesson-icon-circle pointer">
+              <div class="lesson-icon-circle-icon"><h2>+</h2></div>
+            {% else %}
+            <div class="lesson-icon-circle">
+            {% endif %}
+            </div>
+            <p>{{tool.name}}</p>
+          </li>
         {% endfor %}
- 	  </ul>
+        </ul>
+      </div>
     </div>
 
-    <div class="span3">
+    <!-- commenting out until techniques are fixed
+    <div class="span4">
  	  <h5>Techniques</h5>
  	  <ul class="lesson-list">
         {% for step in lesson.steps.all %}
@@ -133,6 +150,174 @@
         {% endfor %}
  	  </ul>
     </div>
+    -->
+    
+</div>
+
+<div class="lesson-components row no-display">
+  {% for ingredient in lesson.lessoningredient_set.all.distinct %}
+  <div id="ingredient-{{forloop.counter}}" class="lightbox product-lightbox">
+    <!-- {{ingredient.number}} -->
+
+    <div class="row">
+      <div class="span2">
+        <img class="product-image" src="{{MEDIA_URL}}{{ingredient.ingredient.image}}" />
+      </div>
+      <div class="span4">
+        <div class="row">
+          <div class="span4">
+            <h4>{{ingredient.ingredient.name}}</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span4">
+            <div class="lesson-icon-circle lesson-icon-circle-products">
+              <div class="span3 product-category"><strong>{{ingredient.ingredient.category}}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span4">
+            <p class=""><em>{{ingredient.measurement}} {{ingredient.prep}}</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="lightbox-hr">
+
+    <div class="row">
+      <div class="span4">{{ingredient.ingredient.description}}</div>
+      <div class="span2"><strong>Substitutions</strong>
+        <li>{{ingredient.ingredient.substitution1}}</li>
+        <li>{{ingredient.ingredient.substitution2}}</li>
+      </div>
+    </div>
+
+    <hr class="lightbox-hr">
+
+    <div class="row">
+      <div class="span4">Try <em>{{ingredient.ingredient.name}}</em> recommended by our chefs</div>
+      <div class="span2">
+        <a class="item-buy-button" href="{{ingredient.ingredient.product_link}}"
+           target="_blank">Purchase</a>
+      </div>
+    </div>
+
+    <hr class="lightbox-hr">
+
+    <div class="row">
+      <div class="span2">
+        <div class="item-info">
+          <a href="http://www.thefairtradewinecompany.com/varietals/chenin-blanc"
+             target="_blank">
+            <img class="item-image-ad" src="{{STATIC_URL}}img/fairtrade-wine.png" alt="">
+          </a>
+        </div>
+      </div>
+      <div class="span4">
+        <p>Consider pairing <em>The Fair Trade Wine Company Chenin Blanc</em> with
+          your <em>{{lesson.title}}</em> and support sustainability. This South
+          African wine offers a superb balance between bright acidity and sweetness.</p>
+        <a
+           class="item-ad-buy-button" href="http://shop.barrelcavewines.com/Fair-Trade-Wine-Company-Chenin-Blanc-FT1003.htm"
+           target="_blank">Try it today</a>
+      </div>
+    </div>
+
+  </div>
+  {% endfor %}
+
+  {% for tool in lesson.lessontool_set.all.distinct %}
+  <div id="tool-{{forloop.counter}}" class="lightbox product-lightbox">
+    <div class="row">
+      <div class="span2">
+        <img class="product-image" src="{{MEDIA_URL}}{{tool.image}}" />
+      </div>
+      <div class="span4">
+        <div class="row">
+          <div class="span4">
+            <h4>{{tool.name}}</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span4">
+            <div class="lesson-icon-circle lesson-icon-circle-products">
+              <div class="span3 product-category"><strong>{{tool.category}}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span4">
+            <p class=""><em></em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="lightbox-hr">
+
+    <div class="row">
+      <div class="span4">{{tool.description}}</div>
+      <div class="span2"><strong>Substitutions</strong>
+        <li>{{tool.substitution1}}</li>
+        <li>{{tool.substitution2}}</li>
+      </div>
+    </div>
+
+    <hr class="lightbox-hr">
+
+    <div class="row">
+      <div class="span4">Try <em>{{tool.name}}</em> recommended by our chefs</div>
+      <div class="span2">
+        <a class="item-buy-button" href="{{tool.product_link}}"
+           target="_blank">Purchase</a>
+      </div>
+    </div>
+
+    <hr class="lightbox-hr">
+
+    <div class="row">
+      <div class="span2">
+        <div class="item-info">
+          <a href="http://www.thefairtradewinecompany.com/varietals/chenin-blanc"
+             target="_blank">
+            <img class="item-image-ad" src="{{STATIC_URL}}img/fairtrade-wine.png" alt="">
+          </a>
+        </div>
+      </div>
+      <div class="span4">
+        <p>Consider pairing <em>The Fair Trade Wine Company Chenin Blanc</em> with
+          your <em>{{lesson.title}}</em> and support sustainability. This South
+          African wine offers a superb balance between bright acidity and sweetness.</p>
+        <a
+           class="item-ad-buy-button" href="http://shop.barrelcavewines.com/Fair-Trade-Wine-Company-Chenin-Blanc-FT1003.htm"
+           target="_blank">Try it today</a>
+      </div>
+    </div>
+
+  </div>
+  {% endfor %}
 
 </div>
+
+<script type="text/javascript">
+pagelogic = function(){
+    {% for ingredient in lesson.lessoningredient_set.all.distinct %}
+    {% if ingredient.ingredient %}
+    $(".ingredient-{{forloop.counter}}").colorbox({inline:true, width:"480px", href:"#ingredient-{{forloop.counter}}"});
+    {% endif %}
+    {% endfor %}
+
+    {% for tool in lesson.lessontool_set.all.distinct %}
+    {% if tool.tool %}
+    $(".tool-{{forloop.counter}}").colorbox({inline:true, width:"480px", href:"#tool-{{forloop.counter}}"});
+    {% endif %}
+    {% endfor %}
+};
+</script>
 {% endblock %}

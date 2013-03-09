@@ -4,7 +4,7 @@
 			<h3 class="no-margin">{{lesson.title|title}}</h3>
 		  </div>
 		  <div class="span2 lesson-author">
-			by <a class="miniprofile-btn primary" href="{% url miniprofile lesson.teacher.id %}"><strong>{{lesson.teacher.get_full_name|title}}</strong></a>
+			by <a class="miniprofile-btn secondary" href="{% url miniprofile lesson.teacher.id %}"><strong>{{lesson.teacher.get_full_name|title}}</strong></a>
 		  </div>
       </div>
 
@@ -62,7 +62,7 @@
 	  <div class="row">
 		  <div class="span6 lesson-tile-tags">
               {% for tag in lesson.tags %}
-			  <a href="{% url search %}?q={{tag}}" class="btn btn-clearsecondary btn-tags">{{tag|title}}</a>
+			  <a href="{% url search %}?q={{tag}}" class="btn btn-clearprimary btn-tags">{{tag|title}}</a>
               {% endfor %}
 		  </div>
       </div>

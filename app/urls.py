@@ -1,6 +1,5 @@
 from django.conf.urls.defaults import *
 
-
 urlpatterns = patterns('app.views',
     url(r'^lessons/$', 'lessons', name="lessons"),
     url(r'^lessons/(?P<lesson_id>\d+)/$', 'lesson_detail', name="lesson_detail"),
@@ -23,5 +22,4 @@ urlpatterns = patterns('app.views',
     url(r'^lesson/(?P<lesson_id>\d+)/$', "lesson", name="lesson"),
     url(r'^purchase/(?P<lesson_id>\d+)/$', "purchase", name="purchase"),
     url(r'^$', "welcome", name="welcome"),
-    url(r'^private-login/$', "privatelogin", name="privatelogin"),
 )

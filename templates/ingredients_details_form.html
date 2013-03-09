@@ -49,7 +49,7 @@ pagelogic = function(){
 
 {% block content %}
 {% autoescape off %}
-<div class="bordered-row main bordered">
+<div class="row main create-lesson-main">
 
     <div class="span6">
 	  <div class="create-lesson-title">
@@ -91,9 +91,11 @@ pagelogic = function(){
 		<h3 class="colored-header">2. Ingredients &amp; Tools</h3>
 	  </div>
 
+	  <!-- commenting out until functionality is added
 	  <div class="span4 pull-right">
-		<a href="#" class="tertiary create-lesson-help-btn pull-right">Need help?</a>
+		<a href="#lesson-help" class="tertiary create-lesson-help-btn pull-right">Need help?</a>
 	  </div>
+    -->
 	</div>
 
 	<div class="row">
@@ -114,29 +116,28 @@ pagelogic = function(){
 				</div>
 
 				<div class="row">
-				  <div class="span3">Name</div>
-				  <div class="span3">Measurement</div>
-				</div>
+          <div class="span2">Measurement</div>
+				  <div class="span2">Ingredient Name</div>
+				  <div class="span2">Category</div>
+        </div>
 
 
                 {% for f in ingredient_formset %}
                 <span class="ingredient_formset">
 				<div class="row">
                     {{f.id}}
-				  <div class="span3">
-                    {{f.ingredient}}
-				  </div>
-                  <div class="span3">
+          
+          <div class="span2">
                     {{f.measurement}}
 				  </div>
-                  <!--
-				  <div class="span1">
-                    {{f.number}}
-				  </div>				  
-				  <div class="span1">
-                    {{f.prep}}
+                  
+				  <div class="span2">
+                    {{f.name}}
+				  </div>	
+          
+          <div class="span2">
+                    {{f.ingredient}}
 				  </div>
-                  -->
 				</div>
                 {% if f.instance.pk %}{{ f.DELETE }}{% endif %}
                 </span>
@@ -149,7 +150,7 @@ pagelogic = function(){
 			</div>
 		  </div>
 
-		  <div class="span6">
+		  <div class="span4 offset1">
 			<div id="create-lesson-form-2-right">
 				<div id="createlessontitle">
 				  <h5>Tools</h5>
@@ -160,30 +161,24 @@ pagelogic = function(){
 				</div>
 
 				<div class="row">
-				  <div class="span2">Name</div>
-                  <!--
-				  <div class="span2">Size</div>
-				  <div class="span2">Type</div>
-                  -->
-				</div>
-
+				  <div class="span2">Tool Name</div>
+				  <div class="span2">Category</div>
+        </div>
+        
                 {% for t in tool_formset %}
                 <span class="tool_formset">
 
 				<div class="row">
                     {{t.id}}
 
-				  <div class="span6">
+				  <div class="span2">
                     {{t.name}}
 				  </div>
-                  <!--
+                  
 				  <div class="span2">
-                    {{t.size}}
+                    {{t.tool}}
 				  </div>
-				  <div class="span2">
-                    {{t.type}}
-				  </div>
-                  -->
+
 				</div>
                 </span>
                 {% endfor %}

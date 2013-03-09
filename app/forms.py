@@ -1,9 +1,11 @@
 import decimal
 
 from django import forms
-from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge, Step, ChefPledge, Tool, Customer
+from .models import Lesson, LessonIngredient, LessonTool, LessonRequest, LessonPledge, Step, ChefPledge, Customer
 from .internal_stripe import purchase_lesson
 from .constants import SKILL_LEVELS
+from .models import Lesson, LessonIngredient, LessonTool, LessonRequest, LessonPledge, Step, ChefPledge, Customer
+#from .constants import SKILL_LEVELS
 #from ajax_select.fields import AutoCompleteSelectMultipleField
 
 
@@ -12,7 +14,7 @@ class ProfileForm(forms.Form):
     first_name = forms.CharField()
     last_name = forms.CharField()
     email = forms.EmailField()
-    skill_level = forms.ChoiceField(choices=SKILL_LEVELS)
+    #skill_level = forms.ChoiceField(choices=SKILL_LEVELS)
 
     def __init__(self, *args, **kwargs):
         profile = self.profile = kwargs.pop('profile')
@@ -21,14 +23,14 @@ class ProfileForm(forms.Form):
                   'first_name': user.first_name,
                   'last_name': user.last_name,
                   'email': user.email,
-                  'skill_level': profile.skill_level,
+                  #'skill_level': profile.skill_level,
                   }
         kwargs['initial'] = initial
         return super(ProfileForm, self).__init__(*args, **kwargs)
 
 
     def save(self):
-        self.profile.skill_level = self.cleaned_data['skill_level']
+        #self.profile.skill_level = self.cleaned_data['skill_level']
         self.profile.about = self.cleaned_data['about']
         self.profile.user.first_name = self.cleaned_data['first_name']
         self.profile.user.last_name = self.cleaned_data['last_name']
@@ -93,23 +95,23 @@ class IngredentsDetailsForm(forms.ModelForm):
 
     class Meta:
         model = LessonIngredient
-        fields =  ("ingredient", "measurement")
+        fields =  ("name","ingredient", "measurement")
 
 class ToolsDetailsForm(forms.ModelForm):
 
     class Meta:
-        model = Tool
-        fields =  ("name", )
+        model = LessonTool
+        fields =  ("name", "tool")
 
 
 class StepDetailsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         rv = super(StepDetailsForm, self).__init__(*args, **kwargs)
         try:
-            self.fields['tools'].queryset = self.instance.lesson.tools.all()
+            self.fields['tools'].queryset = self.instance.lesson.lessontool_set.all()
             self.fields['ingredients'].queryset = self.instance.lesson.lessoningredient_set.all()
         except:
-            self.fields['tools'].queryset = self.initial['lesson'].tools.all()
+            self.fields['tools'].queryset = self.initial['lesson'].lessontool_set.all()
             self.fields['ingredients'].queryset = self.initial['lesson'].lessoningredient_set.all()
         return rv
 
