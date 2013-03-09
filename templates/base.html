@@ -1,10 +1,6 @@
 {% load mezzanine_tags %}
 <!doctype html>
 <html xmlns:fb="http://ogp.me/ns/fb#">
-  <!-- AddThis Analytics -->
-  <script type="text/javascript">var addthis_config = {"data_track_addressbar":true, services_overlay:'facebook,tumblr,more'};</script>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-513a9c4843710012"></script>
-  
   <head>
     <title>{% block title %} {% endblock %}</title>
     <link rel='stylesheet' href='{{ STATIC_URL }}css/main.css' />
@@ -53,10 +49,14 @@
     {% block media %}{% endblock %}
   </head>
   <body>
-      <header class="row">
+    <!-- AddThis Analytics -->
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true, services_overlay:'facebook,tumblr,more'};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-513a9c4843710012"></script>  
+    
+    <header class="row">
         {% include "nav.html" %}
         {% block header %} {% endblock %}
-      </header>
+    </header>
     
     <div class='container'>
       <div class="content" >

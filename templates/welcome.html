@@ -1,19 +1,15 @@
 {% load mezzanine_tags %}
 <!doctype html>
 <html xmlns:fb="http://ogp.me/ns/fb#">
-  <!-- AddThis Analytics -->
-  <script type="text/javascript">var addthis_config = {"data_track_addressbar":true, services_overlay:'facebook,tumblr,more'};</script>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-513a9c4843710012"></script>
-  
   <head>
     <title>Culination - Taste Your Potential</title>
     <link rel='stylesheet' href='{{ STATIC_URL }}css/main.css' />
-    <link href='http://fonts.googleapis.com/css?family=Noticia+Text:700' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='{{ STATIC_URL }}css/splash.css' />
     <link rel='shortcut icon' href='{{ STATIC_URL }}img/favicon.ico' />
     <link rel='apple-touch-icon' href="">
 
-    <meta name='title' content='' />
-    <meta name='description' content='' />
+    <meta name='title' content="Culination - Taste Your Potential" />
+    <meta name='description' content="I want to make my kitchen a place for inspiration, not intimidation. That's why I want to join Culination." />
 
     <!-- Google Site Verification -->
     <meta name='google-site-verification' content="" />
@@ -21,13 +17,13 @@
     <!-- Facebook Open Graph -->
     <meta property="fb:admins" content="" />
     <meta property="og:site_name" content="" />
-    <meta property="og:title" content="" />
-    <meta property="og:url" content="" />
+    <meta property="og:title" content="Culination - Taste Your Potential" />
+    <meta property="og:url" content="http://culination.co" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="" />
-    <meta property="og:image" content="" />
+    <meta property="og:description" content="I want to make my kitchen a place for inspiration, not intimidation. That's why I want to join Culination." />
+    <meta property="og:image" content="http://wellganic-tutelage.dotcloud.com/static/img/culination-logo-full.png" />
     <meta property="fb:page_id" content="" />
-    
+
     <!-- Google Analytics -->
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -41,8 +37,6 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    
-    <!-- Stripe -->
     <script src="https://js.stripe.com/v1/"></script>
     <script type="text/javascript">
             Stripe.setPublishableKey('pk_ql6Y3hAzG1yNZRTgdy5I6O7wMzbES');
@@ -60,7 +54,11 @@
     });
     </script>
   </head>
-  <body> 
+  <body>
+    <!-- AddThis Analytics -->
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true, services_overlay:'facebook,tumblr,more'};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-513a9c4843710012"></script>  
+    
     <div class="container">
       <div class="row">
         <div class="span6 logo-slogan">
