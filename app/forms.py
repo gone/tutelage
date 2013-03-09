@@ -2,6 +2,7 @@ import decimal
 
 from django import forms
 from .models import Lesson, LessonIngredient, LessonRequest, LessonPledge, Step, ChefPledge, Tool, Customer
+from .internal_stripe import purchase_lesson
 from .constants import SKILL_LEVELS
 #from ajax_select.fields import AutoCompleteSelectMultipleField
 
@@ -234,4 +235,5 @@ class LessonPurchaseForm(forms.Form):
             raise forms.ValidationError("We need a credit card to bill you")
 
     def save(self, *args, **kwargs):
+        purchase_lesson(self.user, self.lesson)
         self.lesson.followers.add(self.user)
