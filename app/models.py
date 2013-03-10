@@ -232,7 +232,7 @@ class Profile(CreatedMixin):
 
     personal_video = models.FileField(upload_to=file_url("personal_video"), blank=True)
     personal_video_image = models.ImageField(upload_to=file_url("personal_video_intro"), blank=True)
-
+    video = models.ForeignKey("Video", related_name="profiles", null=True, blank=True)
 
     @cached_property
     def tags(self):
@@ -302,30 +302,43 @@ class Video(CreatedMixin):
         source_bucket = s3_connection.get_bucket(MAIN_BUCKET)
         dest_bucket = s3_connection.get_bucket(ENCODING_BUCKET)
         key = source_bucket.get_key(unicode(self.video))
-        key.copy(dest_bucket, unicode(self.video))
+        dest_key = dest_bucket.get_key(unicode(self.video))
+        if not dest_key:
+            key.copy(dest_bucket, unicode(self.video))
 
-
-        input_dict = {
-            "Key":unicode(self.video),
-            "FrameRate":"auto",
-            "Resolution":"auto",
-            "AspectRatio":"auto",
-            "Interlaced":"auto",
-            "Container":"auto",
-            }
         dest = unicode(self.video).replace('/lessonvideos/', '/encodedvideos/')
-        output_dict = {
-            "Key": dest,
-            "ThumbnailPattern":"",
-            "Rotate":"auto",
-            "PresetId":"1351620000000-100070", #web
-            }
-        elastic_connection.create_job(ENCODING_PIPELINE, input_dict, output_dict)
-        TranscodedVideo.objects.create(video=self, encoded=dest)
+        existing = source_bucket.get_key(dest)
+
+        if not existing:
+            input_dict = {
+                "Key":unicode(self.video),
+                "FrameRate":"auto",
+                "Resolution":"auto",
+                "AspectRatio":"auto",
+                "Interlaced":"auto",
+                "Container":"auto",
+                }
+
+            output_dict = {
+                "Key": dest,
+                "ThumbnailPattern":"",
+                "Rotate":"auto",
+                "PresetId":"1351620000000-100070", #web
+                }
+            elastic_connection.create_job(ENCODING_PIPELINE, input_dict, output_dict)
+            TranscodedVideo.objects.create(video=self, encoded=dest)
+
+        def save(self, *args, **kwargs):
+            super(self.__class__, self).save()
+            self.encode_video()
 
 class TranscodedVideo(CreatedMixin):
     video = models.ForeignKey(Video, related_name="codecs")
     encoded = models.FileField(upload_to=file_url("encodedvideos"), blank=True, null=True)
+
+    def get_absolute_url(self):
+        return "%s%s" % (settings.MEDIA_URL, self.encoded)
+
 
 class Lesson(CreatedMixin, Displayable):
     #TODO: this model should probably have a slug
@@ -357,7 +370,7 @@ class Lesson(CreatedMixin, Displayable):
 
     ingredients = models.ManyToManyField(Ingredient, through="LessonIngredient", related_name="lessons")
     tools = models.ManyToManyField(Tool, through="LessonTool", related_name="lessons", blank=True)
-    video = models.ForeignKey(Video, related_name="lesson", null=True, blank=True)
+    video = models.ForeignKey(Video, related_name="lessons", null=True, blank=True)
 
 
     class Meta():

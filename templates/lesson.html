@@ -128,7 +128,10 @@ require(['./common',], function(){
 			<!-- this should likely be moved somewhere else  -->
 			<div class="row no-display video-row">
 			  <video class="chef-movie-video span6" controls="controls">
-                <source src="{{step.technique.video.get_absolute_url}}" />
+                {% for encoding in step.technique.video.envodedvideos %}
+                <source src="{{MEDIA_URL}}{{encoding.get_absolute_url}}" />
+                {% endfor %}
+                <source src="{{MEDIA_URL}}{{step.technique.video.get_absolute_url}}" />
                 <p>Your browser does not support HTML5 video.</p>
 			  </video>
 			</div>
