@@ -524,4 +524,8 @@ HAYSTACK_SITECONF = 'app.search_sites'
 
 STRIPE_API = "fYNnSezc4SWDZce9XexC6iP2bLhS6Lan"
 
-
+AWS_STORAGE_BUCKET_NAME = 'cookcadmey'
+AWS_ENCODING_BUCKET_NAME = 'culination-transcode'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = 'AKIAJNDCQNNOONNJ6VCA'
+AWS_SECRET_ACCESS_KEY = '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'

@@ -4,10 +4,26 @@ from datetime import datetime
 import time
 from itertools import chain
 
+from django.conf import settings
 
 import magic
 
-from django.conf import settings
+
+from boto.elastictranscoder.layer1 import ElasticTranscoderConnection
+elastic_connection = ElasticTranscoderConnection(aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+                                                 aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
+ENCODING_PIPELINE = "1362949390843-834791" # culiation-transcode
+
+
+from boto.s3.connection import S3Connection
+s3_connection = S3Connection(aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+                             aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
+
+MAIN_BUCKET = settings.AWS_STORAGE_BUCKET_NAME
+ENCODING_BUCKET = settings.AWS_ENCODING_BUCKET_NAME
+
+
+
 from django.db import models
 from django.db.models import Avg
 from django.contrib.auth.models import User
@@ -280,6 +296,36 @@ class Video(CreatedMixin):
     def clean(self):
         self.validate_video()
 
+
+    def encode_video(self):
+        #copy movie to transcoding bucket
+        source_bucket = s3_connection.get_bucket(MAIN_BUCKET)
+        dest_bucket = s3_connection.get_bucket(ENCODING_BUCKET)
+        key = source_bucket.get_key(unicode(self.video))
+        key.copy(dest_bucket, unicode(self.video))
+
+
+        input_dict = {
+            "Key":unicode(self.video),
+            "FrameRate":"auto",
+            "Resolution":"auto",
+            "AspectRatio":"auto",
+            "Interlaced":"auto",
+            "Container":"auto",
+            }
+        dest = unicode(self.video).replace('/lessonvideos/', '/encodedvideos/')
+        output_dict = {
+            "Key": dest,
+            "ThumbnailPattern":"",
+            "Rotate":"auto",
+            "PresetId":"1351620000000-100070", #web
+            }
+        elastic_connection.create_job(ENCODING_PIPELINE, input_dict, output_dict)
+        TranscodedVideo.objects.create(video=self, encoded=dest)
+
+class TranscodedVideo(CreatedMixin):
+    video = models.ForeignKey(Video, related_name="codecs")
+    encoded = models.FileField(upload_to=file_url("encodedvideos"), blank=True, null=True)
 
 class Lesson(CreatedMixin, Displayable):
     #TODO: this model should probably have a slug

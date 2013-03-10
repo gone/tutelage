@@ -14,7 +14,7 @@ django-devserver==0.3.1
 fabric==1.4.1
 
 # AWS
-boto==2.3.0
+boto==2.8.0
 django-storages==1.1.4
 django-ses==0.4.1
 django_smtp_ssl
