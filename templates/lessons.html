@@ -3,6 +3,7 @@
 {% for lesson in lessons %}
 {% include "lesson_tile.html" with lesson=lesson %}
 {% endfor %}
+
 <script type="text/javascript" src="http://masonry.desandro.com/jquery.masonry.min.js"></script>
 <script type="text/javascript">
 pagelogic = function(){
@@ -17,5 +18,8 @@ pagelogic = function(){
     $('.box-lessons').addClass('box-active');
 };
 </script>
+
+{% include "pager.html" with lessons=pager %}
+
 {% include "stripe.html" with form_class=".purchase" %}
 {% endblock %}

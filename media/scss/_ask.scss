@@ -189,12 +189,12 @@
 
 .request-bar {
     max-width: 100%;
-    background-color: $request !important;
-    background-image: -moz-linear-gradient(top, $request, $request) !important;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($request), to($request)) !important;
-    background-image: -webkit-linear-gradient(top, $request, $request) !important;
-    background-image: -o-linear-gradient(top, $request, $request) !important;
-    background-image: linear-gradient(to bottom, $request, $request) !important;
+    background-color: $inactive-selected !important;
+    background-image: -moz-linear-gradient(top, $inactive-selected, $inactive-selected) !important;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($inactive-selected), to($inactive-selected)) !important;
+    background-image: -webkit-linear-gradient(top, $inactive-selected, $inactive-selected) !important;
+    background-image: -o-linear-gradient(top, $inactive-selected, $inactive-selected) !important;
+    background-image: linear-gradient(to bottom, $inactive-selected, $inactive-selected) !important;
 }
 
 .request-bar-text {

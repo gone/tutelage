@@ -23,6 +23,7 @@ $nav-padding: 5px;
 }
 
 .box:hover {
+  background-color: $tertiary;
 	a {color: $white !important;}
 }
 
@@ -56,8 +57,8 @@ $nav-padding: 5px;
 }
 
 
-.box:hover, .box-active {
-    background-color: $tertiary;
+.box-active {
+    background-color: $inactive-selected;
     h5 {color:	white;}
 }
 
@@ -76,6 +77,11 @@ $nav-padding: 5px;
 
 .nav-search {
     margin: 13px;
+}
+
+.nav-search .add-on {
+    background-color: $primary;
+    border: 1px solid $primary;
 }
 
 .nav-search > div {
@@ -159,10 +165,19 @@ $nav-padding: 5px;
 }
 
 .navbar-logo {
-	height: 108px;
-    width: 72px;
+  height: 65px;
 }
 
+.navbar-logo-container {
+  position: absolute;
+}
+
+.navbar-logo-full {
+	height: 108px;
+  width: 72px;
+}
+
+/* delete when navigation finalized 
 .navbar-logo-chevron-container {
     width: 945px;
     margin-left: auto;
@@ -175,6 +190,7 @@ $nav-padding: 5px;
     height: 43px;
     width: 73px;
 }
+*/
 
 .container {
     margin-top: 108px;
