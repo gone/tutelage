@@ -9,9 +9,7 @@
 
         {% if query %}
             {% for result in page.object_list %}
-                <p>
-                    <a href="{{ result.object.get_absolute_url }}" class="tertiary">{{ result.object.title }}</a>
-                </p>
+                  {% include "lesson_tile.html" with lesson=result.object %}
             {% empty %}
                 <p>No results found.</p>
             {% endfor %}
