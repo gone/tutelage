@@ -29,7 +29,7 @@ from django.contrib.formtools.wizard.views import SessionWizardView
 
 logger = logging.getLogger(__name__)
 
-from .models import (Lesson, LessonIngredient, LessonTool, Step, Video,
+from .models import (Lesson, LessonIngredient, LessonTool, Step, #Video,
                      LessonRating, FeaturedChef, LessonRequest, Customer, Profile)
 
 from .forms import (ProfileForm,
@@ -163,16 +163,16 @@ def add_lesson(request, lesson_id=None):
     return direct_to_template(request, "lesson_details_form.html", {"form": form, "lesson_id":lesson_id})
 
 
-@login_required
-def add_lesson_video(request, lesson_id):
-    lesson = get_object_or_404(Lesson, pk=lesson_id)
-    video = Video(video=request.FILES['video'], lesson=lesson)
-    try:
-        video.clean()
-    except ValidationError, e:
-        return HttpResponse(str(e), status=400)
-    video.save()
-    return HttpResponse('OK')
+# @login_required
+# def add_lesson_video(request, lesson_id):
+#     lesson = get_object_or_404(Lesson, pk=lesson_id)
+#     video = Video(video=request.FILES['video'], lesson=lesson)
+#     try:
+#         video.clean()
+#     except ValidationError, e:
+#         return HttpResponse(str(e), status=400)
+#     video.save()
+#     return HttpResponse('OK')
 
 
 @login_required
