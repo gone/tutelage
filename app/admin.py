@@ -14,6 +14,7 @@ class HomeAdmin(PageAdmin):
 
 class StepAdmin(admin.TabularInline):
     model = Step
+    fk_name = 'lesson'
 
 class LessonIngredientAdmin(admin.TabularInline):
     model = LessonIngredient

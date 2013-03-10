@@ -5,6 +5,8 @@ import time
 from itertools import chain
 
 
+import magic
+
 from django.conf import settings
 from django.db import models
 from django.db.models import Avg
@@ -253,31 +255,30 @@ class Customer(CreatedMixin):
     user = models.OneToOneField(User)
     customer_id = models.CharField(max_length=128)
 
-# class Video(CreatedMixin):
-#     video = models.FileField(upload_to=file_url("lessonvideos"))
-#     lesson = models.ForeignKey('Lesson', related_name='videos')
+class Video(CreatedMixin):
+    video = models.FileField(upload_to=file_url("lessonvideos"))
 
-#     def get_absolute_url(self):
-#         return "%s%s" % (settings.MEDIA_URL, self.video)
+    def get_absolute_url(self):
+        return "%s%s" % (settings.MEDIA_URL, self.video)
 
-    # def validate_video(self):
-    #     try:
-    #         f = self.video.file
-    #     except ValueError:
-    #         raise ValidationError("Need a Video File")
-    #     # TODO: choice the video types to support
-    #     mime = magic.from_buffer(f.read(1024), mime=True)
-    #     try:
-    #         type_, subtype = mime.split('/')
-    #     except ValueError:
-    #         raise ValidationError("The file must be a video")
-    #     if type_ != VIDEO_TYPE:
-    #         raise ValidationError("The file must be a video")
-    #     if subtype not in VIDEO_SUBTYPES:
-    #         raise ValidationError("Video format not suported")
+    def validate_video(self):
+        try:
+            f = self.video.file
+        except ValueError:
+            raise ValidationError("Need a Video File")
+        # TODO: choice the video types to support
+        mime = magic.from_buffer(f.read(1024), mime=True)
+        try:
+            type_, subtype = mime.split('/')
+        except ValueError:
+            raise ValidationError("The file must be a video")
+        if type_ != VIDEO_TYPE:
+            raise ValidationError("The file must be a video")
+        if subtype not in VIDEO_SUBTYPES:
+            raise ValidationError("Video format not suported")
 
-    # def clean(self):
-    #     self.validate_video()
+    def clean(self):
+        self.validate_video()
 
 
 class Lesson(CreatedMixin, Displayable):
@@ -310,6 +311,8 @@ class Lesson(CreatedMixin, Displayable):
 
     ingredients = models.ManyToManyField(Ingredient, through="LessonIngredient", related_name="lessons")
     tools = models.ManyToManyField(Tool, through="LessonTool", related_name="lessons", blank=True)
+    video = models.ForeignKey(Video, related_name="lesson", null=True, blank=True)
+
 
     class Meta():
         unique_together = ('teacher', 'title')
@@ -364,7 +367,7 @@ class Step(CreatedMixin):
     text = models.TextField()
 
     order = models.PositiveSmallIntegerField(default=0)
-    technique = models.ManyToManyField(Lesson, related_name="technique_steps", blank=True)
+    technique = models.ForeignKey(Lesson, related_name="technique", null=True)
     ingredients = models.ManyToManyField(LessonIngredient, related_name="steps", blank=True)
     tools = models.ManyToManyField(LessonTool, related_name="steps", blank=True)
 

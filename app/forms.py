@@ -103,6 +103,7 @@ class ToolsDetailsForm(forms.ModelForm):
 class StepDetailsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         rv = super(StepDetailsForm, self).__init__(*args, **kwargs)
+        self.fields['technique'].queryset = self.fields['technique'].queryset.filter(kind=1)
         try:
             self.fields['tools'].queryset = self.instance.lesson.lessontool_set.all()
             self.fields['ingredients'].queryset = self.instance.lesson.lessoningredient_set.all()

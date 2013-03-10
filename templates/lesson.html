@@ -74,13 +74,15 @@ handle_timeline_click = function(){
 
 require(['./common',], function(){
     require(["jquery", "colorbox"], function($){
-
-        $(".tech").colorbox({
-            inline:true,
-            width:"50%",
-            href:function(){
-                return $(this).siblings('.video-row').children('.chef-movie-video');
-            }
+        $(".step-technique-text").click(function(){
+            that = this
+            $.colorbox({
+                inline:true,
+                width:"50%",
+                href:function(){
+                    return $(that).siblings('.video-row').children('.chef-movie-video');
+                }
+            })
         })
         $('#myModal').on('show', function (e) {
             if (!data) return e.preventDefault() // stops modal from being shown
@@ -118,27 +120,20 @@ require(['./common',], function(){
 		  <div class="step-title span12">Step {{step.order}}: {{step.title}}</div>
 		  {% endif %}
 
-		  <!-- commenting out until video implementation complete
           <div class="step-technique span5">
-			{% for tech in step.technique.all %}
+			{% if step.technique %}
 			<a class="technique-{{forloop.parentloop.counter0}} step-technique-text step-title secondary pull-right">Watch
 			  <img class="technique-play-icon" src="{{STATIC_URL}}img/play-button-blue.png" />
-			  {{tech.title}}</a>
-			<!-- this should likely be moved somewhere else 
+			  {{step.technique.title}}</a>
+			<!-- this should likely be moved somewhere else  -->
 			<div class="row no-display video-row">
 			  <video class="chef-movie-video span6" controls="controls">
-				<!-- Sample videos until we have our actual intro video 
-				<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" />
-				<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" />
-				<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" />
-				<!-- fallback  
-
+                <source src="{{step.technique.video.get_absolute_url}}" />
                 <p>Your browser does not support HTML5 video.</p>
 			  </video>
 			</div>
-			{% endfor %}
+            {% endif %}
 		  </div>
-          -->
 
 		  <div class="step-description span12">{{step.text}}</div>
 		</div>
@@ -152,7 +147,7 @@ require(['./common',], function(){
                 {{ingredient.measurement}} {{ingredient.name}}
               </strong>
             </div>
-    
+
             <div class='lesson-icon-circle lesson-icon-circle-ingredients'>
               {% if ingredient.ingredient %}
               <div class="lesson-icon-circle-icon pointer"><h2>+</h2></div>
@@ -165,12 +160,12 @@ require(['./common',], function(){
             </div>
           </div>
           {% endfor %}
-        </div>                  
+        </div>
 
         <div class="span4 pull-right">
           <div id="tools" class="lesson-panel">
             {% for tool in step.tools.all %}
-            <div class='panel-item tool tool{{forloop.counter}} tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}'>              
+            <div class='panel-item tool tool{{forloop.counter}} tool-{{forloop.parentloop.counter0}}-{{forloop.counter}}'>
               <div class='lesson-icon-circle lesson-icon-circle-tools lesson-icon-circle-tool{{forloop.counter}}'>
                 {% if tool.tool %}
                 <div class="lesson-icon-circle-icon pointer"><h2>+</h2></div>
