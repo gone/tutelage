@@ -21,9 +21,9 @@
 		        <a class="btn btn-secondary" href="{%url lesson_detail lesson.id %}">more details</a>
             {% endif %}
             {% if user in lesson.followers.all %}
-		        <a class="btn btn-tertiary pull-right" href="{% url lesson lesson.id %}">view lesson</a>
+		        <a class="btn btn-tertiary pull-right" href="{% url lesson lesson.id %}">view</a>
             {% else %}
-                <a class="btn btn-tertiary pull-right" href="" onclick="$.colorbox({href:'#purchase-{{lesson.id}}',inline: true}); return false">Purchase lesson</a>
+                <a class="btn btn-tertiary pull-right" href="" onclick="$.colorbox({href:'#purchase-{{lesson.id}}',inline: true}); return false">buy</a>
                 <div class="row no-display">
                   {% include "lesson_purchase.html" with lesson=lesson %}
                 </div>
@@ -39,6 +39,7 @@
         </div>
       </div>
 
+<!--
       <div class="row">
 	    <div class="span6">
 			<div class="lesson-tile-description">
@@ -56,14 +57,16 @@
           </ul>
         </div>
 	  </div>
-
+    -->
+    {% if lesson.tags %}
 	  <hr/>
 
-	  <div class="row">
-		  <div class="span6 lesson-tile-tags">
-              {% for tag in lesson.tags %}
-			  <a href="{% url search %}?q={{tag}}" class="btn btn-clearprimary btn-tags">{{tag|title}}</a>
-              {% endfor %}
-		  </div>
+      <div class="row">
+        <div class="span6 lesson-tile-tags">
+          {% for tag in lesson.tags %}
+          <a href="{% url search %}?q={{tag}}" class="btn btn-clearprimary btn-tags">{{tag|title}}</a>
+          {% endfor %}
+        </div>
       </div>
+    {% endif %}
     </div>

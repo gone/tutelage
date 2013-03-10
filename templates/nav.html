@@ -1,10 +1,31 @@
+<div class="navbar navbar-logo-container">
+  <div class="navbar-inner">
+    <a class="brand" href="/">
+      <img class="navbar-logo-full" src="{{STATIC_URL}}img/culination-logo-full.png" />
+    </a>
+  </div>
+</div>
+
 <div class="navbar" >
   <div class="navbar-inner">
   <a class="brand" href="/">
-    <img class="navbar-logo" src="{{STATIC_URL}}img/culination-logo-full.png" />
+    <img class="navbar-logo" src="{{STATIC_URL}}img/culination-logo.png" />
   </a>
   <ul class="nav pull-right">
       <li class="divider-vertical"></li>
+      
+      <li>
+      <form action="{% url search %}" method="GET">
+        <div class="nav-search">
+          <div class='input-prepend'>
+            <span class="add-on"><i class="icon-search icon-white"></i></span>
+            <input name="q" type="text" placeholder="What sounds good?" />
+          </div>
+          <input class="nav-search-submit btn btn-primary" type="submit" value="search" />
+        </div>
+      </form>
+      </li>
+      
       <li>
         <a href="{% url lessons %}">
 		  <div class="box box-lessons">
@@ -46,18 +67,6 @@
         </a>
       </li>
       -->
-    
-      <li>
-      <form action="{% url search %}" method="GET">
-        <div class="nav-search">
-          <div class='input-prepend'>
-            <span class="add-on"><i class="icon-search"></i></span>
-            <input name="q" type="text" placeholder="What sounds good?" />
-          </div>
-          <input class="nav-search-submit btn btn-secondary" type="submit" value="search" />
-        </div>
-      </form>
-      </li>
 	  
 	  
 	  
@@ -104,9 +113,3 @@
     </ul>
   </div>
 </div>
-
-<!--
-<div class="navbar-logo-chevron-container">
-  <img class="navbar-logo-chevron" src="{{STATIC_URL}}img/culination-chevron.png" />
-</div>
--->

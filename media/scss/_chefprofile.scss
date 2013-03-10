@@ -89,8 +89,8 @@
 }
 
 .featured-chef-box-active, .chef-box:active {
-    background-color: $request;
-    border-color: $request;
+    background-color: $inactive-selected;
+    border-color: $inactive-selected;
     color: $white;
 }
 

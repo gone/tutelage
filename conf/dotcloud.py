@@ -52,7 +52,7 @@ AWS_SECRET_ACCESS_KEY = 'uNMppyfVI6arUhGXe/utJxwhVRAJDLI3OHDVXbck'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = 'AKIAJNDCQNNOONNJ6VCA'
 AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'cookcadmey'
+AWS_STORAGE_BUCKET_NAME = 'culination'
 AWS_HEADERS = {
     'Expires': 'Tue, 14 Aug 2013 20:00:00 GMT',
     'Cache-Control': 'max-age=8640000',

@@ -7908,6 +7908,9 @@ body .ui-tooltip {
   color: #333333 !important;
 }
 
+.box:hover {
+  background-color: #f96530;
+}
 .box:hover a {
   color: white !important;
 }
@@ -7940,10 +7943,10 @@ body .ui-tooltip {
   width: 65px;
 }
 
-.box:hover, .box-active {
-  background-color: #f96530;
+.box-active {
+  background-color: #95cfad;
 }
-.box:hover h5, .box-active h5 {
+.box-active h5 {
   color: white;
 }
 
@@ -7962,6 +7965,11 @@ body .ui-tooltip {
 
 .nav-search {
   margin: 13px;
+}
+
+.nav-search .add-on {
+  background-color: #57264f;
+  border: 1px solid #57264f;
 }
 
 .nav-search > div {
@@ -8045,23 +8053,32 @@ body .ui-tooltip {
 }
 
 .navbar-logo {
+  height: 65px;
+}
+
+.navbar-logo-container {
+  position: absolute;
+}
+
+.navbar-logo-full {
   height: 108px;
   width: 72px;
 }
 
+/* delete when navigation finalized 
 .navbar-logo-chevron-container {
-  width: 945px;
-  margin-left: auto;
-  margin-right: auto;
+    width: 945px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .navbar-logo-chevron {
-  position: absolute;
-  top: 66px;
-  height: 43px;
-  width: 73px;
+	position: absolute;
+    top: 66px;
+    height: 43px;
+    width: 73px;
 }
-
+*/
 .container {
   margin-top: 108px;
   margin-bottom: 60px;
