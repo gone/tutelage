@@ -145,7 +145,8 @@
     {{/each}}
 </script>
 {% endverbatim %}
-{% include "stripe.html"  with form_class=".contribute_form"%}
+{% include "stripe.html"  with form_class=".contribute_form" %}
+{% include "stripe.html"  with form_class=".request-form" %}
 <script type="text/javascript">
 
 require(['./common',], function(){
@@ -181,15 +182,7 @@ require(['./common',], function(){
             url = "?request=" + slug
             window.history.replaceState({}, document.title, url)
             addthis.toolbox(".addthis_toolbox")
-            $('.contribute-form').submit(function(e){
-                if (has_stripe){
-                    return true
-                }
-                else {
-                    cc.setupColorbox('#payment')
-                    return false
-                }
-            })
+            prep_pre_stripe_form('.contribute-form') //added via the stripe template
             active_request = $('.lessonrequest-active').find('.timetoraise');
             if (active_request.hasClass('timetoraise-today')) {
                 $('.featured-timetoraise').addClass('timetoraise-today');

@@ -3,10 +3,6 @@ import decimal
 from django import forms
 from .models import Lesson, LessonIngredient, LessonTool, LessonRequest, LessonPledge, Step, ChefPledge, Customer
 from .internal_stripe import purchase_lesson
-from .constants import SKILL_LEVELS
-from .models import Lesson, LessonIngredient, LessonTool, LessonRequest, LessonPledge, Step, ChefPledge, Customer
-#from .constants import SKILL_LEVELS
-#from ajax_select.fields import AutoCompleteSelectMultipleField
 
 
 class ProfileForm(forms.Form):
@@ -208,6 +204,8 @@ class LessonRequestForm(forms.ModelForm):
         self.fields['title'].label = "Name"
         self.fields['time_in_min'].label = "Time Required"
         self.fields['serving_size'].label = "Serving Size"
+        self.fields['need_by'].required = True
+
         return rv
 
     def save(self, *args, **kwargs):
@@ -220,6 +218,13 @@ class LessonRequestForm(forms.ModelForm):
                                     request=lesson_request
                                     )
         return lesson_request
+
+    def clean(self):
+        try:
+            self.user.customer
+            return super(LessonRequestForm, self).clean()
+        except Customer.DoesNotExist:
+            raise forms.ValidationError("We need a credit card to bill you")
 
 
 class LessonPurchaseForm(forms.Form):

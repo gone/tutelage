@@ -8,7 +8,9 @@
         </div>
 
         <hr class="request-hr" />
-
+        <div>
+            {{request_form.non_field_errors }}
+        </div>
         <div class="row">
             <div class="span3 request-form-field">
                 {{request_form.title.label_tag}}
@@ -76,7 +78,7 @@
                      <input class="datepicker create-request-prepend-input"
                                name="{{request_form.need_by.html_name}}"
                                type="text"
-                               value='{{request_form.need_by.value|default:alert_date|date:"m/d/Y"}}'
+                               value='{{request_form.need_by.value|date:"m/d/Y"}}'
                                placeholder="">
                 </div>
                 {{request_form.need_by.errors}}
@@ -90,7 +92,7 @@
                                type="number"
                                min="0"
                                value="{{request_form.initial.value}}"
-                               max="1000" 
+                               max="1000"
                                placeholder="">
                 </div>
                 {{request_form.initial.errors}}

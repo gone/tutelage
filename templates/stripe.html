@@ -1,5 +1,5 @@
 <script type="text/javascript">
-has_stripe = {% if user.creditcard_set.all %}true{%else%}false{%endif%}
+has_stripe = {% if request.user.customer %}true{%else%}false{%endif%}
 current_form = null
 function stripeResponseHandler(status, response){
     if (status == 200){
@@ -12,17 +12,20 @@ function stripeResponseHandler(status, response){
     }
 
 }
+function prep_pre_stripe_form(form_class){
+    $(form_class).submit(function(e){
+        if (has_stripe){
+            return true
+        }
+        else {
+            $.colorbox({href:'#payment',inline: true})
+            current_form = $(this)
+            return false
+        }
+    })
+}
 $(document).ready(function(){
-        $('{{form_class}}').submit(function(e){
-                if (has_stripe){
-                    return true
-                }
-                else {
-                    $.colorbox({href:'#payment',inline: true})
-                    current_form = $(this)
-                    return false
-                }
-            })
+    prep_pre_stripe_form('{{form_class}}')
 })
 </script>
 <div class="row no-display">

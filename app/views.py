@@ -1,6 +1,7 @@
 import json
 import logging
 from itertools import chain
+from functools import wraps
 from datetime import datetime, timedelta
 from datetime import datetime
 from django.shortcuts import get_object_or_404, render_to_response, redirect
@@ -46,6 +47,23 @@ from .internal_stripe import create_customer, bill_pledge
 from account.forms import PasswordChangeForm
 
 from django.contrib.auth.models import User
+
+@transaction.commit_manually
+def handle_customer_data(request):
+    if request.method == "POST" and 'stripe-data' in request.POST:
+        stripe_data = json.loads(request.POST['stripe-data'])
+        customer = create_customer(request.user, stripe_data['id'])
+        Customer.objects.create(customer_id=customer.id, user=request.user)
+        transaction.commit()
+
+def create_stripe_customer(func):
+
+    @wraps(func)
+    def wrapper(request, *args, **kwargs):
+        handle_customer_data(request)
+        return func(request, *args, **kwargs)
+    return wrapper
+
 
 @login_required(redirect_field_name='')
 def profile(request, user_id=None):
@@ -210,14 +228,12 @@ def lesson_steps(request, lesson_id=None):
         step_formset = StepFormset(queryset=lesson.steps.all(), instance=lesson, initial=[{'lesson': lesson}])
     return direct_to_template(request, "step_details_form.html", {"form": step_formset, "lesson": lesson,})
 
+@create_stripe_customer
 @login_required
 def purchase(request, lesson_id):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
     if request.method == "POST":
         form = LessonPurchaseForm(request.user, lesson, request.POST)
-        if 'stripe-id' in request.POST:
-            customer = create_customer(request.user, request.POST['stripe-id'])
-            Customer.objects.create(customer_id=customer.id, user=request.user)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse("lesson", kwargs={'lesson_id':lesson.id}))
@@ -238,13 +254,10 @@ def chef_pledge(request, slug):
         form = ChefPledgeForm(request.user, lesson_request)
     return direct_to_template(request, "chef_pledge_standalone.html", {"pledge_form": form, "slug":slug})
 
-
+@create_stripe_customer
 @login_required
 def contribute(request):
     if request.method == "POST":
-        if 'stripe-id' in request.POST:
-            customer = create_customer(request.user, request.POST['stripe-id'])
-            Customer.objects.create(customer_id=customer.id, user=request.user)
         form = ContributionForm(request.user, request.POST)
         if form.is_valid():
             contribution = form.save()
@@ -253,6 +266,7 @@ def contribute(request):
         form = ContributionForm(request.user)
     return direct_to_template(request, "contribute_standalone.html", {"contribute_form": form})
 
+@create_stripe_customer
 @login_required
 def ask_form(request):
     if request.method == "POST":
@@ -267,7 +281,7 @@ def ask_form(request):
 @login_required(redirect_field_name='')
 def ask(request):
     all_lesson_requests = LessonRequest.objects.filter(active=True)
-    active_requests = LessonRequest.objects.filter(active=True, need_by__gt=datetime.today())
+    active_requests = LessonRequest.objects.filter(active=True, need_by__gte=datetime.today())
     alert_date = datetime.now() + timedelta(days=1)
 
     per_page = 6
