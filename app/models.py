@@ -253,12 +253,12 @@ class Customer(CreatedMixin):
     user = models.OneToOneField(User)
     customer_id = models.CharField(max_length=128)
 
-class Video(CreatedMixin):
-    video = models.FileField(upload_to=file_url("lessonvideos"))
-    lesson = models.ForeignKey('Lesson', related_name='videos')
+# class Video(CreatedMixin):
+#     video = models.FileField(upload_to=file_url("lessonvideos"))
+#     lesson = models.ForeignKey('Lesson', related_name='videos')
 
-    def get_absolute_url(self):
-        return "%s%s" % (settings.MEDIA_URL, self.video)
+#     def get_absolute_url(self):
+#         return "%s%s" % (settings.MEDIA_URL, self.video)
 
     # def validate_video(self):
     #     try:
