@@ -367,7 +367,7 @@ class Step(CreatedMixin):
     text = models.TextField()
 
     order = models.PositiveSmallIntegerField(default=0)
-    technique = models.ForeignKey(Lesson, related_name="technique", null=True)
+    technique = models.ForeignKey(Lesson, related_name="technique", null=True, blank=True)
     ingredients = models.ManyToManyField(LessonIngredient, related_name="steps", blank=True)
     tools = models.ManyToManyField(LessonTool, related_name="steps", blank=True)
 
