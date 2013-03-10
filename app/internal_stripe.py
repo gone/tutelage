@@ -15,7 +15,7 @@ def purchase_lesson(user, lesson):
     customer_id = user.customer.customer_id
     amount = int(lesson.price) * 100 #convert to cents
     #TODO: save the receipt
-    if amount > 50:
+    if amount > 50: #required by stripe
         stripe.Charge.create(
             amount=amount,
             currency="usd",
