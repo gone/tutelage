@@ -1,7 +1,7 @@
 from django.contrib import admin
 from mezzanine.pages.admin import PageAdmin
 from .models import (Home, HomeBlock, Lesson, Step, About, FeaturedChef, LessonIngredient,
-                     Ingredient, Tool, DietaryRestrictions, Cuisine, Course, #Video,
+                     Ingredient, Tool, DietaryRestrictions, Cuisine, Course, Video,
                      ChefPledge, LessonPledge, LessonRequest)
 
 
@@ -54,5 +54,5 @@ admin.site.register(Ingredient, admin.ModelAdmin)
 admin.site.register(Tool, admin.ModelAdmin)
 admin.site.register(Course, admin.ModelAdmin)
 admin.site.register(Cuisine, admin.ModelAdmin)
-#admin.site.register(Video, admin.ModelAdmin)
+admin.site.register(Video, admin.ModelAdmin)
 admin.site.register(LessonRequest, LessonRequestAdmin)
