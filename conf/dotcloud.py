@@ -3,8 +3,8 @@
 from base import *
 
 
-CONTACT_EMAIL = "contactus@wellganic.com"
-DEFAULT_FROM_EMAIL = "wellganic@wellganic.com"
+CONTACT_EMAIL = "team@tutelageinc.com"
+DEFAULT_FROM_EMAIL = "team@tutelageinc.com"
 
 EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
 EMAIL_PORT = 465
@@ -50,13 +50,13 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = 'AKIAJNDCQNNOONNJ6VCA'
 AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'culination'
+AWS_STORAGE_BUCKET_NAME = 'culination-testing'
 AWS_HEADERS = {
     'Expires': 'Tue, 14 Aug 2013 20:00:00 GMT',
     'Cache-Control': 'max-age=8640000',
     }
 
-MEDIA_URL = "http://cookcadmey.s3.amazonaws.com/"
+MEDIA_URL = "http://culination-testing.s3.amazonaws.com/"
 #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 #STATIC_URL = "http://cookcadmey.s3.amazonaws.com/"
 
@@ -82,7 +82,7 @@ CACHES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'wellganic',
+        'NAME': 'culination',
         'USER': env['DOTCLOUD_DATA_SQL_LOGIN'],
         'PASSWORD': env['DOTCLOUD_DATA_SQL_PASSWORD'],
         'HOST': env['DOTCLOUD_DATA_SQL_HOST'],

@@ -202,7 +202,7 @@ STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "media")]
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = "http://cookcadmey.s3.amazonaws.com/"
+MEDIA_URL = "http://culination-testing.s3.amazonaws.com/"
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -525,7 +525,7 @@ HAYSTACK_SITECONF = 'app.search_sites'
 STRIPE_API = "fYNnSezc4SWDZce9XexC6iP2bLhS6Lan"
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-AWS_STORAGE_BUCKET_NAME = 'cookcadmey'
+AWS_STORAGE_BUCKET_NAME = 'culination-testing'
 AWS_ENCODING_BUCKET_NAME = 'culination-transcode'
 AWS_ACCESS_KEY_ID = 'AKIAJNDCQNNOONNJ6VCA'
 AWS_SECRET_ACCESS_KEY = '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'
