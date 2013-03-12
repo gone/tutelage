@@ -13,7 +13,7 @@ class Migration(SchemaMigration):
 
         # Adding field 'FeaturedChef.id'
         db.add_column('app_featuredchef', 'id',
-                      self.gf('django.db.models.fields.AutoField')(default='', primary_key=True, blank=True, null=True,),
+                      self.gf('django.db.models.fields.AutoField')(default=0, primary_key=True, blank=True, null=True,),
                       keep_default=False)
 
         # Adding field 'FeaturedChef.keywords_string'
@@ -53,8 +53,9 @@ class Migration(SchemaMigration):
 
         # Adding field 'FeaturedChef.status'
         db.add_column('app_featuredchef', 'status',
-                      self.gf('django.db.models.fields.IntegerField')(default="", blank=True, null=True,),
-                      keep_default=False)
+                      self.gf('django.db.models.fields.IntegerField')(
+                            default=None, blank=True, null=True,),
+                            keep_default=False)
 
         # Adding field 'FeaturedChef.publish_date'
         db.add_column('app_featuredchef', 'publish_date',
