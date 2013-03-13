@@ -74,13 +74,14 @@ handle_timeline_click = function(){
 
 require(['./common',], function(){
     require(["jquery", "colorbox"], function($){
-        $(".step-technique-text").click(function(){
+        $(".step-technique").click(function(){
             that = this
             $.colorbox({
                 inline:true,
-                width:"50%",
+                width:"620px",
+                height:"349px",
                 href:function(){
-                    return $(that).siblings('.video-row').children('.chef-movie-video');
+                    return $(that).children('.video-row').children('.lesson-technique-video-lightbox');
                 }
             })
         })
@@ -109,37 +110,45 @@ require(['./common',], function(){
     <div class="carousel-inner">
       {% for step in lesson.steps.all %}
       <div class="{% if forloop.first %}active{% endif %} item">
-		<img class="lesson-picture" src="{{MEDIA_URL}}{{step.picture}}" />
+        <img class="lesson-picture" src="{{MEDIA_URL}}{{step.picture}}" />
         <div class="step-text no-margin lesson-wrapper-overlay">
-		  <a class="btn btn-primary lesson-nav-btn lesson-nav-btn-prev" href="#lessons" data-slide="prev"><h1 class="no-margin">&lt;</h1></a>
-		  <a class="btn btn-primary lesson-nav-btn lesson-nav-btn-next" href="#lessons" data-slide="next"><h1 class="no-margin">&gt;</h1></a>
+          <a class="btn btn-primary lesson-nav-btn lesson-nav-btn-prev" href="#lessons" data-slide="prev"><h1 class="no-margin">&lt;</h1></a>
+          <a class="btn btn-primary lesson-nav-btn lesson-nav-btn-next" href="#lessons" data-slide="next"><h1 class="no-margin">&gt;</h1></a>
 
-		  {% if forloop.first %}
-		  <div class="step-title span12">{{step.title}}</div>
-		  {% else %}
-		  <div class="step-title span12">Step {{step.order}}: {{step.title}}</div>
-		  {% endif %}
-
-          <div class="step-technique span5">
-			{% if step.technique %}
-			<a class="technique-{{forloop.parentloop.counter0}} step-technique-text step-title secondary pull-right">Watch
-			  <img class="technique-play-icon" src="{{STATIC_URL}}img/play-button-blue.png" />
-			  {{step.technique.title}}</a>
-			<!-- this should likely be moved somewhere else  -->
-			<div class="row no-display video-row">
-			  <video class="chef-movie-video span6" controls="controls">
-                {% for encoding in step.technique.video.envodedvideos %}
-                <source class="transcoded-video" src="{{MEDIA_URL}}{{encoding.get_absolute_url}}" />
-                {% endfor %}
-                <source src="{{step.technique.video.get_absolute_url}}" />
-                <p>Your browser does not support HTML5 video.</p>
-			  </video>
-			</div>
+		  
+          {% if step.technique %}
+          <div class="step-title span10">
+          {% else %}
+          <div class="step-title span12">
+          {% endif %}
+      
+            {% if forloop.first %}
+            {{step.title}}
+            {% else %}
+            Step {{step.order}}: {{step.title}}
             {% endif %}
-		  </div>
+      
+          </div>
 
-		  <div class="step-description span12">{{step.text}}</div>
-		</div>
+        {% if step.technique %}
+          <div class="technique-{{forloop.counter0}} step-technique span2 btn btn-primary">
+            <img class="technique-play-icon pull-left" src="{{STATIC_URL}}img/videoreel.png" />
+            <div class="step-technique-text">WATCH TECHNIQUE</div>
+          
+          <!-- this should likely be moved somewhere else  -->
+            <div class="row no-display video-row">
+              <video class="lesson-technique-video-lightbox" controls="controls">
+                      {% for encoding in step.technique.video.encodedvideos %}
+                      <source class="transcoded-video" src="{{MEDIA_URL}}{{encoding.get_absolute_url}}" />
+                      {% endfor %}
+                      <source src="{{step.technique.video.get_absolute_url}}" />
+                      <p>Your browser does not support HTML5 video.</p>
+              </video>  
+            </div>
+          </div>
+        {% endif %}
+          <div class="step-description span12">{{step.text}}</div>
+        </div>
 
         <div id="ingredient" class="span4 no-margin lesson-panel">
           {% for ingredient in step.ingredients.all %}
@@ -267,7 +276,7 @@ require(['./common',], function(){
         </div>
       </div>
       <div class="span4">
-        <p>Consider pairing <em>The Fair Trade Wine Company Chenin Blanc</em> with
+        <p class="item-ad-description">Consider pairing <em>The Fair Trade Wine Company Chenin Blanc</em> with
           your <em>{{lesson.title}}</em> and support sustainability. This South
           African wine offers a superb balance between bright acidity and sweetness.</p>
         <a
@@ -340,7 +349,7 @@ require(['./common',], function(){
         </div>
       </div>
       <div class="span4">
-        <p>Consider pairing <em>The Fair Trade Wine Company Chenin Blanc</em> with
+        <p class="item-ad-description">Consider pairing <em>The Fair Trade Wine Company Chenin Blanc</em> with
           your <em>{{lesson.title}}</em> and support sustainability. This South
           African wine offers a superb balance between bright acidity and sweetness.</p>
         <a

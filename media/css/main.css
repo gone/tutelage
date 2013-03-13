@@ -2040,7 +2040,7 @@ table [class*=span],
   background-position: -288px 0;
 }
 
-.icon-remove, #cboxClose {
+.icon-remove {
   background-position: -312px 0;
 }
 
@@ -7812,7 +7812,9 @@ body .ui-tooltip {
 #cboxLoadedContent {
   margin-top: 0px;
   margin-bottom: 0px;
+  padding: 0px;
   max-height: none;
+  overflow: hidden !important;
 }
 
 #cboxTitle {
@@ -7873,8 +7875,11 @@ body .ui-tooltip {
 }
 
 #cboxClose {
-  top: 5px;
-  right: 5px;
+  background-image: url(../img/close-button.png);
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
 }
 
 /* #cboxLoadingGraphic{background:url(img/loading.gif) no-repeat center center;} */
@@ -8696,12 +8701,28 @@ body .ui-tooltip {
 }
 
 .step-technique {
-  padding-left: 45px;
+  position: absolute;
+  right: 65px;
+  width: 120px;
+  padding: 14px;
+  margin-top: -10px;
+  height: 32px;
+  border: 3px solid white !important;
+}
+
+.step-technique:hover {
+  border: 3px solid white !important;
+}
+
+.technique-play-icon {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
 }
 
 .step-technique-text {
-  cursor: pointer;
-  text-align: right;
+  margin-left: 35px;
+  text-align: left;
 }
 
 .lesson-panel {
@@ -8887,11 +8908,6 @@ body .ui-tooltip {
   right: 0;
 }
 
-.technique-play-icon {
-  height: 20px;
-  width: 20px;
-}
-
 .lesson-nav-btn:hover {
   color: white !important;
 }
@@ -8916,6 +8932,12 @@ body .ui-tooltip {
 
 .product-lightbox {
   width: 460px;
+  padding: 15px;
+}
+
+.lesson-technique-video-lightbox {
+  width: 620px;
+  height: 349px;
   padding: 0px;
 }
 
@@ -8967,6 +8989,10 @@ body .ui-tooltip {
   margin-left: 30px;
   height: 145px;
   width: auto;
+}
+
+.item-ad-description {
+  margin-right: 20px;
 }
 
 .item-ad-buy-button {

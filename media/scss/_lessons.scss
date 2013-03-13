@@ -156,14 +156,29 @@
 }
 
 .step-technique {
-	padding-left: 45px;
+  position: absolute;
+  right: 65px;
+  width: 120px;
+  padding: 14px;
+  margin-top: -10px;
+  height: 32px;
+  border: 3px solid white !important;
+}
+
+.step-technique:hover {
+  border: 3px solid white !important;
+}
+
+.technique-play-icon {
+  display: inline-block;
+	height: 30px;
+	width: 30px;
 }
 
 .step-technique-text {
-    cursor: pointer;
-	text-align: right;
+  margin-left: 35px;
+  text-align: left;
 }
-
 
 .lesson-panel {
 	position: absolute;
@@ -364,11 +379,6 @@
 	right: 0;
 }
 
-.technique-play-icon {
-	height: 20px;
-	width: 20px;
-}
-
 .lesson-nav-btn:hover {
 	color: white !important;
 }
@@ -393,6 +403,12 @@
 
 .product-lightbox {
     width: 460px;
+    padding: 15px;
+}
+
+.lesson-technique-video-lightbox {
+    width: 620px;
+    height: 349px;
     padding: 0px;
 }
 
@@ -444,6 +460,10 @@
 	margin-left: 30px;
 	height: 145px;
 	width: auto;
+}
+
+.item-ad-description {
+  margin-right: 20px;
 }
 
 .item-ad-buy-button {

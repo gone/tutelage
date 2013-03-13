@@ -31,7 +31,9 @@
   @extend .modal-body;
   margin-top:0px;
   margin-bottom:0px;
+  padding:0px;
   max-height: none;
+  overflow: hidden !important;
 }
 #cboxTitle{
   /* @extend .modal-header; -- removing border at top of lightbox -- */
@@ -72,7 +74,14 @@
 
 #cboxPrevious{@extend .cb-icon; @extend .icon-arrow-left; bottom:8px; left:5px;}
 #cboxNext{@extend .cb-icon; @extend .icon-arrow-right;bottom:8px; left:19px;}
-#cboxClose{@extend .cb-icon; @extend .icon-remove; top:5px; right:5px; }
+#cboxClose {
+  @extend .cb-icon; 
+  background-image: url(../img/close-button.png); 
+  top: 0; 
+  right: 0; 
+  width: 28px;
+  height: 28px;
+}
 
 /* #cboxLoadingGraphic{background:url(img/loading.gif) no-repeat center center;} */
 
