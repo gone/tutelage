@@ -5467,14 +5467,15 @@ body hr {
   width: 980px;
 }
 
-.main {
+.main, .header-main {
   width: 970px;
   margin-left: 5px;
   padding-top: 20px;
   background-color: white;
 }
-.main h3 {
-  line-height: 25px;
+
+.header-main {
+  padding-top: 0px;
 }
 
 .bordered {
@@ -5495,6 +5496,18 @@ body hr {
 .bordered-row {
   margin-left: -22px;
   margin-bottom: -1px;
+}
+
+.page-buttons {
+  margin-right: 5px;
+}
+
+.page-buttons .page-buttons-text {
+  display: inline-block;
+  padding: 10px 5px;
+  width: 200px;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .no-display {
@@ -7920,7 +7933,7 @@ body .ui-tooltip {
   color: white !important;
 }
 
-.box-experts, .box-about {
+.box-about {
   border-right: 1px #cacaca solid;
 }
 
@@ -7931,13 +7944,13 @@ body .ui-tooltip {
 }
 
 .box-logout {
-  padding-top: 6px;
-  height: 54px;
+  padding-top: 11px;
+  height: 49px;
 }
 
 .box-my {
-  padding-top: 12px;
-  height: 48px;
+  padding-top: 17px;
+  height: 43px;
   width: 90px;
   border-right: 1px #cacaca solid;
 }
@@ -9311,7 +9324,7 @@ btn-avatar {
   width: 100%;
 }
 
-.main {
+.main, .header-main {
   counter-reset: inc_steps;
 }
 
@@ -9387,7 +9400,7 @@ btn-avatar {
 }
 
 .chef-lessons-title, .chef-lessons, .profile-lessons-title, .profile-lessons {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .chef-lessons-title, .profile-lessons-title {
@@ -9496,6 +9509,7 @@ btn-avatar {
 .request-message {
   font-size: 18px;
   padding: 12px 0px;
+  margin-top: 10px;
   margin-left: 10px;
 }
 

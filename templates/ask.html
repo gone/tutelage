@@ -232,6 +232,9 @@ $()
       <div class="span6 request-message">
         Click on a request for more details
       </div>
+      <div class="span6">
+        {% include "pager.html" with page=lesson_requests %}
+      </div>
     </div>
   </div>
 </div>
@@ -317,7 +320,7 @@ $()
   </div>
 </div>
 
-{% include "pager.html" with pager=lesson_requests %}
+
 
 <div class="row no-display">
   {% include "lesson_request.html" with request_form=request_form %}

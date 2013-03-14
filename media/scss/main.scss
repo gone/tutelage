@@ -70,9 +70,11 @@ body {
     margin-left: 5px;
     padding-top: 20px;
     background-color: $white;
-    h3 {
-        line-height: 25px;
-    }
+}
+
+.header-main {
+  @extend .main;
+  padding-top: 0px;
 }
 
 .bordered{
@@ -89,10 +91,23 @@ body {
         line-height: 25px;
     }
 }
+
 .bordered-row {
     @extend .row;
     margin-left: -22px;
     margin-bottom: -1px;
+}
+
+.page-buttons {
+    margin-right: 5px;
+}
+
+.page-buttons .page-buttons-text {
+    display: inline-block;
+    padding: 10px 5px;
+    width: 200px;
+    vertical-align: middle;
+    text-align: center;
 }
 
 @mixin colored-button($color,$border-color:$color,$text-color:white){

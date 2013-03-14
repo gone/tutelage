@@ -107,7 +107,10 @@ def miniprofile(request, user_id):
 @login_required(redirect_field_name='')
 def lessons(request):
     all_lessons = Lesson.objects.all()
-    paginator = Paginator(all_lessons, 16)
+  
+    recipe_lessons = Lesson.objects.filter(kind = "0")
+    
+    paginator = Paginator(recipe_lessons, 10)
     page = request.GET.get('page')
     try:
         lessons = paginator.page(page)

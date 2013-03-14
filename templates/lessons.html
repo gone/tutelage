@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for lesson in lessons %}
-{% include "lesson_tile.html" with lesson=lesson %}
-{% endfor %}
+
+  <div class="row header-main">
+    <div class="span6">
+      <h3>Lessons</h3>
+    </div>
+    
+    <div class="span6">
+      {% include "pager.html" with page=lessons %}
+    </div>
+  </div>  
+
+  <div class="content profile-lessons">
+  {% for lesson in lessons %}
+  {% include "lesson_tile.html" with lesson=lesson %}
+  {% endfor %}
+  </div>
 
 <script type="text/javascript" src="http://masonry.desandro.com/jquery.masonry.min.js"></script>
 <script type="text/javascript">
@@ -18,8 +31,6 @@ pagelogic = function(){
     $('.box-lessons').addClass('box-active');
 };
 </script>
-
-{% include "pager.html" with lessons=pager %}
 
 {% include "stripe.html" with form_class=".purchase" %}
 {% endblock %}

@@ -1,20 +1,26 @@
-<ul class="pager">
-  {% if pager.has_previous %}
-  <li class="previous">
-    <a href="?page={{ pager.previous_page_number }}" class="previous">Previous</a>
-  </li>
-  {% else %}
-  <li class="previous disabled">
-    <a href="#"  class="previous disabled">Previous</a>
-  <li>
+  {% if page.has_previous or page.has_next %}
+  <div class="span4 pull-right page-buttons">
+      {% if page.has_previous %}
+        {% if query %}
+        <a class="btn btn-primary previous" href="?q={{ query }}&amp;page={{ page.previous_page_number }}">&laquo;</a>
+        {% else %}
+        <a class="btn btn-primary previous" href="?page={{ page.previous_page_number }}">&laquo;</a>
+        {% endif %}
+      {% endif %}
+      
+      <!-- page number option 
+      <h4 class="page-buttons-text">Page {{ page.number }} of {{ page.paginator.num_pages }}</h4>
+      -->
+    
+      <!-- item number option -->
+      <h4 class="page-buttons-text">Showing {{ page.start_index }} - {{ page.end_index }} of {{ page.paginator.count }}</h4>
+        
+      {% if page.has_next %}
+        {% if query %}
+        <a class="btn btn-primary next" href="?q={{ query }}&amp;page={{ page.next_page_number }}">&raquo;</a>
+        {% else %}
+        <a class="btn btn-primary next" href="?q={{ query }}&amp;page={{ page.next_page_number }}">&raquo;</a>
+        {% endif %}
+      {% endif %}
+  </div>
   {% endif %}
-  {% if pager.has_next %}
-  <li class="next">
-    <a href="?page={{ pager.next_page_number }}" class="next">Next</a>
-  </li>
-  {% else %}
-  <li class="next disabled">
-    <a href="#"  class="next disabled">Next</a>
-  <li>
-  {% endif %}
-</ul>
