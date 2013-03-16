@@ -13,7 +13,7 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 EMAIL_DEBUG = False
 
-DEBUG = True
+DEBUG = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 
@@ -36,7 +36,7 @@ CACHES = {
         'LOCATION': 'localhost:6379',
         'OPTIONS': {
             'DB': 1,
-            'PASSWORD': "olmab5Jow3",
+            'PASSWORD': None,
             'PARSER_CLASS': 'redis.connection.HiredisParser',
             'PICKLE_VERSION': 2,
         },
