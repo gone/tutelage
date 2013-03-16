@@ -285,7 +285,7 @@ class Video(CreatedMixin):
         # TODO: choice the video types to support
         mime = magic.from_buffer(f.read(1024), mime=True)
         f.seek(0)
-        
+
         try:
             type_, subtype = mime.split('/')
         except ValueError:
