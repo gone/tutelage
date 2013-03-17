@@ -28,7 +28,7 @@ AWS_HEADERS = {
     'Cache-Control': 'max-age=8640000',
     }
 
-MEDIA_URL = "http://cookcadmey.s3.amazonaws.com/"
+MEDIA_URL = "http://culination-testing.s3.amazonaws.com/"
 
 CACHES = {
     'default': {
