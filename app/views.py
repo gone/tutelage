@@ -222,6 +222,8 @@ class always_same_list(list):
     def __getitem__(self, *args, **kwargs):
         return self.always
 
+    def __nonzero__(self):
+        return True
 
 @login_required
 def lesson_steps(request, lesson_id=None):
