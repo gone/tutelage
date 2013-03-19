@@ -62,16 +62,16 @@
     </div>
 
     <div class="span6">
-	  <div class="row">
-		<h3 class="right-padding pull-right">by&#160;<a class="primary miniprofile-btn" href="{% url miniprofile lesson.teacher.id %}">{{lesson.teacher.get_full_name|title}}</a></h3>
-        
+      <div class="row">
+        <h3 class="right-padding pull-right">by&#160;<a class="primary miniprofile-btn" href="{% url miniprofile lesson.teacher.id %}">{{lesson.teacher.get_full_name|title}}</a></h3>
+            
         <a href="{% url purchase lesson.id %}">
-		<div class="lesson-photo" class="span5">
-		  <img src={{MEDIA_URL}}{{lesson.image}} />
+        <div class="lesson-photo" class="span5">
+          <img src={{MEDIA_URL}}{{lesson.image}} />
           <span class="block-image-text">View Lesson</span>
-		</div>
+        </div>
         </a>
-	  </div>
+      </div>
   
   <!-- commenting out social media functionality for first phase
   {% url lesson_detail lesson.id as url %}

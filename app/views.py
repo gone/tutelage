@@ -214,6 +214,22 @@ def lesson_video(request, lesson_id=None):
 
     return direct_to_template(request, "video_details_form.html", {"lesson": lesson,})
 
+
+#a work around to the inital data list that gets passed into a formset - we need the number of the items in the list to
+# equal the number of extra intstances we want to create.
+# but Since they're always going to be the same, just hack getitem to always spit out the same item
+class always_same_list(list):
+    def __init__(self, *args, **kwargs):
+        self.always = kwargs.pop('always', None)
+        super(always_same_list, self).__init__(*args, **kwargs)
+
+    def __getitem__(self, *args, **kwargs):
+        return self.always
+        
+    def __nonzero__(self):
+        return True
+
+
 @login_required
 def lesson_steps(request, lesson_id=None):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
@@ -221,8 +237,9 @@ def lesson_steps(request, lesson_id=None):
         raise PermissionDenied
 
     StepFormset = inlineformset_factory(Lesson, Step, extra=1, form=StepDetailsForm, fk_name="lesson")
+    lesson_list = always_same_list(always={'lesson': lesson})
     if request.method == "POST":
-        step_formset = StepFormset(request.POST, request.FILES, queryset=lesson.steps.all(), instance=lesson, initial=[{'lesson': lesson}])
+        step_formset = StepFormset(request.POST, request.FILES, queryset=lesson.steps.all(), instance=lesson, initial=lesson_list)
 
         if step_formset.is_valid():
             steps = step_formset.save()
@@ -230,7 +247,7 @@ def lesson_steps(request, lesson_id=None):
                 lesson.steps.add(step)
             return HttpResponseRedirect(reverse("profile", args=[request.user.id]))
     else:
-        step_formset = StepFormset(queryset=lesson.steps.all(), instance=lesson, initial=[{'lesson': lesson}])
+        step_formset = StepFormset(queryset=lesson.steps.all(), instance=lesson, initial=lesson_list)
     return direct_to_template(request, "step_details_form.html", {"form": step_formset, "lesson": lesson,})
 
 @create_stripe_customer

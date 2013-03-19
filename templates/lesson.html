@@ -149,7 +149,7 @@ require(['./common',], function(){
         {% endif %}
           <div class="step-description span12">{{step.text}}</div>
         </div>
-
+        
         <div id="ingredient" class="span4 no-margin lesson-panel">
           {% for ingredient in step.ingredients.all %}
           <div class='panel-item ingredient ingredient{{forloop.counter}} ingredient-{{forloop.parentloop.counter0}}-{{forloop.counter}}'>
@@ -171,9 +171,15 @@ require(['./common',], function(){
                    -->
             </div>
           </div>
+          {% empty %}
+          <div class='hide-panel ingredient-{{forloop.parentloop.counter0}} no-display'></div>
+          <script type="text/javascript">
+            $('.hide-panel.ingredient-{{forloop.parentloop.counter0}}').parent().remove();
+          </script>
           {% endfor %}
         </div>
 
+        {% if step.tools %}
         <div class="span4 pull-right">
           <div id="tools" class="lesson-panel">
             {% for tool in step.tools.all %}
@@ -192,9 +198,15 @@ require(['./common',], function(){
                    <img class='lessonimages' src='../../static/img/icon.pie.png' alt='{{tool.name}}' />
                    -->
             </div>
+            {% empty %}
+            <div class='hide-panel tool-{{forloop.parentloop.counter0}} no-display'></div>
+            <script type="text/javascript">
+              $('.hide-panel.tool-{{forloop.parentloop.counter0}}').parent().remove();
+            </script>
             {% endfor %}
           </div>
         </div>
+        {% endif %}
 
       </div>
       {% endfor %}
@@ -399,6 +411,9 @@ pagelogic = function(){
     });
 
     $('.box-lessons').addClass('box-active');
+    $('.lesson-picture').click(function() {
+      $(this).siblings('.span4').toggle();
+    });
 };
 </script>
 
