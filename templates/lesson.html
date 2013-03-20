@@ -383,9 +383,8 @@ pagelogic = function(){
     browserHeight = $(window).height();
 
     if (browserHeight <= 700) {
-        $('.navbar').hide();
-        $('.footer').hide();
-        $('.container').css('margin','0px auto');
+        $('.navbar').css('position','absolute');
+        $('.footer').css('position','static');
     }
     
     {% for step in lesson.steps.all %}
