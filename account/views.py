@@ -11,6 +11,9 @@ from django.http import HttpResponseRedirect
 
 from django.contrib.auth.decorators import login_required
 
+def account_redirect(request):
+    return HttpResponseRedirect('/')
+
 @login_required(redirect_field_name='')
 def password_reset(request):
     redirect_to = request.POST.get("next", None)
@@ -37,6 +40,8 @@ def login(request):
     rv = django_login(request,
                       authentication_form=login_form)
     ##TODO: flash a message here that you've changed your password
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/home/')
     if type(rv) == HttpResponseRedirect:
         return HttpResponseRedirect(next)
     return rv

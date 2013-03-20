@@ -380,6 +380,14 @@ require(['./common',], function(){
 
 <script type="text/javascript">
 pagelogic = function(){
+    browserHeight = $(window).height();
+
+    if (browserHeight <= 700) {
+        $('.navbar').hide();
+        $('.footer').hide();
+        $('.container').css('margin','0px auto');
+    }
+    
     {% for step in lesson.steps.all %}
     {% for ingredient in step.ingredients.all %}
     {% if ingredient.ingredient %}
@@ -406,7 +414,7 @@ pagelogic = function(){
         $('a.lesson-nav-btn-prev').trigger('click');
       }
       else if (event.keyCode == 39 || event.keyCode == 40) {
-		$('a.lesson-nav-btn-next').trigger('click');
+        $('a.lesson-nav-btn-next').trigger('click');
       }
     });
 

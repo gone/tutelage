@@ -245,3 +245,4 @@ class LessonPurchaseForm(forms.Form):
     def save(self, *args, **kwargs):
         purchase_lesson(self.user, self.lesson)
         self.lesson.followers.add(self.user)
+    

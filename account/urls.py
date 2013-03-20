@@ -16,6 +16,7 @@ from .forms import LoginForm
 
 
 urlpatterns = patterns('',
+                       url(r'^/?$', account_redirect, name="account"),
                        url(r'^login/?$',login, name="login"),
                        url(r'^logout/?$','django.contrib.auth.views.logout', name="logout"),
                        )

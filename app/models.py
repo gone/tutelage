@@ -615,3 +615,9 @@ class DietaryRestrictions(CreatedMixin):
 
     def __unicode__(self):
         return self.restriction
+
+#class userSignupRequest(CreatedMixin):
+    #email = EmailField(max_length=256)
+    
+    
+    

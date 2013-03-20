@@ -5943,6 +5943,10 @@ input[type="submit"] {
   padding-bottom: 4px;
 }
 
+.lightbox {
+  padding: 15px;
+}
+
 .lightbox-hr {
   margin: 10px 0px !important;
 }
@@ -8946,7 +8950,6 @@ body .ui-tooltip {
 
 .product-lightbox {
   width: 460px;
-  padding: 15px;
 }
 
 .lesson-technique-video-lightbox {
