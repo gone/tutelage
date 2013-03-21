@@ -1,6 +1,7 @@
-@import "bootstrap";
+//Vendor libraries
+@import "lib/bootstrap";
 
-/* Main Culination Styling */
+/* Main Styling */
 
 @font-face {
     font-family: 'MuseoSans500';
@@ -302,13 +303,15 @@ textarea {
 }
 
 .loadedavatar {
-    height: 80px;
+  height: 80px;
 }
+
 .goldstar{
-     content:url(images/star_on.png);
+  content:url(images/star_on.png);
 }
+
 .whitestar{
-    content:url(images/star_off.png);
+  content:url(images/star_off.png);
 }
 
 .pull-left {
@@ -325,13 +328,18 @@ textarea {
 }
 
 .social-media-icon {
-    display: inline-block;
-    height: 30px;
-    width: 30px;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
 }
 
-@import "jquery-ui";
-@import "colorbox";
+@import "lib/jquery-ui";
+@import "lib/colorbox";
+@import "lib/datepicker";
+@import "lib/validationEngine.jquery";
+@import "lib/chosen";
+
+//Application libraries
 @import "local_navbar";
 @import "footer";
 @import "icons";
@@ -345,7 +353,3 @@ textarea {
 @import "createlesson";
 @import "chefprofile";
 @import "ask";
-
-@import "datepicker";
-@import "validationEngine.jquery";
-@import "chosen";
