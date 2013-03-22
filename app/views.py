@@ -159,7 +159,10 @@ def add_lesson(request, lesson_id=None):
     if request.method == "POST":
         form = LessonDetailsForm(request.POST, request.FILES, teacher=request.user, instance=lesson)
         if form.is_valid():
-            lesson = form.save(False)
+            lesson = form.save(commit=False)
+            lesson = form.save_m2m()
+            lesson = form.save()
+            
             return redirect("lesson_ingredients", lesson_id=lesson.id)
     else:
         form = LessonDetailsForm(teacher=request.user, instance=lesson)

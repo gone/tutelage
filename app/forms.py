@@ -10,7 +10,6 @@ class ProfileForm(forms.Form):
     first_name = forms.CharField()
     last_name = forms.CharField()
     email = forms.EmailField()
-    #skill_level = forms.ChoiceField(choices=SKILL_LEVELS)
 
     def __init__(self, *args, **kwargs):
         profile = self.profile = kwargs.pop('profile')
@@ -19,14 +18,12 @@ class ProfileForm(forms.Form):
                   'first_name': user.first_name,
                   'last_name': user.last_name,
                   'email': user.email,
-                  #'skill_level': profile.skill_level,
                   }
         kwargs['initial'] = initial
         return super(ProfileForm, self).__init__(*args, **kwargs)
 
 
     def save(self):
-        #self.profile.skill_level = self.cleaned_data['skill_level']
         self.profile.about = self.cleaned_data['about']
         self.profile.user.first_name = self.cleaned_data['first_name']
         self.profile.user.last_name = self.cleaned_data['last_name']
@@ -36,7 +33,6 @@ class ProfileForm(forms.Form):
         return self.profile
 
 class LessonDetailsForm(forms.ModelForm):
-    # video
 
     cooking_time = forms.CharField()
     prep_time = forms.CharField()
@@ -61,8 +57,13 @@ class LessonDetailsForm(forms.ModelForm):
         except Lesson.DoesNotExist:
             return title
 
+    def clean_description(self):
+        self.description = self.cleaned_data['description']
+        return self.description
+        
     def save(self, *args, **kwargs):
         instance = super(LessonDetailsForm, self).save(*args, **kwargs)
+        instance.flavor_text = self.description
         instance.teacher = self.teacher
         instance.save()
         return instance
