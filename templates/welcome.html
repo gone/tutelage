@@ -79,12 +79,17 @@
           <div class="span6 signup-thanks">We'll let you know when your table is ready :)</div>
           <div class="span6">Reservation made for: {{signup_email}}</div>
         {% else %}
+          <div class="span6 splash-signup-text">We'll be accepting reservations soon.</div>
+          <div class="span6 splash-signup-text">For now, check out our social media channels!</div>
+          <br />
+          <!-- Need to resolve submission issues
           <div class="span6 splash-signup-text">Want to find out more?</div>
           <form id="splash-signup-form" class="splash-signup-form" action="" method="post">
             {% csrf_token %}
             <input class="span4 splash-signup-email" name="email" type="email" placeholder="email">
             <input class="btn btn-primary splash-btn" type="submit" value="submit">
           </form>
+          -->
         {% endif %}
         </div>
       </div>  
