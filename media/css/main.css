@@ -10575,3 +10575,122 @@ btn-avatar {
 .request-form-buttons {
   margin-top: 15px;
 }
+
+/* Splash Page */
+.splash-background-image {
+  background: url(../img/launchimg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/login-background.png', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/login-background.png', sizingMethod='scale')";
+}
+
+.splash-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 100%;
+  width: 460px;
+}
+
+.logo {
+  height: 155px;
+}
+
+.logo, .slogan, .splash-signup h3, .splash-signup-email {
+  margin-left: 20px !important;
+}
+
+.tagline {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.slogan {
+  margin-top: 40px;
+}
+
+.slogan div {
+  margin: 0px;
+  font-size: 26px;
+  height: 39px;
+}
+
+.splash-signup:nth-child(3) {
+  margin-left: 30px !important;
+}
+
+.splash-signup div {
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.signup-thanks {
+  margin-top: 20px;
+}
+
+.splash-image {
+  margin: 20px 0px 10px 40px;
+}
+
+.splash-image img {
+  width: 100%;
+}
+
+.splash-signup-text {
+  margin-top: 20px;
+  font-size: 18px;
+  height: 27px;
+}
+
+.splash-signup-form {
+  margin: 0px;
+}
+
+.splash-login {
+  margin-top: 10px;
+  margin-left: 40px;
+}
+
+.splash-login h3, .splash-login a {
+  margin-left: 0px !important;
+}
+
+.social-media-sharing {
+  margin-top: 20px;
+  height: 40px;
+}
+
+.social-media-sharing-text {
+  margin: 5px 30px 0px 0px;
+  font-size: 16px;
+}
+
+.social-media-sharing-icons {
+  position: absolute;
+  margin-top: 5px;
+}
+
+.splash-btn {
+  vertical-align: top;
+  margin-left: 20px;
+  width: 47px !important;
+}
+
+.splash-btn:hover {
+  vertical-align: top;
+}
+
+.private-login-errors {
+  width: 300px;
+}
+
+.private-login-errors ul {
+  padding-left: 7px;
+  padding-right: 7px;
+  width: 284px;
+}

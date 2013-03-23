@@ -32,7 +32,8 @@ logger = logging.getLogger(__name__)
 from .models import (Lesson, LessonIngredient, LessonTool, Step, Video,
                      LessonRating, FeaturedChef, LessonRequest, Customer, Profile)
 
-from .forms import (ProfileForm,
+from .forms import (UserSignupRequestForm,
+                    ProfileForm,
                     LessonDetailsForm,
                     IngredentsDetailsForm,
                     ToolsDetailsForm,
@@ -63,6 +64,18 @@ def create_stripe_customer(func):
         handle_customer_data(request)
         return func(request, *args, **kwargs)
     return wrapper
+
+
+def welcome(request):
+    form = UserSignupRequestForm(request.POST)
+    if request.method == 'POST':
+            signup_email = request.POST.get('email')
+            form.save()
+            return direct_to_template(request, "welcome.html", {"signup_form": form, 'signup_email':signup_email})
+    if request.user.is_authenticated():
+        return redirect('/home/')
+    else:
+        return direct_to_template(request, "welcome.html", {"signup_form": form})
 
 
 @login_required(redirect_field_name='')
@@ -127,21 +140,6 @@ def lessons(request):
 def lesson_detail(request, lesson_id):
     lesson = get_object_or_404(Lesson, pk=lesson_id)
     return direct_to_template(request, "lesson_details.html", {"lesson": lesson})
-
-def welcome(request):
-    if request.method == 'POST':
-            signup_email = request.POST.get('splash-signup-email')
-            email_subject = "New Signup Request - " + signup_email + " wants to join Culination"
-            email_body = "Another Culinator would like to join the potluck! Let " + signup_email + " know when they can sign up on Culination."
-            email_message = EmailMessage(email_subject, email_body, to=['geoffrey@tutelageinc.com'])
-            email_message.send(fail_silently = False)
-            #request.user.message_set.create(message = "Email confirmation sent!")
-            #return HttpResponseRedirect(reverse("welcome",  kwargs={'signup_email':signup_email}))
-            return direct_to_template(request, "welcome.html", {'signup_email':signup_email})
-    if request.user.is_authenticated():
-        return redirect('/home/')
-    else:
-        return direct_to_template(request, "welcome.html")
 
 TEMPLATES = { 'lesson_details': "lesson_details_form.html",
               'ingredents_details': "ingredents_details_form.html",

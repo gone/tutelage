@@ -1,7 +1,7 @@
 import decimal
 
 from django import forms
-from .models import Lesson, LessonIngredient, LessonTool, LessonRequest, LessonPledge, Step, ChefPledge, Customer
+from .models import UserSignupRequest, Lesson, LessonIngredient, LessonTool, LessonRequest, LessonPledge, Step, ChefPledge, Customer
 from .internal_stripe import purchase_lesson
 
 
@@ -246,4 +246,11 @@ class LessonPurchaseForm(forms.Form):
     def save(self, *args, **kwargs):
         purchase_lesson(self.user, self.lesson)
         self.lesson.followers.add(self.user)
-    
+
+class UserSignupRequestForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        return super(UserSignupRequestForm, self).__init__(*args, **kwargs)
+
+    class Meta:
+        model = UserSignupRequest
+        fields = ('email',)

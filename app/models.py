@@ -616,8 +616,10 @@ class DietaryRestrictions(CreatedMixin):
     def __unicode__(self):
         return self.restriction
 
-#class userSignupRequest(CreatedMixin):
-    #email = EmailField(max_length=256)
+class UserSignupRequest(CreatedMixin):
+    email = models.EmailField(max_length=256)
+    invite_date = models.DateField(null=True, blank=True)
+    user = models.ForeignKey(User, null=True, blank=True)
     
-    
-    
+    def __unicode__(self):
+        return self.email
